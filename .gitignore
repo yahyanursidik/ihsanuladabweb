@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.astro-dev.*.log
+.static-server.*.log
+.env
+.env.*
+!.env.example
