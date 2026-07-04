@@ -1,21 +1,26 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const consultationUrl = 'https://berbagi.link/ypihsanuladab';
+const whatsappUrl = 'https://wa.me/6285179676003';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
+
 const navItems = [
   ['Beranda', '/'],
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Tentang', '#tentang-ushuluna'],
+  ['Tentang Ushuluna', '#tentang-ushuluna'],
+  ['Untuk Siapa', '#untuk-siapa'],
   ['Materi', '#materi'],
-  ['Struktur', '#struktur'],
-  ['Pendalaman', '#pendalaman'],
+  ['Metode', '#metode'],
+  ['Kontak', '#kontak'],
 ];
 
 const programMenuItems = [
   {
     label: 'Semua Program',
     href: '/#program',
-    note: 'Ikhtisar layanan',
+    note: 'Peta ekosistem belajar',
   },
   {
     label: 'Ihsanul Adab Parenting Academy',
@@ -30,7 +35,7 @@ const programMenuItems = [
   {
     label: 'The Fitrah Journey',
     href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
+    note: 'Ruang tumbuh muslimah',
   },
   {
     label: 'Headmaster & Teacher Academy',
@@ -40,7 +45,7 @@ const programMenuItems = [
   {
     label: 'PKGQ PAUD & SD',
     href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
+    note: "Kaderisasi guru Al-Qur'an",
   },
   {
     label: 'IAIEE',
@@ -51,11 +56,6 @@ const programMenuItems = [
     label: 'Ushuluna',
     href: '/program/ushuluna/',
     note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '/#program',
-    note: 'Pembelajaran Al-Quran keluarga',
   },
   {
     label: 'DeenUp',
@@ -69,119 +69,143 @@ const programMenuItems = [
   },
 ];
 
+const foundationSignals = [
+  ['Tauhid', 'mengenal Allah dan tujuan hidup sebagai hamba'],
+  ['Adab', 'menjaga cara belajar, bertanya, dan mengamalkan ilmu'],
+  ['Ibadah', 'menata amal harian dengan ilmu yang benar'],
+  ['Manhaj', 'memahami agama dengan bimbingan salafus shalih'],
+];
+
 const concerns = [
-  'Sudah lama beragama Islam, tetapi belum benar-benar memahami Islam.',
-  'Merasa ibadah rutin, namun hati masih sering gelisah.',
-  'Ingin belajar dari dasar, tetapi bingung harus mulai dari mana.',
-  'Takut salah belajar, salah guru, atau salah manhaj.',
+  'Sudah lama menjadi Muslim, tetapi masih merasa pemahaman agama belum tersusun dari dasar.',
+  'Ingin mulai belajar Islam, namun bingung harus memulai dari materi apa dan guru siapa.',
+  'Rutinitas ibadah berjalan, tetapi hati sering gelisah karena ilmu, niat, dan amal belum terhubung.',
+  'Khawatir salah jalan dalam belajar karena banyaknya konten agama yang bercampur antara yang lurus dan yang rancu.',
 ];
 
 const goals = [
-  'Mengenal Allah dengan benar.',
-  'Memahami Islam secara utuh dan lurus.',
-  'Menjalani kehidupan dengan iman, adab, dan ketenangan.',
-  'Belajar berdasarkan Al-QurÃ¢â‚¬â„¢an, Sunnah, dan pemahaman Salafus Shalih.',
+  'Mengenal Allah, mengenal agama Islam, dan mengenal Rasulullah shallallahu alaihi wasallam dengan lebih benar.',
+  "Memahami pokok tauhid, aqidah, ibadah, adab, dan manhaj dari Al-Qur'an dan Sunnah.",
+  'Menata ilmu agar tidak hanya menjadi pengetahuan, tetapi menggerakkan amal harian.',
+  'Membangun kebiasaan belajar yang ringan, bertahap, dan tetap menjaga kehati-hatian ilmiah.',
 ];
 
 const audiences = [
-  'Muslim pemula dan mualaf.',
-  'Orang tua yang ingin memperbaiki fondasi iman keluarga.',
-  'Mahasiswa dan pekerja yang sibuk namun ingin belajar Islam secara serius.',
-  'Muslim yang ingin reset pemahaman Islam dari dasar.',
-  'Penuntut ilmu yang ingin meluruskan aqidah dan manhaj.',
+  'Muslim pemula dan mualaf yang ingin belajar Islam dari fondasi paling penting.',
+  'Orang tua yang ingin menguatkan dasar iman sebelum membimbing keluarga.',
+  'Mahasiswa, pekerja, dan profesional yang membutuhkan ritme belajar ringkas namun terarah.',
+  'Muslim yang ingin memperbaiki pemahaman agama dari awal tanpa merasa dihakimi.',
+  'Penuntut ilmu yang ingin menata aqidah, ibadah dasar, adab belajar, dan manhaj dengan lebih rapi.',
 ];
 
 const learningStages = [
   {
-    title: 'Fondasi Aqidah',
+    title: 'Fondasi Aqidah dan Tauhid',
     points: [
-      'Apa itu tauhid dan mengapa hati membutuhkannya.',
-      'Siapa Rabb-mu?',
-      'Apa agamamu?',
-      'Siapa Nabimu Ã¯Â·Âº?',
-      'Makna Laa ilaaha illallah.',
+      'Mengapa tauhid menjadi dasar seluruh amal.',
+      'Tiga pertanyaan pokok: siapa Rabb-mu, apa agamamu, siapa Nabimu.',
+      'Makna laa ilaaha illallah dalam keyakinan dan amal.',
+      'Hal-hal yang merusak kemurnian tauhid.',
     ],
   },
   {
-    title: 'Adab & Manhaj Penuntut Ilmu',
+    title: 'Adab dan Manhaj Belajar',
     points: [
-      'Niat dan keikhlasan dalam belajar.',
-      'Adab terhadap ilmu, guru, dan Al-QurÃ¢â‚¬â„¢an.',
-      'Prinsip manhaj salaf dalam memahami agama.',
+      'Niat, keikhlasan, dan adab penuntut ilmu.',
+      "Adab terhadap Al-Qur'an, Sunnah, guru, dan sesama penuntut ilmu.",
+      'Prinsip memahami agama dengan pemahaman salafus shalih.',
+      'Cara menyikapi perbedaan, nasihat, dan konten agama di ruang digital.',
     ],
   },
   {
-    title: 'Panduan Ibadah Harian & Fiqh Dasar',
-    points: ['Thaharah.', 'Shalat.', 'Puasa.', 'Zakat.', 'Fiqh praktis sehari-hari.', 'Kesalahan umum dalam ibadah.'],
+    title: 'Ibadah Harian dan Fiqh Dasar',
+    points: [
+      'Thaharah, wudhu, dan kebersihan ibadah.',
+      'Shalat, puasa, zakat, dan fiqh praktis harian.',
+      'Kesalahan umum dalam ibadah yang perlu diperbaiki bertahap.',
+      'Menghubungkan ilmu ibadah dengan khusyuk dan ketundukan.',
+    ],
   },
   {
-    title: 'Akhlak, Tazkiyatun Nafs & Sirah',
+    title: 'Akhlak dan Tazkiyatun Nafs',
     points: [
-      'Akhlak Muslim dalam kehidupan nyata.',
-      'Penyakit hati dan cara membersihkannya.',
-      'Keteladanan Nabi Ã¯Â·Âº, sahabat, dan shabiyat.',
+      'Akhlak Muslim dalam rumah, pekerjaan, pertemanan, dan masyarakat.',
+      'Penyakit hati, muhasabah, dan jalan memperbaiki diri.',
+      'Keteladanan Nabi, para sahabat, dan generasi salaf.',
+      'Membiasakan amal kecil yang lebih mudah dijaga.',
     ],
   },
   {
     title: 'Islam dalam Kehidupan Nyata',
-    points: ['Muamalah.', 'Realitas Muslim dan Muslimah.', 'Studi kasus kehidupan modern.'],
+    points: [
+      'Muamalah, keluarga, pekerjaan, dan interaksi sosial.',
+      'Membaca masalah hidup dengan kacamata iman dan ilmu.',
+      'Studi kasus ringan agar ilmu turun menjadi sikap dan keputusan.',
+    ],
   },
 ];
 
 const format = [
-  'Audio utama 5-10 menit per materi, mudah didengar kapan saja.',
-  'Video dan PDF pendukung sebagai pelengkap opsional.',
-  'Materi ringkas namun tetap mendalam.',
-  'Cocok didengar sambil berkendara, istirahat, atau sebelum tidur.',
-  'Belajar tanpa overwhelm, tanpa tekanan, dan tanpa kejar nilai.',
+  {
+    title: 'Ringkas',
+    body: 'Materi disusun pendek dan fokus agar mudah diikuti di sela aktivitas harian.',
+  },
+  {
+    title: 'Bertahap',
+    body: 'Peserta diarahkan dari pokok iman menuju ibadah, adab, akhlak, dan praktik keseharian.',
+  },
+  {
+    title: 'Reflektif',
+    body: 'Setiap materi dihubungkan dengan pertanyaan muhasabah dan langkah amal sederhana.',
+  },
+  {
+    title: 'Fleksibel',
+    body: 'Belajar dapat dilakukan dari rumah melalui media daring dan bahan pendukung yang mudah diakses.',
+  },
 ];
 
 const approaches = [
-  'Andragogi: pembelajaran orang dewasa.',
-  'Cognitive Load Theory: materi ringan, fokus, dan tidak menumpuk.',
-  'Meaningful learning: ilmu dikaitkan dengan makna dan amal.',
-  'Tarbiyah wa Tashfiyah: pendidikan dan pemurnian akidah.',
+  'Bahasa sederhana untuk orang dewasa, tanpa meremehkan kedalaman ilmu.',
+  'Beban materi dijaga agar tidak menumpuk dan membuat peserta berhenti di tengah jalan.',
+  'Penjelasan diarahkan kepada pemahaman, pengamalan, dan ketenangan dalam beragama.',
+  "Rujukan dijaga agar selaras dengan Al-Qur'an, Sunnah, dan pemahaman salafus shalih.",
 ];
 
 const assessments = [
-  'Pertanyaan reflektif.',
-  'Muhasabah diri.',
+  'Pertanyaan reflektif setelah materi.',
+  'Muhasabah pribadi tanpa membuka aib yang tidak perlu.',
   'Studi kasus kehidupan nyata.',
-  'Tantangan amal ringan untuk praktik harian.',
+  'Tantangan amal ringan yang bisa dijaga.',
 ];
 
 const advancedPrograms = [
-  'Kelas Tahsin & Tilawah Al-QurÃ¢â‚¬â„¢an.',
-  'Akademi Ushuluna.',
-  'Kelas Bahasa Arab Pemula.',
-  'Fiqh Muslimah.',
-  'Waris Islam.',
-  'Parenting & Keluarga Islami.',
-  'Program pendalaman lainnya.',
+  "Tahsin dan tilawah Al-Qur'an.",
+  'Bahasa Arab dasar.',
+  'Fiqh keluarga dan kehidupan harian.',
+  'Kajian tematik aqidah, adab, dan akhlak.',
+  'Parenting dan keluarga Islami.',
+  'Program pendalaman lain dalam ekosistem Ihsanul Adab.',
 ];
 
 const differences = [
-  'Fokus pada fondasi paling penting.',
-  'Selaras dengan kebertahapan belajar.',
-  'Ramah pemula, namun tidak dangkal.',
-  'Menyentuh akal dan hati.',
-  'Fleksibel dan realistis.',
+  'Fokus pada fondasi, bukan sekadar banyaknya materi.',
+  'Ramah pemula, tetapi tetap menjaga kehati-hatian ilmiah.',
+  'Menyentuh akal, hati, dan amal harian.',
+  'Tidak dibuat untuk mengejar ranking atau tekanan akademik.',
+  'Menjadi pintu masuk menuju pembelajaran Islam yang lebih tertata.',
 ];
-
-const whatsappUrl = 'https://wa.me/6285179676003';
-const consultUrl = 'https://berbagi.link/ypihsanuladab';
 ---
 
 <BaseLayout
   title="Ushuluna - The Essentials of Islam"
-  description="Ushuluna adalah program pembelajaran Islam daring untuk memahami Islam dari fondasi yang benar, bertahap, bermakna, dan menenangkan hati."
+  description="Ushuluna adalah program pembelajaran Islam daring untuk memahami fondasi tauhid, aqidah, ibadah, adab, dan manhaj secara bertahap dan menenangkan."
 >
   <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
-    <div class="topbar">
+  <header class="site-header ushuluna-site-header">
+    <div class="topbar ushuluna-topbar">
       <span>Ushuluna - The Essentials of Islam</span>
-      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+      <a href={consultationUrl}>Konsultasi belajar</a>
     </div>
 
     <div class="nav-shell">
@@ -211,7 +235,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
       </nav>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+      <a class="nav-cta ushuluna-nav-cta" href={lmsUrl}>Akses LMS IA</a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -233,7 +257,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
             ))}
           </div>
           {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={consultUrl}>Mulai Belajar</a>
+          <a class="button primary" href={consultationUrl}>Mulai Belajar</a>
         </div>
       </details>
     </div>
@@ -241,53 +265,76 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
   <main id="konten">
     <section class="ushuluna-hero" aria-labelledby="ushuluna-title">
-      <img src="/images/hero-majelis-ilmu-salaf.png" alt="Suasana majelis ilmu Islam yang tenang dan beradab" />
+      <img
+        src="/images/ushuluna-foundations-hero.png"
+        alt="Still-life fondasi belajar Islam berisi mushaf tertutup, batu dasar, kompas, lampu, buku, dan pola geometri tanpa figur makhluk bernyawa"
+      />
       <div class="ushuluna-hero-content">
-        <p class="eyebrow">Ushuluna (Ã˜Â£Ã™ÂÃ˜ÂµÃ™ÂÃ™Ë†Ã™â€žÃ™ÂÃ™â€ Ã™Å½Ã˜Â§)</p>
-        <h1 id="ushuluna-title">The Essentials of Islam.</h1>
-        <p>Understand Islam deeply. Live Islam meaningfully.</p>
+        <p class="eyebrow">Ushuluna - The Essentials of Islam</p>
+        <h1 id="ushuluna-title">Belajar Islam dari fondasi yang benar.</h1>
+        <p>
+          Program pembelajaran daring untuk memahami tauhid, aqidah, ibadah, adab,
+          dan manhaj secara bertahap, ringkas, dan menenangkan hati.
+        </p>
         <blockquote>
-          Belajar Islam dari fondasi yang benar, dengan cara yang menenangkan hati.
+          Fondasi yang lurus membantu seorang Muslim lebih tenang dalam beribadah,
+          lebih jernih dalam bersikap, dan lebih kuat saat menghadapi kehidupan.
         </blockquote>
         <div class="hero-actions">
-          <a class="button primary" href={consultUrl}>Mulai Belajar</a>
+          <a class="button primary" href={consultationUrl}>Mulai Belajar</a>
           <a class="button secondary" href="#tentang-ushuluna">Pelajari Ushuluna</a>
         </div>
       </div>
     </section>
 
+    <section class="ushuluna-foundation" aria-label="Fondasi pembelajaran Ushuluna">
+      {foundationSignals.map(([title, body]) => (
+        <article>
+          <strong>{title}</strong>
+          <span>{body}</span>
+        </article>
+      ))}
+    </section>
+
     <section class="section ushuluna-concern">
       <div>
-        <p class="eyebrow">Di tengah dunia yang bising</p>
-        <h2>Banyak Muslim ingin kembali belajar, tetapi belum tahu harus mulai dari mana.</h2>
+        <p class="eyebrow">Kebutuhan yang sering dirasakan</p>
+        <h2>Banyak Muslim ingin kembali belajar, tetapi belum tahu harus memulai dari mana.</h2>
       </div>
       <div class="ushuluna-concern-list">
-        {concerns.map((item) => <span>{item}</span>)}
+        {concerns.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
       </div>
     </section>
 
     <section class="ushuluna-answer" id="tentang-ushuluna">
       <div>
-        <p class="eyebrow">Follow right direction</p>
-        <h2>Ushuluna hadir sebagai jawaban.</h2>
+        <p class="eyebrow">Tentang Ushuluna</p>
+        <h2>Pintu masuk untuk menata iman, ilmu, dan amal dari dasar.</h2>
       </div>
       <div>
         <p>
-          Sebuah program pembelajaran Islam daring yang membimbing Anda memahami Islam
-          dari fondasi paling penting, secara bertahap, bermakna, dan dapat diamalkan.
+          Ushuluna dirancang untuk membantu peserta memahami pokok-pokok Islam dengan
+          bahasa yang jernih dan alur yang bertahap. Program ini tidak mengejar banyak
+          materi sekaligus, tetapi menguatkan hal paling mendasar agar ilmu lebih mudah
+          diamalkan.
         </p>
       </div>
     </section>
 
     <section class="section ushuluna-about">
       <div>
-        <p class="eyebrow">Apa itu Ushuluna?</p>
-        <h2>Program untuk menata iman, menjernihkan hati, dan menguatkan langkah.</h2>
+        <p class="eyebrow">Arah belajar</p>
+        <h2>Ilmu tidak berhenti sebagai pengetahuan, tetapi menggerakkan amal.</h2>
       </div>
       <div class="stack">
         <p>
-          Ushuluna dirancang agar ilmu tidak hanya menambah pengetahuan, tetapi juga
-          menggerakkan amal. Materi disampaikan ringkas, mendalam, dan menyentuh hati.
+          Materi disusun agar peserta mengenal dasar agama, memahami makna ibadah,
+          memperbaiki adab belajar, dan mulai menata kebiasaan kecil yang bisa dijaga.
         </p>
         <div class="ushuluna-goal-grid">
           {goals.map((goal) => <span>{goal}</span>)}
@@ -295,13 +342,17 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
       </div>
     </section>
 
-    <section class="section ushuluna-audience">
+    <section class="section ushuluna-audience" id="untuk-siapa">
       <div>
         <p class="eyebrow">Untuk siapa program ini?</p>
-        <h2>Ramah pemula, namun tetap kuat secara ilmiah.</h2>
+        <h2>Ramah pemula, jelas untuk orang dewasa, dan tetap menjaga rujukan ilmu.</h2>
       </div>
       <div class="stack">
-        <p>Tidak perlu latar belakang keilmuan khusus. Ushuluna dirancang untuk semua kalangan, khususnya:</p>
+        <p>
+          Tidak perlu latar belakang pesantren atau keilmuan khusus. Ushuluna cocok
+          bagi peserta yang ingin belajar dengan tenang, bertahap, dan tidak merasa
+          dihakimi karena baru memulai.
+        </p>
         <ul class="check-list">
           {audiences.map((audience) => <li>{audience}</li>)}
         </ul>
@@ -310,8 +361,8 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
     <section class="section ushuluna-materials" id="materi">
       <div class="section-heading">
-        <p class="eyebrow">Apa yang akan Anda pelajari?</p>
-        <h2>Ushuluna membimbing Anda melalui tahapan yang terstruktur.</h2>
+        <p class="eyebrow">Materi utama</p>
+        <h2>Ushuluna membimbing peserta melalui fondasi Islam yang paling dibutuhkan.</h2>
       </div>
       <div class="ushuluna-material-grid">
         {learningStages.map((stage) => (
@@ -325,16 +376,16 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
       </div>
     </section>
 
-    <section class="section ushuluna-structure" id="struktur">
+    <section class="section ushuluna-structure" id="metode">
       <div>
-        <p class="eyebrow">Struktur pembelajaran</p>
-        <h2>Terstruktur, ringan, dan bermakna.</h2>
+        <p class="eyebrow">Format belajar</p>
+        <h2>Ringan dijalani, tetapi tetap punya arah.</h2>
       </div>
-      <div class="ushuluna-path-list">
-        {format.map((item, index) => (
+      <div class="ushuluna-format-grid">
+        {format.map((item) => (
           <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <p>{item}</p>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
           </article>
         ))}
       </div>
@@ -343,25 +394,25 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     <section class="section ushuluna-method">
       <article>
         <p class="eyebrow">Pendekatan pembelajaran</p>
-        <h2>Belajar dengan ritme yang menenangkan, agar ilmu menetap di hati.</h2>
+        <h2>Materi dibuat agar ilmu lebih mudah menetap dan diamalkan.</h2>
         <ul>
           {approaches.map((item) => <li>{item}</li>)}
         </ul>
       </article>
       <article>
-        <p class="eyebrow">Asesmen yang bermakna</p>
-        <h2>Kami tidak mengejar angka. Kami mengejar perubahan hati dan amal.</h2>
+        <p class="eyebrow">Refleksi dan latihan amal</p>
+        <h2>Asesmen diarahkan kepada kesadaran, bukan tekanan.</h2>
         <ul>
           {assessments.map((item) => <li>{item}</li>)}
         </ul>
-        <p>Tidak ada ranking. Tidak ada tekanan. Yang ada: kesadaran, pemahaman, dan istiqamah.</p>
+        <p>Tidak ada ranking. Tidak ada perlombaan popularitas. Yang dikejar adalah pemahaman yang benar dan amal yang lebih istiqamah.</p>
       </article>
     </section>
 
-    <section class="section ushuluna-advanced" id="pendalaman">
+    <section class="section ushuluna-advanced">
       <div>
-        <p class="eyebrow">Terhubung dengan program pendalaman</p>
-        <h2>Ushuluna adalah pintu masuk, bukan akhir perjalanan.</h2>
+        <p class="eyebrow">Setelah fondasi</p>
+        <h2>Ushuluna menjadi pintu masuk menuju pembelajaran yang lebih tertata.</h2>
       </div>
       <ul class="check-list">
         {advancedPrograms.map((program) => <li>{program}</li>)}
@@ -371,7 +422,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     <section class="ushuluna-difference">
       <div>
         <p class="eyebrow">Mengapa Ushuluna berbeda?</p>
-        <h2>Fokus pada fondasi, selaras dengan hati, dan realistis dijalani.</h2>
+        <h2>Fokus pada akar, bukan sekadar banyaknya materi.</h2>
       </div>
       <div class="ushuluna-difference-grid">
         {differences.map((item) => <span>{item}</span>)}
@@ -380,34 +431,36 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
     <section class="section ushuluna-closing">
       <article>
-        <p class="eyebrow">Ushuluna: The Essentials of Islam</p>
+        <p class="eyebrow">Ushuluna</p>
         <h2>Sebuah perjalanan kembali ke dasar.</h2>
         <p>
           Untuk menata iman, menjernihkan hati, dan menguatkan langkah. Setiap materi
-          bukan hanya menambah pengetahuan, tetapi menggerakkan satu langkah amal hari ini.
+          diarahkan agar peserta mengambil satu pemahaman dan satu amal yang bisa
+          dijaga dalam kehidupan nyata.
         </p>
       </article>
       <article>
         <h2>Belajar Islam bukan tentang menjadi paling pintar.</h2>
         <p>
-          Tapi tentang menjadi hamba yang paling lurus niatnya, paling tenang hatinya,
-          dan paling benar jalannya. Ushuluna hadir untuk menemani perjalanan itu.
+          Ia adalah ikhtiar menjadi hamba yang lebih lurus niatnya, lebih tenang
+          hatinya, dan lebih benar jalannya. Ushuluna hadir untuk menemani langkah awal
+          itu dengan lembut dan terarah.
         </p>
-        <a class="button primary" href={consultUrl}>Mulai Belajar Ushuluna</a>
+        <a class="button primary" href={consultationUrl}>Mulai Belajar Ushuluna</a>
       </article>
     </section>
 
     <section class="cta ushuluna-cta" id="kontak">
       <div>
         <p class="eyebrow">The Essentials of Islam</p>
-        <h2>Mulai belajar Islam dari fondasi yang benar.</h2>
+        <h2>Mulai dari fondasi yang bisa dipahami dan diamalkan.</h2>
         <p>
-          Ikuti Ushuluna secara bertahap, ringan, dan menenangkan agar ilmu menjadi
-          pemahaman, pemahaman menjadi amal, dan amal menjadi ketenangan.
+          Ceritakan kebutuhan belajar Anda kepada admin. Kami bantu arahkan langkah
+          awal yang paling sesuai untuk mulai belajar bersama Ushuluna.
         </p>
       </div>
       <div class="cta-actions">
-        <a class="button primary" href={consultUrl}>Mulai Belajar</a>
+        <a class="button primary" href={consultationUrl}>Mulai Belajar</a>
         <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
       </div>
     </section>
@@ -426,5 +479,5 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     </nav>
   </footer>
 
-  <a class="floating-help" href={consultUrl}>Mulai Belajar</a>
+  <a class="floating-help" href={consultationUrl}>Mulai Belajar</a>
 </BaseLayout>
