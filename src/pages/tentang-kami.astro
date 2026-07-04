@@ -1,13 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const consultationUrl = 'https://berbagi.link/ypihsanuladab';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
+
 const navItems = [
   ['Beranda', '/'],
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Siapa Kami', '#siapa-kami'],
   ['Tim', '#tim'],
   ['Visi Misi', '#visi-misi'],
-  ['Core Values', '#core-values'],
+  ['Nilai', '#core-values'],
   ['Kontak', '/#kontak'],
 ];
 
@@ -15,7 +19,7 @@ const programMenuItems = [
   {
     label: 'Semua Program',
     href: '/#program',
-    note: 'Ikhtisar layanan',
+    note: 'Peta ekosistem belajar',
   },
   {
     label: 'Ihsanul Adab Parenting Academy',
@@ -30,7 +34,7 @@ const programMenuItems = [
   {
     label: 'The Fitrah Journey',
     href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
+    note: 'Ruang tumbuh muslimah',
   },
   {
     label: 'Headmaster & Teacher Academy',
@@ -40,7 +44,7 @@ const programMenuItems = [
   {
     label: 'PKGQ PAUD & SD',
     href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
+    note: 'Kaderisasi guru Al-Qur\'an',
   },
   {
     label: 'IAIEE',
@@ -51,11 +55,6 @@ const programMenuItems = [
     label: 'Ushuluna',
     href: '/program/ushuluna/',
     note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '/#program',
-    note: 'Pembelajaran Al-Quran keluarga',
   },
   {
     label: 'DeenUp',
@@ -69,11 +68,30 @@ const programMenuItems = [
   },
 ];
 
-const questions = [
-  'Bagaimana membesarkan anak dalam fitrah di tengah gempuran zaman?',
-  'Bagaimana menguatkan rumah tangga saat ilmu dan iman terasa rapuh?',
-  'Bagaimana menumbuhkan kembali semangat belajar Islam setelah bertahun-tahun jauh?',
-  'Bagaimana menemukan ruang belajar yang aman untuk bertanya dan bertumbuh?',
+const audienceNeeds = [
+  {
+    title: 'Keluarga',
+    body: 'Membantu orang tua menata pendidikan rumah, komunikasi, adab, dan ritme belajar anak secara bertahap.',
+  },
+  {
+    title: 'Anak dan remaja',
+    body: 'Menyiapkan ruang belajar yang menjaga akidah, fitrah, identitas Muslim, dan kecintaan kepada Al-Qur\'an.',
+  },
+  {
+    title: 'Guru dan lembaga',
+    body: 'Mendampingi pendidik serta lembaga Islam agar lebih rapi dalam sistem, kuat dalam nilai, dan jelas dalam arah.',
+  },
+  {
+    title: 'Masyarakat pembelajar',
+    body: 'Menyediakan program fondasi Islam, komunitas, dan dakwah digital yang mudah diakses tanpa kehilangan kehati-hatian ilmiah.',
+  },
+];
+
+const principles = [
+  'Berpijak pada Al-Qur\'an, Sunnah, dan pemahaman salafus shalih.',
+  'Mengutamakan adab, keteladanan, dan amal sebelum sekadar keluasan informasi.',
+  'Menyusun program sesuai kebutuhan nyata keluarga, peserta, guru, dan lembaga.',
+  'Memilih bahasa, visual, dan pengalaman belajar yang terjaga, ramah, dan tidak berlebihan.',
 ];
 
 const team = [
@@ -84,6 +102,7 @@ const team = [
   ['Taufik Rendi Anggara, S.Si., M.T.', 'Executive Operation'],
   ['Darizki Pratama, S.Kom, M.M.', 'Staff IT Department'],
   ['Ustadz Heykal Syaban, Lc., M.Ag', 'Pembina dan Pengajar The Father Project dan Ushuluna'],
+  ['Ustadz Lanlan Tuhfatul Lanfas, Lc., M.A.', 'Pengajar'],
   ['Ustadz Rendi Rustandi', 'Pembina dan Pengajar Program Kaderisasi Guru Al-Qur\'an PAUD dan SD'],
   ['Dr. Azis Lukman Praja, M.Si', 'Pengajar dan Tim Pelatihan Headmaster & Teacher Academy'],
   ['Ustadzah Ishmahsarah Nur Alim, B.Ed.', 'Program Fitrah Journey dan Pengajar'],
@@ -92,72 +111,68 @@ const team = [
 ];
 
 const missions = [
-  'Menyelenggarakan pendidikan bermutu dan unggul yang berlandaskan ajaran Islam, serta sesuai dengan tuntunan Al-QurÃ¢â‚¬â„¢an dan Sunnah.',
-  'Menyediakan layanan pendidikan Islam berbasis tauhid, adab, dan ilmu syarÃ¢â‚¬â„¢i untuk seluruh jenjang usia dan lapisan masyarakat.',
-  'Menanamkan adab dan akhlak Islami sebagai pondasi utama dalam setiap proses pembelajaran, pembinaan, dan pembentukan karakter peserta didik.',
-  'Mengembangkan program pendidikan dengan metodologi sesuai Islam serta menerapkan pendekatan inovatif yang relevan dengan kebutuhan zaman dan beragam segmen masyarakat.',
-  'Memberdayakan keluarga dan masyarakat sebagai mitra strategis dalam membangun lingkungan pendidikan yang kondusif dan berkelanjutan.',
-  'Menyebarluaskan dakwah Islam secara sistematis melalui berbagai program pendidikan, media, literasi, dan pemberdayaan komunitas.',
-  'Mencetak kader pendidik dan pemimpin umat yang ikhlas, kompeten, amanah, serta memiliki visi dunia-akhirat.',
+  'Menyelenggarakan pendidikan Islam yang bermutu, bertahap, dan berlandaskan Al-Qur\'an dan Sunnah.',
+  'Menyediakan layanan pendidikan berbasis tauhid, adab, ilmu syar\'i, dan amal untuk berbagai usia serta kebutuhan masyarakat.',
+  'Menanamkan adab dan akhlak Islami dalam proses belajar, pembinaan karakter, pelayanan, dan budaya kerja.',
+  'Mengembangkan program yang relevan dengan kebutuhan zaman tanpa melepaskan pijakan manhaj salaf.',
+  'Memberdayakan keluarga sebagai mitra utama dalam membangun lingkungan pendidikan yang sehat dan berkelanjutan.',
+  'Menyebarluaskan dakwah Islam melalui kelas, media, literasi, komunitas, dan pendampingan lembaga.',
+  'Mencetak kader pendidik dan pemimpin umat yang ikhlas, kompeten, amanah, dan memiliki orientasi dunia-akhirat.',
 ];
 
 const coreValues = [
   {
-    title: 'Tauhid sebagai Poros Kehidupan',
-    body: 'Segala aktivitas dibangun di atas fondasi penghambaan kepada Allah. Pendidikan bukan sekadar transfer ilmu, tetapi jalan menuju pengenalan dan penguatan iman yang lurus.',
+    title: 'Tauhid sebagai poros',
+    body: 'Setiap aktivitas pendidikan diarahkan untuk menguatkan penghambaan kepada Allah, bukan sekadar mengejar capaian akademik.',
   },
   {
-    title: 'Adab Sebelum Ilmu',
-    body: 'Adab adalah pintu utama dalam menuntut dan mengamalkan ilmu. Sopan santun, hormat pada guru, jujur, dan rendah hati adalah fondasi.',
+    title: 'Adab sebelum ilmu',
+    body: 'Kami menjaga cara belajar, cara bertanya, cara melayani, dan cara berkomunitas agar ilmu tumbuh bersama akhlak.',
   },
   {
-    title: 'Ilmu yang Membumi dan Menghidupkan',
-    body: 'Kami menjembatani agar ilmu bisa dihayati, diaplikasikan, dan membawa manfaat nyata, dengan pijakan manhaj salaf yang jelas.',
+    title: 'Ilmu yang membumi',
+    body: 'Materi disusun agar peserta dapat memahami prinsip, lalu mengamalkannya dalam rumah, kelas, lembaga, dan masyarakat.',
   },
   {
-    title: 'Kebersamaan yang Menguatkan',
-    body: 'Kami membangun komunitas pembelajar yang saling mendukung. Setiap orang membawa perjuangan dan potensi untuk tumbuh.',
+    title: 'Keluarga sebagai pusat',
+    body: 'Pendidikan anak tidak dipisahkan dari peran orang tua. Karena itu, program kami banyak menguatkan rumah dan komunikasi keluarga.',
   },
   {
-    title: 'Inovatif tapi Tetap Berporos',
-    body: 'Pendekatan, media, dan layanan terus dikembangkan sesuai kebutuhan zaman tanpa melepaskan pijakan syar\'i dan kemurnian manhaj.',
+    title: 'Profesional dan amanah',
+    body: 'Pengelolaan program, komunikasi, dan layanan diikhtiarkan rapi, transparan, disiplin, dan bertanggung jawab.',
   },
   {
-    title: 'Melayani dengan Empati dan Doa',
-    body: 'Di balik setiap program, kami berusaha menghadirkan pelayanan yang tulus, mendengarkan, mendoakan, dan menguatkan.',
-  },
-  {
-    title: 'Amal sebagai Tujuan Akhir Ilmu',
-    body: 'Setiap ilmu diarahkan untuk melahirkan amal: perubahan sikap, perbaikan ibadah, dan kontribusi nyata dalam kehidupan.',
+    title: 'Relevan tanpa kehilangan arah',
+    body: 'Kami memanfaatkan media dan metode modern secukupnya, dengan tetap menjaga nilai Islam, adab, dan batasan visual.',
   },
 ];
 
 const integrityValues = [
   {
-    title: 'Berlandaskan Tauhid dan Manhaj Salafus Shalih',
-    body: 'Setiap pijakan dirujuk pada Al-Qur\'an, Sunnah, dan pemahaman sahabat sebagai fondasi akhlak, ilmu, dan sistem kerja.',
+    title: 'Berlandaskan tauhid dan manhaj salaf',
+    body: 'Arah pembinaan dirujukkan kepada Al-Qur\'an, Sunnah, dan pemahaman generasi terbaik umat.',
   },
   {
-    title: 'Amanah dan Transparan',
-    body: 'Pengelolaan dana, program, dan pelayanan dilakukan dengan sistem pelaporan yang terbuka dan bertanggung jawab.',
+    title: 'Amanah dan transparan',
+    body: 'Program, dana, kerja sama, dan pelayanan dikelola dengan tanggung jawab serta komunikasi yang jelas.',
   },
   {
     title: 'Profesionalisme Islami',
-    body: 'Kami menjunjung akhlak kerja yang jujur, disiplin, tepat waktu, dan penuh empati sebagai bagian dari ibadah.',
+    body: 'Kami memandang ketepatan, disiplin, empati, dan kerapian sistem sebagai bagian dari ibadah dan pelayanan.',
   },
 ];
 ---
 
 <BaseLayout
   title="Tentang Kami - Yayasan Pendidikan Ihsanul Adab"
-  description="Dari kegelisahan sebagai orang tua, pendidik, dan hamba Allah, lahirlah Yayasan Pendidikan Ihsanul Adab sebagai ruang pulang untuk tumbuh bersama."
+  description="Profil Yayasan Pendidikan Ihsanul Adab, ekosistem pendidikan Islam untuk keluarga, anak, remaja, guru, dan lembaga yang berporos pada tauhid, adab, ilmu, dan amal."
 >
   <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
   <header class="site-header">
     <div class="topbar">
-      <span>Yayasan Pendidikan Islam berbasis tauhid, adab, dan amal.</span>
-      <a href="https://berbagi.link/ypihsanuladab">Konsultasi program</a>
+      <span>Ekosistem pendidikan Islam untuk keluarga, pendidik, dan lembaga.</span>
+      <a href={consultationUrl}>Konsultasi program</a>
     </div>
 
     <div class="nav-shell">
@@ -187,7 +202,7 @@ const integrityValues = [
         {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
       </nav>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+      <a class="nav-cta" href={lmsUrl}>Akses LMS IA</a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -208,8 +223,11 @@ const integrityValues = [
               </a>
             ))}
           </div>
-          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href="https://berbagi.link/ypihsanuladab">Konsultasi Program</a>
+          <a href="#siapa-kami">Siapa Kami</a>
+          <a href="#tim">Tim</a>
+          <a href="#visi-misi">Visi Misi</a>
+          <a href="#core-values">Nilai</a>
+          <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
         </div>
       </details>
     </div>
@@ -217,48 +235,79 @@ const integrityValues = [
 
   <main id="konten">
     <section class="about-hero" aria-labelledby="about-title">
-      <img src="/images/hero-majelis-ilmu-salaf.png" alt="Suasana belajar Islam yang tenang di ruang majelis ilmu" />
+      <img
+        src="/images/home-hero-learning-still-life.png"
+        alt="Ruang belajar tenang dengan mushaf tertutup, kitab, buku catatan, dan pola geometri Islami tanpa figur makhluk bernyawa"
+      />
       <div class="about-hero-content">
-        <p class="eyebrow">Dari kegelisahan, lahir harapan</p>
-        <h1 id="about-title">Ruang pulang untuk tumbuh bersama sebagai keluarga pembelajar.</h1>
+        <p class="eyebrow">Tentang Yayasan Pendidikan Ihsanul Adab</p>
+        <h1 id="about-title">Ekosistem pendidikan Islam untuk keluarga yang ingin bertumbuh dengan adab.</h1>
         <p>
-          Di setiap perjalanan hidup seorang Muslim, ada pertanyaan-pertanyaan besar yang
-          tidak selalu terjawab di ruang formal.
+          Ihsanul Adab hadir untuk membantu orang tua, anak, remaja, guru, dan lembaga
+          belajar secara bertahap, terarah, dan tetap menjaga nilai tauhid serta adab.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#tim">Bertemu Tim YPIA</a>
-          <a class="button secondary" href="#visi-misi">Lihat Visi Misi</a>
+          <a class="button primary" href="#tim">Bertemu Tim</a>
+          <a class="button secondary" href="#siapa-kami">Kenali Arah Kami</a>
         </div>
       </div>
     </section>
 
-    <section class="section about-story">
+    <section class="section about-story" id="siapa-kami">
       <div>
-        <p class="eyebrow">Awal perjalanan</p>
-        <h2>Kami pun memulai dari titik yang mungkin sama seperti tempat Anda berdiri hari ini.</h2>
+        <p class="eyebrow">Siapa kami</p>
+        <h2>Dari kebutuhan keluarga Muslim, kami membangun ruang belajar yang lebih terarah.</h2>
       </div>
       <div class="stack">
         <p>
-          Dari kegelisahan sebagai orang tua, anak, pasangan, pendidik, dan hamba Allah
-          yang ingin menjadi lebih baik, lahirlah Yayasan Pendidikan Ihsanul Adab.
+          Banyak keluarga ingin mendidik dengan Islam, tetapi sering bingung memilih
+          arah belajar, menjaga adab di rumah, dan menghubungkan ilmu dengan amal harian.
         </p>
         <p>
-          Yayasan ini diikhtiarkan sebagai ruang pulang untuk bertanya, belajar, bertumbuh,
-          dan menguatkan amal dengan ilmu yang beradab.
+          Yayasan Pendidikan Ihsanul Adab diikhtiarkan sebagai ruang pendampingan:
+          bukan hanya tempat mengikuti kelas, tetapi ekosistem yang menguatkan keluarga,
+          pendidik, dan lembaga agar berjalan dengan dasar yang jelas.
         </p>
-        <div class="question-list">
-          {questions.map((question) => <p>{question}</p>)}
-        </div>
+      </div>
+    </section>
+
+    <section class="section about-needs" aria-labelledby="needs-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Untuk siapa yayasan ini hadir?</p>
+        <h2 id="needs-title">Kami menyusun program dari kebutuhan nyata para pembelajar.</h2>
+      </div>
+      <div class="about-need-grid">
+        {audienceNeeds.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section about-principles" aria-labelledby="principles-title">
+      <div>
+        <p class="eyebrow">Prinsip kerja</p>
+        <h2 id="principles-title">Bertumbuh, tetapi tetap punya batas dan arah.</h2>
+      </div>
+      <div class="about-principle-list">
+        {principles.map((principle, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{principle}</p>
+          </article>
+        ))}
       </div>
     </section>
 
     <section class="section legal-section">
       <article class="legal-card">
         <p class="eyebrow">Dasar hukum</p>
-        <h2>Bersama kami merajut asa.</h2>
+        <h2>Bersama kami merajut asa dengan pijakan yang resmi dan amanah.</h2>
         <p>
           Melalui Direktorat Jenderal Administrasi Hukum Umum (AHU), Yayasan Pendidikan
-          Ihsanul Adab beroperasi secara sah dengan nomor
+          Ihsanul Adab beroperasi secara sah dengan nomor{' '}
           <strong>AHU-0008837.AH.01.04.Tahun 2025</strong>.
         </p>
       </article>
@@ -267,7 +316,7 @@ const integrityValues = [
     <section class="section team-section" id="tim">
       <div class="section-heading">
         <p class="eyebrow">Tim Tumbuh Bersama YPIA</p>
-        <h2>Bertemu dengan tim yang membersamai perjalanan pendidikan Ihsanul Adab.</h2>
+        <h2>Orang-orang yang membersamai pendidikan, dakwah, pelayanan, dan pengembangan program.</h2>
       </div>
       <div class="team-grid">
         {team.map(([name, role]) => (
@@ -283,35 +332,26 @@ const integrityValues = [
     <section class="section about-vision" id="visi-misi">
       <div class="vision-panel">
         <p class="eyebrow">Visi Kami</p>
-        <h2>Menjadi yayasan pendidikan unggul yang membangun generasi berkarakter rabbani, beradab, dan berilmu dalam naungan tauhid.</h2>
+        <h2>Menjadi ekosistem pendidikan Islam yang menumbuhkan keluarga beradab, berilmu, dan beramal.</h2>
       </div>
       <div class="mission-panel">
         <p class="eyebrow">Misi Kami</p>
-        <h2>Ikhtiar pendidikan, dakwah, keluarga, dan masyarakat yang berporos pada tauhid.</h2>
+        <h2>Ikhtiar pendidikan, dakwah, keluarga, dan lembaga yang berporos pada tauhid.</h2>
         <ol class="about-mission-list">
           {missions.map((mission) => <li>{mission}</li>)}
         </ol>
       </div>
     </section>
 
-    <section class="cta about-cta">
-      <div>
-        <p class="eyebrow">Bismillah kita bersama</p>
-        <h2>Membersamai setiap insan bertumbuh menuju kualitas yang lebih baik, yaitu ihsan.</h2>
-        <p>Konsultasikan kebutuhan belajar keluarga, komunitas, atau program pendidikan Anda kepada kami.</p>
-      </div>
-      <a class="button primary" href="https://berbagi.link/ypihsanuladab">Konsultasikan kepada kami</a>
-    </section>
-
     <section class="section core-values" id="core-values">
       <div class="section-heading">
         <p class="eyebrow">Core Values</p>
-        <h2>Nilai inti yang menjadi arah kerja dan layanan kami.</h2>
+        <h2>Nilai inti yang menjaga arah kerja dan layanan kami.</h2>
       </div>
       <div class="core-values-grid">
         {coreValues.map((value, index) => (
           <article>
-            <span>Core Values {index + 1}</span>
+            <span>Nilai {index + 1}</span>
             <h3>{value.title}</h3>
             <p>{value.body}</p>
           </article>
@@ -333,6 +373,15 @@ const integrityValues = [
         ))}
       </div>
     </section>
+
+    <section class="cta about-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Bismillah, mari bertumbuh bersama</p>
+        <h2>Butuh arahan program untuk keluarga, komunitas, atau lembaga Anda?</h2>
+        <p>Konsultasikan kebutuhan belajar dan pengembangan pendidikan Islam kepada tim Ihsanul Adab.</p>
+      </div>
+      <a class="button primary" href={consultationUrl}>Konsultasikan kepada kami</a>
+    </section>
   </main>
 
   <footer>
@@ -348,5 +397,5 @@ const integrityValues = [
     </nav>
   </footer>
 
-  <a class="floating-help" href="https://berbagi.link/ypihsanuladab">Konsultasi</a>
+  <a class="floating-help" href={consultationUrl}>Konsultasi</a>
 </BaseLayout>

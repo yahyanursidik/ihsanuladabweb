@@ -1,11 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+const consultationUrl = 'https://berbagi.link/ypihsanuladab';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
+
 const navItems = [
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Alur Belajar', '#alur'],
-  ['Visi Misi', '#visi'],
+  ['Jalur Belajar', '#jalur'],
+  ['Program', '#program'],
+  ['Alur', '#alur'],
   ['Kontak', '#kontak'],
 ];
 
@@ -13,7 +17,7 @@ const programMenuItems = [
   {
     label: 'Semua Program',
     href: '#program',
-    note: 'Ikhtisar layanan',
+    note: 'Peta ekosistem belajar',
   },
   {
     label: 'Ihsanul Adab Parenting Academy',
@@ -28,7 +32,7 @@ const programMenuItems = [
   {
     label: 'The Fitrah Journey',
     href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
+    note: 'Ruang tumbuh muslimah',
   },
   {
     label: 'Headmaster & Teacher Academy',
@@ -38,7 +42,7 @@ const programMenuItems = [
   {
     label: 'PKGQ PAUD & SD',
     href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
+    note: 'Kaderisasi guru Al-Qur\'an',
   },
   {
     label: 'IAIEE',
@@ -49,11 +53,6 @@ const programMenuItems = [
     label: 'Ushuluna',
     href: '/program/ushuluna/',
     note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '#program',
-    note: 'Pembelajaran Al-Quran keluarga',
   },
   {
     label: 'DeenUp',
@@ -67,177 +66,225 @@ const programMenuItems = [
   },
 ];
 
-const programs = [
-  {
-    name: 'Ihsanul Adab Parenting Academy',
-    audience: 'Ibu, ayah, dan keluarga Muslim',
-    category: 'Parenting',
-    mode: 'Webinar dan kelas',
-    href: '/iapa/',
-    summary:
-      'Sahabat belajar orang tua untuk memahami parenting Islami dengan ilmu, adab, fitrah, dan ketenangan.',
-  },
-  {
-    name: 'The Father Project',
-    audience: 'Ayah dan laki-laki Muslim',
-    category: 'Keluarga',
-    mode: 'Kelas daring dan komunitas',
-    href: '/program/the-father-project/',
-    summary:
-      'Program pembinaan laki-laki Muslim agar bertumbuh sebagai hamba, suami, ayah, dan pemimpin keluarga yang lebih baik.',
-  },
-  {
-    name: 'Fitrah Journey',
-    audience: 'Muslimah dewasa',
-    category: 'Muslimah',
-    mode: 'Online learning dan komunitas',
-    href: '/program/the-fitrah-journey/',
-    summary:
-      'Program edukasi dan komunitas untuk muslimah dewasa agar pulih dalam iman, tumbuh dalam peran, dan kembali pada fitrah.',
-  },
-  {
-    name: 'Headmaster & Teacher Academy',
-    audience: 'Guru dan pemimpin sekolah Islam',
-    category: 'Pendidik',
-    mode: 'Webinar, workshop, dan komunitas',
-    href: '/program/headmaster-teacher-academy/',
-    summary:
-      'Pusat pembinaan guru dan pemimpin sekolah Islam berbasis tauhid, adab, dan profesionalisme.',
-  },
-  {
-    name: 'Program Kaderisasi Guru Al-QurÃ¢â‚¬â„¢an',
-    audience: 'Calon guru PAUD dan SD',
-    category: 'Al-QurÃ¢â‚¬â„¢an',
-    mode: 'Program 2 tahun',
-    href: '/program/kaderisasi-guru-quran-paud-sd/',
-    summary:
-      'Ikhtiar melahirkan pendidik QurÃ¢â‚¬â„¢ani profesional untuk anak usia dini dan sekolah dasar dengan ilmu, adab, dan cinta Al-QurÃ¢â‚¬â„¢an.',
-  },
-  {
-    name: 'IAIEE',
-    audience: 'Lembaga pendidikan Islam',
-    category: 'Mutu lembaga',
-    mode: 'Online, onsite, dan hybrid',
-    href: '/program/iaiee/',
-    summary:
-      'Pendampingan profesional untuk membangun mutu terukur, SDM kuat, sistem berkelanjutan, dan budaya adab lembaga.',
-  },
-  {
-    name: 'Ushuluna',
-    audience: 'Muslim pemula, keluarga, mahasiswa, dan pekerja',
-    category: 'Fondasi Islam',
-    mode: 'Pembelajaran daring',
-    href: '/program/ushuluna/',
-    summary:
-      'Program pembelajaran Islam daring untuk memahami Islam dari fondasi yang benar, bertahap, bermakna, dan menenangkan hati.',
-  },
-  {
-    name: 'Preschool & Kindergarten Online',
-    audience: 'Usia dini',
-    category: 'Anak',
-    mode: 'Belajar daring',
-    summary:
-      'Kelas awal yang lembut, terstruktur, dan dekat dengan rumah untuk menumbuhkan adab, bahasa, dan rasa ingin tahu.',
-  },
-  {
-    name: 'Elementary School',
-    audience: 'Anak usia sekolah dasar',
-    category: 'Anak',
-    mode: 'Program sekolah',
-    summary:
-      'Program dasar yang memadukan akademik, adab, Al-Qur\'an, dan pembiasaan belajar yang bermakna.',
-  },
-  {
-    name: 'IAIS Home-Based Learning',
-    audience: 'Keluarga fleksibel',
-    category: 'Fleksibel',
-    mode: 'Homeschooling',
-    href: '/program/homebased-learning/',
-    summary:
-      'Sekolah Islam terpadu berbasis fitrah, adab, dan keluarga dengan pembelajaran fleksibel dari rumah.',
-  },
-  {
-    name: 'Ihsanul Adab Quran Academy',
-    audience: 'Anak dan keluarga',
-    category: 'Al-Qur\'an',
-    mode: 'Tahsin dan tahfizh',
-    summary:
-      'Pembinaan Al-Qur\'an yang menekankan cinta, tartil, hafalan bertahap, dan adab kepada kalamullah.',
-  },
-  {
-    name: 'DeenUp',
-    audience: 'Remaja Muslim',
-    category: 'Remaja',
-    mode: 'Pembinaan karakter',
-    href: '/program/deenup/',
-    summary:
-      'Program seru untuk remaja Muslim yang ingin upgrade iman, adab, identitas, relasi, dan arah hidup.',
-  },
-  {
-    name: 'The Fitrah Camp',
-    audience: 'Komunitas belajar',
-    category: 'Camp',
-    mode: 'Program intensif',
-    summary:
-      'Pengalaman intensif untuk menguatkan karakter, kemandirian, persaudaraan, dan kedekatan dengan ilmu.',
-  },
-];
-
-const commitments = [
-  'Tauhid sebagai akar pendidikan',
-  'Adab sebelum keluasan ilmu',
-  'Orang tua sebagai mitra utama',
-  'Ruang belajar yang aman dan bertahap',
+const stats = [
+  ['10+', 'jalur belajar keluarga, anak, remaja, dan lembaga'],
+  ['Bertahap', 'materi disusun dari fondasi menuju praktik harian'],
+  ['Terarah', 'dibimbing oleh nilai tauhid, adab, dan ilmu yang lurus'],
 ];
 
 const audiencePaths = [
   {
-    label: 'Untuk orang tua',
-    detail: 'Parenting, peran ayah, dan pendampingan keluarga.',
-    anchor: 'Ihsanul Adab Parenting Academy',
+    label: 'Orang tua',
+    detail: 'Menata emosi, komunikasi, rutinitas rumah, dan pendidikan anak dengan adab.',
+    anchor: 'IAPA',
     href: '/iapa/',
   },
   {
-    label: 'Untuk anak',
-    detail: 'Usia dini, sekolah dasar, Al-Qur\'an, dan pembiasaan adab.',
-    anchor: 'Elementary School',
+    label: 'Ayah',
+    detail: 'Menguatkan peran laki-laki Muslim sebagai hamba, suami, ayah, dan pemimpin keluarga.',
+    anchor: 'The Father Project',
+    href: '/program/the-father-project/',
   },
   {
-    label: 'Untuk remaja',
-    detail: 'Identitas Muslim, adab, ibadah, dan tantangan pergaulan.',
+    label: 'Anak dan keluarga',
+    detail: 'Membangun adab, cinta Al-Qur\'an, kebiasaan belajar, dan ritme pendidikan dari rumah.',
+    anchor: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+  },
+  {
+    label: 'Remaja',
+    detail: 'Membantu remaja mengenali identitas Muslim, menjaga pergaulan, dan punya arah hidup.',
     anchor: 'DeenUp',
+    href: '/program/deenup/',
   },
   {
-    label: 'Untuk komunitas',
-    detail: 'Kelas tematik, camp, dan dakwah digital yang terarah.',
-    anchor: 'The Fitrah Camp',
+    label: 'Guru dan lembaga',
+    detail: 'Pendampingan pendidik, kepala sekolah, dan lembaga Islam agar sistemnya lebih kuat.',
+    anchor: 'HTA dan IAIEE',
+    href: '/program/headmaster-teacher-academy/',
   },
 ];
 
-const stats = [
-  ['8+', 'program keluarga dan pendidikan'],
-  ['Online', 'mudah diakses dari rumah'],
-  ['Bertahap', 'sesuai usia dan kebutuhan'],
+const signals = [
+  'Keluarga ingin pendidikan Islam yang dekat dengan rumah, bukan hanya slogan.',
+  'Orang tua butuh arahan yang lembut, praktis, dan tidak membuat merasa sendirian.',
+  'Anak dan remaja membutuhkan lingkungan belajar yang menjaga akidah, adab, dan fitrah.',
+  'Guru dan lembaga perlu sistem yang rapi tanpa kehilangan ruh pendidikan Islam.',
 ];
 
-const articles = [
-  'Belajar Islam dari Fondasi: Mengenal Program Ushuluna dengan Metode Microlearning',
-  'Peran Rumah dalam Membentuk Mental Anak yang Percaya Diri',
-  'Kunci Menggapai Kesucian Jiwa: Pelajaran dari Madrasah Ramadhan',
+const commitments = [
+  {
+    title: 'Tauhid sebagai akar',
+    body: 'Setiap program diarahkan agar belajar tidak berhenti pada pengetahuan, tetapi menguatkan ibadah dan ketundukan kepada Allah.',
+  },
+  {
+    title: 'Adab sebelum keluasan ilmu',
+    body: 'Materi, interaksi, dan komunitas dijaga agar tetap lembut, tertib, dan menghormati proses tumbuh setiap peserta.',
+  },
+  {
+    title: 'Keluarga sebagai mitra utama',
+    body: 'Kami membantu orang tua mengambil kembali peran pendidikan tanpa merasa harus sempurna sejak awal.',
+  },
+  {
+    title: 'Bertahap dan membumi',
+    body: 'Pembelajaran dirancang agar bisa dipraktikkan dalam rutinitas rumah, kelas, komunitas, dan lembaga.',
+  },
+];
+
+const programGroups = [
+  {
+    title: 'Keluarga dan orang tua',
+    intro: 'Untuk rumah yang ingin lebih tenang, terarah, dan beradab.',
+    programs: [
+      {
+        name: 'Ihsanul Adab Parenting Academy',
+        audience: 'Ibu, ayah, dan keluarga Muslim',
+        category: 'Parenting',
+        mode: 'Webinar dan kelas',
+        href: '/iapa/',
+        summary:
+          'Ruang belajar orang tua untuk memahami anak, menata emosi, dan membangun pengasuhan Islami yang bertahap.',
+      },
+      {
+        name: 'The Father Project',
+        audience: 'Ayah dan laki-laki Muslim',
+        category: 'Keluarga',
+        mode: 'Kelas daring dan komunitas',
+        href: '/program/the-father-project/',
+        summary:
+          'Pembinaan peran ayah agar lebih hadir, bertanggung jawab, dan memimpin keluarga dengan ilmu dan adab.',
+      },
+      {
+        name: 'The Fitrah Journey',
+        audience: 'Muslimah dewasa',
+        category: 'Muslimah',
+        mode: 'Online learning dan komunitas',
+        href: '/program/the-fitrah-journey/',
+        summary:
+          'Program edukasi dan komunitas untuk muslimah dewasa agar pulih dalam iman, tumbuh dalam peran, dan kembali pada fitrah.',
+      },
+    ],
+  },
+  {
+    title: 'Anak, Al-Qur\'an, dan pembelajaran rumah',
+    intro: 'Untuk keluarga yang ingin menghidupkan adab dan ilmu sejak usia dini.',
+    programs: [
+      {
+        name: 'IAIS Home-Based Learning',
+        audience: 'Keluarga fleksibel',
+        category: 'Home education',
+        mode: 'Homeschooling',
+        href: '/program/homebased-learning/',
+        summary:
+          'Sekolah Islam berbasis keluarga dengan ritme belajar fleksibel, target jelas, dan pembiasaan adab harian.',
+      },
+      {
+        name: 'PKGQ PAUD & SD',
+        audience: 'Calon guru PAUD dan SD',
+        category: 'Al-Qur\'an',
+        mode: 'Program 2 tahun',
+        href: '/program/kaderisasi-guru-quran-paud-sd/',
+        summary:
+          'Kaderisasi guru Al-Qur\'an untuk anak usia dini dan sekolah dasar dengan ilmu, adab, dan kecintaan kepada kalamullah.',
+      },
+      {
+        name: 'Ihsanul Adab Quran Academy',
+        audience: 'Anak dan keluarga',
+        category: 'Al-Qur\'an',
+        mode: 'Tahsin dan tahfizh',
+        summary:
+          'Pembinaan Al-Qur\'an yang menekankan tartil, hafalan bertahap, rasa cinta, dan adab kepada kalamullah.',
+      },
+    ],
+  },
+  {
+    title: 'Remaja, dewasa, dan fondasi Islam',
+    intro: 'Untuk peserta yang ingin memperkuat arah hidup, identitas, dan dasar agama.',
+    programs: [
+      {
+        name: 'DeenUp',
+        audience: 'Remaja Muslim',
+        category: 'Remaja',
+        mode: 'Pembinaan karakter',
+        href: '/program/deenup/',
+        summary:
+          'Program pembinaan remaja untuk menguatkan iman, adab, identitas, relasi, dan kesiapan menghadapi zaman.',
+      },
+      {
+        name: 'Ushuluna',
+        audience: 'Muslim pemula, keluarga, mahasiswa, dan pekerja',
+        category: 'Fondasi Islam',
+        mode: 'Pembelajaran daring',
+        href: '/program/ushuluna/',
+        summary:
+          'Pembelajaran Islam daring dari fondasi yang benar, disusun bertahap, ringkas, dan menenangkan hati.',
+      },
+      {
+        name: 'The Fitrah Camp',
+        audience: 'Komunitas belajar',
+        category: 'Camp',
+        mode: 'Program intensif',
+        summary:
+          'Ruang intensif untuk menguatkan karakter, kemandirian, persaudaraan, dan kedekatan dengan ilmu.',
+      },
+    ],
+  },
+  {
+    title: 'Guru, sekolah, dan lembaga',
+    intro: 'Untuk pendidik dan lembaga Islam yang ingin lebih rapi, kuat, dan berdampak.',
+    programs: [
+      {
+        name: 'Headmaster & Teacher Academy',
+        audience: 'Guru dan pemimpin sekolah Islam',
+        category: 'Pendidik',
+        mode: 'Webinar, workshop, dan komunitas',
+        href: '/program/headmaster-teacher-academy/',
+        summary:
+          'Pusat pembinaan guru dan pemimpin sekolah Islam berbasis tauhid, adab, kompetensi, dan profesionalisme.',
+      },
+      {
+        name: 'IAIEE',
+        audience: 'Lembaga pendidikan Islam',
+        category: 'Mutu lembaga',
+        mode: 'Online, onsite, dan hybrid',
+        href: '/program/iaiee/',
+        summary:
+          'Pendampingan mutu pendidikan untuk menguatkan SDM, sistem, kurikulum, tata kelola, dan budaya adab lembaga.',
+      },
+    ],
+  },
+];
+
+const learningFlow = [
+  {
+    title: 'Petakan kebutuhan',
+    body: 'Mulai dari usia, peran, tantangan keluarga, atau kondisi lembaga agar pilihan program tidak asal ikut tren.',
+  },
+  {
+    title: 'Belajar dengan bimbingan',
+    body: 'Ikuti kelas, komunitas, tugas rumah, atau pendampingan yang bahasanya jelas dan aplikatif.',
+  },
+  {
+    title: 'Amalkan secara bertahap',
+    body: 'Ilmu diarahkan menjadi kebiasaan, adab, ritme keluarga, dan perbaikan yang bisa dijaga.',
+  },
 ];
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Yayasan Pendidikan Ihsanul Adab"
+  description="Ekosistem pendidikan Islam untuk orang tua, anak, remaja, guru, dan lembaga yang berakar pada tauhid, adab, ilmu, dan amal."
+>
   <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
   <header class="site-header">
     <div class="topbar">
-      <span>Yayasan Pendidikan Islam berbasis tauhid, adab, dan amal.</span>
-      <a href="https://berbagi.link/ypihsanuladab">Konsultasi program</a>
+      <span>Ekosistem pendidikan Islam untuk keluarga, pendidik, dan lembaga.</span>
+      <a href={consultationUrl}>Konsultasi program</a>
     </div>
 
     <div class="nav-shell">
-      <a class="brand" href="#" aria-label="Yayasan Pendidikan Ihsanul Adab">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
         <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
         <span>
           <strong>Ihsanul Adab</strong>
@@ -261,7 +308,7 @@ const articles = [
         {navItems.slice(1).map(([label, href]) => <a href={href}>{label}</a>)}
       </nav>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+      <a class="nav-cta" href={lmsUrl}>Akses LMS IA</a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -270,7 +317,9 @@ const articles = [
           <span></span>
         </summary>
         <div class="mobile-panel">
+          <a href="/">Beranda</a>
           <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
           <div class="mobile-program-group">
             <strong>Program</strong>
             {programMenuItems.map((item) => (
@@ -280,8 +329,10 @@ const articles = [
               </a>
             ))}
           </div>
-          {navItems.slice(1).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href="https://berbagi.link/ypihsanuladab">Daftar / Tanya Program</a>
+          <a href="#jalur">Jalur Belajar</a>
+          <a href="#alur">Alur</a>
+          <a href="#kontak">Kontak</a>
+          <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
         </div>
       </details>
     </div>
@@ -289,18 +340,22 @@ const articles = [
 
   <main id="konten">
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-image" src="/images/hero-majelis-ilmu-salaf.png" alt="Meja belajar dengan mushaf tertutup, kitab, dan suasana majelis ilmu yang tenang" />
+      <img
+        class="hero-image"
+        src="/images/home-hero-learning-still-life.png"
+        alt="Ruang belajar tenang dengan mushaf tertutup, kitab, buku catatan, lentera, dan pola geometri Islami tanpa figur makhluk bernyawa"
+      />
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow">Rumah besar pembelajar Muslim</p>
-        <h1 id="hero-title">Menghidupkan adab, menumbuhkan ilmu, mengokohkan generasi.</h1>
+        <p class="eyebrow">Pendidikan Islam yang dimulai dari adab</p>
+        <h1 id="hero-title">Membantu keluarga belajar, bertumbuh, dan beramal dengan arah yang lurus.</h1>
         <p class="hero-copy">
-          Yayasan Pendidikan Ihsanul Adab menghadirkan pendidikan Islam berbasis tauhid, adab,
-          dan amal nyata untuk anak, orang tua, remaja, dan keluarga.
+          Ihsanul Adab menghadirkan program untuk orang tua, anak, remaja, guru, dan lembaga
+          agar ilmu tidak berhenti di kelas, tetapi hidup dalam rumah, komunitas, dan amal harian.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="https://berbagi.link/ypihsanuladab">Konsultasi program</a>
-          <a class="button secondary" href="#program">Lihat pilihan belajar</a>
+          <a class="button primary" href={consultationUrl}>Konsultasi program</a>
+          <a class="button secondary" href="#jalur">Pilih jalur belajar</a>
         </div>
         <dl class="hero-stats" aria-label="Ringkasan layanan">
           {stats.map(([value, label]) => (
@@ -314,36 +369,52 @@ const articles = [
     </section>
 
     <section class="values-band" aria-label="Nilai utama">
-      <span>Silih Asah</span>
-      <span>Silih Asih</span>
-      <span>Silih Asuh</span>
+      <span>Tauhid</span>
+      <span>Adab</span>
+      <span>Amal</span>
     </section>
 
     <section class="section split" id="tentang">
       <div>
         <p class="eyebrow">Tentang yayasan</p>
-        <h2>Pendidikan yang berakar pada tauhid, berjiwa adab, dan berdampak pada amal.</h2>
+        <h2>Ruang belajar yang menghubungkan ilmu, keluarga, dan perbaikan nyata.</h2>
       </div>
       <div class="stack">
         <p>
-          Ihsanul Adab lahir dari keprihatinan atas melemahnya adab, kebingungan dalam
-          menghidupkan ilmu, dan kebutuhan keluarga Muslim terhadap ruang tumbuh yang aman.
+          Banyak keluarga ingin mendidik dengan Islam, tetapi bingung harus mulai dari mana,
+          bagaimana memilih program, dan bagaimana membawa ilmu ke rutinitas rumah.
         </p>
         <p>
-          Kami merancang layanan pendidikan yang membantu keluarga berjalan bersama:
-          belajar dengan ilmu, mendidik dengan kasih sayang, dan menguatkan amal dalam keseharian.
+          Ihsanul Adab hadir sebagai ekosistem pendidikan yang menata proses belajar secara
+          bertahap: dari pemahaman dasar, pembiasaan adab, penguatan peran keluarga, sampai
+          pendampingan guru dan lembaga.
         </p>
       </div>
     </section>
 
-    <section class="section finder" aria-labelledby="finder-title">
+    <section class="section home-signals" aria-labelledby="signals-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Kebutuhan yang kami jawab</p>
+        <h2 id="signals-title">Program dirancang untuk masalah nyata, bukan sekadar judul yang terdengar baik.</h2>
+      </div>
+      <div class="home-signal-grid">
+        {signals.map((signal, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{signal}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section finder" id="jalur" aria-labelledby="finder-title">
       <div class="section-heading compact">
         <p class="eyebrow">Temukan jalur belajar</p>
-        <h2 id="finder-title">Mulai dari kebutuhan Anda hari ini.</h2>
+        <h2 id="finder-title">Mulai dari peran Anda hari ini.</h2>
       </div>
-      <div class="finder-grid">
+      <div class="finder-grid home-route-grid">
         {audiencePaths.map((path) => (
-          <a href={path.href ?? '#program'} class="finder-card">
+          <a href={path.href} class="finder-card route-card">
             <span>{path.label}</span>
             <p>{path.detail}</p>
             <strong>{path.anchor}</strong>
@@ -356,28 +427,29 @@ const articles = [
       {commitments.map((item, index) => (
         <article>
           <span>{String(index + 1).padStart(2, '0')}</span>
-          <h3>{item}</h3>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
         </article>
       ))}
     </section>
 
     <section class="section vision" id="visi">
       <div class="vision-panel">
-        <p class="eyebrow">Visi</p>
-        <h2>Menjadi ekosistem pendidikan Islam yang menumbuhkan keluarga beradab, berilmu, dan beramal.</h2>
+        <p class="eyebrow">Arah pembinaan</p>
+        <h2>Berpegang pada nilai Islam, menjaga adab belajar, dan menghindari visual yang tidak perlu.</h2>
       </div>
       <div class="mission-list">
         <article>
-          <h3>Menguatkan fondasi</h3>
-          <p>Menanamkan tauhid, adab, dan kecintaan kepada Al-Qur'an sebagai dasar setiap proses belajar.</p>
+          <h3>Materi berpijak pada fondasi</h3>
+          <p>Setiap program diarahkan agar peserta memahami prinsip sebelum mengejar teknik dan tren.</p>
         </article>
         <article>
-          <h3>Mendampingi keluarga</h3>
-          <p>Membantu orang tua mengambil peran utama dalam pendidikan anak dengan ilmu dan ketenangan.</p>
+          <h3>Bahasa yang ramah keluarga</h3>
+          <p>Konten ditulis agar mudah dipahami orang tua, remaja, guru, dan pengelola lembaga.</p>
         </article>
         <article>
-          <h3>Membangun generasi</h3>
-          <p>Menyediakan program usia dini, sekolah dasar, remaja, dan komunitas yang relevan dengan tantangan zaman.</p>
+          <h3>Visual yang terjaga</h3>
+          <p>Ilustrasi dan aset website dipilih tanpa figur makhluk bernyawa sebagai bentuk kehati-hatian.</p>
         </article>
       </div>
     </section>
@@ -385,24 +457,34 @@ const articles = [
     <section class="section program-section" id="program">
       <div class="section-heading">
         <p class="eyebrow">Program layanan</p>
-        <h2>Satu ekosistem untuk anak, remaja, orang tua, dan komunitas.</h2>
+        <h2>Satu ekosistem, beberapa pintu masuk sesuai kebutuhan.</h2>
       </div>
-      <div class="program-grid">
-        {programs.map((program) => (
-          <article class="program-card">
-            <div class="program-meta">
-              <p>{program.category}</p>
-              <small>{program.mode}</small>
+      <div class="program-groups">
+        {programGroups.map((group) => (
+          <section class="program-group" aria-label={group.title}>
+            <div class="program-group-heading">
+              <h3>{group.title}</h3>
+              <p>{group.intro}</p>
             </div>
-            <h3>{program.name}</h3>
-            <span>{program.summary}</span>
-            <div class="program-footer">
-              <small>Cocok untuk: {program.audience}</small>
-              <a href={program.href ?? 'https://berbagi.link/ypihsanuladab'} aria-label={`Lihat atau tanya tentang ${program.name}`}>
-                {program.href ? 'Lihat detail' : 'Tanya program'}
-              </a>
+            <div class="program-group-grid">
+              {group.programs.map((program) => (
+                <article class="program-card">
+                  <div class="program-meta">
+                    <p>{program.category}</p>
+                    <small>{program.mode}</small>
+                  </div>
+                  <h3>{program.name}</h3>
+                  <span>{program.summary}</span>
+                  <div class="program-footer">
+                    <small>Cocok untuk: {program.audience}</small>
+                    <a href={program.href ?? consultationUrl} aria-label={`Lihat atau tanya tentang ${program.name}`}>
+                      {program.href ? 'Lihat detail' : 'Tanya program'}
+                    </a>
+                  </div>
+                </article>
+              ))}
             </div>
-          </article>
+          </section>
         ))}
       </div>
     </section>
@@ -410,49 +492,28 @@ const articles = [
     <section class="section pathway" id="alur">
       <div class="section-heading compact">
         <p class="eyebrow">Alur belajar</p>
-        <h2>Dibuat bertahap agar keluarga tidak berjalan sendirian.</h2>
+        <h2>Dibuat sederhana agar keluarga dan lembaga tahu langkah berikutnya.</h2>
       </div>
       <div class="pathway-grid">
-        <article>
-          <h3>Kenali kebutuhan</h3>
-          <p>Kami membantu memilih program sesuai usia, kondisi keluarga, dan tujuan pendidikan.</p>
-        </article>
-        <article>
-          <h3>Belajar terarah</h3>
-          <p>Materi dikemas jelas melalui kelas, pendampingan, aktivitas rumah, dan komunitas.</p>
-        </article>
-        <article>
-          <h3>Tumbuh bersama</h3>
-          <p>Hasil belajar diarahkan menjadi adab, kebiasaan baik, dan amal yang terasa di rumah.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section journal">
-      <div>
-        <p class="eyebrow">Tulisan dan dakwah digital</p>
-        <h2>Ruang baca untuk menguatkan keluarga pembelajar.</h2>
-      </div>
-      <div class="article-list">
-        {articles.map((article) => (
-          <a href="https://ihsanuladab.or.id/" aria-label={`Baca ${article}`}>
-            <span>Artikel</span>
-            <strong>{article}</strong>
-          </a>
+        {learningFlow.map((item) => (
+          <article>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
         ))}
       </div>
     </section>
 
     <section class="cta" id="kontak">
       <div>
-        <p class="eyebrow">Mulai berkomunikasi</p>
-        <h2>Ingin tahu program yang paling cocok untuk keluarga atau komunitas Anda?</h2>
+        <p class="eyebrow">Butuh arahan memilih program?</p>
+        <h2>Ceritakan kebutuhan keluarga, komunitas, atau lembaga Anda.</h2>
         <p>
-          Tim Ihsanul Adab siap membantu mengarahkan pilihan program, jadwal, dan langkah awal
-          bergabung dalam ekosistem pembelajaran.
+          Tim Ihsanul Adab akan membantu memetakan program yang paling sesuai, jadwal yang
+          tersedia, dan langkah awal yang realistis untuk mulai belajar.
         </p>
       </div>
-      <a class="button primary" href="https://berbagi.link/ypihsanuladab">Hubungi Ihsanul Adab</a>
+      <a class="button primary" href={consultationUrl}>Hubungi Ihsanul Adab</a>
     </section>
   </main>
 
@@ -469,5 +530,5 @@ const articles = [
     </nav>
   </footer>
 
-  <a class="floating-help" href="https://berbagi.link/ypihsanuladab">Tanya Program</a>
+  <a class="floating-help" href={consultationUrl}>Tanya Program</a>
 </BaseLayout>
