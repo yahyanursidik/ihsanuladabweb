@@ -3591,9 +3591,38 @@ footer nav {
     #14243a;
 }
 
+.iais-site-header {
+  --iais-sage: #6f8f73;
+  --iais-teal: #0f746c;
+  --iais-sky: #8eb8c5;
+  --iais-terracotta: #bd7156;
+  --iais-honey: #c99b54;
+  background: rgba(249, 250, 244, 0.92);
+}
+
+.iais-topbar {
+  background: linear-gradient(90deg, #2f5146, #0f746c);
+}
+
+.iais-topbar a {
+  color: #ffe0a6;
+}
+
+.iais-nav-cta {
+  border-color: rgba(47, 81, 70, 0.24);
+  background: #2f5146;
+  box-shadow: 0 14px 28px rgba(47, 81, 70, 0.2);
+}
+
+.iais-nav-cta:hover,
+.iais-nav-cta:focus-visible {
+  background: #0f746c;
+  box-shadow: 0 16px 34px rgba(15, 116, 108, 0.24);
+}
+
 .iais-hero {
   position: relative;
-  min-height: clamp(620px, calc(100vh - 110px), 780px);
+  min-height: clamp(640px, calc(100vh - 110px), 800px);
   display: grid;
   align-items: center;
   overflow: hidden;
@@ -3608,6 +3637,7 @@ footer nav {
   height: 100%;
   object-fit: cover;
   object-position: center right;
+  filter: saturate(0.98) contrast(1.02);
 }
 
 .iais-hero::after {
@@ -3615,62 +3645,63 @@ footer nav {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(4, 47, 41, 0.97), rgba(6, 63, 54, 0.82) 44%, rgba(215, 179, 54, 0.18) 82%),
-    linear-gradient(0deg, rgba(4, 47, 41, 0.5), rgba(4, 47, 41, 0.06));
+    linear-gradient(90deg, rgba(47, 81, 70, 0.98), rgba(47, 81, 70, 0.88) 38%, rgba(15, 116, 108, 0.28) 70%, rgba(201, 155, 84, 0.06)),
+    linear-gradient(0deg, rgba(47, 81, 70, 0.42), rgba(47, 81, 70, 0.04));
   content: "";
 }
 
 .iais-hero-content {
-  width: min(840px, calc(100% - 36px));
+  width: min(870px, calc(100% - 36px));
   margin-left: clamp(18px, 7vw, 96px);
   padding: 56px 0;
   color: white;
 }
 
 .iais-hero-content h1 {
-  max-width: 820px;
+  max-width: 830px;
 }
 
 .iais-hero-content > p:not(.eyebrow) {
-  max-width: 700px;
+  max-width: 720px;
   margin: 22px 0 0;
   color: rgba(255, 255, 255, 0.9);
   font-size: clamp(1.08rem, 2vw, 1.28rem);
   line-height: 1.72;
 }
 
-.iais-stats {
-  width: min(980px, calc(100% - 36px));
+.iais-signals {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  margin: 0 auto;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--line);
+  grid-template-columns: repeat(4, 1fr);
+  border-block: 1px solid rgba(47, 81, 70, 0.12);
+  background: #f9faf4;
 }
 
-.iais-stats article {
+.iais-signals article {
+  min-height: 112px;
   display: grid;
-  gap: 8px;
-  padding: 34px;
-  background: var(--paper);
+  align-content: center;
+  gap: 6px;
+  padding: 22px clamp(18px, 3vw, 34px);
 }
 
-.iais-stats strong {
-  color: var(--teal-800);
-  font-size: clamp(3rem, 6vw, 5rem);
-  line-height: 0.98;
+.iais-signals article + article {
+  border-left: 1px solid rgba(47, 81, 70, 0.12);
 }
 
-.iais-stats span {
-  color: var(--muted);
-  font-weight: 800;
-  line-height: 1.5;
+.iais-signals strong {
+  color: #2f5146;
+  font-size: clamp(1.08rem, 2vw, 1.36rem);
+  font-weight: 900;
+}
+
+.iais-signals span {
+  color: #62736d;
+  font-weight: 760;
+  line-height: 1.48;
 }
 
 .iais-intro,
+.iais-audience,
 .iais-routine,
 .iais-parents {
   display: grid;
@@ -3678,69 +3709,126 @@ footer nav {
   gap: clamp(36px, 7vw, 92px);
 }
 
-.iais-options,
+.iais-needs,
+.iais-pillars,
 .iais-programs,
-.iais-structure {
+.iais-structure,
+.iais-flow {
   width: min(1240px, calc(100% - 36px));
 }
 
-.iais-option-grid,
+.iais-need-grid,
+.iais-pillar-grid,
 .iais-program-grid,
-.iais-structure-grid {
+.iais-curriculum-grid,
+.iais-flow-grid,
+.iais-guardrail-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.iais-option-grid article,
+.iais-need-grid,
+.iais-pillar-grid,
+.iais-curriculum-grid,
+.iais-flow-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.iais-program-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.iais-need-grid article,
+.iais-pillar-grid article,
 .iais-program-grid article,
-.iais-structure-grid article {
+.iais-curriculum-grid article,
+.iais-flow-grid article {
   display: flex;
   flex-direction: column;
-  padding: 26px;
-  border: 1px solid var(--line);
+  padding: 24px;
+  border: 1px solid rgba(47, 81, 70, 0.12);
   border-radius: 8px;
   background: var(--paper);
 }
 
-.iais-option-grid article {
-  min-height: 300px;
+.iais-need-grid article {
+  min-height: 230px;
+  justify-content: space-between;
+  background:
+    linear-gradient(180deg, #ffffff, #f9faf4),
+    var(--paper);
 }
 
-.iais-option-grid h3,
+.iais-need-grid span,
+.iais-flow-grid span {
+  color: #bd7156;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.iais-need-grid p {
+  margin: 0;
+  color: #2f5146;
+  font-weight: 850;
+  line-height: 1.58;
+}
+
+.iais-pillar-grid article,
+.iais-curriculum-grid article {
+  min-height: 260px;
+}
+
+.iais-pillar-grid article:nth-child(2n),
+.iais-curriculum-grid article:nth-child(2n) {
+  background: #f7faf9;
+}
+
+.iais-pillar-grid article:nth-child(3n),
+.iais-curriculum-grid article:nth-child(3n) {
+  background: #fbf6ec;
+}
+
+.iais-pillar-grid h3,
 .iais-program-grid h3,
-.iais-structure-grid h3 {
-  color: var(--teal-800);
-  font-size: 1.42rem;
+.iais-curriculum-grid h3,
+.iais-flow-grid h3 {
+  color: #2f5146;
+  font-size: 1.22rem;
 }
 
-.iais-option-grid p,
+.iais-pillar-grid p,
 .iais-program-grid p,
 .iais-program-grid li,
-.iais-structure-grid li,
+.iais-curriculum-grid li,
+.iais-flow-grid p,
 .iais-routine p,
 .iais-solution p {
-  color: var(--muted);
+  color: #62736d;
   line-height: 1.66;
+}
+
+.iais-program-grid article {
+  min-height: 430px;
 }
 
 .iais-program-grid span {
   margin-bottom: 18px;
-  color: var(--rose);
+  color: #bd7156;
   font-size: 0.78rem;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .iais-program-grid ul,
-.iais-structure-grid ul {
+.iais-curriculum-grid ul {
   display: grid;
   gap: 10px;
   margin: 20px 0 0;
   padding-left: 20px;
 }
 
-.iais-solution {
+.iais-solution,
+.iais-guardrails {
   width: min(1160px, calc(100% - 36px));
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -3749,13 +3837,14 @@ footer nav {
   padding: clamp(32px, 6vw, 60px);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(6, 63, 54, 0.97), rgba(4, 47, 41, 1)),
-    var(--teal-900);
+    linear-gradient(135deg, rgba(47, 81, 70, 0.98), rgba(15, 116, 108, 0.96)),
+    #2f5146;
   color: white;
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 70px rgba(47, 81, 70, 0.2);
 }
 
-.iais-solution h2 {
+.iais-solution h2,
+.iais-guardrails h2 {
   color: white;
 }
 
@@ -3765,23 +3854,25 @@ footer nav {
   font-size: 1.05rem;
 }
 
-.iais-approach-list {
-  display: grid;
-  gap: 10px;
-}
-
-.iais-approach-list span {
+.iais-guardrail-list span {
   padding: 16px 18px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
-  background: var(--paper);
-  color: var(--teal-800);
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 800;
   line-height: 1.48;
 }
 
+.iais-flow-grid article {
+  min-height: 250px;
+}
+
 .iais-cta {
   align-items: flex-end;
+  background:
+    linear-gradient(135deg, rgba(47, 81, 70, 0.98), rgba(15, 116, 108, 0.96)),
+    #2f5146;
 }
 
 .ushuluna-site-header {
@@ -4484,9 +4575,12 @@ footer nav {
   .iaiee-assurance-grid,
   .iaiee-service-grid,
   .iaiee-package-grid,
-  .iais-option-grid,
+  .iais-signals,
+  .iais-need-grid,
+  .iais-pillar-grid,
   .iais-program-grid,
-  .iais-structure-grid,
+  .iais-curriculum-grid,
+  .iais-flow-grid,
   .ushuluna-foundation,
   .ushuluna-material-grid,
   .ushuluna-format-grid,
@@ -4553,9 +4647,11 @@ footer nav {
   .iaiee-quality-band,
   .iaiee-impact,
   .iais-intro,
+  .iais-audience,
   .iais-routine,
   .iais-parents,
   .iais-solution,
+  .iais-guardrails,
   .ushuluna-concern,
   .ushuluna-about,
   .ushuluna-audience,
@@ -4676,10 +4772,12 @@ footer nav {
   .iaiee-assurance-grid,
   .iaiee-service-grid,
   .iaiee-package-grid,
-  .iais-stats,
-  .iais-option-grid,
+  .iais-signals,
+  .iais-need-grid,
+  .iais-pillar-grid,
   .iais-program-grid,
-  .iais-structure-grid,
+  .iais-curriculum-grid,
+  .iais-flow-grid,
   .ushuluna-foundation,
   .ushuluna-material-grid,
   .ushuluna-format-grid,
@@ -4695,6 +4793,7 @@ footer nav {
   .values-band span + span,
   .iapa-principles span + span,
   .iaiee-principles article + article,
+  .iais-signals article + article,
   .ushuluna-foundation article + article {
     border-left: 0;
     border-top: 1px solid var(--line);

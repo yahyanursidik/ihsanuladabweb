@@ -1,21 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+const consultationUrl = 'https://berbagi.link/ypihsanuladab';
+const whatsappUrl = 'https://wa.me/6285179676003';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
+
 const navItems = [
   ['Beranda', '/'],
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Pilihan Belajar', '#pilihan-belajar'],
+  ['Tentang HBL', '#tentang-hbl'],
+  ['Untuk Siapa', '#untuk-siapa'],
   ['Program', '#program-aktif'],
   ['Struktur', '#struktur'],
   ['Orang Tua', '#orang-tua'],
+  ['Kontak', '#kontak'],
 ];
 
 const programMenuItems = [
   {
     label: 'Semua Program',
     href: '/#program',
-    note: 'Ikhtisar layanan',
+    note: 'Peta ekosistem belajar',
   },
   {
     label: 'Ihsanul Adab Parenting Academy',
@@ -30,7 +36,7 @@ const programMenuItems = [
   {
     label: 'The Fitrah Journey',
     href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
+    note: 'Ruang tumbuh muslimah',
   },
   {
     label: 'Headmaster & Teacher Academy',
@@ -40,7 +46,7 @@ const programMenuItems = [
   {
     label: 'PKGQ PAUD & SD',
     href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
+    note: "Kaderisasi guru Al-Qur'an",
   },
   {
     label: 'IAIEE',
@@ -51,11 +57,6 @@ const programMenuItems = [
     label: 'Ushuluna',
     href: '/program/ushuluna/',
     note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '/#program',
-    note: 'Pembelajaran Al-Quran keluarga',
   },
   {
     label: 'DeenUp',
@@ -69,99 +70,136 @@ const programMenuItems = [
   },
 ];
 
-const learningOptions = [
+const signals = [
+  ['Rumah', 'menjadi tempat utama tumbuhnya iman, adab, dan rasa aman'],
+  ['Ritme', 'belajar mengikuti jadwal keluarga yang realistis dan terarah'],
+  ['Kurikulum', 'materi inti disusun agar mudah dijalankan dari rumah'],
+  ['Pendampingan', 'orang tua tidak berjalan sendiri dalam proses belajar anak'],
+];
+
+const needs = [
+  'Anak membutuhkan pendidikan Islam yang terarah, tetapi keluarga membutuhkan ritme belajar yang lebih fleksibel.',
+  'Orang tua ingin mendidik dari rumah, namun tetap membutuhkan kurikulum, panduan, dan evaluasi yang jelas.',
+  'Keluarga diaspora atau keluarga berpindah tempat membutuhkan sistem belajar yang tetap stabil.',
+  'Anak perlu tumbuh dengan adab, rutinitas ibadah, literasi, numerasi, dan keterampilan hidup secara seimbang.',
+];
+
+const audiences = [
+  'Keluarga Muslim yang memilih homeschooling atau home-based learning dengan arahan kurikulum.',
+  'Orang tua yang ingin lebih dekat mendampingi proses belajar, adab, dan ibadah anak.',
+  'Keluarga diaspora yang membutuhkan pendidikan Islam dari rumah dengan struktur yang jelas.',
+  'Anak usia dini dan sekolah dasar yang membutuhkan ritme belajar hangat, aman, dan tidak terburu-buru.',
+  'Keluarga yang ingin menguatkan fungsi rumah sebagai madrasah pertama.',
+];
+
+const pillars = [
   {
-    title: 'IAIS Home-Based Learning',
-    label: 'Homeschooling Islami',
-    body:
-      'Pendidikan fleksibel untuk keluarga yang ingin mendidik anak dari rumah dengan bimbingan, kurikulum, dan komunitas yang terarah.',
+    title: 'Tauhid dan adab harian',
+    body: 'Pembelajaran diarahkan agar anak mengenal Allah, terbiasa dengan adab, dan melihat ibadah sebagai bagian dari kehidupan.',
   },
   {
-    title: 'IAIS Offline School',
-    label: 'Tatap muka terpadu',
-    body:
-      'Sekolah Islam terpadu dengan pembelajaran onsite, lingkungan Islami yang kondusif, kegiatan tematik, dan pembinaan adab harian anak dalam interaksi sosial nyata.',
+    title: 'Akademik inti yang bertahap',
+    body: 'Literasi, numerasi, sains, bahasa, dan keterampilan berpikir disusun sesuai fase tumbuh anak.',
+  },
+  {
+    title: 'Rutinitas rumah yang mendidik',
+    body: 'Jadwal belajar tidak berdiri sendiri, tetapi menyatu dengan ibadah, tanggung jawab rumah, bermain, dan istirahat.',
+  },
+  {
+    title: 'Kolaborasi orang tua dan fasilitator',
+    body: 'Orang tua mendapat panduan dan ruang konsultasi agar pendampingan di rumah lebih tenang dan konsisten.',
   },
 ];
 
 const activePrograms = [
   {
     title: 'Preschool & Kindergarten',
-    age: 'Usia 3-6 Tahun',
-    body: 'Program pendidikan anak usia dini berbasis Islam dan fitrah anak.',
+    age: 'Usia 3-6 tahun',
+    body: 'Program usia dini untuk menumbuhkan rasa aman, adab, kemandirian, bahasa, motorik, dan cinta belajar dari rumah.',
     points: [
-      'Kurikulum tematik Islami yang diselaraskan dengan Kurikulum Merdeka, Deep Learning, dan STPPA.',
-      'Fokus pada pembiasaan adab, kemandirian, dan keterampilan sosial.',
-      'Aktivitas berbasis play-based learning dan project-based learning dengan pendekatan STEAM.',
-      'Pembelajaran yang menumbuhkan rasa ingin tahu, disiplin, dan cinta belajar.',
+      'Tema belajar sederhana yang dekat dengan kehidupan anak.',
+      'Aktivitas bermain bermakna, eksplorasi, cerita, seni, dan rutinitas adab.',
+      'Pembiasaan ibadah harian sesuai usia tanpa tekanan berlebihan.',
+      'Panduan orang tua untuk mendampingi anak dengan ritme lembut.',
     ],
   },
   {
     title: 'IAIS Elementary School',
-    age: 'Usia 6-12 Tahun',
-    body: 'Program sekolah dasar Islam terpadu yang membentuk karakter, kecakapan, dan tanggung jawab anak Muslim.',
+    age: 'Usia 6-12 tahun',
+    body: 'Program sekolah dasar home-based untuk menguatkan ilmu Islam, akademik inti, tanggung jawab, dan keterampilan hidup anak.',
     points: [
-      'Integrasi Kurikulum Nasional, Diniyyah, dan Quraniyah.',
-      'Implementasi Deep Learning dan habituasi rutinitas.',
-      'Pembelajaran tematik, bermakna, dan berorientasi amal.',
-      'Penguatan tauhid, adab, dan fungsi eksekutif anak.',
-      'Penilaian holistik dan pelibatan aktif orang tua.',
-      'Aktivitas yang mengoptimalkan design thinking dan critical thinking.',
+      'Integrasi diniyyah, Quraniyah, literasi, numerasi, sains, bahasa, dan life skills.',
+      'Target belajar bertahap yang mudah dipantau oleh orang tua.',
+      'Proyek sederhana dan aktivitas rumah yang menghubungkan ilmu dengan amal.',
+      'Evaluasi holistik: pemahaman, adab, rutinitas, kemandirian, dan perkembangan anak.',
     ],
   },
 ];
 
-const islamicStudies = [
-  'Aqidah & Tauhid',
-  'Adab & Akhlak',
-  'Ibadah Harian',
-  'Sirah Nabawiyah',
-  'Tahsin, Tashih & Tahfidz',
-  'Bahasa Arab & Keteladanan Muslim',
+const curriculumTracks = [
+  {
+    title: 'Islamic Essential Knowledge',
+    items: ['Aqidah dan tauhid', 'Adab dan akhlak', 'Ibadah harian', 'Sirah Nabawiyah', "Tahsin dan tahfidz Al-Qur'an"],
+  },
+  {
+    title: 'Core Academics',
+    items: ['Bahasa Indonesia', 'Bahasa Inggris dasar', 'Matematika dan numerasi', 'Sains dan alam sekitar', 'Literasi membaca'],
+  },
+  {
+    title: 'Life Skills & Projects',
+    items: ['Kemandirian rumah', 'Kreativitas dan karya', 'Kebiasaan sehat', 'Komunikasi dan tanggung jawab', 'Proyek keluarga sederhana'],
+  },
+  {
+    title: 'Parent Guidance',
+    items: ['Panduan mingguan', 'Ruang konsultasi', 'Laporan perkembangan', 'Forum orang tua', 'Penguatan ritme belajar rumah'],
+  },
 ];
 
-const lifeSkills = [
-  'Bahasa Indonesia & Inggris',
-  'Matematika & Numerasi',
-  'Sains & Alam Semesta',
-  'Keterampilan hidup & kreativitas',
-  'PJOK',
-  'Muatan Lokal',
+const parentRoles = [
+  'Menyiapkan lingkungan belajar yang tenang, rapi, dan tidak berlebihan.',
+  'Menjaga rutinitas ibadah, adab, tidur, makan, bermain, dan belajar.',
+  'Mendampingi tugas anak sesuai panduan tanpa mengambil alih seluruh proses.',
+  'Melaporkan perkembangan anak dan berdiskusi dengan fasilitator ketika ada kendala.',
+  'Menjadi teladan dalam kesabaran, disiplin, dan cinta ilmu.',
 ];
 
-const approach = [
-  'Blok rutinitas dan disiplin positif.',
-  'Adab dan nilai Islam yang terintegrasi.',
-  'Fungsi eksekutif: self-regulation, working memory, dan fleksibilitas kognitif.',
-  'Tarbiyah bil ahdats: setiap peristiwa menjadi momen menanamkan tauhid dan sabar.',
+const flow = [
+  {
+    title: 'Orientasi keluarga',
+    body: 'Memahami kebutuhan anak, kesiapan orang tua, ritme rumah, dan pilihan program yang paling sesuai.',
+  },
+  {
+    title: 'Panduan belajar',
+    body: 'Keluarga menerima arah materi, target, rutinitas, dan aktivitas yang dapat dijalankan dari rumah.',
+  },
+  {
+    title: 'Pendampingan rutin',
+    body: 'Orang tua menjalankan proses belajar bersama anak dengan dukungan komunikasi dan evaluasi berkala.',
+  },
+  {
+    title: 'Evaluasi perkembangan',
+    body: 'Perkembangan anak dibaca secara holistik: adab, ibadah, kognitif, bahasa, kemandirian, dan keterampilan hidup.',
+  },
 ];
 
-const parentSupport = [
-  'Sesi parent coaching dan webinar parenting.',
-  'Panduan mingguan kegiatan anak di rumah.',
-  'Forum komunikasi dan komunitas keluarga.',
-  'Kolaborasi dalam pembiasaan ibadah dan adab di rumah.',
+const guardrails = [
+  "Visual dan media belajar dipilih dengan hati-hati, tanpa figur makhluk bernyawa.",
+  "Materi keislaman diarahkan agar selaras dengan Al-Qur'an, Sunnah, dan pemahaman salafus shalih.",
+  'Target belajar dibuat realistis agar keluarga tidak kehilangan ketenangan rumah.',
+  'Pembelajaran tidak menggantikan peran orang tua, tetapi membantu orang tua menjalankan amanah pendidikan.',
 ];
-
-const stats = [
-  ['0/0', 'Peserta didik dari keluarga telah bergabung'],
-  ['4', 'Program pendidikan aktif'],
-];
-
-const whatsappUrl = 'https://wa.me/6285179676003';
-const consultUrl = 'https://berbagi.link/ypihsanuladab';
 ---
 
 <BaseLayout
   title="IAIS Home-Based Learning - Yayasan Pendidikan Ihsanul Adab"
-  description="Sekolah Islam terpadu berbasis fitrah, adab, dan keluarga untuk pendidikan fleksibel dari rumah bersama kurikulum dan komunitas terarah."
+  description="IAIS Home-Based Learning mendampingi keluarga Muslim menjalankan homeschooling Islami dari rumah dengan kurikulum, ritme, adab, dan pendampingan yang terarah."
 >
   <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
-    <div class="topbar">
+  <header class="site-header iais-site-header">
+    <div class="topbar iais-topbar">
       <span>IAIS Home-Based Learning</span>
-      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+      <a href={consultationUrl}>Konsultasi belajar anak</a>
     </div>
 
     <div class="nav-shell">
@@ -169,7 +207,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
         <span>
           <strong>Ihsanul Adab</strong>
-          <small>IAIS</small>
+          <small>IAIS HBL</small>
         </span>
       </a>
 
@@ -191,7 +229,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
       </nav>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+      <a class="nav-cta iais-nav-cta" href={lmsUrl}>Akses LMS IA</a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -213,7 +251,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
             ))}
           </div>
           {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={consultUrl}>Konsultasikan</a>
+          <a class="button primary" href={consultationUrl}>Konsultasikan</a>
         </div>
       </details>
     </div>
@@ -221,57 +259,88 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
   <main id="konten">
     <section class="iais-hero" aria-labelledby="iais-title">
-      <img src="/images/hero-pendidikan-ihsanul-adab.png" alt="Suasana belajar keluarga Muslim yang hangat dan terarah" />
+      <img
+        src="/images/iais-home-learning-hero.png"
+        alt="Ruang belajar rumah yang rapi dengan buku, papan jadwal visual, mushaf tertutup, karpet, dan perlengkapan belajar tanpa figur makhluk bernyawa"
+      />
       <div class="iais-hero-content">
-        <p class="eyebrow">Ihsanul Adab Integrated School</p>
-        <h1 id="iais-title">Sekolah Islam terpadu berbasis fitrah, adab, dan keluarga.</h1>
+        <p class="eyebrow">IAIS Home-Based Learning</p>
+        <h1 id="iais-title">Sekolah Islam dari rumah, dengan ritme yang lebih dekat dengan keluarga.</h1>
         <p>
-          Pendidikan terbaik dimulai dari rumah, dengan cinta, adab, dan ilmu yang
-          menumbuhkan fitrah anak.
+          Program home-based learning untuk keluarga Muslim yang ingin mendidik anak
+          dari rumah dengan kurikulum, adab, rutinitas, dan pendampingan yang terarah.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href={consultUrl}>Flyer PPDB 2026/2027</a>
-          <a class="button secondary" href={whatsappUrl}>Konsultasikan kepada kami</a>
+          <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
+          <a class="button secondary" href="#tentang-hbl">Pelajari HBL</a>
         </div>
       </div>
     </section>
 
-    <section class="iais-stats" aria-label="Ringkasan IAIS">
-      {stats.map(([value, label]) => (
+    <section class="iais-signals" aria-label="Ringkasan IAIS Home-Based Learning">
+      {signals.map(([title, body]) => (
         <article>
-          <strong>{value}</strong>
-          <span>{label}</span>
+          <strong>{title}</strong>
+          <span>{body}</span>
         </article>
       ))}
     </section>
 
-    <section class="section iais-intro" id="pilihan-belajar">
+    <section class="section iais-intro" id="tentang-hbl">
       <div>
-        <p class="eyebrow">Mari berjalan dan berjuang bersama</p>
-        <h2>IAIS menghadirkan dua pilihan pembelajaran dengan visi yang sama.</h2>
+        <p class="eyebrow">Tentang Program</p>
+        <h2>Rumah bukan pengganti sekolah semata. Rumah adalah madrasah pertama.</h2>
       </div>
       <div class="stack">
         <p>
-          InsyaAllah, IAIS sedang mempersiapkan pembukaan kelas tatap muka di masa
-          mendatang sebagai ruang belajar terpadu, hangat, dan penuh nilai Islam.
+          IAIS Home-Based Learning membantu orang tua menjalankan pendidikan anak dari
+          rumah dengan arah yang lebih jelas. Anak tetap belajar akademik inti, ilmu
+          Islam, adab, keterampilan hidup, dan rutinitas harian dalam suasana keluarga
+          yang hangat.
         </p>
         <p>
-          Keduanya mengusung visi yang sama: mendidik dengan adab, menumbuhkan dengan
-          ilmu, dan mengokohkan dengan amal.
+          Program ini dibuat untuk keluarga yang membutuhkan fleksibilitas, namun tetap
+          ingin memiliki kurikulum, target, pendampingan, dan evaluasi perkembangan yang
+          bisa dipertanggungjawabkan.
         </p>
       </div>
     </section>
 
-    <section class="section iais-options">
-      <div class="iais-option-grid">
-        {learningOptions.map((option) => (
+    <section class="section iais-needs">
+      <div class="section-heading compact">
+        <p class="eyebrow">Kebutuhan keluarga</p>
+        <h2>Home-based learning membutuhkan lebih dari sekadar lembar kerja.</h2>
+      </div>
+      <div class="iais-need-grid">
+        {needs.map((need, index) => (
           <article>
-            <div class="program-meta">
-              <p>{option.label}</p>
-              <small>IAIS</small>
-            </div>
-            <h3>{option.title}</h3>
-            <p>{option.body}</p>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{need}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section iais-audience" id="untuk-siapa">
+      <div>
+        <p class="eyebrow">Untuk siapa?</p>
+        <h2>Untuk keluarga yang ingin mendidik dari rumah tanpa berjalan sendirian.</h2>
+      </div>
+      <ul class="check-list">
+        {audiences.map((audience) => <li>{audience}</li>)}
+      </ul>
+    </section>
+
+    <section class="section iais-pillars">
+      <div class="section-heading">
+        <p class="eyebrow">Pilar pembelajaran</p>
+        <h2>Belajar dari rumah tetap membutuhkan arah, ritme, dan ukuran perkembangan.</h2>
+      </div>
+      <div class="iais-pillar-grid">
+        {pillars.map((pillar) => (
+          <article>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.body}</p>
           </article>
         ))}
       </div>
@@ -279,8 +348,8 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
     <section class="section iais-programs" id="program-aktif">
       <div class="section-heading">
-        <p class="eyebrow">Program pendidikan aktif</p>
-        <h2>Program untuk usia dini dan sekolah dasar yang bertumbuh dari rumah bersama keluarga.</h2>
+        <p class="eyebrow">Program aktif</p>
+        <h2>Dua jenjang awal untuk membangun fondasi belajar anak dari rumah.</h2>
       </div>
       <div class="iais-program-grid">
         {activePrograms.map((program) => (
@@ -298,79 +367,100 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
     <section class="iais-solution">
       <div>
-        <p class="eyebrow">Untuk Indonesia dan diaspora</p>
-        <h2>IAIS hadir sebagai solusi bagi keluarga Muslim yang ingin pendidikan anak tetap terarah.</h2>
+        <p class="eyebrow">Indonesia dan diaspora</p>
+        <h2>Pendidikan anak tetap bisa terarah meski keluarga membutuhkan fleksibilitas.</h2>
       </div>
       <div>
         <p>
-          IAIS bukan sekadar sekolah, tetapi ekosistem bertumbuh dalam adab dan iman:
-          dari rumah, bersama keluarga, menuju generasi Rabbani.
+          IAIS HBL membantu keluarga menjaga kesinambungan belajar ketika anak belajar
+          dari rumah, tinggal di luar negeri, sering berpindah tempat, atau membutuhkan
+          ritme pendidikan yang lebih personal.
         </p>
       </div>
     </section>
 
     <section class="section iais-structure" id="struktur">
       <div class="section-heading">
-        <p class="eyebrow">Struktur pembelajaran</p>
-        <h2>Ilmu Islam esensial berjalan bersama kecakapan umum dan keterampilan hidup.</h2>
+        <p class="eyebrow">Struktur kurikulum</p>
+        <h2>Ilmu Islam, akademik inti, life skills, dan pendampingan orang tua berjalan bersama.</h2>
       </div>
-      <div class="iais-structure-grid">
-        <article>
-          <h3>Islamic Essential Knowledge</h3>
-          <ul>
-            {islamicStudies.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-        <article>
-          <h3>General & Life Skills</h3>
-          <ul>
-            {lifeSkills.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
+      <div class="iais-curriculum-grid">
+        {curriculumTracks.map((track) => (
+          <article>
+            <h3>{track.title}</h3>
+            <ul>
+              {track.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
 
     <section class="section iais-routine">
       <div>
-        <p class="eyebrow">Pendekatan berbasis fitrah dan rutinitas harian</p>
-        <h2>Belajar bukan sekadar aktivitas, tetapi pengalaman hidup yang berulang dan bermakna.</h2>
+        <p class="eyebrow">Ritme harian</p>
+        <h2>Belajar dibuat menyatu dengan kehidupan rumah.</h2>
       </div>
       <div class="stack">
         <p>
-          Setiap kegiatan belajar di IAIS disusun berdasarkan blok rutinitas harian
-          yang menumbuhkan rasa aman, kemandirian, dan kesiapan anak belajar.
+          Anak tidak hanya menyelesaikan materi. Ia belajar bangun dengan tertib,
+          beribadah, membantu rumah, membaca, berhitung, mengeksplorasi alam, berkarya,
+          dan beristirahat dengan ritme yang sehat.
         </p>
         <p>
-          Melalui pengulangan, disiplin positif, dan keteladanan, anak dibimbing untuk
-          tumbuh dalam kebiasaan baik.
+          Rutinitas inilah yang membantu anak membangun fungsi eksekutif: fokus,
+          kendali diri, tanggung jawab, dan kemampuan menyelesaikan tugas bertahap.
         </p>
-        <div class="iais-approach-list">
-          {approach.map((item) => <span>{item}</span>)}
-        </div>
       </div>
     </section>
 
     <section class="section iais-parents" id="orang-tua">
       <div>
-        <p class="eyebrow">Follow right direction</p>
-        <h2>Di IAIS, orang tua adalah bagian dari sistem belajar, bukan sekadar penonton.</h2>
+        <p class="eyebrow">Peran orang tua</p>
+        <h2>Orang tua adalah pendamping utama, bukan sekadar pengawas tugas.</h2>
       </div>
       <ul class="check-list">
-        {parentSupport.map((item) => <li>{item}</li>)}
+        {parentRoles.map((item) => <li>{item}</li>)}
       </ul>
+    </section>
+
+    <section class="section iais-flow">
+      <div class="section-heading compact">
+        <p class="eyebrow">Alur bergabung</p>
+        <h2>Mulai dari membaca kebutuhan keluarga, lalu menyusun ritme belajar yang mungkin dijalani.</h2>
+      </div>
+      <div class="iais-flow-grid">
+        {flow.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="iais-guardrails">
+      <div>
+        <p class="eyebrow">Batasan yang dijaga</p>
+        <h2>Fleksibel, tetapi tetap berpijak pada adab dan arah syar'i.</h2>
+      </div>
+      <div class="iais-guardrail-list">
+        {guardrails.map((item) => <span>{item}</span>)}
+      </div>
     </section>
 
     <section class="cta iais-cta" id="kontak">
       <div>
         <p class="eyebrow">Home-Based Learning</p>
-        <h2>Konsultasikan kebutuhan belajar anak dan keluarga Anda.</h2>
+        <h2>Konsultasikan kebutuhan belajar anak dan ritme keluarga Anda.</h2>
         <p>
-          Kami bantu menjelaskan alur IAIS Home-Based Learning, pilihan program,
-          pendampingan orang tua, dan rencana PPDB 2026/2027.
+          Kami bantu menjelaskan alur IAIS Home-Based Learning, pilihan jenjang,
+          pendampingan orang tua, dan langkah awal yang paling sesuai untuk keluarga.
         </p>
       </div>
       <div class="cta-actions">
-        <a class="button primary" href={consultUrl}>Flyer PPDB 2026/2027</a>
+        <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
         <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
       </div>
     </section>
@@ -384,10 +474,10 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
       </div>
     </div>
-    <nav aria-label="Navigasi footer IAIS">
+    <nav aria-label="Navigasi footer IAIS Home-Based Learning">
       {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
     </nav>
   </footer>
 
-  <a class="floating-help" href={consultUrl}>Konsultasikan</a>
+  <a class="floating-help" href={consultationUrl}>Konsultasi</a>
 </BaseLayout>
