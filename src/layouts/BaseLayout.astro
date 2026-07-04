@@ -28,5 +28,45 @@ const {
   </head>
   <body>
     <slot />
+    <script>
+      const closeSiblingMenus = (activeDetails) => {
+        document.querySelectorAll('.site-header details[open]').forEach((details) => {
+          if (details !== activeDetails) details.removeAttribute('open');
+        });
+      };
+
+      document.addEventListener('toggle', (event) => {
+        const target = event.target;
+        if (target instanceof HTMLDetailsElement && target.open && target.closest('.site-header')) {
+          closeSiblingMenus(target);
+        }
+      }, true);
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        if (target.closest('.site-header a')) {
+          document.querySelectorAll('.site-header details[open]').forEach((details) => {
+            details.removeAttribute('open');
+          });
+          return;
+        }
+
+        if (target.closest('.site-header details')) return;
+
+        document.querySelectorAll('.site-header details[open]').forEach((details) => {
+          details.removeAttribute('open');
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+
+        document.querySelectorAll('.site-header details[open]').forEach((details) => {
+          details.removeAttribute('open');
+        });
+      });
+    </script>
   </body>
 </html>

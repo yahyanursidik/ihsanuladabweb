@@ -2,7 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const navItems = [
-  ['Tentang', '#tentang'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
   ['Alur Belajar', '#alur'],
   ['Visi Misi', '#visi'],
   ['Kontak', '#kontak'],
@@ -17,22 +18,52 @@ const programMenuItems = [
   {
     label: 'Ihsanul Adab Parenting Academy',
     href: '/iapa/',
-    note: 'Halaman tersedia',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
   },
   {
     label: 'Ihsanul Adab Quran Academy',
     href: '#program',
-    note: 'Halaman menyusul',
+    note: 'Pembelajaran Al-Quran keluarga',
   },
   {
     label: 'DeenUp',
-    href: '#program',
-    note: 'Halaman menyusul',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
   },
   {
-    label: 'Homeschooling & Online Learning',
-    href: '#program',
-    note: 'Halaman menyusul',
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
   },
 ];
 
@@ -47,12 +78,58 @@ const programs = [
       'Sahabat belajar orang tua untuk memahami parenting Islami dengan ilmu, adab, fitrah, dan ketenangan.',
   },
   {
-    name: 'Fitrah Journey',
-    audience: 'Keluarga Muslim',
+    name: 'The Father Project',
+    audience: 'Ayah dan laki-laki Muslim',
     category: 'Keluarga',
-    mode: 'Kelas dan komunitas',
+    mode: 'Kelas daring dan komunitas',
+    href: '/program/the-father-project/',
     summary:
-      'Pendampingan memahami fitrah diri, fitrah anak, dan langkah pendidikan yang lebih alami serta beradab.',
+      'Program pembinaan laki-laki Muslim agar bertumbuh sebagai hamba, suami, ayah, dan pemimpin keluarga yang lebih baik.',
+  },
+  {
+    name: 'Fitrah Journey',
+    audience: 'Muslimah dewasa',
+    category: 'Muslimah',
+    mode: 'Online learning dan komunitas',
+    href: '/program/the-fitrah-journey/',
+    summary:
+      'Program edukasi dan komunitas untuk muslimah dewasa agar pulih dalam iman, tumbuh dalam peran, dan kembali pada fitrah.',
+  },
+  {
+    name: 'Headmaster & Teacher Academy',
+    audience: 'Guru dan pemimpin sekolah Islam',
+    category: 'Pendidik',
+    mode: 'Webinar, workshop, dan komunitas',
+    href: '/program/headmaster-teacher-academy/',
+    summary:
+      'Pusat pembinaan guru dan pemimpin sekolah Islam berbasis tauhid, adab, dan profesionalisme.',
+  },
+  {
+    name: 'Program Kaderisasi Guru Al-QurÃ¢â‚¬â„¢an',
+    audience: 'Calon guru PAUD dan SD',
+    category: 'Al-QurÃ¢â‚¬â„¢an',
+    mode: 'Program 2 tahun',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    summary:
+      'Ikhtiar melahirkan pendidik QurÃ¢â‚¬â„¢ani profesional untuk anak usia dini dan sekolah dasar dengan ilmu, adab, dan cinta Al-QurÃ¢â‚¬â„¢an.',
+  },
+  {
+    name: 'IAIEE',
+    audience: 'Lembaga pendidikan Islam',
+    category: 'Mutu lembaga',
+    mode: 'Online, onsite, dan hybrid',
+    href: '/program/iaiee/',
+    summary:
+      'Pendampingan profesional untuk membangun mutu terukur, SDM kuat, sistem berkelanjutan, dan budaya adab lembaga.',
+  },
+  {
+    name: 'Ushuluna',
+    audience: 'Muslim pemula, keluarga, mahasiswa, dan pekerja',
+    category: 'Fondasi Islam',
+    mode: 'Pembelajaran daring',
+    href: '/program/ushuluna/',
+    summary:
+      'Program pembelajaran Islam daring untuk memahami Islam dari fondasi yang benar, bertahap, bermakna, dan menenangkan hati.',
   },
   {
     name: 'Preschool & Kindergarten Online',
@@ -71,12 +148,13 @@ const programs = [
       'Program dasar yang memadukan akademik, adab, Al-Qur\'an, dan pembiasaan belajar yang bermakna.',
   },
   {
-    name: 'Homeschooling & Online Learning',
+    name: 'IAIS Home-Based Learning',
     audience: 'Keluarga fleksibel',
     category: 'Fleksibel',
     mode: 'Homeschooling',
+    href: '/program/homebased-learning/',
     summary:
-      'Pilihan belajar jarak jauh dengan ritme keluarga, bimbingan terarah, dan lingkungan yang aman untuk tumbuh.',
+      'Sekolah Islam terpadu berbasis fitrah, adab, dan keluarga dengan pembelajaran fleksibel dari rumah.',
   },
   {
     name: 'Ihsanul Adab Quran Academy',
@@ -91,8 +169,9 @@ const programs = [
     audience: 'Remaja Muslim',
     category: 'Remaja',
     mode: 'Pembinaan karakter',
+    href: '/program/deenup/',
     summary:
-      'Pembinaan remaja tentang iman, adab, identitas, relasi, dan masalah hidup yang dekat dengan keseharian mereka.',
+      'Program seru untuk remaja Muslim yang ingin upgrade iman, adab, identitas, relasi, dan arah hidup.',
   },
   {
     name: 'The Fitrah Camp',
@@ -167,7 +246,7 @@ const articles = [
       </a>
 
       <nav class="desktop-nav" aria-label="Navigasi utama">
-        <a href="#tentang">Tentang</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
         <details class="nav-dropdown">
           <summary>Program</summary>
           <div class="nav-program-panel">
@@ -182,7 +261,7 @@ const articles = [
         {navItems.slice(1).map(([label, href]) => <a href={href}>{label}</a>)}
       </nav>
 
-      <a class="nav-cta" href="https://berbagi.link/ypihsanuladab">Daftar / Tanya</a>
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -191,7 +270,7 @@ const articles = [
           <span></span>
         </summary>
         <div class="mobile-panel">
-          <a href="#tentang">Tentang</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
           <div class="mobile-program-group">
             <strong>Program</strong>
             {programMenuItems.map((item) => (

@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const navItems = [
+  ['Beranda', '/'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Pilihan Peran', '#pilihan-peran'],
+  ['Nilai Pengabdian', '#nilai-pengabdian'],
+  ['Kontak', '#kontak'],
+];
+
+const programMenuItems = [
+  {
+    label: 'Semua Program',
+    href: '/#program',
+    note: 'Ikhtisar layanan',
+  },
+  {
+    label: 'Ihsanul Adab Parenting Academy',
+    href: '/iapa/',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
+  },
+  {
+    label: 'Ihsanul Adab Quran Academy',
+    href: '/#program',
+    note: 'Pembelajaran Al-Quran keluarga',
+  },
+  {
+    label: 'DeenUp',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
+  },
+  {
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
+  },
+];
+
+const contributionPaths = [
+  {
+    label: 'Program Relawan',
+    tag: 'Kontribusi fleksibel',
+    summary:
+      'Bergabung sebagai relawan dalam bidang pendidikan, media dakwah, sosial, administrasi, dan komunitas.',
+    detail:
+      'Kami membuka kesempatan untuk Anda yang ingin berkontribusi tanpa ikatan waktu penuh.',
+  },
+  {
+    label: 'Program Magang & Studi Praktik',
+    tag: 'Temporary Staffing',
+    summary:
+      'Program untuk mahasiswa dari berbagai jurusan: pendidikan, psikologi, komunikasi, desain, manajemen, dan lainnya.',
+    detail:
+      'Magang bersama kami bukan hanya menyelesaikan SKS, tapi juga membangun karakter, empati, dan pengalaman profesional.',
+  },
+  {
+    label: 'Tenaga Pendidik',
+    tag: 'Guru dan ustadz/ustadzah',
+    summary:
+      'Peran utama dalam mendidik dan menanamkan nilai-nilai Islam kepada peserta didik.',
+    detail:
+      'Kami mencari pengajar yang kompeten secara akademik dan menjadi teladan adab serta ibadah.',
+  },
+  {
+    label: 'Tenaga Kependidikan & Staf Operasional',
+    tag: 'Amanah operasional',
+    summary:
+      'Posisi yang memastikan pendidikan berjalan sistemik, amanah, dan berkualitas.',
+    detail:
+      'Area kontribusi mencakup administrasi, keuangan, teknis lapangan, dokumentasi, dan layanan teknis lainnya.',
+  },
+  {
+    label: 'Tim Manajemen & Strategis',
+    tag: 'Pengembangan yayasan',
+    summary:
+      'Peluang untuk berkontribusi di ranah strategis, tata kelola, dan pengembangan program yayasan.',
+    detail:
+      'Peran ini cocok untuk Anda yang ingin membantu menata arah pertumbuhan lembaga secara berkelanjutan.',
+  },
+];
+
+const values = [
+  'Niat yang lurus karena Allah',
+  'Adab kerja yang amanah dan empatik',
+  'Kemauan belajar dan bertumbuh',
+  'Kesiapan melayani ummat melalui pendidikan',
+];
+
+const whatsappUrl = 'https://wa.me/6285179676003';
+const applyUrl = 'https://berbagi.link/ypihsanuladab';
+---
+
+<BaseLayout
+  title="Karir & Pengabdian - Yayasan Pendidikan Ihsanul Adab"
+  description="Bergabung bersama Yayasan Pendidikan Ihsanul Adab untuk mendidik ummat, menumbuhkan diri, dan mengokohkan amal melalui berbagai peran pengabdian."
+>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span>Karir & Pengabdian Yayasan Pendidikan Ihsanul Adab</span>
+      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+    </div>
+
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <span>
+          <strong>Ihsanul Adab</strong>
+          <small>Karir & Pengabdian</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigasi Karir & Pengabdian">
+        <a href="/">Beranda</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <details class="nav-dropdown">
+          <summary>Program</summary>
+          <div class="nav-program-panel">
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+        </details>
+        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Buka menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-panel">
+          <a href="/">Beranda</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <div class="mobile-program-group">
+            <strong>Program</strong>
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button primary" href={applyUrl}>Apply Now</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="career-hero" aria-labelledby="career-title">
+      <img src="/images/hero-majelis-ilmu-salaf.png" alt="Suasana majelis ilmu dan ruang belajar yang tenang" />
+      <div class="career-hero-content">
+        <p class="eyebrow">Karir & Pengabdian</p>
+        <h1 id="career-title">Bersama mendidik ummat, menumbuhkan diri, mengokohkan amal.</h1>
+        <p>
+          Yayasan Pendidikan Ihsanul Adab mengundang Anda menjadi bagian dari perjalanan
+          besar untuk mencerdaskan, membersamai, dan membangun peradaban berbasis tauhid,
+          adab, dan ilmu.
+        </p>
+        <blockquote>
+          Barangsiapa memudahkan jalan bagi orang lain dalam menuntut ilmu, Allah akan
+          memudahkan baginya jalan menuju surga. <span>(HR. Muslim)</span>
+        </blockquote>
+        <div class="hero-actions">
+          <a class="button primary" href={applyUrl}>Apply Now</a>
+          <a class="button secondary" href="#pilihan-peran">Lihat Pilihan Peran</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section career-intro">
+      <div>
+        <p class="eyebrow">Ladang amal dan pertumbuhan</p>
+        <h2>Di sini, setiap peran adalah ruang untuk memberi manfaat sekaligus bertumbuh.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          Setiap kontribusi adalah investasi akhirat. Setiap insan yang bergabung kami
+          bantu tumbuh dalam kompetensi, akhlak, dan semangat pengabdian.
+        </p>
+        <p>
+          Kami membuka ruang untuk yang ingin ikut membangun generasi bertauhid, beradab,
+          dan berilmu melalui peran yang sesuai kapasitasnya.
+        </p>
+      </div>
+    </section>
+
+    <section class="career-values" id="nilai-pengabdian" aria-label="Nilai pengabdian">
+      {values.map((value, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <h3>{value}</h3>
+        </article>
+      ))}
+    </section>
+
+    <section class="section career-roles" id="pilihan-peran">
+      <div class="section-heading">
+        <p class="eyebrow">Pilihan Peran</p>
+        <h2>Ruang kontribusi untuk pendidikan, dakwah, operasional, dan pengembangan yayasan.</h2>
+      </div>
+      <div class="career-role-grid">
+        {contributionPaths.map((item) => (
+          <article class="career-role-card">
+            <div class="program-meta">
+              <p>{item.tag}</p>
+              <small>Pengabdian</small>
+            </div>
+            <h3>{item.label}</h3>
+            <p>{item.summary}</p>
+            <span>{item.detail}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta career-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Hubungi Kami</p>
+        <h2>Ingin ikut membangun generasi yang bertauhid, beradab, dan berilmu?</h2>
+        <p>Mari mulai dari langkah kecil: apply dan niatkan untuk Allah.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button primary" href={applyUrl}>Apply Now</a>
+        <a class="button secondary" href={whatsappUrl}>Hubungi Kami</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+      <div>
+        <p>Yayasan Pendidikan Ihsanul Adab</p>
+        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+      </div>
+    </div>
+    <nav aria-label="Navigasi footer Karir & Pengabdian">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </footer>
+
+  <a class="floating-help" href={applyUrl}>Apply Now</a>
+</BaseLayout>

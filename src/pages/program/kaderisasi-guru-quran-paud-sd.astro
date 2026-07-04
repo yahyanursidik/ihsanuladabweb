@@ -1,0 +1,305 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const navItems = [
+  ['Beranda', '/'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Tentang PKGQ', '#tentang-pkgq'],
+  ['Struktur', '#struktur'],
+  ['Tim Pengajar', '#tim-pengajar'],
+  ['Kontak', '#kontak'],
+];
+
+const programMenuItems = [
+  {
+    label: 'Semua Program',
+    href: '/#program',
+    note: 'Ikhtisar layanan',
+  },
+  {
+    label: 'Ihsanul Adab Parenting Academy',
+    href: '/iapa/',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
+  },
+  {
+    label: 'Ihsanul Adab Quran Academy',
+    href: '/#program',
+    note: 'Pembelajaran Al-Quran keluarga',
+  },
+  {
+    label: 'DeenUp',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
+  },
+  {
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
+  },
+];
+
+const stats = [
+  ['15', 'Peserta aktif'],
+  ['2 Tahun', 'Program pendidikan'],
+  ['Angkatan 1', 'InsyaAllah akan ada pembukaan angkatan ke-2'],
+];
+
+const audiences = [
+  'Calon guru PAUD dan SD.',
+  'Alumni pesantren dan mahasiswa.',
+  'Asatidz/ah yang ingin meningkatkan kapasitas mengajar anak-anak.',
+];
+
+const features = [
+  {
+    title: 'Online Learning',
+    body: 'Tatap muka intensif secara online agar proses belajar tetap terarah dan mudah diikuti.',
+  },
+  {
+    title: 'Kurikulum Khas',
+    body: 'Pondasi ilmiah, kemampuan membaca, dan keterampilan mengajar Al-QurÃ¢â‚¬â„¢an dipadukan dengan ilmu diniyah serta ilmu pendidikan.',
+  },
+  {
+    title: 'Personalisasi & Pembimbingan Khusus',
+    body: 'Mentoring tahsin, tashih, tahfidz, ilmu diniyah, supervisi pendidikan, dan bimbingan ilmu keguruan.',
+  },
+];
+
+const learningPath = [
+  'Pondasi ilmiah dan keterampilan mengajar Al-QurÃ¢â‚¬â„¢an.',
+  'Tahsin.',
+  'Tashih.',
+  'Tahfidz.',
+  'Penguatan profesionalisme dan praktik mengajar.',
+  'Deep learning.',
+  'Design thinking dalam pembelajaran.',
+  'Layanan dukungan psikologi pendidikan dan bimbingan anak usia dini serta sekolah dasar.',
+  'Kompetensi keguruan lain yang relevan dengan kebutuhan lapangan.',
+];
+
+const teachers = [
+  ['Ustadz Rendi Rustandi', 'Pembina & Pengajar'],
+  ['Ustadz Lanlan Tuhfatul Anfas, B.A., M.A.', 'Pengajar'],
+  ['Dr. H. Azis Lukman Praja, M.Si.', 'Pengajar'],
+  ['Yahya Nursidik, S.Pd, M.T.', 'Pengajar'],
+];
+
+const whatsappUrl = 'https://wa.me/6285179676003';
+const consultUrl = 'https://berbagi.link/ypihsanuladab';
+---
+
+<BaseLayout
+  title="Program Kaderisasi Guru Al-QurÃ¢â‚¬â„¢an (PKGQ) PAUD dan SD - Yayasan Pendidikan Ihsanul Adab"
+  description="PKGQ PAUD dan SD menyiapkan guru QurÃ¢â‚¬â„¢ani profesional, berilmu, dan berakhlak mulia untuk generasi masa depan."
+>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span>Program Kaderisasi Guru Al-QurÃ¢â‚¬â„¢an (PKGQ) Jenjang PAUD dan SD</span>
+      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+    </div>
+
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <span>
+          <strong>Ihsanul Adab</strong>
+          <small>PKGQ PAUD & SD</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigasi PKGQ PAUD dan SD">
+        <a href="/">Beranda</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <details class="nav-dropdown">
+          <summary>Program</summary>
+          <div class="nav-program-panel">
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+        </details>
+        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Buka menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-panel">
+          <a href="/">Beranda</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <div class="mobile-program-group">
+            <strong>Program</strong>
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button primary" href={consultUrl}>Hubungi Kami</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="pkgq-hero" aria-labelledby="pkgq-title">
+      <img src="/images/hero-majelis-ilmu-salaf.png" alt="Suasana belajar Al-QurÃ¢â‚¬â„¢an dan pendidikan anak yang tenang" />
+      <div class="pkgq-hero-content">
+        <p class="eyebrow">Program Kaderisasi Guru Al-QurÃ¢â‚¬â„¢an</p>
+        <h1 id="pkgq-title">Menyiapkan guru QurÃ¢â‚¬â„¢ani profesional, berilmu, dan berakhlak mulia.</h1>
+        <p>
+          Program PKGQ untuk PAUD dan SD adalah ikhtiar nyata melahirkan pendidik
+          QurÃ¢â‚¬â„¢ani yang mampu membimbing anak-anak dengan ilmu, adab, dan cinta Al-QurÃ¢â‚¬â„¢an.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href={consultUrl}>Hubungi Kami</a>
+          <a class="button secondary" href="#tentang-pkgq">Pelajari Program</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pkgq-stats" aria-label="Ringkasan PKGQ">
+      {stats.map(([value, label]) => (
+        <article>
+          <strong>{value}</strong>
+          <span>{label}</span>
+        </article>
+      ))}
+    </section>
+
+    <section class="section pkgq-intro" id="tentang-pkgq">
+      <div>
+        <p class="eyebrow">Mari belajar bersama dan tumbuh bersama</p>
+        <h2>Kenapa memilih Program Kaderisasi Guru Al-QurÃ¢â‚¬â„¢an?</h2>
+      </div>
+      <div class="stack">
+        <p>
+          Dengan kurikulum khas, sistem pembelajaran terstruktur, dan pembimbing
+          profesional, program ini dirancang untuk calon pendidik Al-QurÃ¢â‚¬â„¢an pada jenjang
+          PAUD dan SD.
+        </p>
+        <ul class="check-list">
+          {audiences.map((audience) => <li>{audience}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section pkgq-features">
+      <div class="section-heading">
+        <p class="eyebrow">Sistem Pembelajaran</p>
+        <h2>Online learning, kurikulum khas, dan pembimbingan yang personal.</h2>
+      </div>
+      <div class="pkgq-feature-grid">
+        {features.map((feature) => (
+          <article>
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section pkgq-structure" id="struktur">
+      <div>
+        <p class="eyebrow">Perjalanan pembelajaran</p>
+        <h2>Struktur program 2 tahun untuk mengoptimalkan pondasi ilmiah dan keterampilan mengajar Al-QurÃ¢â‚¬â„¢an.</h2>
+      </div>
+      <div class="pkgq-path-list">
+        {learningPath.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section pkgq-teachers" id="tim-pengajar">
+      <div class="section-heading">
+        <p class="eyebrow">Tim Pengajar</p>
+        <h2>Bersama kami membentuk para guru PAUD dan SD yang kompeten dalam bidangnya.</h2>
+      </div>
+      <div class="team-grid">
+        {teachers.map(([name, role]) => (
+          <article class="team-card">
+            <div aria-hidden="true">{name.split(' ').slice(0, 2).map((part) => part[0]).join('')}</div>
+            <h3>{name}</h3>
+            <p>{role}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta pkgq-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Masih ragu? Ingin tanya-tanya?</p>
+        <h2>Hubungi Admin via WhatsApp untuk informasi PKGQ PAUD dan SD.</h2>
+        <p>Kami siap membantu menjelaskan alur program, pembelajaran, dan pembukaan angkatan berikutnya.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button primary" href={consultUrl}>Hubungi Kami</a>
+        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+      <div>
+        <p>Yayasan Pendidikan Ihsanul Adab</p>
+        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+      </div>
+    </div>
+    <nav aria-label="Navigasi footer PKGQ">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </footer>
+
+  <a class="floating-help" href={consultUrl}>Hubungi Kami</a>
+</BaseLayout>

@@ -1,0 +1,388 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const navItems = [
+  ['Beranda', '/'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Tentang Program', '#tentang-program'],
+  ['Keunggulan', '#keunggulan'],
+  ['Tahapan', '#tahapan'],
+  ['Kontak', '#kontak'],
+];
+
+const programMenuItems = [
+  {
+    label: 'Semua Program',
+    href: '/#program',
+    note: 'Ikhtisar layanan',
+  },
+  {
+    label: 'Ihsanul Adab Parenting Academy',
+    href: '/iapa/',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
+  },
+  {
+    label: 'Ihsanul Adab Quran Academy',
+    href: '/#program',
+    note: 'Pembelajaran Al-Quran keluarga',
+  },
+  {
+    label: 'DeenUp',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
+  },
+  {
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
+  },
+];
+
+const focusAreas = [
+  'Pulih dari luka jiwa dan trauma masa lalu dengan bimbingan Islam.',
+  'Menguatkan iman dan adab sebagai seorang hamba Allah.',
+  'Menjadi anak yang birrul walidain meski telah berkeluarga.',
+  'Menjalani pernikahan dengan ilmu, adab, dan kehangatan.',
+  'Menjadi ibu yang membangun generasi dengan kesadaran fitrah.',
+  'Menemukan keseimbangan hidup sebagai pribadi muslimah.',
+  'Menyiapkan diri menjadi istri dan ibu dalam ridha Allah.',
+  'Bertumbuh bersama komunitas yang sehat, ruhiyah, ilmiah, dan saling mendampingi.',
+  'Menemukan kembali makna diri dan potensi yang bisa dikembangkan secara syarÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢i.',
+];
+
+const stats = [
+  ['122', 'Peserta didik dari berbagai daerah'],
+  ['1', 'Program pendidikan aktif'],
+];
+
+const advantages = [
+  'Menggabungkan ilmu manhaj salaf, pendekatan psikologi Islami, dan keterampilan praktis.',
+  'Pembelajaran fleksibel, cocok untuk ibu rumah tangga atau pekerja.',
+  'Materi bisa diakses ulang dan didampingi fasilitator.',
+  'Komunitas beradab, suportif, dan bebas drama.',
+  'Disiapkan oleh tim ustadzah, psikolog, dan mentor muslimah terpercaya.',
+];
+
+const whyImportant = [
+  'Banyak perempuan memasuki pernikahan dengan luka yang belum selesai.',
+  'Menjadi ibu tidak cukup dengan cinta, tapi butuh ilmu dan keteguhan iman.',
+  'Persiapan lahir dan batin menjadikan rumah tangga tempat ketenangan, bukan pelampiasan.',
+  'Program ini membantu perempuan tidak hanya siap menikah, tapi siap bertauhid dalam rumah tangga.',
+];
+
+const benefits = [
+  {
+    title: 'Program Pendidikan Online',
+    items: [
+      'Short Courses & Webinar Series, gratis dan berbayar.',
+      'Kelas utama The Fitrah Journey, program 2 semester atau 1 tahun yang bertahap dan mendalam.',
+      'Materi tematik per peran: hamba, anak, istri, dan ibu.',
+      'Refleksi mingguan dan aktivitas penerapan nyata.',
+      'Mentoring dan evaluasi personal.',
+    ],
+  },
+  {
+    title: 'Komunitas & Support Group',
+    items: [
+      'Group komunitas khusus.',
+      'Ruang berbagi aman yang dipandu ustadzah dan konselor.',
+      'Teman satu perjalanan menuju fitrah.',
+      'Grup support berdasarkan peran dan fase hidup.',
+    ],
+  },
+  {
+    title: 'Topik Pembelajaran',
+    items: [
+      'Tauhid dan keimanan muslimah.',
+      'Healing dari mother wound, father wound, dan inner child.',
+      'Fiqh wanita dan fiqh peran.',
+      'Manajemen rumah tangga dan keluarga.',
+      'Komunikasi dan psikologi perempuan.',
+      'Kecantikan dan perawatan diri Islami.',
+      'Kesehatan jiwa dan hormonal wanita.',
+      'Wirausaha rumahan dan produktivitas.',
+    ],
+  },
+];
+
+const stages = [
+  ['Warm Up Webinar', 'Kajian rutin 1 jam, gratis dan terbuka untuk umum.'],
+  ['Short Course Series', 'Pembelajaran tematik praktis dengan biaya ringan.'],
+  ['Fitrah Class Program', 'Program utama 2 semester, 20 pekan per semester.'],
+  ['Komunitas & Mentoring', 'Grup support, mentoring, dan refleksi berkelanjutan.'],
+];
+
+const audiences = [
+  'Ibu rumah tangga yang ingin menguatkan peran.',
+  'Muslimah single yang ingin persiapan sebelum menikah.',
+  'Istri yang merasa lelah atau kehilangan arah.',
+  'Ibu muda yang sedang berjuang membesarkan anak.',
+  'Muslimah pekerja yang ingin seimbang antara karir dan fitrah.',
+  'Muslimah dengan pengalaman trauma atau luka relasi.',
+];
+
+const whatsappUrl = 'https://wa.me/6285179676003';
+const consultUrl = 'https://berbagi.link/ypihsanuladab';
+---
+
+<BaseLayout
+  title="The Fitrah Journey - Yayasan Pendidikan Ihsanul Adab"
+  description="The Fitrah Journey adalah program edukasi dan komunitas muslimah dewasa untuk pulih dalam iman, tumbuh dalam peran, dan kembali pada fitrah."
+>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span>The Fitrah Journey</span>
+      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+    </div>
+
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <span>
+          <strong>Ihsanul Adab</strong>
+          <small>The Fitrah Journey</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigasi The Fitrah Journey">
+        <a href="/">Beranda</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <details class="nav-dropdown">
+          <summary>Program</summary>
+          <div class="nav-program-panel">
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+        </details>
+        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Buka menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-panel">
+          <a href="/">Beranda</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <div class="mobile-program-group">
+            <strong>Program</strong>
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button primary" href={consultUrl}>Konsultasikan kepada kami</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="fitrah-hero" aria-labelledby="fitrah-title">
+      <img src="/images/hero-majelis-ilmu-salaf.png" alt="Suasana belajar Islam yang tenang untuk muslimah" />
+      <div class="fitrah-hero-content">
+        <p class="eyebrow">Pulih dalam iman, tumbuh dalam peran</p>
+        <h1 id="fitrah-title">The Fitrah Journey</h1>
+        <p>Kembali pada fitrah dengan ilmu yang sahih, hati yang tenang, dan komunitas yang menguatkan.</p>
+        <blockquote>
+          Setiap perempuan punya kisah. Ada luka yang disimpan, ada rindu untuk pulih,
+          ada peran yang terasa berat. Tapi ada jalan untuk kembali... kepada fitrah.
+        </blockquote>
+        <div class="hero-actions">
+          <a class="button primary" href={consultUrl}>Konsultasikan kepada kami</a>
+          <a class="button secondary" href="#tentang-program">Pelajari Program</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fitrah-intro" id="tentang-program">
+      <div>
+        <p class="eyebrow">Mari berjalan dan berjuang bersama</p>
+        <h2>Program edukasi dan komunitas untuk muslimah dewasa yang ingin pulih, memahami peran, dan bertumbuh.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          The Fitrah Journey dirancang agar muslimah dewasa mampu memahami, memulihkan,
+          dan menjalani peran hidupnya sebagai hamba Allah, anak, istri, ibu, dan bagian
+          dari masyarakat.
+        </p>
+        <p>
+          Program ini menjadi ruang belajar yang lembut namun terarah, dengan bekal ilmu
+          yang sahih, hati yang tenang, dan komunitas yang saling menguatkan.
+        </p>
+      </div>
+    </section>
+
+    <section class="section fitrah-focus">
+      <div class="section-heading">
+        <p class="eyebrow">Apa Itu The Fitrah Journey?</p>
+        <h2>Ruang untuk kembali memahami diri dan peran dengan bimbingan Islam.</h2>
+      </div>
+      <div class="fitrah-focus-grid">
+        {focusAreas.map((item) => <article>{item}</article>)}
+      </div>
+    </section>
+
+    <section class="fitrah-stats" aria-label="Ringkasan The Fitrah Journey">
+      {stats.map(([value, label]) => (
+        <article>
+          <strong>{value}</strong>
+          <span>{label}</span>
+        </article>
+      ))}
+    </section>
+
+    <section class="section fitrah-advantages" id="keunggulan">
+      <div>
+        <p class="eyebrow">Keunggulan Program</p>
+        <h2>Menggabungkan ilmu, pendampingan, dan komunitas yang beradab.</h2>
+      </div>
+      <ul class="check-list">
+        {advantages.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <section class="fitrah-importance">
+      <div>
+        <p class="eyebrow">Healing the heart through Islamic guidance</p>
+        <h2>Mengapa ini penting bagi calon istri dan ibu?</h2>
+      </div>
+      <div>
+        {whyImportant.map((item) => <p>{item}</p>)}
+      </div>
+    </section>
+
+    <section class="section fitrah-benefits">
+      <div class="section-heading">
+        <p class="eyebrow">Bismillah kita bersama</p>
+        <h2>Apa saja yang kamu dapatkan?</h2>
+      </div>
+      <div class="fitrah-benefit-grid">
+        {benefits.map((group) => (
+          <article>
+            <h3>{group.title}</h3>
+            <ul>
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section fitrah-stages" id="tahapan">
+      <div class="section-heading compact">
+        <p class="eyebrow">Tahapan Program</p>
+        <h2>Perjalanan bertahap dari pengenalan, kelas tematik, hingga mentoring berkelanjutan.</h2>
+      </div>
+      <div class="fitrah-stage-grid">
+        {stages.map(([title, detail], index) => (
+          <article>
+            <span>{index + 1}</span>
+            <h3>{title}</h3>
+            <p>{detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section fitrah-audience">
+      <div>
+        <p class="eyebrow">Siapa yang cocok bergabung?</p>
+        <h2>Untuk muslimah yang ingin kembali menguatkan iman, peran, dan fitrahnya.</h2>
+      </div>
+      <ul class="check-list">
+        {audiences.map((audience) => <li>{audience}</li>)}
+      </ul>
+    </section>
+
+    <section class="section fitrah-closing">
+      <article>
+        <p class="eyebrow">The Fitrah Journey</p>
+        <h2>Pulih dalam Iman, Tumbuh dalam Peran, Kembali pada Fitrah.</h2>
+        <p>
+          Program ini dikelola oleh Ihsanul Adab Parenting Academy dan menjadi bagian dari
+          inisiatif edukasi serta dakwah muslimah untuk mendampingi perempuan kembali pada fitrahnya.
+        </p>
+      </article>
+      <article>
+        <p class="eyebrow">Masih ragu? Ingin tanya-tanya?</p>
+        <h2>Hubungi Admin via WhatsApp.</h2>
+        <p>Kami siap membantu menjelaskan alur program, jadwal, dan langkah awal bergabung.</p>
+        <a class="button primary" href={whatsappUrl}>Hubungi Kami</a>
+      </article>
+    </section>
+
+    <section class="cta fitrah-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Supporting women to build homes upon tauhid</p>
+        <h2>Siap memulai perjalanan pulih dan bertumbuh bersama The Fitrah Journey?</h2>
+        <p>Mulai dari satu langkah kecil: bertanya, belajar, dan kembali menata peran dengan ilmu.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button primary" href={consultUrl}>Konsultasikan kepada kami</a>
+        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+      <div>
+        <p>Yayasan Pendidikan Ihsanul Adab</p>
+        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+      </div>
+    </div>
+    <nav aria-label="Navigasi footer The Fitrah Journey">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </footer>
+
+  <a class="floating-help" href={whatsappUrl}>Hubungi Kami</a>
+</BaseLayout>

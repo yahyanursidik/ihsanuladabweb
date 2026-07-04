@@ -1,0 +1,455 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const navItems = [
+  ['Beranda', '/'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Tentang IAIEE', '#tentang-iaiee'],
+  ['Layanan', '#layanan'],
+  ['Paket', '#paket'],
+  ['FAQ', '#faq'],
+];
+
+const programMenuItems = [
+  {
+    label: 'Semua Program',
+    href: '/#program',
+    note: 'Ikhtisar layanan',
+  },
+  {
+    label: 'Ihsanul Adab Parenting Academy',
+    href: '/iapa/',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
+  },
+  {
+    label: 'Ihsanul Adab Quran Academy',
+    href: '/#program',
+    note: 'Pembelajaran Al-Quran keluarga',
+  },
+  {
+    label: 'DeenUp',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
+  },
+  {
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
+  },
+];
+
+const reasons = [
+  'Berbasis tauhid dan adab sebagai fondasi pendidikan serta budaya lembaga.',
+  'Berorientasi sistem: bukan hanya program, tetapi standar dan kebiasaan kerja.',
+  'Bertahap dan realistis, dari diagnosa hingga implementasi yang bisa dijalankan.',
+  'Output nyata: roadmap mutu, instrumen, laporan, perangkat, dan rekomendasi.',
+  'Didukung digitalisasi untuk monitoring, dokumentasi, dan skalabilitas.',
+];
+
+const problems = [
+  'Program banyak, tetapi mutu belum terukur dan sulit dijaga konsistensinya.',
+  'Guru baik, namun perangkat ajar dan pembelajaran belum rapi serta standar.',
+  'Akreditasi mendekat, dokumen belum siap, dan tim mudah panik.',
+  'Ingin digitalisasi, tetapi bingung mulai dari mana dan khawatir tidak berjalan.',
+  'Visi Islami kuat, namun budaya adab belum hidup konsisten dalam keseharian.',
+];
+
+const missions = [
+  'Mengembangkan layanan standarisasi mutu berbasis nilai Islam dan praktik pendidikan kontemporer.',
+  'Meningkatkan kapasitas SDM pendidikan melalui pelatihan, pendampingan, dan sertifikasi berjenjang.',
+  'Mendampingi transformasi sistemik: kurikulum, supervisi pembelajaran, dan manajemen mutu.',
+  'Mendorong inovasi dan digitalisasi pendidikan secara terarah dan bertanggung jawab.',
+  'Membangun budaya riset dan pengembangan untuk penguatan mutu serta keberlanjutan lembaga.',
+];
+
+const services = [
+  {
+    title: 'Standarisasi & Pengembangan Kurikulum',
+    body: 'Review dan penyusunan kurikulum yang rapi, Islami, dan selaras dengan kebutuhan lembaga.',
+  },
+  {
+    title: 'Audit & Supervisi Mutu Pembelajaran',
+    body: 'Observasi kelas, evaluasi mutu, dan rekomendasi perbaikan yang bisa dieksekusi.',
+  },
+  {
+    title: 'Pelatihan Kepala Sekolah dan Guru',
+    body: 'Pelatihan berjenjang yang menumbuhkan kompetensi, adab, kualitas memimpin, dan kualitas mengajar.',
+  },
+  {
+    title: 'Pelatihan Kepala Sekolah & Manajemen',
+    body: 'Penguatan leadership, tata kelola, manajemen mutu, dan komunikasi organisasi.',
+  },
+  {
+    title: 'Pendampingan Akreditasi & Sertifikasi',
+    body: 'Perapihan dokumen, simulasi visitasi, hingga lembaga lebih siap dan tenang menghadapi proses.',
+  },
+  {
+    title: 'Inovasi & Transformasi Digital Pendidikan',
+    body: 'Implementasi serta pelatihan sistem digital yang sederhana, efektif, dan berkelanjutan.',
+  },
+  {
+    title: 'Riset & Pengembangan Pendidikan',
+    body: 'Pengembangan modul, instrumen evaluasi, serta program berbasis data dan kebutuhan riil.',
+  },
+  {
+    title: 'Konsultasi & Pendampingan Lembaga',
+    body: 'Solusi custom sesuai tantangan dan konteks lembaga, baik remote, onsite, maupun hybrid.',
+  },
+];
+
+const packages = [
+  {
+    name: 'Paket Basic',
+    fit: 'Cocok untuk lembaga yang butuh arah dan prioritas.',
+    outputs: ['Diagnosa awal', 'Roadmap mutu', 'Rekomendasi 90 hari', 'Rencana implementasi'],
+  },
+  {
+    name: 'Paket Advance',
+    fit: 'Cocok untuk lembaga yang siap melakukan pembenahan bertahap.',
+    outputs: ['Semua output Paket Basic', 'Pelatihan inti', 'Supervisi implementasi', 'Perangkat dan tools mutu'],
+  },
+  {
+    name: 'Paket Premium',
+    fit: 'Cocok untuk lembaga yang menginginkan transformasi menyeluruh.',
+    outputs: ['Semua output Paket Advance', 'Pendampingan intensif', 'Digitalisasi', 'Akreditasi end-to-end', 'Monitoring berkala'],
+  },
+];
+
+const process = [
+  'Konsultasi awal untuk memahami konteks, visi, dan kebutuhan lembaga.',
+  'Diagnosa mutu melalui data, dokumen, observasi, atau sampling proses belajar.',
+  'Roadmap dan action plan berisi prioritas 90 hari serta rencana 6-12 bulan.',
+  'Implementasi dan pendampingan melalui pelatihan, supervisi, dan pembenahan sistem.',
+  'Evaluasi dan laporan dampak berisi hasil, rekomendasi, dan rencana tahap berikutnya.',
+];
+
+const outputs = [
+  'Roadmap mutu 90 hari atau 6-12 bulan.',
+  'Laporan audit pembelajaran dan rekomendasi peningkatan.',
+  'Toolkit supervisi: instrumen observasi, rubrik, dan format tindak lanjut.',
+  'Perbaikan atau penyusunan perangkat kurikulum dan pembelajaran sesuai kebutuhan.',
+  'Rencana pelatihan berjenjang untuk guru dan kepala sekolah.',
+  'Setup dasar transformasi digital beserta panduan implementasi.',
+  'Paket akreditasi: pemetaan bukti, perapihan dokumen, dan simulasi visitasi jika diambil.',
+];
+
+const impacts = [
+  'Budaya adab lebih hidup dan konsisten dalam keseharian.',
+  'Pembelajaran lebih rapi, terukur, dan bermakna.',
+  'Guru lebih siap dengan perangkat ajar dan strategi mengajar.',
+  'Sistem mutu berjalan tanpa bergantung pada orang kunci.',
+  'Tim akreditasi lebih siap, dokumen tertata, dan proses lebih tenang.',
+  'Digitalisasi berjalan sederhana, efektif, dan bisa dilanjutkan.',
+];
+
+const faqs = [
+  ['Apakah IAIEE hanya untuk sekolah besar?', 'Tidak. IAIEE mendampingi lembaga kecil hingga besar. Paket dibuat bertahap agar realistis.'],
+  ['Bisa online saja?', 'Bisa. Pendampingan dapat dilakukan online, onsite, atau hybrid sesuai kebutuhan dan kesiapan lembaga.'],
+  ['Apakah harus ambil paket premium?', 'Tidak harus. Lembaga bisa mulai dari diagnosa atau Paket Basic untuk menentukan prioritas yang paling mendesak.'],
+  ['Apakah pendekatan IAIEE sesuai manhaj salaf?', 'IAIEE menjaga tauhid dan adab sebagai fondasi, lalu menerjemahkannya ke dalam sistem mutu yang rapi dan bertanggung jawab.'],
+  ['Berapa durasi pendampingan?', 'Durasi menyesuaikan kebutuhan. Umumnya dimulai dari rekomendasi 90 hari, lalu dapat berlanjut ke roadmap 6-12 bulan.'],
+];
+
+const whatsappUrl = 'https://wa.me/6285179676003';
+const consultUrl = 'https://berbagi.link/ypihsanuladab';
+---
+
+<BaseLayout
+  title="IAIEE - Ihsanul Adab Institute for Educational Excellence"
+  description="IAIEE mendampingi lembaga pendidikan Islam membangun mutu terukur, SDM kuat, dan sistem berkelanjutan berlandaskan tauhid dan adab."
+>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span>Ihsanul Adab Institute for Educational Excellence</span>
+      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+    </div>
+
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <span>
+          <strong>Ihsanul Adab</strong>
+          <small>IAIEE</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigasi IAIEE">
+        <a href="/">Beranda</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <details class="nav-dropdown">
+          <summary>Program</summary>
+          <div class="nav-program-panel">
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+        </details>
+        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Buka menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-panel">
+          <a href="/">Beranda</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <div class="mobile-program-group">
+            <strong>Program</strong>
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button primary" href={consultUrl}>Konsultasi</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="iaiee-hero" aria-labelledby="iaiee-title">
+      <img src="/images/hero-pendidikan-ihsanul-adab.png" alt="Suasana pendidikan Islam yang rapi, hangat, dan profesional" />
+      <div class="iaiee-hero-content">
+        <p class="eyebrow">IAIEE</p>
+        <h1 id="iaiee-title">Naik kelas tanpa kehilangan arah Rabbani.</h1>
+        <p>
+          Unit layanan profesional di bawah Yayasan Pendidikan Ihsanul Adab yang
+          mendampingi lembaga pendidikan Islam formal maupun nonformal membangun mutu
+          yang terukur, SDM yang kuat, dan sistem yang berkelanjutan.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href={consultUrl}>Konsultasi via WhatsApp</a>
+          <a class="button secondary" href="#layanan">Lihat layanan</a>
+        </div>
+        <small>Pendampingan tersedia online, onsite, atau hybrid sesuai kebutuhan lembaga.</small>
+      </div>
+    </section>
+
+    <section class="iaiee-principles" aria-label="Prinsip pendampingan IAIEE">
+      <span>Beradab</span>
+      <span>Terukur</span>
+      <span>Realistis</span>
+    </section>
+
+    <section class="section iaiee-intro" id="tentang-iaiee">
+      <div>
+        <p class="eyebrow">Pendampingan yang beradab, terukur, dan realistis</p>
+        <h2>Ini bukan sekadar pelatihan. Ini pembenahan sistem dan budaya mutu.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          IAIEE membantu lembaga membangun peta jalan mutu, menata kurikulum dan
+          pembelajaran, memperkuat SDM serta manajemen, menyiapkan akreditasi, dan
+          mengarahkan transformasi digital.
+        </p>
+        <div class="iaiee-reason-list">
+          {reasons.map((reason) => <span>{reason}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="iaiee-problem">
+      <div>
+        <p class="eyebrow">Kalau ini terjadi di lembaga Anda, Anda tidak sendirian</p>
+        <h2>Masalah mutu biasanya bukan kurang semangat, tetapi kurang sistem.</h2>
+      </div>
+      <div class="iaiee-problem-grid">
+        {problems.map((problem) => <span>{problem}</span>)}
+      </div>
+    </section>
+
+    <section class="section iaiee-about">
+      <div>
+        <p class="eyebrow">Mitra strategis pendidikan Islam</p>
+        <h2>Membangun ekosistem pendidikan yang unggul, berkarakter, dan relevan dengan tantangan zaman.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          Ihsanul Adab Institute for Educational Excellence adalah unit layanan
+          profesional yang berfokus pada peningkatan mutu dan standarisasi lembaga
+          pendidikan Islam, baik formal maupun nonformal.
+        </p>
+        <article class="soft-quote">
+          Menjadi pusat peningkatan mutu dan standarisasi pendidikan Islam yang unggul
+          dalam membentuk generasi Rabbani, beradab, dan berilmu dalam naungan tauhid.
+        </article>
+      </div>
+    </section>
+
+    <section class="section iaiee-mission">
+      <div class="section-heading">
+        <p class="eyebrow">Misi IAIEE</p>
+        <h2>Layanan mutu yang memadukan nilai Islam, praktik pendidikan kontemporer, dan kebutuhan riil lembaga.</h2>
+      </div>
+      <div class="iaiee-step-list">
+        {missions.map((mission, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{mission}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section iaiee-services" id="layanan">
+      <div class="section-heading">
+        <p class="eyebrow">Apa yang kami dampingi</p>
+        <h2>Pilih layanan sesuai kebutuhan, atau mulai dari diagnosa mutu untuk menentukan prioritas terbaik.</h2>
+      </div>
+      <div class="iaiee-service-grid">
+        {services.map((service) => (
+          <article>
+            <h3>{service.title}</h3>
+            <p>{service.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section iaiee-packages" id="paket">
+      <div class="section-heading">
+        <p class="eyebrow">Paket pendampingan bertahap</p>
+        <h2>Lembaga bisa memilih langkah tanpa harus langsung mengambil program besar.</h2>
+      </div>
+      <div class="iaiee-package-grid">
+        {packages.map((item) => (
+          <article>
+            <h3>{item.name}</h3>
+            <p>{item.fit}</p>
+            <strong>Output:</strong>
+            <ul>
+              {item.outputs.map((output) => <li>{output}</li>)}
+            </ul>
+            <a class="button primary" href={consultUrl}>Pilih Paket</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section iaiee-process">
+      <div>
+        <p class="eyebrow">Langkah jelas, output nyata</p>
+        <h2>Bagaimana proses pendampingannya?</h2>
+      </div>
+      <div class="iaiee-process-list">
+        {process.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section iaiee-output">
+      <div class="section-heading">
+        <p class="eyebrow">Output yang bisa langsung dipakai tim</p>
+        <h2>Apa yang Anda dapatkan dari pendampingan IAIEE?</h2>
+      </div>
+      <ul class="check-list">
+        {outputs.map((output) => <li>{output}</li>)}
+      </ul>
+    </section>
+
+    <section class="iaiee-impact">
+      <div>
+        <p class="eyebrow">Mutu yang terlihat, budaya yang terasa</p>
+        <h2>Dampak yang kami kejar.</h2>
+      </div>
+      <div class="iaiee-impact-grid">
+        {impacts.map((impact) => <span>{impact}</span>)}
+      </div>
+    </section>
+
+    <section class="section iaiee-faq" id="faq">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Pertanyaan yang sering ditanyakan.</h2>
+      </div>
+      <div class="iaiee-faq-list">
+        {faqs.map(([question, answer]) => (
+          <details>
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta iaiee-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Siap menata mutu lembaga?</p>
+        <h2>Mulai dari konsultasi awal dan diagnosa kebutuhan lembaga Anda.</h2>
+        <p>
+          Kami membantu menentukan prioritas pembenahan yang realistis, terukur, dan
+          tetap menjaga arah Rabbani: tauhid dan adab.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="button primary" href={consultUrl}>Konsultasi via WhatsApp</a>
+        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+      <div>
+        <p>Yayasan Pendidikan Ihsanul Adab</p>
+        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+      </div>
+    </div>
+    <nav aria-label="Navigasi footer IAIEE">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </footer>
+
+  <a class="floating-help" href={consultUrl}>Konsultasi</a>
+</BaseLayout>

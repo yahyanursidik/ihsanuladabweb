@@ -1,0 +1,465 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const navItems = [
+  ['Beranda', '/'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Tentang', '#tentang-deenup'],
+  ['Materi', '#materi'],
+  ['Level', '#level'],
+  ['Summit', '#summit'],
+];
+
+const programMenuItems = [
+  {
+    label: 'Semua Program',
+    href: '/#program',
+    note: 'Ikhtisar layanan',
+  },
+  {
+    label: 'Ihsanul Adab Parenting Academy',
+    href: '/iapa/',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
+  },
+  {
+    label: 'Ihsanul Adab Quran Academy',
+    href: '/#program',
+    note: 'Pembelajaran Al-Quran keluarga',
+  },
+  {
+    label: 'DeenUp',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
+  },
+  {
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
+  },
+];
+
+const struggles = [
+  'Scroll terus, ketawa sebentar, tapi setelah itu tetap merasa kosong.',
+  'Overthinking soal nilai, jurusan, masa depan, dan takut tertinggal dari teman.',
+  'Bingung menata identitas: ingin taat, tapi lingkungan sering menarik ke arah lain.',
+  'Hubungan dengan orang tua kadang tegang karena sama-sama sulit bicara dengan tenang.',
+  'Pergaulan, candaan, konten, dan tren yang makin tipis batas halal-haramnya.',
+  'Rasa suka, minder, insecure, dan validasi sosial yang sering bikin hati tidak stabil.',
+];
+
+const topics = [
+  'Tauhid: kenal Allah, kenal diri, dan tahu untuk apa hidup.',
+  'Adab kepada orang tua, guru, teman, dan diri sendiri.',
+  'Fikih ibadah dasar: thaharah, shalat, puasa, dan ibadah harian.',
+  'Tazkiyah: mengelola hati, emosi, iri, marah, sedih, dan rasa kosong.',
+  'Mindset Islami untuk belajar, gagal, berteman, dan memilih lingkungan.',
+  'Batasan rasa, pergaulan, ikhtilat, dan cara menjaga diri dengan bermartabat.',
+  'Digital balance: medsos, game, konten, FOMO, dan adab online.',
+  'Menjadi remaja Muslim di sekolah, rumah, dan dunia yang serba bebas.',
+];
+
+const formats = [
+  'Microlearning 5-12 menit lewat audio, video pendek, dan catatan ringkas.',
+  'Tugas ringan: jurnal refleksi, checklist ibadah, dan tantangan amal harian.',
+  'Forum diskusi yang dibimbing, dengan adab komunikasi dan batasan interaksi yang jelas.',
+  'Bahasa dekat remaja Indonesia, dengan istilah Arab penting dijelaskan pelan-pelan.',
+];
+
+const levels = [
+  {
+    title: 'Level 1: Kenalin Peran Diri',
+    body: 'Mulai dari pondasi: tauhid, adab, ibadah dasar, identitas Muslim, dan cara membaca diri dengan jujur.',
+  },
+  {
+    title: 'Level 2: Hidupmu, Tantanganmu',
+    body: 'Bahas realita remaja: emosi, keluarga, pertemanan, rasa suka, gaya hidup, teknologi, dan tekanan sosial.',
+  },
+  {
+    title: 'Level 3: Arahkan Masa Depanmu',
+    body: 'Membangun arah belajar, kontribusi, leadership, pilihan lingkungan, dan rencana hidup yang lebih bertanggung jawab.',
+  },
+];
+
+const system = [
+  'Belajar via LMS dengan materi pendek yang bisa diulang kapan saja.',
+  'Ada sesi komunitas, halaqah, atau kelas sekolah dengan pendampingan mentor.',
+  'Kegiatan offline dirancang terpisah dan tertib sesuai adab: ikhwan dan akhwat dijaga batasannya.',
+];
+
+const audiences = [
+  'Usia 13-18 tahun, SMP/SMA/sederajat.',
+  'Ingin mulai taat tapi masih bingung langkah pertama yang realistis.',
+  'Ingin punya circle yang lebih sehat, beriman, dan tidak meremehkan dosa.',
+  'Sering merasa kosong, insecure, mudah terdistraksi, atau kehilangan arah.',
+  'Mau tetap berprestasi, punya teman, dan berkembang tanpa meninggalkan adab.',
+  'Remaja Indonesia di dalam negeri maupun diaspora.',
+];
+
+const benefits = [
+  'Pegangan iman di masa paling bimbang.',
+  'Lingkungan belajar yang hangat, terarah, dan tidak menghakimi.',
+  'Ilmu yang benar dari Al-Quran dan Sunnah dengan pemahaman Salafus Shalih.',
+  'Teman bertumbuh yang saling mengingatkan dalam kebaikan.',
+  'Cara menghadapi masalah remaja dengan adab, ilmu, dan langkah kecil.',
+  'Bekal menjadi remaja yang lebih dewasa, bertanggung jawab, dan bermanfaat.',
+];
+
+const summit = [
+  'Pertemuan peserta dari berbagai daerah dengan pengaturan adab dan batas interaksi yang jelas.',
+  'Workshop, diskusi terbimbing, tantangan karya, dan project kontribusi.',
+  'Ruang menampilkan karya yang bermanfaat, bukan sekadar tampil.',
+  'Latihan leadership, tanggung jawab, dan kerja tim secara lebih nyata.',
+];
+
+const testimonials = [
+  {
+    name: 'Farhan',
+    age: '17 tahun',
+    rating: '4 / 5',
+    quote: 'Materinya relate, tapi tetap jelas batasannya. Jadi lebih kebayang mulai berubah dari mana.',
+  },
+  {
+    name: 'Aisyah',
+    age: '16 tahun',
+    rating: '5 / 5',
+    quote: 'Saya merasa ditemani, bukan dihakimi. Pelan-pelan jadi lebih semangat jaga shalat dan adab di rumah.',
+  },
+  {
+    name: 'Rafi',
+    age: '15 tahun',
+    rating: '4 / 5',
+    quote: 'Bagian digital balance paling kena. Saya jadi lebih sadar kapan HP membantu dan kapan merusak fokus.',
+  },
+];
+
+const heroStats = [
+  ['13-18', 'SMP/SMA/sederajat'],
+  ['3 Level', 'bertahap dan realistis'],
+  ['Hybrid', 'LMS, komunitas, dan event'],
+];
+
+const communityRules = [
+  'Materi dan forum dibimbing mentor agar diskusi tetap beradab.',
+  'Interaksi ikhwan dan akhwat dijaga dengan batasan yang jelas.',
+  'Tidak ada budaya saling mempermalukan, ranking iman, atau tekanan tampil sempurna.',
+  'Setiap peserta diarahkan pada amal kecil yang bisa dijaga konsisten.',
+];
+
+const whatsappUrl = 'https://wa.me/6285179676003';
+const consultUrl = 'https://berbagi.link/ypihsanuladab';
+---
+
+<BaseLayout
+  title="DeenUp - Upgrade Iman, Adab, dan Diri"
+  description="DeenUp adalah program pembinaan remaja Muslim berbasis tauhid, adab, dan solusi masalah hidup yang dekat dengan anak SMP dan SMA."
+>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span>DeenUp: Upgrade Iman, Adab, dan Diri</span>
+      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+    </div>
+
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <span>
+          <strong>Ihsanul Adab</strong>
+          <small>DeenUp</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigasi DeenUp">
+        <a href="/">Beranda</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <details class="nav-dropdown">
+          <summary>Program</summary>
+          <div class="nav-program-panel">
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+        </details>
+        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Buka menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-panel">
+          <a href="/">Beranda</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <div class="mobile-program-group">
+            <strong>Program</strong>
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button primary" href={consultUrl}>Gabung DeenUp</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="deenup-hero" aria-labelledby="deenup-title">
+      <img src="/images/deenup-teen-study-hero.png" alt="Meja belajar remaja dengan buku, catatan, ponsel tertutup, dan perangkat belajar yang rapi" />
+      <div class="deenup-hero-content">
+        <p class="eyebrow">DeenUp untuk SMP & SMA</p>
+        <h1 id="deenup-title">Upgrade iman, adab, dan arah hidup.</h1>
+        <p>
+          Komunitas pembinaan remaja Muslim usia 13-18 tahun yang ingin bertumbuh
+          lebih tenang: kenal Allah, kenal diri, jaga adab, dan punya pegangan
+          menghadapi sekolah, rumah, pertemanan, teknologi, dan masa depan.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href={consultUrl}>Gabung DeenUp</a>
+          <a class="button secondary" href="#tentang-deenup">Cari Tahu Dulu</a>
+        </div>
+        <div class="deenup-hero-stats" aria-label="Ringkasan program DeenUp">
+          {heroStats.map(([label, value]) => (
+            <div>
+              <strong>{label}</strong>
+              <span>{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section deenup-about" id="tentang-deenup">
+      <div>
+        <p class="eyebrow">Apa itu DeenUp?</p>
+        <h2>Bukan sekadar kelas agama, tapi ruang bertumbuh yang ngerti realita remaja.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          DeenUp adalah program pembinaan remaja Muslim berbasis tauhid, adab, dan
+          solusi masalah hidup yang sering banget dialami anak SMP dan SMA.
+        </p>
+        <p>
+          Di sini, Islam dipelajari sebagai pegangan untuk menghadapi hidup: keluarga,
+          sekolah, pertemanan, masa depan, pergaulan, teknologi, dan kegelisahan diri.
+          Bahasanya dekat, arahnya jelas, dan batasannya tetap dijaga.
+        </p>
+      </div>
+    </section>
+
+    <section class="deenup-struggle">
+      <div>
+        <p class="eyebrow">Kenapa kamu butuh DeenUp?</p>
+        <h2>Karena jujur aja, remaja hari ini lagi diuji banget.</h2>
+      </div>
+      <div class="deenup-struggle-grid">
+        {struggles.map((item) => <span>{item}</span>)}
+      </div>
+    </section>
+
+    <section class="section deenup-materials" id="materi">
+      <div class="section-heading">
+        <p class="eyebrow">Apa aja yang dipelajari?</p>
+        <h2>Materi dikemas asyik, padat, dan relate dengan generasi muda.</h2>
+      </div>
+      <div class="deenup-topic-grid">
+        {topics.map((topic) => <article>{topic}</article>)}
+      </div>
+    </section>
+
+    <section class="section deenup-format">
+      <div>
+        <p class="eyebrow">Cara belajarnya</p>
+        <h2>Ringan diikuti, tetap punya arah, dan nggak bikin sendirian.</h2>
+      </div>
+      <div class="deenup-format-list">
+        {formats.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section deenup-levels" id="level">
+      <div class="section-heading">
+        <p class="eyebrow">Modular System</p>
+        <h2>Belajar step by step, dari kenal diri sampai siap mengarahkan masa depan.</h2>
+      </div>
+      <div class="deenup-level-grid">
+        {levels.map((level) => (
+          <article>
+            <h3>{level.title}</h3>
+            <p>{level.body}</p>
+          </article>
+        ))}
+      </div>
+      <p class="deenup-note">Setiap level berjalan 4-6 bulan. Peserta bisa bergabung dari level berapa pun.</p>
+    </section>
+
+    <section class="section deenup-system">
+      <div>
+        <p class="eyebrow">Hybrid System</p>
+        <h2>Sistem belajarnya fleksibel: online, komunitas, sekolah, dan event offline.</h2>
+      </div>
+      <div class="deenup-system-list">
+        {system.map((item) => <span>{item}</span>)}
+      </div>
+    </section>
+
+    <section class="section deenup-guardrails">
+      <div>
+        <p class="eyebrow">Aman, beradab, dan terarah</p>
+        <h2>Komunitas remaja harus hangat, tapi tetap punya batas yang jelas.</h2>
+      </div>
+      <div class="deenup-guardrail-list">
+        {communityRules.map((item, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section deenup-audience">
+      <div>
+        <p class="eyebrow">Cocok untuk siapa?</p>
+        <h2>Untuk kamu yang pengen tumbuh tanpa kehilangan arah sebagai Muslim.</h2>
+      </div>
+      <ul class="check-list">
+        {audiences.map((audience) => <li>{audience}</li>)}
+      </ul>
+    </section>
+
+    <section class="section deenup-benefits">
+      <div class="section-heading">
+        <p class="eyebrow">Apa yang kamu dapat?</p>
+        <h2>Bermacam manfaat yang bisa kamu bawa ke hidup sehari-hari.</h2>
+      </div>
+      <div class="deenup-benefit-grid">
+        {benefits.map((benefit) => <article>{benefit}</article>)}
+      </div>
+    </section>
+
+    <section class="deenup-summit" id="summit">
+      <div>
+        <p class="eyebrow">Daurah & Youth Summit</p>
+        <h2>Setahun sekali, ada event spesial buat tumbuh bareng.</h2>
+      </div>
+      <div class="deenup-summit-grid">
+        {summit.map((item) => <span>{item}</span>)}
+      </div>
+    </section>
+
+    <section class="section deenup-testimonials">
+      <div class="section-heading">
+        <p class="eyebrow">Apa kata mereka?</p>
+        <h2>Belajar Islam bisa tetap serius tanpa kehilangan rasa dekat dan relate.</h2>
+      </div>
+      <div class="deenup-testimonial-grid">
+        {testimonials.map((item) => (
+          <article>
+            <div>
+              <strong>{item.name}</strong>
+              <span>{item.age}</span>
+            </div>
+            <small>{item.rating}</small>
+            <p>"{item.quote}"</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section deenup-closing">
+      <article>
+        <p class="eyebrow">Tenang, kamu nggak sendirian</p>
+        <h2>Jangan cuma bertahan di masa remaja. Tumbuhlah.</h2>
+        <p>Biar kamu bukan cuma ada, tapi berarti.</p>
+      </article>
+      <article>
+        <h2>DeenUp hadir buat nemenin proses itu.</h2>
+        <p>
+          Bukan untuk menghakimi, tapi untuk membantu kamu punya arah, lingkungan yang
+          lebih sehat, dan pegangan iman yang lebih kuat.
+        </p>
+        <a class="button primary" href={consultUrl}>Gabung DeenUp</a>
+      </article>
+    </section>
+
+    <section class="cta deenup-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Upgrade iman, adab, dan diri</p>
+        <h2>Siap jadi remaja keren yang tetap taat?</h2>
+        <p>
+          Mulai perjalanan DeenUp dan temukan komunitas belajar yang positif, beriman,
+          dan ngerti realita remaja hari ini.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="button primary" href={consultUrl}>Gabung DeenUp</a>
+        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+      <div>
+        <p>Yayasan Pendidikan Ihsanul Adab</p>
+        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+      </div>
+    </div>
+    <nav aria-label="Navigasi footer DeenUp">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </footer>
+
+  <a class="floating-help" href={consultUrl}>Gabung DeenUp</a>
+</BaseLayout>

@@ -1,0 +1,447 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const navItems = [
+  ['Beranda', '/'],
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Karir & Pengabdian', '/karir-pengabdian/'],
+  ['Tentang HTA', '#tentang-hta'],
+  ['Program', '#program-hta'],
+  ['Untuk Siapa', '#untuk-siapa'],
+  ['Kontak', '#kontak'],
+];
+
+const programMenuItems = [
+  {
+    label: 'Semua Program',
+    href: '/#program',
+    note: 'Ikhtisar layanan',
+  },
+  {
+    label: 'Ihsanul Adab Parenting Academy',
+    href: '/iapa/',
+    note: 'Parenting Islami keluarga',
+  },
+  {
+    label: 'The Father Project',
+    href: '/program/the-father-project/',
+    note: 'Komunitas ayah Muslim',
+  },
+  {
+    label: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+    note: 'Fitrah muslimah dewasa',
+  },
+  {
+    label: 'Headmaster & Teacher Academy',
+    href: '/program/headmaster-teacher-academy/',
+    note: 'Pengembangan guru dan sekolah',
+  },
+  {
+    label: 'PKGQ PAUD & SD',
+    href: '/program/kaderisasi-guru-quran-paud-sd/',
+    note: 'Kaderisasi guru Al-Quran',
+  },
+  {
+    label: 'IAIEE',
+    href: '/program/iaiee/',
+    note: 'Konsultasi mutu pendidikan',
+  },
+  {
+    label: 'Ushuluna',
+    href: '/program/ushuluna/',
+    note: 'Fondasi Islam bertahap',
+  },
+  {
+    label: 'Ihsanul Adab Quran Academy',
+    href: '/#program',
+    note: 'Pembelajaran Al-Quran keluarga',
+  },
+  {
+    label: 'DeenUp',
+    href: '/program/deenup/',
+    note: 'Pembinaan remaja Muslim',
+  },
+  {
+    label: 'IAIS Home-Based Learning',
+    href: '/program/homebased-learning/',
+    note: 'Sekolah Islam dari rumah',
+  },
+];
+
+const realities = [
+  'Guru ingin kelas lebih hidup, tetapi sering tersita administrasi dan masalah perilaku murid.',
+  'Kepala sekolah diminta memimpin mutu, SDM, orang tua, dan budaya sekolah dalam waktu bersamaan.',
+  'Banyak pelatihan terasa umum, sementara masalah sekolah Islam membutuhkan arah tauhid, adab, dan langkah praktis.',
+];
+
+const foundations = [
+  {
+    title: 'Tauhid sebagai arah',
+    body: 'Setiap kebijakan, kelas, dan keputusan sekolah diarahkan sebagai amanah ibadah.',
+  },
+  {
+    title: 'Adab sebagai budaya',
+    body: 'Pendidik dibina untuk menghadirkan ilmu dengan hikmah, keteladanan, dan komunikasi yang menjaga kehormatan.',
+  },
+  {
+    title: 'Mutu sebagai ikhtiar',
+    body: 'Perbaikan sekolah dilakukan bertahap melalui standar, ritme kerja, supervisi, dan evaluasi yang realistis.',
+  },
+];
+
+const goals = [
+  'Menguatkan identitas pendidik Muslim: lurus niat, jelas peran, dan matang dalam adab profesional.',
+  'Membantu kepala sekolah membaca masalah lembaga, menentukan prioritas, dan menggerakkan tim dengan hikmah.',
+  'Menerjemahkan nilai Islam menjadi budaya kelas, budaya kerja, layanan orang tua, dan standar mutu sekolah.',
+  'Membangun komunitas belajar pendidik yang saling menasihati, berbagi praktik baik, dan bertumbuh bersama.',
+];
+
+const mainPrograms = [
+  {
+    title: 'Majelis Webinar Pendidik',
+    label: 'Terbuka berkala',
+    summary:
+      'Sesi tematik untuk membaca masalah nyata sekolah Islam: kepemimpinan, budaya adab, komunikasi orang tua, kelas, dan mutu pembelajaran.',
+    fit: 'Cocok sebagai pintu masuk bagi guru, kepala sekolah, pengelola, yayasan, dan calon pendidik.',
+  },
+  {
+    title: 'Workshop Solusi Sekolah',
+    label: 'Praktis',
+    summary:
+      'Kelas kerja berbasis kasus untuk menyusun perangkat, alur supervisi, peta masalah, dan langkah perbaikan yang bisa langsung dicoba.',
+    fit: 'Cocok untuk tim yang membutuhkan solusi terarah tanpa kehilangan ruh Islam.',
+  },
+  {
+    title: 'School Leadership Circle',
+    label: 'Kepala sekolah',
+    summary:
+      'Pembinaan untuk kepala sekolah dan wakil kepala sekolah agar lebih tenang membaca data, memimpin guru, menjaga budaya, dan mengambil keputusan.',
+    fit: 'Cocok untuk pimpinan sekolah Islam dan calon pemimpin pendidikan.',
+  },
+  {
+    title: 'Teacher Growth Program',
+    label: 'Guru & calon guru',
+    summary:
+      'Penguatan kompetensi mengajar, adab pendidik, manajemen kelas, komunikasi, asesmen, dan kesiapan mental menjadi guru Muslim.',
+    fit: 'Cocok untuk guru aktif, calon guru, dan lembaga yang membina tim pengajar.',
+  },
+  {
+    title: 'Komunitas Kepala Sekolah & Guru Belajar',
+    label: 'Komunitas',
+    summary:
+      'Ruang ukhuwah profesi untuk bertanya, berbagi pengalaman lapangan, menjaga semangat, dan menumbuhkan kebiasaan belajar yang berkelanjutan.',
+    fit: 'Cocok untuk pendidik yang tidak ingin berjalan sendiri.',
+  },
+];
+
+const differences = [
+  'Berbasis Al-Quran dan Sunnah dengan pemahaman Salafus Shalih.',
+  'Bahasa pembelajaran dewasa: jelas, ringkas, dan menghargai pengalaman lapangan.',
+  'Membahas kasus nyata sekolah, bukan teori yang jauh dari kelas.',
+  'Menghubungkan adab, pedagogik, kepemimpinan, dan sistem mutu.',
+  'Menghasilkan alat kerja: checklist, rubrik, peta masalah, dan rencana tindak lanjut.',
+  'Tidak menggurui, tetapi membersamai pendidik yang sedang berjuang.',
+];
+
+const audiences = [
+  'Guru PAUD, SD, SMP, dan SMA Islam yang ingin mengajar lebih terarah dan beradab.',
+  'Kepala sekolah, wakil kepala sekolah, koordinator jenjang, dan koordinator kurikulum.',
+  'Pengelola yayasan pendidikan yang ingin menata mutu tanpa kehilangan ruh tarbiyah.',
+  'Calon guru dan calon pemimpin sekolah yang ingin dibina sejak awal.',
+  'Lembaga yang ingin membangun budaya kerja Islami, tertib, dan berkelanjutan.',
+];
+
+const webinarTopics = [
+  'Kepemimpinan sekolah Islam yang menenangkan tim dan menjaga arah.',
+  'Supervisi guru yang membina, bukan sekadar menilai.',
+  'Manajemen kelas, adab murid, dan komunikasi dengan orang tua.',
+  'Kurikulum, asesmen, budaya sekolah, dan mutu layanan pendidikan.',
+];
+
+const heroMetrics = [
+  ['Komunitas', 'kepala sekolah dan guru'],
+  ['Aplikatif', 'berbasis problem lapangan'],
+  ['Bertahap', 'dari webinar ke pendampingan'],
+];
+
+const learningFlow = [
+  {
+    title: 'Refleksi Amanah',
+    body: 'Menata niat, membaca peran, dan memahami masalah pendidikan sebagai amanah yang perlu ditunaikan dengan ilmu.',
+  },
+  {
+    title: 'Peta Masalah',
+    body: 'Membedakan gejala dan akar masalah pada kelas, guru, orang tua, budaya sekolah, dan kepemimpinan lembaga.',
+  },
+  {
+    title: 'Praktik Terarah',
+    body: 'Menyusun langkah kecil: instrumen kerja, SOP ringan, rubrik, agenda supervisi, atau rencana tindak lanjut.',
+  },
+  {
+    title: 'Komunitas Bertumbuh',
+    body: 'Menjaga proses melalui forum belajar, nasihat, studi kasus, dan pertemuan berkala bersama para pendidik.',
+  },
+];
+
+const whatsappUrl = 'https://wa.me/6285179676003';
+const consultUrl = 'https://berbagi.link/ypihsanuladab';
+---
+
+<BaseLayout
+  title="Headmaster & Teacher Academy (HTA) - Yayasan Pendidikan Ihsanul Adab"
+  description="HTA adalah pusat pembinaan guru dan pemimpin sekolah Islam berbasis tauhid, adab, dan profesionalisme."
+>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span>Headmaster & Teacher Academy</span>
+      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+    </div>
+
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <span>
+          <strong>Ihsanul Adab</strong>
+          <small>HTA</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigasi Headmaster & Teacher Academy">
+        <a href="/">Beranda</a>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <details class="nav-dropdown">
+          <summary>Program</summary>
+          <div class="nav-program-panel">
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+        </details>
+        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+
+      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+
+      <details class="mobile-menu">
+        <summary aria-label="Buka menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div class="mobile-panel">
+          <a href="/">Beranda</a>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <div class="mobile-program-group">
+            <strong>Program</strong>
+            {programMenuItems.map((item) => (
+              <a href={item.href}>
+                <span>{item.label}</span>
+                <small>{item.note}</small>
+              </a>
+            ))}
+          </div>
+          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+          <a class="button primary" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="hta-hero" aria-labelledby="hta-title">
+      <img src="/images/hta-leadership-workspace-hero.png" alt="Ruang perencanaan pendidikan Islam dengan buku, papan tulis, dan perangkat kerja sekolah" />
+      <div class="hta-hero-content">
+        <p class="eyebrow">Headmaster & Teacher Academy (HTA)</p>
+        <h1 id="hta-title">Ruang bertumbuh bagi kepala sekolah dan guru Muslim.</h1>
+        <p>
+          Komunitas pembinaan pendidik Islam berbasis tauhid, adab, kepemimpinan,
+          dan solusi sekolah yang praktis agar guru tidak lelah sendirian dan
+          kepala sekolah memiliki arah yang lebih jernih.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href={consultUrl}>Daftar Webinar</a>
+          <a class="button secondary" href="#tentang-hta">Pelajari HTA</a>
+        </div>
+        <div class="hta-hero-metrics" aria-label="Ringkasan Headmaster & Teacher Academy">
+          {heroMetrics.map(([label, value]) => (
+            <div>
+              <strong>{label}</strong>
+              <span>{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section hta-welcome" id="tentang-hta">
+      <div>
+        <p class="eyebrow">Selamat Datang di HTA</p>
+        <h2>Di balik sekolah Islam yang kuat, selalu ada guru yang beradab dan kepala sekolah yang memimpin dengan hikmah.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          Realitanya, banyak guru dan kepala sekolah bekerja keras, menghadapi problem
+          manajemen, SDM, kelas, dan orang tua, tetapi belum memiliki ruang belajar yang
+          relevan, praktis, dan sesuai nilai Islam.
+        </p>
+        <p>
+          Headmaster & Teacher Academy hadir sebagai jawaban: bukan sekadar pelatihan,
+          tetapi ruang tumbuh bersama bagi pendidik dan pemimpin sekolah Islam yang
+          ingin memperbaiki diri, tim, kelas, dan lembaga secara bertahap.
+        </p>
+        <div class="hta-reality-list">
+          {realities.map((item) => <span>{item}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section hta-about">
+      <div>
+        <p class="eyebrow">Apa itu HTA?</p>
+        <h2>Program pengembangan guru, kepala sekolah, dan lembaga pendidikan Islam.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          HTA diselenggarakan oleh Yayasan Pendidikan Ihsanul Adab untuk memperkuat
+          kepemimpinan pendidikan Islam, meningkatkan kompetensi keguruan dan manajemen
+          sekolah, serta menumbuhkan komunitas belajar yang sehat bagi para pendidik.
+        </p>
+        <div class="hta-foundation">
+          {foundations.map((item) => (
+            <article>
+              <strong>{item.title}</strong>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section hta-goals">
+      <div class="section-heading">
+        <p class="eyebrow">Tujuan Headmaster & Teacher Academy</p>
+        <h2>HTA bertujuan membangun mutu pendidikan Islam secara bertahap dan berkelanjutan.</h2>
+      </div>
+      <div class="hta-goal-grid">
+        {goals.map((goal, index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{goal}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section hta-flow">
+      <div class="section-heading">
+        <p class="eyebrow">Alur belajar HTA</p>
+        <h2>Belajar dimulai dari amanah, lalu turun menjadi peta kerja yang bisa dijalankan.</h2>
+      </div>
+      <div class="hta-flow-grid">
+        {learningFlow.map((step, index) => (
+          <article>
+            <small>{String(index + 1).padStart(2, '0')}</small>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section hta-programs" id="program-hta">
+      <div class="section-heading">
+        <p class="eyebrow">Program Utama HTA</p>
+        <h2>Ruang belajar praktis untuk pendidik, kepala sekolah, pengelola, dan calon pemimpin pendidikan.</h2>
+      </div>
+      <div class="hta-program-grid">
+        {mainPrograms.map((program) => (
+          <article>
+            <div class="program-meta">
+              <p>{program.label}</p>
+              <small>HTA</small>
+            </div>
+            <h3>{program.title}</h3>
+            <p>{program.summary}</p>
+            <span>{program.fit}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="hta-difference" id="keunggulan">
+      <div>
+        <p class="eyebrow">Supporting Educators with Practical Solutions</p>
+        <h2>Mengapa HTA berbeda?</h2>
+      </div>
+      <div class="hta-difference-grid">
+        {differences.map((item) => <span>{item}</span>)}
+      </div>
+    </section>
+
+    <section class="section hta-audience" id="untuk-siapa">
+      <div>
+        <p class="eyebrow">For Those Shaping Quality Islamic Education</p>
+        <h2>Untuk siapa HTA ini?</h2>
+      </div>
+      <ul class="check-list">
+        {audiences.map((audience) => <li>{audience}</li>)}
+      </ul>
+    </section>
+
+    <section class="section hta-webinar">
+      <article>
+        <p class="eyebrow">Langkah pertama tidak harus besar</p>
+        <h2>Mulailah dari majelis webinar HTA.</h2>
+        <p>Webinar Headmaster & Teacher Academy membahas topik yang dekat dengan kebutuhan sekolah Islam dan mudah ditindaklanjuti.</p>
+        <ul>
+          {webinarTopics.map((topic) => <li>{topic}</li>)}
+        </ul>
+      </article>
+      <article>
+        <p class="eyebrow">Mulai langkah kecil Anda sekarang</p>
+        <h2>Daftar Webinar atau hubungi kami.</h2>
+        <p>Email: salam@ihsanuladab.or.id</p>
+        <p>WhatsApp: +62 851-7967-6003</p>
+        <a class="button primary" href={consultUrl}>Daftar Webinar</a>
+      </article>
+    </section>
+
+    <section class="cta hta-cta" id="kontak">
+      <div>
+        <p class="eyebrow">Pendidikan adalah amal panjang</p>
+        <h2>HTA hadir untuk menemani para pendidik agar tidak berjalan sendiri.</h2>
+        <p>
+          Bersama kita bangun pendidikan Islam yang bermutu, beradab, dan berdampak,
+          dengan niat, arah, dan perjuangan yang tetap lurus.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="button primary" href={consultUrl}>Daftar Webinar</a>
+        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+      <div>
+        <p>Yayasan Pendidikan Ihsanul Adab</p>
+        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+      </div>
+    </div>
+    <nav aria-label="Navigasi footer HTA">
+      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </footer>
+
+  <a class="floating-help" href={consultUrl}>Daftar Webinar</a>
+</BaseLayout>
