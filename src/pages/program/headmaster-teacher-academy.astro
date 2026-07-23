@@ -1,13 +1,41 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  ArrowDown,
+  ArrowRight,
+  BriefcaseBusiness,
+  ChartNoAxesCombined,
+  Check,
+  CircleCheck,
+  ClipboardCheck,
+  Compass,
+  ExternalLink,
+  GraduationCap,
+  HandHeart,
+  House,
+  Lightbulb,
+  Menu,
+  MessageCircle,
+  Network,
+  NotebookPen,
+  Presentation,
+  Route,
+  School,
+  ShieldCheck,
+  Target,
+  UsersRound,
+  Waypoints,
+} from '@lucide/astro';
+import '../../styles/headmaster-teacher-academy-redesign.css';
 
 const navItems = [
   ['Beranda', '/'],
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
   ['Tentang HTA', '#tentang-hta'],
+  ['Alur Belajar', '#alur-belajar'],
   ['Program', '#program-hta'],
-  ['Untuk Siapa', '#untuk-siapa'],
+  ['Peserta', '#untuk-siapa'],
   ['Kontak', '#kontak'],
 ];
 
@@ -77,14 +105,17 @@ const realities = [
 
 const foundations = [
   {
+    icon: Compass,
     title: 'Tauhid sebagai arah',
     body: 'Setiap kebijakan, kelas, dan keputusan sekolah diarahkan sebagai amanah ibadah.',
   },
   {
+    icon: HandHeart,
     title: 'Adab sebagai budaya',
     body: 'Pendidik dibina untuk menghadirkan ilmu dengan hikmah, keteladanan, dan komunikasi yang menjaga kehormatan.',
   },
   {
+    icon: ChartNoAxesCombined,
     title: 'Mutu sebagai ikhtiar',
     body: 'Perbaikan sekolah dilakukan bertahap melalui standar, ritme kerja, supervisi, dan evaluasi yang realistis.',
   },
@@ -99,6 +130,7 @@ const goals = [
 
 const mainPrograms = [
   {
+    icon: Presentation,
     title: 'Majelis Webinar Pendidik',
     label: 'Terbuka berkala',
     summary:
@@ -106,6 +138,7 @@ const mainPrograms = [
     fit: 'Cocok sebagai pintu masuk bagi guru, kepala sekolah, pengelola, yayasan, dan calon pendidik.',
   },
   {
+    icon: ClipboardCheck,
     title: 'Workshop Solusi Sekolah',
     label: 'Praktis',
     summary:
@@ -113,6 +146,7 @@ const mainPrograms = [
     fit: 'Cocok untuk tim yang membutuhkan solusi terarah tanpa kehilangan ruh Islam.',
   },
   {
+    icon: Network,
     title: 'School Leadership Circle',
     label: 'Kepala sekolah',
     summary:
@@ -120,6 +154,7 @@ const mainPrograms = [
     fit: 'Cocok untuk pimpinan sekolah Islam dan calon pemimpin pendidikan.',
   },
   {
+    icon: GraduationCap,
     title: 'Teacher Growth Program',
     label: 'Guru & calon guru',
     summary:
@@ -127,6 +162,7 @@ const mainPrograms = [
     fit: 'Cocok untuk guru aktif, calon guru, dan lembaga yang membina tim pengajar.',
   },
   {
+    icon: UsersRound,
     title: 'Komunitas Kepala Sekolah & Guru Belajar',
     label: 'Komunitas',
     summary:
@@ -160,25 +196,29 @@ const webinarTopics = [
 ];
 
 const heroMetrics = [
-  ['Komunitas', 'kepala sekolah dan guru'],
-  ['Aplikatif', 'berbasis problem lapangan'],
-  ['Bertahap', 'dari webinar ke pendampingan'],
+  { icon: UsersRound, label: 'Komunitas', value: 'kepala sekolah dan guru' },
+  { icon: BriefcaseBusiness, label: 'Aplikatif', value: 'berbasis problem lapangan' },
+  { icon: Route, label: 'Bertahap', value: 'dari webinar ke pendampingan' },
 ];
 
 const learningFlow = [
   {
+    icon: Compass,
     title: 'Refleksi Amanah',
     body: 'Menata niat, membaca peran, dan memahami masalah pendidikan sebagai amanah yang perlu ditunaikan dengan ilmu.',
   },
   {
+    icon: Target,
     title: 'Peta Masalah',
     body: 'Membedakan gejala dan akar masalah pada kelas, guru, orang tua, budaya sekolah, dan kepemimpinan lembaga.',
   },
   {
+    icon: NotebookPen,
     title: 'Praktik Terarah',
     body: 'Menyusun langkah kecil: instrumen kerja, SOP ringan, rubrik, agenda supervisi, atau rencana tindak lanjut.',
   },
   {
+    icon: UsersRound,
     title: 'Komunitas Bertumbuh',
     body: 'Menjaga proses melalui forum belajar, nasihat, studi kasus, dan pertemuan berkala bersama para pendidik.',
   },
@@ -186,48 +226,62 @@ const learningFlow = [
 
 const whatsappUrl = 'https://wa.me/6285179676003';
 const consultUrl = 'https://berbagi.link/ypihsanuladab';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
 ---
 
 <BaseLayout
   title="Headmaster & Teacher Academy (HTA) - Yayasan Pendidikan Ihsanul Adab"
   description="HTA adalah pusat pembinaan guru dan pemimpin sekolah Islam berbasis tauhid, adab, dan profesionalisme."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-hta">
+  <a class="skip-link hm-hta-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
+  <header class="site-header hm-hta-header">
     <div class="topbar">
-      <span>Headmaster & Teacher Academy</span>
-      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
+      <div class="topbar-inner">
+        <span>Pengembangan guru dan pemimpin sekolah Islam</span>
+        <a href={whatsappUrl}>
+          Konsultasi HTA
+          <ArrowRight size={15} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+      </div>
     </div>
 
     <div class="nav-shell">
       <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
         <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
         <span>
-          <strong>Ihsanul Adab</strong>
-          <small>HTA</small>
+          <strong>HTA</strong>
+          <small>Headmaster & Teacher Academy</small>
         </span>
       </a>
 
       <nav class="desktop-nav" aria-label="Navigasi Headmaster & Teacher Academy">
         <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
         <details class="nav-dropdown">
-          <summary>Program</summary>
+          <summary aria-label="Buka daftar program">Program</summary>
           <div class="nav-program-panel">
             {programMenuItems.map((item) => (
-              <a href={item.href}>
+              <a
+                href={item.href}
+                aria-current={item.href === '/program/headmaster-teacher-academy/' ? 'page' : undefined}
+              >
                 <span>{item.label}</span>
                 <small>{item.note}</small>
               </a>
             ))}
           </div>
         </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+        <a href="#tentang-hta" data-section-link="tentang-hta">Tentang</a>
+        <a href="#alur-belajar" data-section-link="alur-belajar">Alur</a>
+        <a href="#program-hta" data-section-link="program-hta">Program HTA</a>
+        <a href="#untuk-siapa" data-section-link="untuk-siapa">Peserta</a>
       </nav>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+      <a class="nav-cta" href={lmsUrl}>
+        Akses LMS
+        <ExternalLink size={15} strokeWidth={1.8} aria-hidden="true" />
+      </a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -249,41 +303,65 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
             ))}
           </div>
           {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+          <a class="button primary" href={lmsUrl}>
+            Akses LMS
+            <ExternalLink size={17} strokeWidth={1.8} aria-hidden="true" />
+          </a>
         </div>
       </details>
     </div>
+    <div class="page-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <main id="konten">
     <section class="hta-hero" aria-labelledby="hta-title">
-      <img src="/images/hta-leadership-workspace-hero.png" alt="Ruang perencanaan pendidikan Islam dengan buku, papan tulis, dan perangkat kerja sekolah" />
+      <img
+        src="/images/hta-faceless-teacher-classroom-hero.png"
+        alt="Guru ikhwan dan peserta kelas tampak dari belakang saat mempelajari diagram pengembangan sekolah"
+        width="1674"
+        height="936"
+        fetchpriority="high"
+      />
+      <div class="hta-hero-shade" aria-hidden="true"></div>
       <div class="hta-hero-content">
-        <p class="eyebrow">Headmaster & Teacher Academy (HTA)</p>
-        <h1 id="hta-title">Ruang bertumbuh bagi kepala sekolah dan guru Muslim.</h1>
+        <p class="eyebrow">Headmaster & Teacher Academy</p>
+        <h1 id="hta-title">Menata kepemimpinan. Menguatkan guru. Menumbuhkan mutu.</h1>
         <p>
-          Komunitas pembinaan pendidik Islam berbasis tauhid, adab, kepemimpinan,
-          dan solusi sekolah yang praktis agar guru tidak lelah sendirian dan
-          kepala sekolah memiliki arah yang lebih jernih.
+          HTA membantu kepala sekolah dan guru Muslim membaca persoalan lembaga,
+          memperbaiki praktik kelas, serta membangun budaya kerja yang beradab
+          melalui pembinaan yang bertahap dan dekat dengan realitas lapangan.
         </p>
-        <div class="hero-actions">
-          <a class="button primary" href={consultUrl}>Daftar Webinar</a>
-          <a class="button secondary" href="#tentang-hta">Pelajari HTA</a>
+        <div class="hero-signals" aria-label="Ringkasan Headmaster and Teacher Academy">
+          <span><UsersRound size={16} strokeWidth={1.8} aria-hidden="true" />Guru & pimpinan</span>
+          <span><BriefcaseBusiness size={16} strokeWidth={1.8} aria-hidden="true" />Berbasis kasus</span>
+          <span><Route size={16} strokeWidth={1.8} aria-hidden="true" />Bertahap</span>
         </div>
-        <div class="hta-hero-metrics" aria-label="Ringkasan Headmaster & Teacher Academy">
-          {heroMetrics.map(([label, value]) => (
-            <div>
-              <strong>{label}</strong>
-              <span>{value}</span>
-            </div>
-          ))}
+        <div class="hero-actions">
+          <a class="button primary" href={consultUrl}>
+            Konsultasi program
+            <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+          </a>
+          <a class="button secondary" href="#alur-belajar">
+            Lihat alur HTA
+            <ArrowDown size={18} strokeWidth={1.8} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
 
+    <section class="hta-hero-metrics" aria-label="Ringkasan Headmaster & Teacher Academy">
+      {heroMetrics.map(({ icon: Icon, label, value }) => (
+        <div>
+          <Icon size={22} strokeWidth={1.6} aria-hidden="true" />
+          <strong>{label}</strong>
+          <span>{value}</span>
+        </div>
+      ))}
+    </section>
+
     <section class="section hta-welcome" id="tentang-hta">
       <div>
-        <p class="eyebrow">Selamat Datang di HTA</p>
+        <p class="eyebrow">Titik berangkat</p>
         <h2>Di balik sekolah Islam yang kuat, selalu ada guru yang beradab dan kepala sekolah yang memimpin dengan hikmah.</h2>
       </div>
       <div class="stack">
@@ -298,7 +376,12 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
           ingin memperbaiki diri, tim, kelas, dan lembaga secara bertahap.
         </p>
         <div class="hta-reality-list">
-          {realities.map((item) => <span>{item}</span>)}
+          {realities.map((item, index) => (
+            <span>
+              <small>{String(index + 1).padStart(2, '0')}</small>
+              <span>{item}</span>
+            </span>
+          ))}
         </div>
       </div>
     </section>
@@ -315,10 +398,11 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
           sekolah, serta menumbuhkan komunitas belajar yang sehat bagi para pendidik.
         </p>
         <div class="hta-foundation">
-          {foundations.map((item) => (
+          {foundations.map(({ icon: Icon, title, body }) => (
             <article>
-              <strong>{item.title}</strong>
-              <p>{item.body}</p>
+              <Icon size={27} strokeWidth={1.55} aria-hidden="true" />
+              <strong>{title}</strong>
+              <p>{body}</p>
             </article>
           ))}
         </div>
@@ -333,27 +417,34 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
       <div class="hta-goal-grid">
         {goals.map((goal, index) => (
           <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <Target size={22} strokeWidth={1.6} aria-hidden="true" />
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
             <p>{goal}</p>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section hta-flow">
+    <section class="section hta-flow" id="alur-belajar">
       <div class="section-heading">
         <p class="eyebrow">Alur belajar HTA</p>
-        <h2>Belajar dimulai dari amanah, lalu turun menjadi peta kerja yang bisa dijalankan.</h2>
+        <h2>Dari refleksi amanah menuju perbaikan yang dapat dijaga bersama.</h2>
       </div>
-      <div class="hta-flow-grid">
-        {learningFlow.map((step, index) => (
-          <article>
-            <small>{String(index + 1).padStart(2, '0')}</small>
+      <ol class="hta-flow-grid" aria-label="Alur belajar Headmaster and Teacher Academy">
+        {learningFlow.map(({ icon: Icon, ...step }, index) => (
+          <li style={'--flow-order: ' + index}>
+            <div>
+              <Icon size={25} strokeWidth={1.6} aria-hidden="true" />
+              <small>{String(index + 1).padStart(2, '0')}</small>
+            </div>
             <h3>{step.title}</h3>
             <p>{step.body}</p>
-          </article>
+            {index < learningFlow.length - 1 && <ArrowRight class="hta-flow-arrow" size={23} strokeWidth={1.6} aria-hidden="true" />}
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
 
     <section class="section hta-programs" id="program-hta">
@@ -362,15 +453,20 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         <h2>Ruang belajar praktis untuk pendidik, kepala sekolah, pengelola, dan calon pemimpin pendidikan.</h2>
       </div>
       <div class="hta-program-grid">
-        {mainPrograms.map((program) => (
+        {mainPrograms.map(({ icon: Icon, ...program }, index) => (
           <article>
             <div class="program-meta">
+              <Icon size={25} strokeWidth={1.55} aria-hidden="true" />
               <p>{program.label}</p>
-              <small>HTA</small>
+              <small>{String(index + 1).padStart(2, '0')}</small>
             </div>
             <h3>{program.title}</h3>
             <p>{program.summary}</p>
             <span>{program.fit}</span>
+            <a href={consultUrl}>
+              Tanyakan program
+              <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+            </a>
           </article>
         ))}
       </div>
@@ -378,39 +474,62 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
     <section class="hta-difference" id="keunggulan">
       <div>
-        <p class="eyebrow">Supporting Educators with Practical Solutions</p>
-        <h2>Mengapa HTA berbeda?</h2>
+        <p class="eyebrow">Prinsip yang dijaga</p>
+        <h2>Praktis untuk lapangan, tetap berhati-hati dalam arah pendidikan.</h2>
       </div>
       <div class="hta-difference-grid">
-        {differences.map((item) => <span>{item}</span>)}
+        {differences.map((item) => (
+          <span>
+            <ShieldCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{item}</span>
+          </span>
+        ))}
       </div>
     </section>
 
     <section class="section hta-audience" id="untuk-siapa">
       <div>
-        <p class="eyebrow">For Those Shaping Quality Islamic Education</p>
-        <h2>Untuk siapa HTA ini?</h2>
+        <p class="eyebrow">Peserta HTA</p>
+        <h2>Untuk mereka yang memikul amanah pendidikan dan ingin terus bertumbuh.</h2>
       </div>
       <ul class="check-list">
-        {audiences.map((audience) => <li>{audience}</li>)}
+        {audiences.map((audience) => (
+          <li>
+            <CircleCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{audience}</span>
+          </li>
+        ))}
       </ul>
     </section>
 
     <section class="section hta-webinar">
       <article>
+        <Presentation size={34} strokeWidth={1.45} aria-hidden="true" />
         <p class="eyebrow">Langkah pertama tidak harus besar</p>
         <h2>Mulailah dari majelis webinar HTA.</h2>
         <p>Webinar Headmaster & Teacher Academy membahas topik yang dekat dengan kebutuhan sekolah Islam dan mudah ditindaklanjuti.</p>
         <ul>
-          {webinarTopics.map((topic) => <li>{topic}</li>)}
+          {webinarTopics.map((topic) => (
+            <li>
+              <Check size={17} strokeWidth={2} aria-hidden="true" />
+              <span>{topic}</span>
+            </li>
+          ))}
         </ul>
       </article>
       <article>
+        <Lightbulb size={34} strokeWidth={1.45} aria-hidden="true" />
         <p class="eyebrow">Mulai langkah kecil Anda sekarang</p>
-        <h2>Daftar Webinar atau hubungi kami.</h2>
-        <p>Email: salam@ihsanuladab.or.id</p>
-        <p>WhatsApp: +62 851-7967-6003</p>
-        <a class="button primary" href={consultUrl}>Daftar Webinar</a>
+        <h2>Tentukan titik perbaikan yang paling mendesak.</h2>
+        <p>Ceritakan kebutuhan guru, kepala sekolah, atau lembaga Anda. Admin akan membantu menjelaskan program yang paling relevan.</p>
+        <div class="hta-contact-lines">
+          <a href="mailto:salam@ihsanuladab.or.id">salam@ihsanuladab.or.id</a>
+          <a href={whatsappUrl}>+62 851-7967-6003</a>
+        </div>
+        <a class="button primary" href={consultUrl}>
+          Konsultasi HTA
+          <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
       </article>
     </section>
 
@@ -424,24 +543,152 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         </p>
       </div>
       <div class="cta-actions">
-        <a class="button primary" href={consultUrl}>Daftar Webinar</a>
-        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+        <a class="button primary" href={consultUrl}>
+          Konsultasi program
+          <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+        <a class="button secondary" href={whatsappUrl}>
+          WhatsApp admin
+          <MessageCircle size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+    <div class="footer-statement">
       <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+        <p class="eyebrow">Headmaster & Teacher Academy</p>
+        <h2>Guru bertumbuh. Pemimpin lebih jernih. Sekolah bergerak dengan arah.</h2>
+      </div>
+      <School size={44} strokeWidth={1.3} aria-hidden="true" />
+    </div>
+    <div class="footer-meta">
+      <a class="footer-brand" href="/">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+        <div>
+          <p>Yayasan Pendidikan Ihsanul Adab</p>
+          <span>Mendidik dengan adab. Menumbuhkan dengan ilmu.</span>
+        </div>
+      </a>
+      <nav aria-label="Navigasi footer HTA">
+        {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+      <div>
+        <a href={lmsUrl}>Akses LMS</a>
+        <span>&copy; 2026 Ihsanul Adab</span>
       </div>
     </div>
-    <nav aria-label="Navigasi footer HTA">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
-    </nav>
   </footer>
 
-  <a class="floating-help" href={consultUrl}>Daftar Webinar</a>
+  <nav class="hm-mobile-bottom-nav hm-hta-bottom-nav" aria-label="Navigasi bawah HTA">
+    <a href="/">
+      <House size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Beranda</span>
+    </a>
+    <a href="#alur-belajar" data-section-link="alur-belajar">
+      <Waypoints size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Alur</span>
+    </a>
+    <a href="#program-hta" data-section-link="program-hta">
+      <GraduationCap size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Program</span>
+    </a>
+    <a href={whatsappUrl}>
+      <MessageCircle size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Tanya</span>
+    </a>
+    <details>
+      <summary>
+        <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Menu</span>
+      </summary>
+      <div>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <a href="/#program">Semua Program</a>
+        <a href={lmsUrl}>Akses LMS</a>
+      </div>
+    </details>
+  </nav>
+
+  <script>
+    const htaRevealTargets = document.querySelectorAll(
+      '.hm-hta main section > div, .hm-hta main section > ol, .hm-hta main section > ul, .hm-hta main article',
+    );
+    const htaReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    htaRevealTargets.forEach((item) => item.classList.add('hm-hta-reveal'));
+
+    if (htaReduceMotion || !('IntersectionObserver' in window)) {
+      htaRevealTargets.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const htaObserver = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      htaRevealTargets.forEach((item) => htaObserver.observe(item));
+    }
+
+    const htaHeader = document.querySelector('.hm-hta-header');
+    const htaProgress = document.querySelector('.hm-hta .page-progress span');
+    const htaSectionLinks = [...document.querySelectorAll('.hm-hta [data-section-link]')];
+    const htaSections = htaSectionLinks
+      .map((link) => document.getElementById(link.getAttribute('data-section-link') || ''))
+      .filter((section, index, collection) => section && collection.indexOf(section) === index);
+    const htaDetails = [...document.querySelectorAll('.hm-hta .nav-dropdown, .hm-hta .hm-hta-bottom-nav details')];
+
+    const syncHtaNavigation = () => {
+      const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollRange > 0 ? Math.min(window.scrollY / scrollRange, 1) : 0;
+      htaProgress?.style.setProperty('transform', `scaleX(${progress})`);
+      htaHeader?.classList.toggle('is-scrolled', window.scrollY > 16);
+
+      const marker = Math.max(
+        (htaHeader?.getBoundingClientRect().height || 0) + 32,
+        window.innerHeight * 0.4,
+      );
+      let activeId = '';
+      htaSections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= marker) activeId = section.id;
+      });
+
+      htaSectionLinks.forEach((link) => {
+        const isActive = link.getAttribute('data-section-link') === activeId;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    htaDetails.forEach((detail) => {
+      detail.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => detail.removeAttribute('open'));
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      htaDetails.forEach((detail) => {
+        if (!detail.contains(event.target)) detail.removeAttribute('open');
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      htaDetails.forEach((detail) => detail.removeAttribute('open'));
+    });
+
+    window.addEventListener('scroll', syncHtaNavigation, { passive: true });
+    window.addEventListener('resize', syncHtaNavigation);
+    document.fonts?.ready.then(syncHtaNavigation);
+    syncHtaNavigation();
+  </script>
+  </div>
 </BaseLayout>

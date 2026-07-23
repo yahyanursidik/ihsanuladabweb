@@ -1,5 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  ArrowDown,
+  ArrowRight,
+  AudioLines,
+  BookOpenCheck,
+  CalendarRange,
+  CircleCheck,
+  ClipboardCheck,
+  Compass,
+  ExternalLink,
+  Headphones,
+  House,
+  Menu,
+  MessageCircle,
+  Mic,
+  Presentation,
+  ShieldCheck,
+  Sprout,
+  Target,
+  UserRoundCheck,
+  Video,
+  Waypoints,
+} from '@lucide/astro';
+import '../../styles/pkgq-redesign.css';
 
 const consultationUrl = 'https://berbagi.link/ypihsanuladab';
 const whatsappUrl = 'https://wa.me/6285179676003';
@@ -10,8 +34,8 @@ const navItems = [
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
   ['Tentang PKGQ', '#tentang-pkgq'],
-  ['Kurikulum', '#kurikulum'],
-  ['Alur', '#alur'],
+  ['Pilar', '#kurikulum'],
+  ['Alur Kaderisasi', '#alur'],
   ['Tim Pengajar', '#tim-pengajar'],
   ['Kontak', '#kontak'],
 ];
@@ -70,9 +94,9 @@ const programMenuItems = [
 ];
 
 const stats = [
-  ['2 Tahun', 'program pembinaan bertahap'],
-  ['PAUD & SD', 'fokus pada usia dini dan sekolah dasar'],
-  ['Online', 'belajar terarah dari tempat masing-masing'],
+  { icon: CalendarRange, value: '2 Tahun', label: 'program pembinaan bertahap' },
+  { icon: Sprout, value: 'PAUD & SD', label: 'fokus pada karakter usia anak' },
+  { icon: Video, value: 'Daring', label: 'talaqqi dan pembinaan dari tempat masing-masing' },
 ];
 
 const needs = [
@@ -91,18 +115,22 @@ const audiences = [
 
 const pillars = [
   {
+    icon: AudioLines,
     title: 'Tahsin, tashih, dan tahfizh',
     body: 'Menguatkan bacaan, ketelitian, dan kedekatan peserta dengan Al-Qur\'an sebelum membimbing anak.',
   },
   {
+    icon: Compass,
     title: 'Ilmu diniyah dan adab',
     body: 'Membekali calon guru dengan fondasi keislaman, adab penuntut ilmu, dan sikap amanah sebagai pendidik.',
   },
   {
+    icon: Sprout,
     title: 'Pedagogi PAUD dan SD',
     body: 'Mempelajari karakter usia dini dan sekolah dasar agar pengajaran lebih lembut, jelas, dan bertahap.',
   },
   {
+    icon: Presentation,
     title: 'Praktik mengajar dan supervisi',
     body: 'Peserta diarahkan menyusun aktivitas, berlatih mengajar, menerima masukan, dan memperbaiki cara membimbing.',
   },
@@ -110,20 +138,29 @@ const pillars = [
 
 const learningPath = [
   {
-    phase: 'Fondasi',
-    body: 'Menata niat, adab belajar, kualitas bacaan, kebiasaan murajaah, dan pemahaman dasar pendidikan anak.',
+    icon: Compass,
+    phase: 'Orientasi dan tashih',
+    body: 'Menata niat, adab belajar, memetakan kualitas bacaan, serta menyusun kebiasaan murajaah yang realistis.',
   },
   {
-    phase: 'Penguatan',
-    body: 'Mendalami tahsin, tashih, tahfizh, ilmu diniyah, serta strategi membangun kelas Al-Qur\'an yang tertib dan hangat.',
+    icon: Headphones,
+    phase: 'Talaqqi dan penguatan',
+    body: 'Mengikuti pembinaan bacaan, tahsin, tashih, tahfizh, serta penguatan ilmu diniyah secara bertahap.',
   },
   {
-    phase: 'Metode mengajar',
-    body: 'Menyusun rancangan pembelajaran, aktivitas sesuai usia, evaluasi sederhana, dan komunikasi dengan orang tua atau lembaga.',
+    icon: BookOpenCheck,
+    phase: 'Pedagogi anak',
+    body: 'Memahami karakter PAUD dan SD, menyusun aktivitas sesuai usia, serta menjaga suasana belajar yang hangat dan tertib.',
   },
   {
-    phase: 'Praktik dan pendampingan',
-    body: 'Melatih praktik mengajar, menerima supervisi, memperbaiki alur kelas, dan menyiapkan portofolio pengajaran.',
+    icon: Presentation,
+    phase: 'Praktik mengajar',
+    body: 'Melatih pembukaan, penyampaian, koreksi bacaan, evaluasi sederhana, dan komunikasi dengan orang tua atau lembaga.',
+  },
+  {
+    icon: ClipboardCheck,
+    phase: 'Supervisi dan portofolio',
+    body: 'Menerima masukan, memperbaiki alur kelas, dan merapikan bukti kesiapan mengajar sebagai pijakan tindak lanjut.',
   },
 ];
 
@@ -146,42 +183,55 @@ const teachers = [
   title="Program Kaderisasi Guru Al-Qur'an (PKGQ) PAUD dan SD - Yayasan Pendidikan Ihsanul Adab"
   description="PKGQ PAUD dan SD menyiapkan calon guru Al-Qur'an untuk anak usia dini dan sekolah dasar melalui pembinaan tahsin, adab, ilmu diniyah, pedagogi, dan praktik mengajar."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-pkgq">
+  <a class="skip-link hm-pkgq-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
+  <header class="site-header hm-pkgq-header">
     <div class="topbar">
-      <span>Program Kaderisasi Guru Al-Qur'an PAUD dan SD</span>
-      <a href={consultationUrl}>Konsultasi program</a>
+      <div class="topbar-inner">
+        <span>Kaderisasi guru Al-Qur'an untuk PAUD dan SD</span>
+        <a href={consultationUrl}>
+          Konsultasi program
+          <ArrowRight size={15} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+      </div>
     </div>
 
     <div class="nav-shell">
       <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
         <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
         <span>
-          <strong>Ihsanul Adab</strong>
-          <small>PKGQ PAUD & SD</small>
+          <strong>PKGQ</strong>
+          <small>Guru Al-Qur'an PAUD & SD</small>
         </span>
       </a>
 
       <nav class="desktop-nav" aria-label="Navigasi PKGQ PAUD dan SD">
         <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
         <details class="nav-dropdown">
-          <summary>Program</summary>
+          <summary aria-label="Buka daftar program">Program</summary>
           <div class="nav-program-panel">
             {programMenuItems.map((item) => (
-              <a href={item.href}>
+              <a
+                href={item.href}
+                aria-current={item.href === '/program/kaderisasi-guru-quran-paud-sd/' ? 'page' : undefined}
+              >
                 <span>{item.label}</span>
                 <small>{item.note}</small>
               </a>
             ))}
           </div>
         </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+        <a href="#tentang-pkgq" data-section-link="tentang-pkgq">Tentang</a>
+        <a href="#kurikulum" data-section-link="kurikulum">Kurikulum</a>
+        <a href="#alur" data-section-link="alur">Alur</a>
+        <a href="#tim-pengajar" data-section-link="tim-pengajar">Pengajar</a>
       </nav>
 
-      <a class="nav-cta" href={lmsUrl}>Akses LMS IA</a>
+      <a class="nav-cta" href={lmsUrl}>
+        Akses LMS
+        <ExternalLink size={15} strokeWidth={1.8} aria-hidden="true" />
+      </a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -206,36 +256,56 @@ const teachers = [
           <a href="#kurikulum">Kurikulum</a>
           <a href="#alur">Alur</a>
           <a href="#tim-pengajar">Tim Pengajar</a>
-          <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
+          <a class="button primary" href={consultationUrl}>
+            Konsultasi program
+            <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+          </a>
         </div>
       </details>
     </div>
+    <div class="page-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <main id="konten">
     <section class="pkgq-hero" aria-labelledby="pkgq-title">
       <img
-        src="/images/pkgq-teacher-training-hero.png"
-        alt="Meja belajar guru Al-Qur'an dengan mushaf tertutup, kitab, catatan lesson plan, kartu geometri, dan alat tulis tanpa figur makhluk bernyawa"
+        src="/images/pkgq-online-talaqqi-faceless-hero.png"
+        alt="Guru ikhwan tampak dari belakang mengikuti talaqqi daring melalui audio dan materi pembelajaran tanpa tampilan wajah"
+        width="1674"
+        height="936"
+        fetchpriority="high"
       />
+      <div class="pkgq-hero-shade" aria-hidden="true"></div>
       <div class="pkgq-hero-content">
-        <p class="eyebrow">Program Kaderisasi Guru Al-Qur'an PAUD dan SD</p>
-        <h1 id="pkgq-title">Menyiapkan guru Al-Qur'an yang beradab, terarah, dan siap membimbing anak.</h1>
+        <p class="eyebrow">Program kaderisasi dua tahun</p>
+        <h1 id="pkgq-title">Benahi bacaan. Pahami anak. Siapkan amanah mengajar.</h1>
         <p>
-          PKGQ membantu calon guru membangun fondasi bacaan, adab, ilmu diniyah,
-          pedagogi anak, dan keterampilan mengajar agar pembelajaran Al-Qur'an lebih
-          lembut, tertib, dan bermakna.
+          PKGQ membina calon guru Al-Qur'an PAUD dan SD melalui talaqqi, penguatan
+          diniyah, pedagogi anak, praktik mengajar, dan supervisi agar proses belajar
+          lebih lembut, tertib, dan dapat dipertanggungjawabkan.
         </p>
+        <div class="hero-signals" aria-label="Ringkasan program">
+          <span><CalendarRange size={16} strokeWidth={1.8} aria-hidden="true" />2 tahun</span>
+          <span><Sprout size={16} strokeWidth={1.8} aria-hidden="true" />PAUD & SD</span>
+          <span><Video size={16} strokeWidth={1.8} aria-hidden="true" />Daring</span>
+        </div>
         <div class="hero-actions">
-          <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
-          <a class="button secondary" href="#tentang-pkgq">Pelajari Program</a>
+          <a class="button primary" href={consultationUrl}>
+            Konsultasi program
+            <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+          </a>
+          <a class="button secondary" href="#alur">
+            Lihat alur kaderisasi
+            <ArrowDown size={18} strokeWidth={1.8} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
 
     <section class="pkgq-stats" aria-label="Ringkasan PKGQ">
-      {stats.map(([value, label]) => (
+      {stats.map(({ icon: Icon, value, label }) => (
         <article>
+          <Icon size={23} strokeWidth={1.6} aria-hidden="true" />
           <strong>{value}</strong>
           <span>{label}</span>
         </article>
@@ -245,7 +315,7 @@ const teachers = [
     <section class="section pkgq-intro" id="tentang-pkgq">
       <div>
         <p class="eyebrow">Tentang PKGQ</p>
-        <h2>Kaderisasi guru Al-Qur'an perlu dibangun dengan ilmu, adab, dan pemahaman usia anak.</h2>
+        <h2>Guru Al-Qur'an anak perlu dibina sebelum diminta membina.</h2>
       </div>
       <div class="stack">
         <p>
@@ -258,6 +328,10 @@ const teachers = [
           mengajar dengan lebih siap: bacaan dibina, ilmu diperkuat, metode dipelajari, dan
           praktik mengajar diarahkan.
         </p>
+        <div class="pkgq-intro-note">
+          <Mic size={26} strokeWidth={1.55} aria-hidden="true" />
+          <p>Talaqqi menjaga proses koreksi tetap langsung, sedangkan pedagogi membantu peserta menyampaikan bacaan sesuai kesiapan anak.</p>
+        </div>
       </div>
     </section>
 
@@ -269,7 +343,10 @@ const teachers = [
       <div class="pkgq-need-grid">
         {needs.map((need, index) => (
           <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <Target size={21} strokeWidth={1.6} aria-hidden="true" />
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
             <p>{need}</p>
           </article>
         ))}
@@ -282,7 +359,12 @@ const teachers = [
         <h2>Cocok untuk pembelajar yang ingin masuk ke dunia pengajaran Al-Qur'an anak dengan lebih terarah.</h2>
       </div>
       <ul class="check-list">
-        {audiences.map((audience) => <li>{audience}</li>)}
+        {audiences.map((audience) => (
+          <li>
+            <CircleCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{audience}</span>
+          </li>
+        ))}
       </ul>
     </section>
 
@@ -292,10 +374,14 @@ const teachers = [
         <h2>Empat bekal utama untuk calon guru Al-Qur'an PAUD dan SD.</h2>
       </div>
       <div class="pkgq-feature-grid">
-        {pillars.map((pillar) => (
+        {pillars.map(({ icon: Icon, title, body }, index) => (
           <article>
-            <h3>{pillar.title}</h3>
-            <p>{pillar.body}</p>
+            <div>
+              <Icon size={27} strokeWidth={1.55} aria-hidden="true" />
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <h3>{title}</h3>
+            <p>{body}</p>
           </article>
         ))}
       </div>
@@ -304,19 +390,23 @@ const teachers = [
     <section class="section pkgq-structure" id="alur">
       <div>
         <p class="eyebrow">Alur pembinaan</p>
-        <h2>Program 2 tahun disusun bertahap dari fondasi pribadi hingga kesiapan praktik mengajar.</h2>
+        <h2>Lima tahap untuk bergerak dari kesiapan pribadi menuju amanah kelas.</h2>
       </div>
-      <div class="pkgq-path-list">
-        {learningPath.map((item, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+      <ol class="pkgq-path-list" aria-label="Alur kaderisasi guru Al-Qur'an">
+        {learningPath.map(({ icon: Icon, ...item }, index) => (
+          <li style={'--path-order: ' + index}>
             <div>
+              <div class="pkgq-path-marker">
+                <Icon size={24} strokeWidth={1.6} aria-hidden="true" />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+              </div>
               <h3>{item.phase}</h3>
               <p>{item.body}</p>
             </div>
-          </article>
+            {index < learningPath.length - 1 && <ArrowRight class="pkgq-path-arrow" size={22} strokeWidth={1.6} aria-hidden="true" />}
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
 
     <section class="section pkgq-outcomes">
@@ -325,7 +415,12 @@ const teachers = [
         <h2>Lulusan diarahkan menjadi guru yang menjaga bacaan, adab, metode, dan amanah mengajar.</h2>
       </div>
       <div class="pkgq-outcome-grid">
-        {outcomes.map((outcome) => <span>{outcome}</span>)}
+        {outcomes.map((outcome) => (
+          <span>
+            <ShieldCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{outcome}</span>
+          </span>
+        ))}
       </div>
     </section>
 
@@ -337,7 +432,9 @@ const teachers = [
       <div class="team-grid">
         {teachers.map(([name, role]) => (
           <article class="team-card">
-            <div aria-hidden="true">{name.split(' ').slice(0, 2).map((part) => part[0]).join('')}</div>
+            <div aria-hidden="true">
+              <UserRoundCheck size={28} strokeWidth={1.5} />
+            </div>
             <h3>{name}</h3>
             <p>{role}</p>
           </article>
@@ -355,24 +452,152 @@ const teachers = [
         </p>
       </div>
       <div class="cta-actions">
-        <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
-        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+        <a class="button primary" href={consultationUrl}>
+          Konsultasi program
+          <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+        <a class="button secondary" href={whatsappUrl}>
+          WhatsApp admin
+          <MessageCircle size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+    <div class="footer-statement">
       <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+        <p class="eyebrow">PKGQ PAUD & SD</p>
+        <h2>Menjaga bacaan. Memahami anak. Menunaikan amanah dengan adab.</h2>
+      </div>
+      <BookOpenCheck size={44} strokeWidth={1.3} aria-hidden="true" />
+    </div>
+    <div class="footer-meta">
+      <a class="footer-brand" href="/">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+        <div>
+          <p>Yayasan Pendidikan Ihsanul Adab</p>
+          <span>Mendidik dengan adab. Menumbuhkan dengan ilmu.</span>
+        </div>
+      </a>
+      <nav aria-label="Navigasi footer PKGQ">
+        {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+      <div>
+        <a href={lmsUrl}>Akses LMS</a>
+        <span>&copy; 2026 Ihsanul Adab</span>
       </div>
     </div>
-    <nav aria-label="Navigasi footer PKGQ">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
-    </nav>
   </footer>
 
-  <a class="floating-help" href={consultationUrl}>Konsultasi</a>
+  <nav class="hm-mobile-bottom-nav hm-pkgq-bottom-nav" aria-label="Navigasi bawah PKGQ">
+    <a href="/">
+      <House size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Beranda</span>
+    </a>
+    <a href="#kurikulum" data-section-link="kurikulum">
+      <BookOpenCheck size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Pilar</span>
+    </a>
+    <a href="#alur" data-section-link="alur">
+      <Waypoints size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Alur</span>
+    </a>
+    <a href={whatsappUrl}>
+      <MessageCircle size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Tanya</span>
+    </a>
+    <details>
+      <summary>
+        <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Menu</span>
+      </summary>
+      <div>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <a href="/#program">Semua Program</a>
+        <a href={lmsUrl}>Akses LMS</a>
+      </div>
+    </details>
+  </nav>
+
+  <script>
+    const pkgqRevealTargets = document.querySelectorAll(
+      '.hm-pkgq main section > div, .hm-pkgq main section > ol, .hm-pkgq main section > ul, .hm-pkgq main article',
+    );
+    const pkgqReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    pkgqRevealTargets.forEach((item) => item.classList.add('hm-pkgq-reveal'));
+
+    if (pkgqReduceMotion || !('IntersectionObserver' in window)) {
+      pkgqRevealTargets.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const pkgqObserver = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      pkgqRevealTargets.forEach((item) => pkgqObserver.observe(item));
+    }
+
+    const pkgqHeader = document.querySelector('.hm-pkgq-header');
+    const pkgqProgress = document.querySelector('.hm-pkgq .page-progress span');
+    const pkgqSectionLinks = [...document.querySelectorAll('.hm-pkgq [data-section-link]')];
+    const pkgqSections = pkgqSectionLinks
+      .map((link) => document.getElementById(link.getAttribute('data-section-link') || ''))
+      .filter((section, index, collection) => section && collection.indexOf(section) === index);
+    const pkgqDetails = [...document.querySelectorAll('.hm-pkgq .nav-dropdown, .hm-pkgq .hm-pkgq-bottom-nav details')];
+
+    const syncPkgqNavigation = () => {
+      const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollRange > 0 ? Math.min(window.scrollY / scrollRange, 1) : 0;
+      pkgqProgress?.style.setProperty('transform', `scaleX(${progress})`);
+      pkgqHeader?.classList.toggle('is-scrolled', window.scrollY > 16);
+
+      const marker = Math.max(
+        (pkgqHeader?.getBoundingClientRect().height || 0) + 32,
+        window.innerHeight * 0.4,
+      );
+      let activeId = '';
+      pkgqSections.forEach((section) => {
+        if (section.getBoundingClientRect().top <= marker) activeId = section.id;
+      });
+
+      pkgqSectionLinks.forEach((link) => {
+        const isActive = link.getAttribute('data-section-link') === activeId;
+        link.classList.toggle('is-active', isActive);
+        if (isActive) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    pkgqDetails.forEach((detail) => {
+      detail.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => detail.removeAttribute('open'));
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      pkgqDetails.forEach((detail) => {
+        if (!detail.contains(event.target)) detail.removeAttribute('open');
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      pkgqDetails.forEach((detail) => detail.removeAttribute('open'));
+    });
+
+    window.addEventListener('scroll', syncPkgqNavigation, { passive: true });
+    window.addEventListener('resize', syncPkgqNavigation);
+    document.fonts?.ready.then(syncPkgqNavigation);
+    syncPkgqNavigation();
+  </script>
+  </div>
 </BaseLayout>

@@ -1,5 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  ArrowDown,
+  ArrowRight,
+  BookOpenCheck,
+  Boxes,
+  CalendarCheck,
+  ChartNoAxesCombined,
+  Check,
+  CircleCheck,
+  ClipboardCheck,
+  Compass,
+  ExternalLink,
+  GraduationCap,
+  HandHeart,
+  HeartHandshake,
+  House,
+  LampDesk,
+  Leaf,
+  Menu,
+  MessageCircle,
+  NotebookTabs,
+  Palette,
+  Parentheses,
+  Puzzle,
+  School,
+  ShieldCheck,
+  Sparkles,
+  Sprout,
+  SunMedium,
+  UsersRound,
+  Waypoints,
+} from '@lucide/astro';
+import '../../styles/homebased-learning-redesign.css';
 
 const consultationUrl = 'https://berbagi.link/ypihsanuladab';
 const whatsappUrl = 'https://wa.me/6285179676003';
@@ -10,9 +43,8 @@ const navItems = [
   ['Tentang Kami', '/tentang-kami/'],
   ['Karir & Pengabdian', '/karir-pengabdian/'],
   ['Tentang HBL', '#tentang-hbl'],
-  ['Untuk Siapa', '#untuk-siapa'],
-  ['Program', '#program-aktif'],
-  ['Struktur', '#struktur'],
+  ['Jenjang', '#program-aktif'],
+  ['Kurikulum', '#struktur'],
   ['Orang Tua', '#orang-tua'],
   ['Kontak', '#kontak'],
 ];
@@ -71,10 +103,30 @@ const programMenuItems = [
 ];
 
 const signals = [
-  ['Rumah', 'menjadi tempat utama tumbuhnya iman, adab, dan rasa aman'],
-  ['Ritme', 'belajar mengikuti jadwal keluarga yang realistis dan terarah'],
-  ['Kurikulum', 'materi inti disusun agar mudah dijalankan dari rumah'],
-  ['Pendampingan', 'orang tua tidak berjalan sendiri dalam proses belajar anak'],
+  {
+    icon: ClipboardCheck,
+    step: '01',
+    title: 'Petakan kebutuhan',
+    body: 'Kenali fase tumbuh, kesiapan anak, dan kapasitas pendampingan keluarga.',
+  },
+  {
+    icon: CalendarCheck,
+    step: '02',
+    title: 'Susun ritme',
+    body: 'Tempatkan ibadah, belajar, bermain, bergerak, dan istirahat secara realistis.',
+  },
+  {
+    icon: Puzzle,
+    step: '03',
+    title: 'Jalankan aktivitas',
+    body: 'Hubungkan materi dengan eksplorasi, proyek, percakapan, dan kehidupan rumah.',
+  },
+  {
+    icon: ChartNoAxesCombined,
+    step: '04',
+    title: 'Baca perkembangan',
+    body: 'Amati pemahaman, adab, kemandirian, kebiasaan, dan kebutuhan tindak lanjut.',
+  },
 ];
 
 const needs = [
@@ -94,18 +146,22 @@ const audiences = [
 
 const pillars = [
   {
+    icon: BookOpenCheck,
     title: 'Tauhid dan adab harian',
     body: 'Pembelajaran diarahkan agar anak mengenal Allah, terbiasa dengan adab, dan melihat ibadah sebagai bagian dari kehidupan.',
   },
   {
+    icon: Parentheses,
     title: 'Akademik inti yang bertahap',
     body: 'Literasi, numerasi, sains, bahasa, dan keterampilan berpikir disusun sesuai fase tumbuh anak.',
   },
   {
+    icon: House,
     title: 'Rutinitas rumah yang mendidik',
     body: 'Jadwal belajar tidak berdiri sendiri, tetapi menyatu dengan ibadah, tanggung jawab rumah, bermain, dan istirahat.',
   },
   {
+    icon: HeartHandshake,
     title: 'Kolaborasi orang tua dan fasilitator',
     body: 'Orang tua mendapat panduan dan ruang konsultasi agar pendampingan di rumah lebih tenang dan konsisten.',
   },
@@ -113,6 +169,7 @@ const pillars = [
 
 const activePrograms = [
   {
+    icon: Sprout,
     title: 'Preschool & Kindergarten',
     age: 'Usia 3-6 tahun',
     body: 'Program usia dini untuk menumbuhkan rasa aman, adab, kemandirian, bahasa, motorik, dan cinta belajar dari rumah.',
@@ -124,6 +181,7 @@ const activePrograms = [
     ],
   },
   {
+    icon: School,
     title: 'IAIS Elementary School',
     age: 'Usia 6-12 tahun',
     body: 'Program sekolah dasar home-based untuk menguatkan ilmu Islam, akademik inti, tanggung jawab, dan keterampilan hidup anak.',
@@ -138,18 +196,22 @@ const activePrograms = [
 
 const curriculumTracks = [
   {
+    icon: Compass,
     title: 'Islamic Essential Knowledge',
     items: ['Aqidah dan tauhid', 'Adab dan akhlak', 'Ibadah harian', 'Sirah Nabawiyah', "Tahsin dan tahfidz Al-Qur'an"],
   },
   {
+    icon: NotebookTabs,
     title: 'Core Academics',
     items: ['Bahasa Indonesia', 'Bahasa Inggris dasar', 'Matematika dan numerasi', 'Sains dan alam sekitar', 'Literasi membaca'],
   },
   {
+    icon: Palette,
     title: 'Life Skills & Projects',
     items: ['Kemandirian rumah', 'Kreativitas dan karya', 'Kebiasaan sehat', 'Komunikasi dan tanggung jawab', 'Proyek keluarga sederhana'],
   },
   {
+    icon: UsersRound,
     title: 'Parent Guidance',
     items: ['Panduan mingguan', 'Ruang konsultasi', 'Laporan perkembangan', 'Forum orang tua', 'Penguatan ritme belajar rumah'],
   },
@@ -165,18 +227,22 @@ const parentRoles = [
 
 const flow = [
   {
+    icon: Compass,
     title: 'Orientasi keluarga',
     body: 'Memahami kebutuhan anak, kesiapan orang tua, ritme rumah, dan pilihan program yang paling sesuai.',
   },
   {
+    icon: NotebookTabs,
     title: 'Panduan belajar',
     body: 'Keluarga menerima arah materi, target, rutinitas, dan aktivitas yang dapat dijalankan dari rumah.',
   },
   {
+    icon: HandHeart,
     title: 'Pendampingan rutin',
     body: 'Orang tua menjalankan proses belajar bersama anak dengan dukungan komunikasi dan evaluasi berkala.',
   },
   {
+    icon: ChartNoAxesCombined,
     title: 'Evaluasi perkembangan',
     body: 'Perkembangan anak dibaca secara holistik: adab, ibadah, kognitif, bahasa, kemandirian, dan keterampilan hidup.',
   },
@@ -194,27 +260,29 @@ const guardrails = [
   title="IAIS Home-Based Learning - Yayasan Pendidikan Ihsanul Adab"
   description="IAIS Home-Based Learning mendampingi keluarga Muslim menjalankan homeschooling Islami dari rumah dengan kurikulum, ritme, adab, dan pendampingan yang terarah."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-hbl">
+  <a class="skip-link hm-hbl-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header iais-site-header">
+  <header class="site-header iais-site-header hm-hbl-header">
     <div class="topbar iais-topbar">
-      <span>IAIS Home-Based Learning</span>
-      <a href={consultationUrl}>Konsultasi belajar anak</a>
+      <span>Belajar dari rumah, bertumbuh bersama keluarga</span>
+      <a href={consultationUrl}>
+        Konsultasi belajar anak
+        <ArrowRight size={15} strokeWidth={1.8} aria-hidden="true" />
+      </a>
     </div>
 
     <div class="nav-shell">
       <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
         <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
         <span>
-          <strong>Ihsanul Adab</strong>
-          <small>IAIS HBL</small>
+          <strong>IAIS HBL</strong>
+          <small>Home-Based Learning</small>
         </span>
       </a>
 
       <nav class="desktop-nav" aria-label="Navigasi IAIS Home-Based Learning">
         <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
         <details class="nav-dropdown">
           <summary>Program</summary>
           <div class="nav-program-panel">
@@ -226,10 +294,16 @@ const guardrails = [
             ))}
           </div>
         </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+        <a href="#tentang-hbl">Tentang HBL</a>
+        <a href="#program-aktif">Jenjang</a>
+        <a href="#struktur">Kurikulum</a>
+        <a href="#orang-tua">Peran Orang Tua</a>
       </nav>
 
-      <a class="nav-cta iais-nav-cta" href={lmsUrl}>Akses LMS IA</a>
+      <a class="nav-cta iais-nav-cta" href={lmsUrl}>
+        Akses LMS
+        <ExternalLink size={15} strokeWidth={1.8} aria-hidden="true" />
+      </a>
 
       <details class="mobile-menu">
         <summary aria-label="Buka menu">
@@ -251,7 +325,10 @@ const guardrails = [
             ))}
           </div>
           {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={consultationUrl}>Konsultasikan</a>
+          <a class="button primary" href={consultationUrl}>
+            Konsultasikan
+            <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+          </a>
         </div>
       </details>
     </div>
@@ -260,36 +337,62 @@ const guardrails = [
   <main id="konten">
     <section class="iais-hero" aria-labelledby="iais-title">
       <img
-        src="/images/iais-home-learning-hero.png"
-        alt="Ruang belajar rumah yang rapi dengan buku, papan jadwal visual, mushaf tertutup, karpet, dan perlengkapan belajar tanpa figur makhluk bernyawa"
+        src="/images/homebased-learning-play-hero.png"
+        alt="Anak laki-laki Muslim tampak dari belakang sedang menyusun balok kayu dan mainan konstruksi di ruang belajar rumah"
+        width="1674"
+        height="936"
+        fetchpriority="high"
       />
+      <div class="iais-hero-shade" aria-hidden="true"></div>
       <div class="iais-hero-content">
-        <p class="eyebrow">IAIS Home-Based Learning</p>
-        <h1 id="iais-title">Sekolah Islam dari rumah, dengan ritme yang lebih dekat dengan keluarga.</h1>
+        <p class="eyebrow">Sekolah Islam berbasis keluarga</p>
+        <h1 id="iais-title">Belajar dekat dengan rumah. Bertumbuh dekat dengan orang tua.</h1>
         <p>
-          Program home-based learning untuk keluarga Muslim yang ingin mendidik anak
-          dari rumah dengan kurikulum, adab, rutinitas, dan pendampingan yang terarah.
+          IAIS Home-Based Learning membantu keluarga Muslim menata kurikulum, adab,
+          aktivitas bermain, dan rutinitas belajar agar pendidikan anak berjalan
+          terarah tanpa kehilangan kehangatan rumah.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
-          <a class="button secondary" href="#tentang-hbl">Pelajari HBL</a>
+          <a class="button primary" href={consultationUrl}>
+            Konsultasi program
+            <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+          </a>
+          <a class="button secondary" href="#cara-kerja">
+            Lihat cara kerja
+            <ArrowDown size={18} strokeWidth={1.8} aria-hidden="true" />
+          </a>
+        </div>
+        <div class="iais-hero-note">
+          <Boxes size={20} strokeWidth={1.7} aria-hidden="true" />
+          <span>Bermain, membaca, berkarya, dan membantu di rumah sama-sama menjadi ruang belajar.</span>
         </div>
       </div>
     </section>
 
-    <section class="iais-signals" aria-label="Ringkasan IAIS Home-Based Learning">
-      {signals.map(([title, body]) => (
-        <article>
-          <strong>{title}</strong>
-          <span>{body}</span>
-        </article>
-      ))}
+    <section class="iais-signals" id="cara-kerja" aria-labelledby="cara-kerja-title">
+      <div class="iais-signal-heading">
+        <p class="eyebrow">Siklus pendampingan</p>
+        <h2 id="cara-kerja-title">Kurikulum hadir sebagai peta, bukan beban tambahan di rumah.</h2>
+      </div>
+      <ol>
+        {signals.map(({ icon: Icon, step, title, body }, index) => (
+          <li style={'--flow-order: ' + index}>
+            <div>
+              <Icon size={25} strokeWidth={1.6} aria-hidden="true" />
+              <span>{step}</span>
+            </div>
+            <h3>{title}</h3>
+            <p>{body}</p>
+            {index < signals.length - 1 && <ArrowRight class="iais-signal-arrow" size={23} strokeWidth={1.6} aria-hidden="true" />}
+          </li>
+        ))}
+      </ol>
     </section>
 
     <section class="section iais-intro" id="tentang-hbl">
       <div>
         <p class="eyebrow">Tentang Program</p>
-        <h2>Rumah bukan pengganti sekolah semata. Rumah adalah madrasah pertama.</h2>
+        <h2>Rumah bukan sekadar lokasi belajar. Rumah adalah lingkungan pendidikan pertama.</h2>
       </div>
       <div class="stack">
         <p>
@@ -303,6 +406,10 @@ const guardrails = [
           ingin memiliki kurikulum, target, pendampingan, dan evaluasi perkembangan yang
           bisa dipertanggungjawabkan.
         </p>
+        <div class="iais-intro-principle">
+          <LampDesk size={27} strokeWidth={1.5} aria-hidden="true" />
+          <p>Target disusun untuk membantu keluarga konsisten, bukan untuk memindahkan tekanan sekolah ke ruang keluarga.</p>
+        </div>
       </div>
     </section>
 
@@ -314,7 +421,7 @@ const guardrails = [
       <div class="iais-need-grid">
         {needs.map((need, index) => (
           <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <p>{need}</p>
           </article>
         ))}
@@ -327,7 +434,12 @@ const guardrails = [
         <h2>Untuk keluarga yang ingin mendidik dari rumah tanpa berjalan sendirian.</h2>
       </div>
       <ul class="check-list">
-        {audiences.map((audience) => <li>{audience}</li>)}
+        {audiences.map((audience) => (
+          <li>
+            <CircleCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{audience}</span>
+          </li>
+        ))}
       </ul>
     </section>
 
@@ -337,10 +449,11 @@ const guardrails = [
         <h2>Belajar dari rumah tetap membutuhkan arah, ritme, dan ukuran perkembangan.</h2>
       </div>
       <div class="iais-pillar-grid">
-        {pillars.map((pillar) => (
+        {pillars.map(({ icon: Icon, title, body }) => (
           <article>
-            <h3>{pillar.title}</h3>
-            <p>{pillar.body}</p>
+            <Icon size={29} strokeWidth={1.5} aria-hidden="true" />
+            <h3>{title}</h3>
+            <p>{body}</p>
           </article>
         ))}
       </div>
@@ -352,14 +465,26 @@ const guardrails = [
         <h2>Dua jenjang awal untuk membangun fondasi belajar anak dari rumah.</h2>
       </div>
       <div class="iais-program-grid">
-        {activePrograms.map((program) => (
+        {activePrograms.map(({ icon: Icon, ...program }) => (
           <article>
-            <span>{program.age}</span>
+            <div class="iais-program-label">
+              <Icon size={24} strokeWidth={1.6} aria-hidden="true" />
+              <span>{program.age}</span>
+            </div>
             <h3>{program.title}</h3>
             <p>{program.body}</p>
             <ul>
-              {program.points.map((point) => <li>{point}</li>)}
+              {program.points.map((point) => (
+                <li>
+                  <Check size={17} strokeWidth={2} aria-hidden="true" />
+                  <span>{point}</span>
+                </li>
+              ))}
             </ul>
+            <a href={consultationUrl}>
+              Tanyakan jenjang ini
+              <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+            </a>
           </article>
         ))}
       </div>
@@ -385,8 +510,12 @@ const guardrails = [
         <h2>Ilmu Islam, akademik inti, life skills, dan pendampingan orang tua berjalan bersama.</h2>
       </div>
       <div class="iais-curriculum-grid">
-        {curriculumTracks.map((track) => (
+        {curriculumTracks.map(({ icon: Icon, ...track }, index) => (
           <article>
+            <div class="iais-curriculum-icon">
+              <Icon size={27} strokeWidth={1.55} aria-hidden="true" />
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
             <h3>{track.title}</h3>
             <ul>
               {track.items.map((item) => <li>{item}</li>)}
@@ -412,6 +541,28 @@ const guardrails = [
           kendali diri, tanggung jawab, dan kemampuan menyelesaikan tugas bertahap.
         </p>
       </div>
+      <ol class="iais-day-rhythm" aria-label="Contoh ritme belajar harian">
+        <li>
+          <SunMedium size={23} strokeWidth={1.6} aria-hidden="true" />
+          <span>Pagi</span>
+          <strong>Ibadah dan kesiapan diri</strong>
+        </li>
+        <li>
+          <BookOpenCheck size={23} strokeWidth={1.6} aria-hidden="true" />
+          <span>Inti</span>
+          <strong>Literasi dan numerasi</strong>
+        </li>
+        <li>
+          <Boxes size={23} strokeWidth={1.6} aria-hidden="true" />
+          <span>Eksplorasi</span>
+          <strong>Bermain dan berkarya</strong>
+        </li>
+        <li>
+          <Leaf size={23} strokeWidth={1.6} aria-hidden="true" />
+          <span>Hidup</span>
+          <strong>Gerak dan tanggung jawab rumah</strong>
+        </li>
+      </ol>
     </section>
 
     <section class="section iais-parents" id="orang-tua">
@@ -420,7 +571,12 @@ const guardrails = [
         <h2>Orang tua adalah pendamping utama, bukan sekadar pengawas tugas.</h2>
       </div>
       <ul class="check-list">
-        {parentRoles.map((item) => <li>{item}</li>)}
+        {parentRoles.map((item) => (
+          <li>
+            <CircleCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{item}</span>
+          </li>
+        ))}
       </ul>
     </section>
 
@@ -430,9 +586,12 @@ const guardrails = [
         <h2>Mulai dari membaca kebutuhan keluarga, lalu menyusun ritme belajar yang mungkin dijalani.</h2>
       </div>
       <div class="iais-flow-grid">
-        {flow.map((item, index) => (
+        {flow.map(({ icon: Icon, ...item }, index) => (
           <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <Icon size={24} strokeWidth={1.6} aria-hidden="true" />
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
             <h3>{item.title}</h3>
             <p>{item.body}</p>
           </article>
@@ -446,38 +605,116 @@ const guardrails = [
         <h2>Fleksibel, tetapi tetap berpijak pada adab dan arah syar'i.</h2>
       </div>
       <div class="iais-guardrail-list">
-        {guardrails.map((item) => <span>{item}</span>)}
+        {guardrails.map((item) => (
+          <span>
+            <ShieldCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+            <span>{item}</span>
+          </span>
+        ))}
       </div>
     </section>
 
     <section class="cta iais-cta" id="kontak">
       <div>
         <p class="eyebrow">Home-Based Learning</p>
-        <h2>Konsultasikan kebutuhan belajar anak dan ritme keluarga Anda.</h2>
+        <h2>Mulai dari kebutuhan nyata anak dan kapasitas keluarga Anda.</h2>
         <p>
           Kami bantu menjelaskan alur IAIS Home-Based Learning, pilihan jenjang,
           pendampingan orang tua, dan langkah awal yang paling sesuai untuk keluarga.
         </p>
       </div>
       <div class="cta-actions">
-        <a class="button primary" href={consultationUrl}>Konsultasi Program</a>
-        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
+        <a class="button primary" href={consultationUrl}>
+          Konsultasi program
+          <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+        <a class="button secondary" href={whatsappUrl}>
+          WhatsApp admin
+          <MessageCircle size={18} strokeWidth={1.8} aria-hidden="true" />
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+    <div class="footer-statement">
+      <p class="eyebrow">IAIS Home-Based Learning</p>
+      <h2>Rumah yang tenang. Ritme yang terarah. Anak yang tumbuh dengan adab.</h2>
+      <House size={42} strokeWidth={1.35} aria-hidden="true" />
+    </div>
+    <div class="footer-meta">
+      <a class="footer-brand" href="/">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
+        <div>
+          <p>Yayasan Pendidikan Ihsanul Adab</p>
+          <span>Mendidik dengan adab. Menumbuhkan dengan ilmu.</span>
+        </div>
+      </a>
+      <nav aria-label="Navigasi footer IAIS Home-Based Learning">
+        {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
       <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
+        <a href={lmsUrl}>Akses LMS</a>
+        <span>&copy; 2026 Ihsanul Adab</span>
       </div>
     </div>
-    <nav aria-label="Navigasi footer IAIS Home-Based Learning">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
-    </nav>
   </footer>
 
-  <a class="floating-help" href={consultationUrl}>Konsultasi</a>
+  <nav class="hm-mobile-bottom-nav hm-hbl-bottom-nav" aria-label="Navigasi bawah IAIS HBL">
+    <a href="/">
+      <House size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Beranda</span>
+    </a>
+    <a href="#cara-kerja">
+      <Waypoints size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Alur</span>
+    </a>
+    <a href="#program-aktif">
+      <GraduationCap size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Jenjang</span>
+    </a>
+    <a href={whatsappUrl}>
+      <MessageCircle size={20} strokeWidth={1.8} aria-hidden="true" />
+      <span>Tanya</span>
+    </a>
+    <details>
+      <summary>
+        <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Menu</span>
+      </summary>
+      <div>
+        <a href="/tentang-kami/">Tentang Kami</a>
+        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+        <a href="/#program">Semua Program</a>
+        <a href={lmsUrl}>Akses LMS</a>
+      </div>
+    </details>
+  </nav>
+
+  <script>
+    const hblRevealTargets = document.querySelectorAll(
+      '.hm-hbl main section > div, .hm-hbl main section > ol, .hm-hbl main section > ul, .hm-hbl main article',
+    );
+    const hblReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    hblRevealTargets.forEach((item) => item.classList.add('hm-hbl-reveal'));
+
+    if (hblReduceMotion || !('IntersectionObserver' in window)) {
+      hblRevealTargets.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const hblObserver = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      hblRevealTargets.forEach((item) => hblObserver.observe(item));
+    }
+  </script>
+  </div>
 </BaseLayout>
