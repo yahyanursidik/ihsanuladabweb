@@ -3,6 +3,11 @@ dist/
 .astro/
 .astro-dev.*.log
 .astro-local.*.log
+.astro-hallmark.*.log
+.astro-preview-*.log
+.preview-*.log
+.*-preview.*.log
+.hallmark/
 .static-server.*.log
 .static-*.log
 .env

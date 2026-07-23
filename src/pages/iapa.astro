@@ -1,425 +1,437 @@
 ---
+import {
+  ArrowRight,
+  Baby,
+  BookOpenCheck,
+  Brain,
+  CalendarDays,
+  Check,
+  ChevronDown,
+  CircleCheck,
+  Compass,
+  HandHeart,
+  HeartHandshake,
+  House,
+  Menu,
+  MessageCircle,
+  MoonStar,
+  NotebookTabs,
+  ShieldCheck,
+  Sprout,
+  UsersRound,
+  Waypoints,
+} from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const navItems = [
-  ['Beranda', '/'],
-  ['Tentang Kami', '/tentang-kami/'],
-  ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Tentang IAPA', '#tentang-iapa'],
-  ['Pendekatan', '#pendekatan'],
-  ['Kontak', '#kontak'],
-];
-
-const programMenuItems = [
-  {
-    label: 'Semua Program',
-    href: '/#program',
-    note: 'Ikhtisar layanan',
-  },
-  {
-    label: 'Ihsanul Adab Parenting Academy',
-    href: '/iapa/',
-    note: 'Parenting Islami keluarga',
-  },
-  {
-    label: 'The Father Project',
-    href: '/program/the-father-project/',
-    note: 'Komunitas ayah Muslim',
-  },
-  {
-    label: 'The Fitrah Journey',
-    href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
-  },
-  {
-    label: 'Headmaster & Teacher Academy',
-    href: '/program/headmaster-teacher-academy/',
-    note: 'Pengembangan guru dan sekolah',
-  },
-  {
-    label: 'PKGQ PAUD & SD',
-    href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
-  },
-  {
-    label: 'IAIEE',
-    href: '/program/iaiee/',
-    note: 'Konsultasi mutu pendidikan',
-  },
-  {
-    label: 'Ushuluna',
-    href: '/program/ushuluna/',
-    note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '/#program',
-    note: 'Pembelajaran Al-Quran keluarga',
-  },
-  {
-    label: 'DeenUp',
-    href: '/program/deenup/',
-    note: 'Pembinaan remaja Muslim',
-  },
-  {
-    label: 'IAIS Home-Based Learning',
-    href: '/program/homebased-learning/',
-    note: 'Sekolah Islam dari rumah',
-  },
-];
-
-const principles = ['Tauhid & Adab', 'Fitrah Anak', 'Rumah yang Tenang'];
-
-const painPoints = [
-  'Ingin mendidik dengan lembut, tetapi sering habis sabar di rumah.',
-  'Bingung membedakan kebutuhan anak, kemauan anak, dan batasan yang harus dijaga.',
-  'Merasa bersalah setelah marah, lalu bingung bagaimana memperbaiki hubungan.',
-  'Ingin menerapkan adab, ibadah, dan rutinitas Islami tanpa membuat rumah terasa tegang.',
-  'Banyak membaca teori parenting, tetapi sulit mempraktikkannya secara konsisten.',
-];
-
-const focusAreas = [
-  'Membangun rumah sebagai madrasah pertama yang hidup dengan tauhid dan adab',
-  'Memahami tahap tumbuh anak tanpa membandingkan dan tanpa tergesa-gesa',
-  'Mengelola emosi orang tua sebelum membimbing emosi anak',
-  'Membentuk rutinitas ibadah, belajar, tidur, makan, dan screen time yang realistis',
-  'Menumbuhkan komunikasi suami-istri agar pengasuhan tidak berjalan sendirian',
-  'Mendampingi keluarga homeschooling dan home-based learning dengan ritme yang sehat',
-];
-
-const audiences = [
-  'Ibu dan ayah muda dengan anak usia dini atau SD awal',
-  'Orang tua homeschooling atau pendamping belajar anak di rumah',
-  'Orang tua yang ingin memperbaiki pola asuh tanpa merasa dihakimi',
-  'Ibu yang lelah, mudah tersulut, dan ingin kembali tenang dalam mendidik',
-  'Keluarga yang ingin menanamkan adab harian dengan cara bertahap',
-  'Orang tua yang ingin belajar parenting Islami dari dasar sesuai Al-QurÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢an, Sunnah, dan pemahaman salaf',
-];
-
-const programs = [
-  {
-    title: 'Webinar Parenting Rutin',
-    summary:
-      'Kelas online berkala 1-2 jam dengan tema nyata dari kehidupan ibu dan keluarga.',
-    points: [
-      'Anak sulit diatur, tantrum, atau terlalu aktif',
-      'Emosi orang tua yang naik turun',
-      'Screen time dan kebiasaan anak',
-      'Disiplin tanpa teriakan',
-      'Mengasuh sesuai fitrah, usia, dan kemampuan anak',
-    ],
-    fit: 'Ringan, membumi, aplikatif, dan bisa langsung dicoba di rumah.',
-  },
-  {
-    title: 'Kelas Tumbuh Bersama Orang Tua',
-    summary:
-      'Program pembelajaran parenting berjenjang untuk orang tua yang ingin berproses, bukan mencari solusi instan.',
-    points: [
-      'Memahami diri sendiri sebelum mendidik anak',
-      'Mengenal fitrah anak dan tahap perkembangannya',
-      'Membangun rutinitas rumah yang sehat dan Islami',
-      'Melatih komunikasi dan batasan yang penuh adab',
-      'Bertumbuh bersama komunitas keluarga yang saling menguatkan',
-    ],
-    fit: 'Cocok untuk keluarga yang ingin berubah perlahan, terarah, dan tetap hangat.',
-  },
-  {
-    title: 'Kelas Parenting Tematik',
-    summary:
-      'Kelas khusus sesuai kebutuhan keluarga, usia anak, dan dinamika pengasuhan di rumah.',
-    points: [
-      'Parenting anak usia dini dan SD awal',
-      'Mengelola emosi ibu dan anak',
-      'Membangun adab sehari-hari di rumah',
-      'Pendampingan belajar anak di rumah',
-      'Parenting untuk keluarga homeschooling',
-      'Menyusun rutinitas keluarga dan kesepakatan screen time',
-    ],
-    fit: 'Fokus pada solusi nyata, bukan teori yang berat.',
-  },
-];
-
-const approaches = [
-  {
-    title: 'Bertahap dan realistis',
-    body: 'Kami mulai dari kebiasaan kecil yang bisa dijalankan, bukan target besar yang membuat orang tua merasa gagal.',
-  },
-  {
-    title: 'Berbasis adab sebelum teknik',
-    body: 'Strategi pengasuhan dibangun di atas niat, akhlak, keteladanan, dan cara bicara yang menjaga kehormatan anak.',
-  },
-  {
-    title: 'Sesuai fitrah dan usia anak',
-    body: 'Materi membantu orang tua membaca kebutuhan perkembangan anak tanpa memaksa anak menjadi versi dewasa yang kecil.',
-  },
-  {
-    title: 'Empatik dan tidak menghakimi',
-    body: 'Ruang belajar dirancang aman untuk bertanya, jujur, dan memperbaiki diri tanpa rasa dipermalukan.',
-  },
-  {
-    title: 'Berpegang pada arah yang lurus',
-    body: 'Nilai parenting dijaga agar selaras dengan tauhid, adab, Sunnah, dan pemahaman salafus shalih.',
-  },
-];
-
-const reasons = [
-  'Bahasa ringan dan mudah dipahami oleh orang tua pemula',
-  'Tidak menggurui, tidak menyalahkan, dan tidak membandingkan keluarga',
-  'Ilmu Islam yang membumi untuk rutinitas rumah',
-  'Cocok untuk ibu muda, ayah muda, dan keluarga homeschooling',
-  'Komunitas aman, suportif, dan menjaga adab',
-  'Dibimbing oleh praktisi pendidikan, parenting, dan pembinaan keluarga',
-];
-
-const outcomes = [
-  'Orang tua lebih tenang saat menghadapi tantrum, konflik, dan penolakan anak.',
-  'Rumah memiliki rutinitas yang lebih jelas, hangat, dan bernilai ibadah.',
-  'Anak belajar adab melalui keteladanan, pembiasaan, dan komunikasi yang baik.',
-  'Orang tua punya peta langkah untuk memperbaiki pengasuhan tanpa terburu-buru.',
-];
+import '../styles/iapa-redesign.css';
 
 const whatsappUrl = 'https://wa.me/6285179676003';
+
+const iapaProgramMenu = [
+  ['Semua Program', '/#program'],
+  ['The Father Project', '/program/the-father-project/'],
+  ['The Fitrah Journey', '/program/the-fitrah-journey/'],
+  ['Headmaster & Teacher Academy', '/program/headmaster-teacher-academy/'],
+  ['Kaderisasi Guru Quran PAUD & SD', '/program/kaderisasi-guru-quran-paud-sd/'],
+  ['IAIEE', '/program/iaiee/'],
+  ['Ushuluna', '/program/ushuluna/'],
+  ['DeenUp', '/program/deenup/'],
+  ['IAIS Home-Based Learning', '/program/homebased-learning/'],
+];
+
+const iapaPrinciples = [
+  {
+    icon: MoonStar,
+    title: 'Tauhid dan adab',
+    detail: 'Arah pengasuhan dimulai dari niat, keteladanan, dan tanggung jawab kepada Allah.',
+  },
+  {
+    icon: Sprout,
+    title: 'Fitrah anak',
+    detail: 'Anak dipahami sesuai tahap tumbuhnya, tanpa tergesa-gesa dan tanpa dibandingkan.',
+  },
+  {
+    icon: House,
+    title: 'Rumah yang tenang',
+    detail: 'Kebiasaan baik dibangun melalui ritme yang realistis, hangat, dan dapat diulang.',
+  },
+];
+
+const iapaPainPoints = [
+  'Niat mendidik dengan lembut sering berubah menjadi marah ketika energi habis.',
+  'Sulit membedakan kebutuhan anak, keinginan sesaat, dan batasan yang perlu dijaga.',
+  'Rasa bersalah setelah konflik membuat orang tua bingung memulai perbaikan.',
+  'Rutinitas ibadah, belajar, tidur, makan, dan screen time belum berjalan konsisten.',
+  'Banyak teori sudah dibaca, tetapi langkah yang paling relevan belum ditemukan.',
+];
+
+const iapaParentingFlow = [
+  {
+    icon: HandHeart,
+    title: 'Tenangkan diri',
+    detail: 'Berhenti sejenak, membaca emosi, dan memilih respons sebelum menegur anak.',
+  },
+  {
+    icon: Brain,
+    title: 'Pahami kebutuhan',
+    detail: 'Mengenali usia, tahap perkembangan, dan pesan di balik perilaku anak.',
+  },
+  {
+    icon: Compass,
+    title: 'Arahkan dengan adab',
+    detail: 'Memberi batasan secara jelas, konsisten, lembut, dan tetap menjaga kehormatan anak.',
+  },
+  {
+    icon: CalendarDays,
+    title: 'Bangun ritme',
+    detail: 'Mengulang kebiasaan kecil sampai menjadi rutinitas keluarga yang lebih sehat.',
+  },
+];
+
+const iapaPrograms = [
+  {
+    icon: MessageCircle,
+    title: 'Webinar Parenting Rutin',
+    summary: 'Kelas daring singkat untuk membahas persoalan yang dekat dengan keseharian keluarga.',
+    points: [
+      'Tantrum, penolakan, dan anak yang sangat aktif',
+      'Emosi orang tua yang mudah naik turun',
+      'Screen time dan kebiasaan digital',
+      'Disiplin tanpa teriakan',
+    ],
+    note: 'Cocok untuk orang tua yang membutuhkan wawasan praktis dan dapat segera dicoba.',
+  },
+  {
+    icon: UsersRound,
+    title: 'Kelas Tumbuh Bersama Orang Tua',
+    summary: 'Program belajar berjenjang bagi orang tua yang ingin menjalani perubahan secara terarah.',
+    points: [
+      'Memahami diri sebelum membimbing anak',
+      'Mengenal fitrah dan tahap perkembangan',
+      'Menata rutinitas rumah yang Islami',
+      'Berlatih komunikasi dan batasan',
+    ],
+    note: 'Cocok untuk keluarga yang ingin berproses perlahan dengan dukungan komunitas.',
+  },
+  {
+    icon: NotebookTabs,
+    title: 'Kelas Parenting Tematik',
+    summary: 'Pembelajaran yang difokuskan pada kebutuhan keluarga, usia anak, atau pola belajar di rumah.',
+    points: [
+      'Usia dini dan SD awal',
+      'Pengelolaan emosi ibu dan anak',
+      'Adab harian serta pendampingan belajar',
+      'Homeschooling dan home-based learning',
+    ],
+    note: 'Cocok untuk keluarga yang membutuhkan pembahasan lebih khusus dan kontekstual.',
+  },
+];
+
+const iapaApproaches = [
+  ['Bertahap dan realistis', 'Dimulai dari kebiasaan kecil yang dapat dijalankan, bukan target besar yang menambah rasa gagal.'],
+  ['Adab sebelum teknik', 'Strategi pengasuhan dibangun di atas niat, akhlak, keteladanan, dan lisan yang baik.'],
+  ['Sesuai fitrah dan usia', 'Orang tua dibantu membaca kebutuhan perkembangan tanpa memaksa anak menjadi dewasa sebelum waktunya.'],
+  ['Empatik tanpa menghakimi', 'Ruang belajar menjaga orang tua tetap aman untuk bertanya, jujur, dan memperbaiki diri.'],
+  ['Berpegang pada arah yang lurus', 'Materi dijaga selaras dengan tauhid, Sunnah, adab, dan pemahaman salafus shalih.'],
+];
+
+const iapaAudiences = [
+  'Ibu dan ayah dengan anak usia dini atau SD awal.',
+  'Keluarga homeschooling dan pendamping belajar anak di rumah.',
+  'Orang tua yang ingin memperbaiki pola asuh tanpa dipermalukan.',
+  'Keluarga yang ingin menanamkan adab dan rutinitas Islami secara bertahap.',
+];
+
+const iapaOutcomes = [
+  'Lebih tenang saat merespons konflik, penolakan, dan emosi anak.',
+  'Memiliki rutinitas rumah yang lebih jelas serta mungkin dijalankan.',
+  'Mengajarkan adab melalui teladan, pembiasaan, dan komunikasi.',
+  'Mempunyai peta langkah untuk melanjutkan perbaikan pengasuhan.',
+];
 ---
 
 <BaseLayout
-  title="Ihsanul Adab Parenting Academy (IAPA)"
-  description="IAPA adalah ruang belajar orang tua Muslim untuk membangun rumah yang lebih tenang, beradab, dan selaras dengan fitrah anak."
+  title="Ihsanul Adab Parenting Academy - Belajar Mengasuh dengan Adab"
+  description="IAPA adalah ruang belajar orang tua Muslim untuk memahami anak, menata emosi, dan membangun rumah yang lebih tenang sesuai tauhid, adab, dan fitrah."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-iapa">
+    <a class="hm-iapa-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
-    <div class="topbar">
-      <span>Ihsanul Adab Parenting Academy</span>
-      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
-    </div>
+    <header class="hm-iapa-masthead hm-masthead">
+      <div class="hm-iapa-nav-shell">
+        <a class="hm-iapa-brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+          <img src="/images/logo-ihsanul-adab.png" alt="" width="46" height="46" />
+          <span>
+            <strong>Ihsanul Adab</strong>
+            <small>Parenting Academy</small>
+          </span>
+        </a>
 
-    <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
-        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+        <nav class="hm-iapa-desktop-nav" aria-label="Navigasi IAPA">
+          <a href="#alur">Alur Belajar</a>
+          <a href="#program-iapa">Program</a>
+          <a href="#pendekatan">Pendekatan</a>
+        </nav>
+
+        <div class="hm-iapa-nav-actions">
+          <details class="hm-iapa-program-menu">
+            <summary>
+              Program lain
+              <ChevronDown size={16} strokeWidth={1.8} aria-hidden="true" />
+            </summary>
+            <div>
+              {iapaProgramMenu.map(([label, href]) => <a href={href}>{label}</a>)}
+              <a href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+            </div>
+          </details>
+          <a class="hm-iapa-nav-cta" href={whatsappUrl}>
+            <MessageCircle size={18} strokeWidth={1.8} aria-hidden="true" />
+            <span>Tanya program</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="konten">
+      <section class="hm-iapa-hero" aria-labelledby="iapa-title">
+        <img
+          src="/images/iapa-family-garden-hero.png"
+          alt="Keluarga Muslim terdiri dari ayah, ibu, dan dua anak berjalan bersama menuju rumah, seluruhnya tampak dari belakang"
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+        <div class="hm-iapa-hero-shade" aria-hidden="true"></div>
+        <div class="hm-iapa-hero-inner">
+          <p class="hm-iapa-eyebrow">Ruang belajar orang tua Muslim</p>
+          <h1 id="iapa-title">Ihsanul Adab Parenting Academy</h1>
+          <p class="hm-iapa-hero-statement">Mengasuh dengan lebih tenang, memahami anak dengan lebih utuh.</p>
+          <p class="hm-iapa-hero-copy">
+            IAPA menemani ibu dan ayah menata emosi, membangun rutinitas, serta menghadirkan tauhid dan adab dalam kehidupan keluarga sehari-hari.
+          </p>
+          <div class="hm-iapa-actions">
+            <a class="hm-iapa-button hm-iapa-button-primary" href={whatsappUrl}>
+              Konsultasi program
+              <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+            <a class="hm-iapa-button hm-iapa-button-quiet" href="#alur">
+              Lihat alur belajar
+              <Waypoints size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="hm-iapa-principles" aria-label="Tiga pijakan IAPA">
+        {iapaPrinciples.map(({ icon: Icon, title, detail }) => (
+          <article>
+            <Icon size={24} strokeWidth={1.7} aria-hidden="true" />
+            <div>
+              <h2>{title}</h2>
+              <p>{detail}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="hm-iapa-question hm-iapa-section hm-iapa-reveal" id="tentang-iapa">
+        <div class="hm-iapa-question-title">
+          <h2>Mengapa mengasuh sering terasa lebih berat dari yang dibayangkan?</h2>
+          <p>
+            Karena orang tua bukan hanya menghadapi perilaku anak. Mereka juga membawa kelelahan, pengalaman masa lalu, perbedaan cara mengasuh, dan tuntutan kehidupan sehari-hari.
+          </p>
+        </div>
+        <ol class="hm-iapa-pain-list">
+          {iapaPainPoints.map((item, index) => (
+            <li>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <p>{item}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="hm-iapa-flow" id="alur" aria-labelledby="flow-title">
+        <div class="hm-iapa-section">
+          <div class="hm-iapa-flow-heading hm-iapa-reveal">
+            <h2 id="flow-title">Bagaimana perubahan dimulai di rumah?</h2>
+            <p>
+              IAPA membantu orang tua bergerak melalui empat langkah yang dapat diulang setiap kali menghadapi dinamika pengasuhan.
+            </p>
+          </div>
+
+          <ol class="hm-iapa-flowchart" aria-label="Alur pengasuhan IAPA">
+            {iapaParentingFlow.map(({ icon: Icon, title, detail }, index) => (
+              <li style={'--flow-index: ' + index}>
+                <div class="hm-iapa-flow-icon">
+                  <Icon size={26} strokeWidth={1.7} aria-hidden="true" />
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                </div>
+                <h3>{title}</h3>
+                <p>{detail}</p>
+                {index < iapaParentingFlow.length - 1 && <ArrowRight class="hm-iapa-flow-arrow" size={24} strokeWidth={1.6} aria-hidden="true" />}
+              </li>
+            ))}
+          </ol>
+
+          <p class="hm-iapa-flow-note">
+            Tujuannya bukan rumah tanpa masalah, melainkan orang tua yang semakin mampu merespons masalah dengan ilmu, adab, dan arah yang jelas.
+          </p>
+        </div>
+      </section>
+
+      <section class="hm-iapa-programs hm-iapa-section" id="program-iapa" aria-labelledby="program-title">
+        <div class="hm-iapa-section-heading hm-iapa-reveal">
+          <h2 id="program-title">Program mana yang paling sesuai untuk keluarga Anda?</h2>
+          <p>Mulai dari kebutuhan yang sedang paling terasa. Setiap format memiliki kedalaman dan ritme belajar yang berbeda.</p>
+        </div>
+
+        <div class="hm-iapa-program-list">
+          {iapaPrograms.map(({ icon: Icon, title, summary, points, note }, index) => (
+            <article class="hm-iapa-reveal">
+              <div class="hm-iapa-program-index">
+                <Icon size={25} strokeWidth={1.7} aria-hidden="true" />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <div class="hm-iapa-program-copy">
+                <h3>{title}</h3>
+                <p>{summary}</p>
+              </div>
+              <ul>
+                {points.map((point) => (
+                  <li>
+                    <Check size={17} strokeWidth={1.8} aria-hidden="true" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="hm-iapa-program-note">{note}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="hm-iapa-approach" id="pendekatan">
+        <div class="hm-iapa-section">
+          <div class="hm-iapa-approach-intro hm-iapa-reveal">
+            <BookOpenCheck size={38} strokeWidth={1.5} aria-hidden="true" />
+            <h2>Bagaimana IAPA menjaga proses belajar tetap membumi?</h2>
+            <p>
+              Materi diterjemahkan menjadi langkah yang dapat dicoba, diamati, lalu diperbaiki. Orang tua tidak didorong mengejar kesempurnaan.
+            </p>
+          </div>
+          <ol class="hm-iapa-approach-list">
+            {iapaApproaches.map(([title, body], index) => (
+              <li class="hm-iapa-reveal">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="hm-iapa-audience hm-iapa-section">
+        <div class="hm-iapa-section-heading hm-iapa-reveal">
+          <h2>Apakah IAPA cocok untuk kondisi keluarga kami?</h2>
+          <p>IAPA ditujukan bagi orang tua yang mau belajar dan memperbaiki langkah, bukan keluarga yang sudah merasa sempurna.</p>
+        </div>
+        <ul>
+          {iapaAudiences.map((item) => (
+            <li class="hm-iapa-reveal">
+              <Baby size={22} strokeWidth={1.7} aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="hm-iapa-outcomes">
+        <div class="hm-iapa-section">
+          <div class="hm-iapa-outcome-heading hm-iapa-reveal">
+            <HeartHandshake size={42} strokeWidth={1.5} aria-hidden="true" />
+            <h2>Perubahan seperti apa yang diikhtiarkan?</h2>
+          </div>
+          <ul>
+            {iapaOutcomes.map((item, index) => (
+              <li class="hm-iapa-reveal">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{item}</p>
+                <CircleCheck size={22} strokeWidth={1.7} aria-hidden="true" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="hm-iapa-cta" id="kontak">
+        <div class="hm-iapa-section">
+          <ShieldCheck size={34} strokeWidth={1.5} aria-hidden="true" />
+          <h2>Haruskah orang tua menunggu sampai keadaan rumah membaik untuk mulai belajar?</h2>
+          <p>
+            Tidak. Proses belajar justru dapat dimulai dari persoalan yang sedang dihadapi hari ini. Ceritakan kebutuhan keluarga Anda kepada admin IAPA.
+          </p>
+          <div class="hm-iapa-actions">
+            <a class="hm-iapa-button hm-iapa-button-primary" href={whatsappUrl}>
+              Bicara dengan admin
+              <MessageCircle size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+            <a class="hm-iapa-text-link" href="#program-iapa">
+              Bandingkan program
+              <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="hm-iapa-footer">
+      <a class="hm-iapa-brand" href="/">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="42" height="42" />
         <span>
-          <strong>Ihsanul Adab</strong>
-          <small>Parenting Academy</small>
+          <strong>Yayasan Pendidikan Ihsanul Adab</strong>
+          <small>Mendidik dengan adab, menumbuhkan dengan ilmu.</small>
         </span>
       </a>
-
-      <nav class="desktop-nav" aria-label="Navigasi IAPA">
-        <a href="/">Beranda</a>
+      <nav aria-label="Navigasi footer IAPA">
         <a href="/tentang-kami/">Tentang Kami</a>
         <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-        <details class="nav-dropdown">
-          <summary>Program</summary>
-          <div class="nav-program-panel">
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
-          </div>
-        </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+        <a href="/#program">Program Lain</a>
       </nav>
+      <p>© 2026 Ihsanul Adab</p>
+    </footer>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
-
-      <details class="mobile-menu">
-        <summary aria-label="Buka menu">
-          <span></span>
-          <span></span>
-          <span></span>
+    <nav class="hm-mobile-bottom-nav hm-iapa-bottom-nav" aria-label="Navigasi bawah IAPA">
+      <a href="/">
+        <House size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Beranda</span>
+      </a>
+      <a href="#alur">
+        <Waypoints size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Alur</span>
+      </a>
+      <a href="#program-iapa">
+        <NotebookTabs size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Program</span>
+      </a>
+      <a href="#pendekatan">
+        <BookOpenCheck size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Belajar</span>
+      </a>
+      <details>
+        <summary>
+          <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
+          <span>Menu</span>
         </summary>
-        <div class="mobile-panel">
-          <a href="/">Beranda</a>
+        <div>
           <a href="/tentang-kami/">Tentang Kami</a>
           <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-          <div class="mobile-program-group">
-            <strong>Program</strong>
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
-          </div>
-          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={whatsappUrl}>Hubungi Admin</a>
+          <a href="/#program">Semua Program</a>
+          <a href={whatsappUrl}>WhatsApp Admin</a>
         </div>
       </details>
-    </div>
-  </header>
-
-  <main id="konten">
-    <section class="iapa-hero" aria-labelledby="iapa-title">
-      <img src="/images/iapa-parenting-home-hero.png" alt="Sudut rumah belajar Muslim yang hangat dengan buku, catatan, dan mainan kayu tanpa figur makhluk bernyawa" />
-      <div class="iapa-hero-content">
-        <p class="eyebrow">Parenting Islami untuk rumah yang lebih tenang</p>
-        <h1 id="iapa-title">Membersamai orang tua mendidik dengan adab, ilmu, dan kasih sayang.</h1>
-        <p>
-          IAPA membantu ibu dan ayah Muslim memahami anak, menata emosi, membangun
-          rutinitas rumah, dan menghidupkan adab dengan cara yang bertahap.
-        </p>
-        <blockquote>
-          Mendidik anak bukan hanya tentang mengubah anak. Ia juga perjalanan orang tua
-          untuk belajar lebih sadar, lebih sabar, dan lebih dekat kepada Allah.
-        </blockquote>
-        <div class="hero-actions">
-          <a class="button primary" href={whatsappUrl}>Konsultasi Program</a>
-          <a class="button secondary" href="#program-iapa">Lihat Program</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="iapa-principles" aria-label="Prinsip IAPA">
-      {principles.map((principle) => <span>{principle}</span>)}
-    </section>
-
-    <section class="section iapa-intro" id="tentang-iapa">
-      <div>
-        <p class="eyebrow">Tentang IAPA</p>
-        <h2>Ruang belajar orang tua yang ingin memperbaiki rumah tanpa kehilangan kelembutan.</h2>
-      </div>
-      <div class="stack">
-        <p>
-          Ihsanul Adab Parenting Academy adalah program pendidikan dan pendampingan orang
-          tua di bawah Yayasan Pendidikan Ihsanul Adab untuk membangun pengasuhan Islami
-          yang berlandaskan tauhid, adab, ilmu, dan fitrah anak.
-        </p>
-        <p>
-          IAPA hadir sebagai sahabat belajar ibu dan ayah. Di sini, orang tua diajak
-          memahami diri, membaca kebutuhan anak, lalu menyusun langkah perbaikan yang
-          bisa dipraktikkan di rumah.
-        </p>
-        <p class="soft-quote">
-          Orang tua yang belajar dengan tenang akan lebih mudah membimbing anak dengan
-          cinta, batasan, dan keteladanan.
-        </p>
-      </div>
-    </section>
-
-    <section class="iapa-pain">
-      <div>
-        <p class="eyebrow">Jika ini terjadi di rumah Anda</p>
-        <h2>Anda tidak sendirian, dan perubahan tidak harus dimulai dari langkah besar.</h2>
-      </div>
-      <div class="iapa-pain-grid">
-        {painPoints.map((item) => <span>{item}</span>)}
-      </div>
-    </section>
-
-    <section class="section iapa-focus">
-      <div class="section-heading compact">
-        <p class="eyebrow">Fokus pendampingan</p>
-        <h2>Ilmu yang membumi untuk membangun adab dari rutinitas rumah sehari-hari.</h2>
-      </div>
-      <div class="iapa-list-grid">
-        {focusAreas.map((item) => <article>{item}</article>)}
-      </div>
-    </section>
-
-    <section class="section iapa-audience">
-      <div class="section-heading compact">
-        <p class="eyebrow">Untuk siapa?</p>
-        <h2>Dirancang untuk keluarga yang ingin bertumbuh tanpa merasa harus sempurna.</h2>
-      </div>
-      <ul class="check-list">
-        {audiences.map((item) => <li>{item}</li>)}
-      </ul>
-    </section>
-
-    <section class="section iapa-programs" id="program-iapa">
-      <div class="section-heading">
-        <p class="eyebrow">Program utama IAPA</p>
-        <h2>Belajar bertahap, hangat, aplikatif, dan tetap berpijak pada nilai Islam.</h2>
-      </div>
-      <div class="iapa-program-grid">
-        {programs.map((program) => (
-          <article>
-            <h3>{program.title}</h3>
-            <p>{program.summary}</p>
-            <ul>
-              {program.points.map((point) => <li>{point}</li>)}
-            </ul>
-            <strong>{program.fit}</strong>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section iapa-method" id="pendekatan">
-      <div class="vision-panel">
-        <p class="eyebrow">Pendekatan pembelajaran</p>
-        <h2>Kami tidak menuntut orang tua menjadi sempurna. Kami menemani orang tua menjadi lebih sadar dan tenang.</h2>
-      </div>
-      <div class="mission-list">
-        {approaches.map((approach) => (
-          <article>
-            <h3>{approach.title}</h3>
-            <p>{approach.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section iapa-outcomes">
-      <div class="section-heading compact">
-        <p class="eyebrow">Perubahan yang diikhtiarkan</p>
-        <h2>Yang kami kejar bukan rumah yang selalu rapi, tetapi rumah yang makin terarah.</h2>
-      </div>
-      <div class="iapa-outcome-grid">
-        {outcomes.map((item, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <p>{item}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section iapa-reasons">
-      <div class="section-heading compact">
-        <p class="eyebrow">Kenapa memilih IAPA?</p>
-        <h2>Ruang belajar yang aman untuk bertanya, memahami, dan memperbaiki.</h2>
-      </div>
-      <div class="finder-grid">
-        {reasons.map((reason) => (
-          <article class="finder-card">
-            <span>{reason}</span>
-            <p>Disampaikan dengan bahasa yang ramah, tetap berlandaskan tauhid, Sunnah, dan adab.</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="cta iapa-cta" id="kontak">
-      <div>
-        <p class="eyebrow">Orang tua tidak harus berjalan sendiri</p>
-        <h2>Belajar parenting tidak harus berat, membingungkan, atau melelahkan.</h2>
-        <p>
-          Mari bertumbuh bersama di Ihsanul Adab Parenting Academy. Hubungi admin untuk
-          jadwal webinar, kelas Tumbuh Bersama Orang Tua, dan program tematik yang
-          sesuai kebutuhan keluarga Anda.
-        </p>
-      </div>
-      <div class="cta-actions">
-        <a class="button primary" href={whatsappUrl}>WhatsApp Admin</a>
-        <a class="button secondary" href="#program-iapa">Pilih Program</a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
-      <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>2025-2026 - Yayasan Pendidikan Ihsanul Adab</span>
-      </div>
-    </div>
-    <nav aria-label="Navigasi footer IAPA">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
     </nav>
-  </footer>
-
-  <a class="floating-help" href={whatsappUrl}>WhatsApp Admin</a>
+  </div>
 </BaseLayout>

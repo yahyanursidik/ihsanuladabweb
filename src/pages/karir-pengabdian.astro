@@ -1,287 +1,382 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  ArrowRight, BadgeCheck, BookOpenCheck, BriefcaseBusiness, Building2, ChevronDown,
+  Clock3, Compass, ExternalLink, GraduationCap, HeartHandshake, House, Landmark,
+  Menu, MessagesSquare, Send, Settings, ShieldCheck, UserRoundSearch, Waypoints,
+} from '@lucide/astro';
+import '../styles/career-redesign.css';
 
-const navItems = [
-  ['Beranda', '/'],
-  ['Tentang Kami', '/tentang-kami/'],
-  ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Pilihan Peran', '#pilihan-peran'],
-  ['Nilai Pengabdian', '#nilai-pengabdian'],
-  ['Kontak', '#kontak'],
-];
+const whatsappUrl = 'https://wa.me/6285179676003';
+const applyUrl = 'https://berbagi.link/ypihsanuladab';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
 
 const programMenuItems = [
-  {
-    label: 'Semua Program',
-    href: '/#program',
-    note: 'Ikhtisar layanan',
-  },
-  {
-    label: 'Ihsanul Adab Parenting Academy',
-    href: '/iapa/',
-    note: 'Parenting Islami keluarga',
-  },
-  {
-    label: 'The Father Project',
-    href: '/program/the-father-project/',
-    note: 'Komunitas ayah Muslim',
-  },
-  {
-    label: 'The Fitrah Journey',
-    href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
-  },
-  {
-    label: 'Headmaster & Teacher Academy',
-    href: '/program/headmaster-teacher-academy/',
-    note: 'Pengembangan guru dan sekolah',
-  },
-  {
-    label: 'PKGQ PAUD & SD',
-    href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
-  },
-  {
-    label: 'IAIEE',
-    href: '/program/iaiee/',
-    note: 'Konsultasi mutu pendidikan',
-  },
-  {
-    label: 'Ushuluna',
-    href: '/program/ushuluna/',
-    note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '/#program',
-    note: 'Pembelajaran Al-Quran keluarga',
-  },
-  {
-    label: 'DeenUp',
-    href: '/program/deenup/',
-    note: 'Pembinaan remaja Muslim',
-  },
-  {
-    label: 'IAIS Home-Based Learning',
-    href: '/program/homebased-learning/',
-    note: 'Sekolah Islam dari rumah',
-  },
+  ['Semua Program', '/#program', 'Peta ekosistem belajar'],
+  ['Ihsanul Adab Parenting Academy', '/iapa/', 'Parenting Islami keluarga'],
+  ['The Father Project', '/program/the-father-project/', 'Komunitas ayah Muslim'],
+  ['The Fitrah Journey', '/program/the-fitrah-journey/', 'Ruang tumbuh muslimah'],
+  ['Headmaster & Teacher Academy', '/program/headmaster-teacher-academy/', 'Pengembangan guru dan sekolah'],
+  ['PKGQ PAUD & SD', '/program/kaderisasi-guru-quran-paud-sd/', 'Kaderisasi guru Al-Qur\'an'],
+  ['IAIEE', '/program/iaiee/', 'Konsultasi mutu pendidikan'],
+  ['Ushuluna', '/program/ushuluna/', 'Fondasi Islam bertahap'],
+  ['DeenUp', '/program/deenup/', 'Pembinaan remaja Muslim'],
+  ['IAIS Home-Based Learning', '/program/homebased-learning/', 'Sekolah Islam dari rumah'],
 ];
 
 const contributionPaths = [
   {
+    id: 'relawan',
     label: 'Program Relawan',
-    tag: 'Kontribusi fleksibel',
-    summary:
-      'Bergabung sebagai relawan dalam bidang pendidikan, media dakwah, sosial, administrasi, dan komunitas.',
-    detail:
-      'Kami membuka kesempatan untuk Anda yang ingin berkontribusi tanpa ikatan waktu penuh.',
+    category: 'Kontribusi fleksibel',
+    icon: HeartHandshake,
+    summary: 'Berbagi tenaga dan keahlian pada kegiatan pendidikan, media dakwah, sosial, administrasi, atau komunitas.',
+    detail: 'Jalur ini sesuai bagi Anda yang ingin berkontribusi tanpa ikatan waktu penuh dan siap menyepakati ruang kerja yang jelas.',
   },
   {
-    label: 'Program Magang & Studi Praktik',
-    tag: 'Temporary Staffing',
-    summary:
-      'Program untuk mahasiswa dari berbagai jurusan: pendidikan, psikologi, komunikasi, desain, manajemen, dan lainnya.',
-    detail:
-      'Magang bersama kami bukan hanya menyelesaikan SKS, tapi juga membangun karakter, empati, dan pengalaman profesional.',
+    id: 'magang',
+    label: 'Magang dan Studi Praktik',
+    category: 'Pembelajaran praktik',
+    icon: BookOpenCheck,
+    summary: 'Ruang belajar bagi mahasiswa pendidikan, psikologi, komunikasi, desain, manajemen, dan bidang terkait.',
+    detail: 'Pengalaman praktik diarahkan untuk mengasah kompetensi, tanggung jawab, empati, dan adab profesional.',
   },
   {
+    id: 'pendidik',
     label: 'Tenaga Pendidik',
-    tag: 'Guru dan ustadz/ustadzah',
-    summary:
-      'Peran utama dalam mendidik dan menanamkan nilai-nilai Islam kepada peserta didik.',
-    detail:
-      'Kami mencari pengajar yang kompeten secara akademik dan menjadi teladan adab serta ibadah.',
+    category: 'Guru dan pengajar',
+    icon: GraduationCap,
+    summary: 'Membersamai peserta didik serta menanamkan nilai Islam melalui proses belajar yang terarah.',
+    detail: 'Kami menghargai pengajar yang terus belajar, kompeten pada bidangnya, dan berusaha menjadi teladan dalam adab serta ibadah.',
   },
   {
-    label: 'Tenaga Kependidikan & Staf Operasional',
-    tag: 'Amanah operasional',
-    summary:
-      'Posisi yang memastikan pendidikan berjalan sistemik, amanah, dan berkualitas.',
-    detail:
-      'Area kontribusi mencakup administrasi, keuangan, teknis lapangan, dokumentasi, dan layanan teknis lainnya.',
+    id: 'operasional',
+    label: 'Kependidikan dan Operasional',
+    category: 'Sistem dan layanan',
+    icon: Settings,
+    summary: 'Menjaga administrasi, keuangan, teknis lapangan, dokumentasi, dan pelayanan agar program berjalan rapi.',
+    detail: 'Peran ini cocok bagi pribadi yang teliti, komunikatif, dan siap merawat amanah di balik proses pendidikan.',
   },
   {
-    label: 'Tim Manajemen & Strategis',
-    tag: 'Pengembangan yayasan',
-    summary:
-      'Peluang untuk berkontribusi di ranah strategis, tata kelola, dan pengembangan program yayasan.',
-    detail:
-      'Peran ini cocok untuk Anda yang ingin membantu menata arah pertumbuhan lembaga secara berkelanjutan.',
+    id: 'strategis',
+    label: 'Manajemen dan Strategis',
+    category: 'Pengembangan yayasan',
+    icon: Compass,
+    summary: 'Mendukung tata kelola, pengembangan program, kemitraan, dan arah pertumbuhan yayasan.',
+    detail: 'Jalur strategis membutuhkan kemampuan melihat gambaran besar sekaligus ketekunan menuntaskan pekerjaan sehari-hari.',
   },
 ];
 
 const values = [
-  'Niat yang lurus karena Allah',
-  'Adab kerja yang amanah dan empatik',
-  'Kemauan belajar dan bertumbuh',
-  'Kesiapan melayani ummat melalui pendidikan',
+  { title: 'Niat yang lurus', body: 'Menjadikan kontribusi sebagai ikhtiar ibadah dan jalan memberi manfaat.', icon: Compass },
+  { title: 'Adab yang terjaga', body: 'Bekerja dengan amanah, empati, komunikasi yang baik, dan saling menghormati.', icon: ShieldCheck },
+  { title: 'Terus bertumbuh', body: 'Terbuka terhadap pembelajaran, evaluasi, dan perbaikan cara kerja.', icon: GraduationCap },
+  { title: 'Siap melayani', body: 'Memahami bahwa pendidikan membutuhkan kesabaran, ketelitian, dan kepedulian.', icon: HeartHandshake },
 ];
 
-const whatsappUrl = 'https://wa.me/6285179676003';
-const applyUrl = 'https://berbagi.link/ypihsanuladab';
+const startingSteps = [
+  { title: 'Kenali jalurnya', body: 'Baca ruang kontribusi dan pilih peran yang paling dekat dengan kapasitas Anda.', icon: Waypoints },
+  { title: 'Petakan kesiapan', body: 'Catat pengalaman, keahlian, waktu yang tersedia, serta hal yang ingin Anda pelajari.', icon: UserRoundSearch },
+  { title: 'Sampaikan minat', body: 'Kirimkan pengantar singkat melalui tautan yang tersedia atau hubungi tim melalui WhatsApp.', icon: Send },
+  { title: 'Selaraskan bersama', body: 'Diskusikan kebutuhan, batas peran, dan bentuk kontribusi yang mungkin dijalankan.', icon: MessagesSquare },
+];
+
+const footerLinks = [
+  ['Tentang Kami', '/tentang-kami/'],
+  ['Program', '/#program'],
+  ['Pilihan Peran', '#pilihan-peran'],
+  ['WhatsApp', whatsappUrl],
+];
 ---
 
 <BaseLayout
   title="Karir & Pengabdian - Yayasan Pendidikan Ihsanul Adab"
-  description="Bergabung bersama Yayasan Pendidikan Ihsanul Adab untuk mendidik ummat, menumbuhkan diri, dan mengokohkan amal melalui berbagai peran pengabdian."
+  description="Temukan jalur karir, relawan, magang, pendidikan, operasional, dan pengabdian bersama Yayasan Pendidikan Ihsanul Adab."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-career">
+    <a class="hm-career-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
-    <div class="topbar">
-      <span>Karir & Pengabdian Yayasan Pendidikan Ihsanul Adab</span>
-      <a href={whatsappUrl}>WhatsApp +62 851-7967-6003</a>
-    </div>
+    <header class="hm-career-header hm-masthead" data-career-header>
+      <div class="hm-career-banner">
+        <p>Kontribusi terbaik dimulai dari niat yang lurus dan peran yang jelas.</p>
+        <a href="#pilihan-peran">Lihat jalur pengabdian <ArrowRight size={15} aria-hidden="true" /></a>
+      </div>
 
-    <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
-        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
-        <span>
-          <strong>Ihsanul Adab</strong>
-          <small>Karir & Pengabdian</small>
-        </span>
-      </a>
+      <div class="hm-career-nav">
+        <a class="hm-career-brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab, kembali ke beranda">
+          <img src="/images/logo-ihsanul-adab.png" alt="" width="52" height="52" />
+          <span><strong>Ihsanul Adab</strong><small>Karir dan Pengabdian</small></span>
+        </a>
 
-      <nav class="desktop-nav" aria-label="Navigasi Karir & Pengabdian">
-        <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-        <details class="nav-dropdown">
-          <summary>Program</summary>
-          <div class="nav-program-panel">
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
-          </div>
-        </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-      </nav>
-
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
-
-      <details class="mobile-menu">
-        <summary aria-label="Buka menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-        <div class="mobile-panel">
+        <nav class="hm-career-primary-nav" aria-label="Navigasi utama">
           <a href="/">Beranda</a>
           <a href="/tentang-kami/">Tentang Kami</a>
-          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-          <div class="mobile-program-group">
-            <strong>Program</strong>
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
+          <details>
+            <summary>Program <ChevronDown size={16} aria-hidden="true" /></summary>
+            <div class="hm-career-program-panel">
+              {programMenuItems.map(([label, href, note]) => (
+                <a href={href}><span>{label}</span><small>{note}</small></a>
+              ))}
+            </div>
+          </details>
+          <a href="#pilihan-peran">Pilihan Peran</a>
+          <a href="#alur">Cara Memulai</a>
+          <a href="#nilai-pengabdian">Nilai</a>
+        </nav>
+
+        <a class="hm-career-button hm-career-button-dark hm-career-nav-cta" href={applyUrl}>
+          Sampaikan Minat
+          <ExternalLink size={16} aria-hidden="true" />
+        </a>
+      </div>
+    </header>
+
+    <main id="konten">
+      <section class="hm-career-hero" aria-labelledby="career-title">
+        <div class="hm-career-hero-copy">
+          <p class="hm-career-kicker">Karir dan Pengabdian</p>
+          <h1 id="career-title" data-career-title>Temukan tempat terbaik untuk memberi manfaat.</h1>
+          <p class="hm-career-lead">
+            Bergabunglah dalam ikhtiar pendidikan Islam melalui peran yang sesuai dengan
+            kemampuan, waktu, dan tahap pertumbuhan Anda.
+          </p>
+          <div class="hm-career-actions">
+            <a class="hm-career-button hm-career-button-accent" href="#peta-kontribusi">
+              Jelajahi peta kontribusi
+              <ArrowRight size={17} aria-hidden="true" />
+            </a>
+            <a class="hm-career-text-link" href={whatsappUrl}>Tanya melalui WhatsApp</a>
           </div>
-          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={applyUrl}>Apply Now</a>
+        </div>
+
+        <aside class="hm-career-hero-note" aria-label="Arah pengabdian">
+          <BriefcaseBusiness size={28} aria-hidden="true" />
+          <p>
+            Pengabdian bukan sekadar mengisi posisi. Ia adalah pertemuan antara kebutuhan
+            lembaga, kapasitas pribadi, dan kesiapan untuk terus belajar.
+          </p>
+        </aside>
+      </section>
+
+      <section class="hm-career-map-section" id="peta-kontribusi" aria-labelledby="map-title">
+        <header class="hm-career-section-head">
+          <p class="hm-career-kicker">Peta kontribusi</p>
+          <h2 id="map-title">Lima jalur untuk ikut merawat pendidikan.</h2>
+          <p>Pilih titik yang paling dekat dengan kapasitas Anda. Setiap jalur terhubung pada tujuan yang sama.</p>
+        </header>
+
+        <figure class="hm-career-map" aria-describedby="map-caption">
+          <div class="hm-career-map-stage">
+            <div class="hm-career-map-axis hm-career-map-axis-x" aria-hidden="true"></div>
+            <div class="hm-career-map-axis hm-career-map-axis-y" aria-hidden="true"></div>
+
+            <div class="hm-career-map-hub">
+              <img src="/images/logo-ihsanul-adab.png" alt="" width="54" height="54" />
+              <span>Ihsanul Adab</span>
+              <small>Pendidikan dan dakwah</small>
+            </div>
+
+            {contributionPaths.map((path, index) => {
+              const Icon = path.icon;
+              return (
+                <a class={'hm-career-map-node hm-career-map-node-' + (index + 1)} href={'#peran-' + path.id} data-map-node>
+                  <Icon size={22} aria-hidden="true" />
+                  <span>{path.label}</span>
+                  <small>{path.category}</small>
+                </a>
+              );
+            })}
+          </div>
+
+          <figcaption id="map-caption">
+            <BadgeCheck size={18} aria-hidden="true" />
+            Jalur pada peta adalah bidang kontribusi, bukan daftar posisi yang selalu tersedia.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="hm-career-intro" aria-labelledby="intro-title">
+        <p class="hm-career-kicker">Ladang amal dan pertumbuhan</p>
+        <h2 id="intro-title">Memberi manfaat sambil menata kompetensi dan adab kerja.</h2>
+        <div>
+          <p>Yayasan membuka ruang bagi pribadi yang ingin ikut membangun generasi bertauhid, beradab, dan berilmu melalui peran yang sesuai kapasitasnya.</p>
+          <p>Kami memandang kontribusi sebagai proses dua arah: lembaga memperoleh dukungan, sementara setiap insan belajar bekerja lebih amanah, terampil, dan peka terhadap kebutuhan umat.</p>
+        </div>
+      </section>
+
+      <section class="hm-career-roles" id="pilihan-peran" aria-labelledby="roles-title">
+        <header class="hm-career-section-head">
+          <p class="hm-career-kicker">Pilihan peran</p>
+          <h2 id="roles-title">Baca tanggung jawabnya sebelum menentukan langkah.</h2>
+          <p>Setiap jalur memiliki ritme, kebutuhan, dan bentuk keterlibatan yang berbeda.</p>
+        </header>
+
+        <div class="hm-career-role-list">
+          {contributionPaths.map((path, index) => {
+            const Icon = path.icon;
+            return (
+              <article id={'peran-' + path.id} class="hm-career-role" data-career-role>
+                <div class="hm-career-role-index">{String(index + 1).padStart(2, '0')}</div>
+                <div class="hm-career-role-icon"><Icon size={25} aria-hidden="true" /></div>
+                <div class="hm-career-role-copy">
+                  <p>{path.category}</p>
+                  <h3>{path.label}</h3>
+                  <strong>{path.summary}</strong>
+                  <span>{path.detail}</span>
+                </div>
+                <a href={applyUrl} aria-label={'Sampaikan minat untuk ' + path.label}>
+                  Minati peran
+                  <ArrowRight size={17} aria-hidden="true" />
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section class="hm-career-start" id="alur" aria-labelledby="start-title">
+        <header class="hm-career-section-head hm-career-section-head-light">
+          <p class="hm-career-kicker">Langkah yang disarankan</p>
+          <h2 id="start-title">Mulai dengan kesiapan, bukan tergesa-gesa.</h2>
+          <p>Alur berikut membantu Anda menyampaikan minat dengan lebih jelas kepada tim.</p>
+        </header>
+
+        <ol class="hm-career-steps">
+          {startingSteps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <li data-career-step>
+                <span class="hm-career-step-icon"><Icon size={22} aria-hidden="true" /></span>
+                <small>{String(index + 1).padStart(2, '0')}</small>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+
+      <section class="hm-career-values" id="nilai-pengabdian" aria-labelledby="values-title">
+        <header class="hm-career-section-head">
+          <p class="hm-career-kicker">Nilai pengabdian</p>
+          <h2 id="values-title">Yang kami jaga saat bekerja bersama.</h2>
+        </header>
+
+        <div class="hm-career-value-list">
+          {values.map((value) => {
+            const Icon = value.icon;
+            return (
+              <article>
+                <Icon size={24} aria-hidden="true" />
+                <div><h3>{value.title}</h3><p>{value.body}</p></div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section class="hm-career-readiness" aria-labelledby="readiness-title">
+        <div class="hm-career-readiness-icon"><UserRoundSearch size={34} aria-hidden="true" /></div>
+        <div>
+          <p class="hm-career-kicker">Sebelum menghubungi tim</p>
+          <h2 id="readiness-title">Siapkan gambaran singkat tentang diri dan kontribusi Anda.</h2>
+        </div>
+        <ul>
+          <li><Clock3 size={18} aria-hidden="true" /> Waktu yang dapat disediakan</li>
+          <li><BriefcaseBusiness size={18} aria-hidden="true" /> Pengalaman atau keahlian relevan</li>
+          <li><GraduationCap size={18} aria-hidden="true" /> Hal yang ingin dipelajari</li>
+          <li><HeartHandshake size={18} aria-hidden="true" /> Jalur kontribusi yang diminati</li>
+        </ul>
+      </section>
+
+      <section class="hm-career-cta" id="kontak" aria-labelledby="cta-title">
+        <div>
+          <p class="hm-career-kicker">Ambil langkah pertama</p>
+          <h2 id="cta-title">Sampaikan minat Anda dengan jujur dan sederhana.</h2>
+          <p>Tim akan membantu melihat ruang kontribusi yang mungkin sesuai dengan kebutuhan yayasan.</p>
+        </div>
+        <div class="hm-career-cta-actions">
+          <a class="hm-career-button hm-career-button-accent" href={applyUrl}>
+            Sampaikan Minat
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <a class="hm-career-text-link hm-career-text-link-light" href={whatsappUrl}>Hubungi Tim</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="hm-career-footer">
+      <div class="hm-career-footer-brand">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="64" height="64" />
+        <div>
+          <strong>Ihsanul Adab</strong>
+          <p>Ruang pengabdian untuk pendidikan yang dijalani dengan niat, adab, dan tanggung jawab.</p>
+        </div>
+      </div>
+      <nav aria-label="Navigasi footer">
+        {footerLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+        <a href={lmsUrl}>LMS</a>
+      </nav>
+      <small>Yayasan Pendidikan Ihsanul Adab</small>
+    </footer>
+
+    <nav class="hm-mobile-bottom-nav" aria-label="Navigasi cepat mobile">
+      <a href="/"><House size={21} aria-hidden="true" /><span>Beranda</span></a>
+      <a class="is-current" href="#pilihan-peran" aria-current="page"><BriefcaseBusiness size={21} aria-hidden="true" /><span>Peran</span></a>
+      <a href="#alur"><Waypoints size={21} aria-hidden="true" /><span>Alur</span></a>
+      <a href="#nilai-pengabdian"><ShieldCheck size={21} aria-hidden="true" /><span>Nilai</span></a>
+      <details>
+        <summary><Menu size={21} aria-hidden="true" /><span>Menu</span></summary>
+        <div class="hm-career-mobile-panel">
+          <a href="/tentang-kami/">Tentang kami</a>
+          <a href="#peta-kontribusi">Peta kontribusi</a>
+          <a href="/#program">Semua program</a>
+          <a href={lmsUrl}>Akses LMS</a>
+          <a href={whatsappUrl}>Hubungi tim</a>
+          <a href={applyUrl}>Sampaikan minat</a>
         </div>
       </details>
-    </div>
-  </header>
-
-  <main id="konten">
-    <section class="career-hero" aria-labelledby="career-title">
-      <img src="/images/hero-majelis-ilmu-salaf.png" alt="Suasana majelis ilmu dan ruang belajar yang tenang" />
-      <div class="career-hero-content">
-        <p class="eyebrow">Karir & Pengabdian</p>
-        <h1 id="career-title">Bersama mendidik ummat, menumbuhkan diri, mengokohkan amal.</h1>
-        <p>
-          Yayasan Pendidikan Ihsanul Adab mengundang Anda menjadi bagian dari perjalanan
-          besar untuk mencerdaskan, membersamai, dan membangun peradaban berbasis tauhid,
-          adab, dan ilmu.
-        </p>
-        <blockquote>
-          Barangsiapa memudahkan jalan bagi orang lain dalam menuntut ilmu, Allah akan
-          memudahkan baginya jalan menuju surga. <span>(HR. Muslim)</span>
-        </blockquote>
-        <div class="hero-actions">
-          <a class="button primary" href={applyUrl}>Apply Now</a>
-          <a class="button secondary" href="#pilihan-peran">Lihat Pilihan Peran</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section career-intro">
-      <div>
-        <p class="eyebrow">Ladang amal dan pertumbuhan</p>
-        <h2>Di sini, setiap peran adalah ruang untuk memberi manfaat sekaligus bertumbuh.</h2>
-      </div>
-      <div class="stack">
-        <p>
-          Setiap kontribusi adalah investasi akhirat. Setiap insan yang bergabung kami
-          bantu tumbuh dalam kompetensi, akhlak, dan semangat pengabdian.
-        </p>
-        <p>
-          Kami membuka ruang untuk yang ingin ikut membangun generasi bertauhid, beradab,
-          dan berilmu melalui peran yang sesuai kapasitasnya.
-        </p>
-      </div>
-    </section>
-
-    <section class="career-values" id="nilai-pengabdian" aria-label="Nilai pengabdian">
-      {values.map((value, index) => (
-        <article>
-          <span>{String(index + 1).padStart(2, '0')}</span>
-          <h3>{value}</h3>
-        </article>
-      ))}
-    </section>
-
-    <section class="section career-roles" id="pilihan-peran">
-      <div class="section-heading">
-        <p class="eyebrow">Pilihan Peran</p>
-        <h2>Ruang kontribusi untuk pendidikan, dakwah, operasional, dan pengembangan yayasan.</h2>
-      </div>
-      <div class="career-role-grid">
-        {contributionPaths.map((item) => (
-          <article class="career-role-card">
-            <div class="program-meta">
-              <p>{item.tag}</p>
-              <small>Pengabdian</small>
-            </div>
-            <h3>{item.label}</h3>
-            <p>{item.summary}</p>
-            <span>{item.detail}</span>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="cta career-cta" id="kontak">
-      <div>
-        <p class="eyebrow">Hubungi Kami</p>
-        <h2>Ingin ikut membangun generasi yang bertauhid, beradab, dan berilmu?</h2>
-        <p>Mari mulai dari langkah kecil: apply dan niatkan untuk Allah.</p>
-      </div>
-      <div class="cta-actions">
-        <a class="button primary" href={applyUrl}>Apply Now</a>
-        <a class="button secondary" href={whatsappUrl}>Hubungi Kami</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
-      <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
-      </div>
-    </div>
-    <nav aria-label="Navigasi footer Karir & Pengabdian">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
     </nav>
-  </footer>
+  </div>
 
-  <a class="floating-help" href={applyUrl}>Apply Now</a>
+  <script>
+    document.documentElement.classList.add('hm-career-has-js');
+
+    const header = document.querySelector('[data-career-header]');
+    let previousScroll = window.scrollY;
+    let scheduled = false;
+
+    const updateHeader = () => {
+      if (header instanceof HTMLElement) {
+        const currentScroll = window.scrollY;
+        const movingDown = currentScroll > previousScroll;
+        header.classList.toggle('is-retracted', movingDown && currentScroll > 120);
+        previousScroll = currentScroll;
+      }
+      scheduled = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(updateHeader);
+    }, { passive: true });
+
+    const revealItems = document.querySelectorAll('.hm-career [data-map-node], .hm-career [data-career-role], .hm-career [data-career-step]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.14 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+  </script>
 </BaseLayout>
