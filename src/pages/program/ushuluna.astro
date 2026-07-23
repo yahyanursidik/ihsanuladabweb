@@ -1,483 +1,535 @@
 ---
+import {
+  ArrowDown,
+  ArrowRight,
+  AudioLines,
+  BookOpenCheck,
+  ChevronDown,
+  CircleCheck,
+  Compass,
+  ExternalLink,
+  FileText,
+  Headphones,
+  HeartHandshake,
+  House,
+  Landmark,
+  Layers3,
+  Menu,
+  MessageCircle,
+  NotebookPen,
+  Route,
+  ShieldCheck,
+  Sprout,
+  TrainFront,
+  UserRoundCheck,
+  Waypoints,
+} from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const consultationUrl = 'https://berbagi.link/ypihsanuladab';
-const whatsappUrl = 'https://wa.me/6285179676003';
-const lmsUrl = 'https://hub.ihsanuladab.or.id/';
-
-const navItems = [
-  ['Beranda', '/'],
-  ['Tentang Kami', '/tentang-kami/'],
-  ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Tentang Ushuluna', '#tentang-ushuluna'],
-  ['Untuk Siapa', '#untuk-siapa'],
-  ['Materi', '#materi'],
-  ['Metode', '#metode'],
-  ['Kontak', '#kontak'],
-];
+import '../../styles/ushuluna-redesign.css';
 
 const programMenuItems = [
+  ['Semua Program', '/#program'],
+  ['Ihsanul Adab Parenting Academy', '/iapa/'],
+  ['The Father Project', '/program/the-father-project/'],
+  ['The Fitrah Journey', '/program/the-fitrah-journey/'],
+  ['Headmaster & Teacher Academy', '/program/headmaster-teacher-academy/'],
+  ['Kaderisasi Guru Quran PAUD & SD', '/program/kaderisasi-guru-quran-paud-sd/'],
+  ['IAIEE', '/program/iaiee/'],
+  ['DeenUp', '/program/deenup/'],
+  ['IAIS Home-Based Learning', '/program/homebased-learning/'],
+];
+
+const studyRoute = [
   {
-    label: 'Semua Program',
-    href: '/#program',
-    note: 'Peta ekosistem belajar',
+    icon: AudioLines,
+    number: '01',
+    title: 'Dengarkan',
+    body: 'Simak materi inti dengan fokus, bahkan ketika waktu belajar harus menyesuaikan perjalanan dan pekerjaan.',
   },
   {
-    label: 'Ihsanul Adab Parenting Academy',
-    href: '/iapa/',
-    note: 'Parenting Islami keluarga',
+    icon: FileText,
+    number: '02',
+    title: 'Baca',
+    body: 'Gunakan PDF pendamping untuk melihat kerangka, istilah penting, dan hubungan antarpokok bahasan.',
   },
   {
-    label: 'The Father Project',
-    href: '/program/the-father-project/',
-    note: 'Komunitas ayah Muslim',
+    icon: NotebookPen,
+    number: '03',
+    title: 'Catat',
+    body: 'Tulis pemahaman, pertanyaan, dan perkara yang perlu diperiksa kembali agar ilmu tidak mudah berlalu.',
   },
   {
-    label: 'The Fitrah Journey',
-    href: '/program/the-fitrah-journey/',
-    note: 'Ruang tumbuh muslimah',
-  },
-  {
-    label: 'Headmaster & Teacher Academy',
-    href: '/program/headmaster-teacher-academy/',
-    note: 'Pengembangan guru dan sekolah',
-  },
-  {
-    label: 'PKGQ PAUD & SD',
-    href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: "Kaderisasi guru Al-Qur'an",
-  },
-  {
-    label: 'IAIEE',
-    href: '/program/iaiee/',
-    note: 'Konsultasi mutu pendidikan',
-  },
-  {
-    label: 'Ushuluna',
-    href: '/program/ushuluna/',
-    note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'DeenUp',
-    href: '/program/deenup/',
-    note: 'Pembinaan remaja Muslim',
-  },
-  {
-    label: 'IAIS Home-Based Learning',
-    href: '/program/homebased-learning/',
-    note: 'Sekolah Islam dari rumah',
+    icon: CircleCheck,
+    number: '04',
+    title: 'Amalkan',
+    body: 'Pilih satu perbaikan yang dapat dijalankan dengan benar dan dijaga dalam keseharian.',
   },
 ];
 
-const foundationSignals = [
-  ['Tauhid', 'mengenal Allah dan tujuan hidup sebagai hamba'],
-  ['Adab', 'menjaga cara belajar, bertanya, dan mengamalkan ilmu'],
-  ['Ibadah', 'menata amal harian dengan ilmu yang benar'],
-  ['Manhaj', 'memahami agama dengan bimbingan salafus shalih'],
-];
-
-const concerns = [
-  'Sudah lama menjadi Muslim, tetapi masih merasa pemahaman agama belum tersusun dari dasar.',
-  'Ingin mulai belajar Islam, namun bingung harus memulai dari materi apa dan guru siapa.',
-  'Rutinitas ibadah berjalan, tetapi hati sering gelisah karena ilmu, niat, dan amal belum terhubung.',
-  'Khawatir salah jalan dalam belajar karena banyaknya konten agama yang bercampur antara yang lurus dan yang rancu.',
-];
-
-const goals = [
-  'Mengenal Allah, mengenal agama Islam, dan mengenal Rasulullah shallallahu alaihi wasallam dengan lebih benar.',
-  "Memahami pokok tauhid, aqidah, ibadah, adab, dan manhaj dari Al-Qur'an dan Sunnah.",
-  'Menata ilmu agar tidak hanya menjadi pengetahuan, tetapi menggerakkan amal harian.',
-  'Membangun kebiasaan belajar yang ringan, bertahap, dan tetap menjaga kehati-hatian ilmiah.',
-];
-
-const audiences = [
-  'Muslim pemula dan mualaf yang ingin belajar Islam dari fondasi paling penting.',
-  'Orang tua yang ingin menguatkan dasar iman sebelum membimbing keluarga.',
-  'Mahasiswa, pekerja, dan profesional yang membutuhkan ritme belajar ringkas namun terarah.',
-  'Muslim yang ingin memperbaiki pemahaman agama dari awal tanpa merasa dihakimi.',
-  'Penuntut ilmu yang ingin menata aqidah, ibadah dasar, adab belajar, dan manhaj dengan lebih rapi.',
+const foundations = [
+  {
+    icon: Landmark,
+    label: 'Arah',
+    title: 'Tauhid',
+    body: 'Mengenal Allah dan memahami tujuan hidup sebagai hamba sebelum membahas cabang ilmu yang lain.',
+  },
+  {
+    icon: BookOpenCheck,
+    label: 'Cara',
+    title: 'Adab',
+    body: 'Menjaga niat, cara belajar, sikap kepada dalil dan guru, serta kehati-hatian ketika bertanya.',
+  },
+  {
+    icon: HeartHandshake,
+    label: 'Amal',
+    title: 'Ibadah',
+    body: 'Menata amal harian dengan pemahaman yang benar agar ilmu melahirkan ketundukan, bukan sekadar informasi.',
+  },
+  {
+    icon: Compass,
+    label: 'Timbangan',
+    title: 'Manhaj',
+    body: 'Memahami agama berdasarkan Al-Qur\'an dan Sunnah dengan pemahaman salafus shalih.',
+  },
 ];
 
 const learningStages = [
   {
-    title: 'Fondasi Aqidah dan Tauhid',
-    points: [
-      'Mengapa tauhid menjadi dasar seluruh amal.',
-      'Tiga pertanyaan pokok: siapa Rabb-mu, apa agamamu, siapa Nabimu.',
-      'Makna laa ilaaha illallah dalam keyakinan dan amal.',
-      'Hal-hal yang merusak kemurnian tauhid.',
-    ],
+    icon: Landmark,
+    index: '01',
+    title: 'Aqidah dan tauhid',
+    lead: 'Membenahi perkara yang menjadi dasar seluruh amal.',
+    points: ['Tiga pertanyaan pokok', 'Makna tauhid dalam keyakinan dan amal', 'Perkara yang merusak kemurnian tauhid'],
   },
   {
-    title: 'Adab dan Manhaj Belajar',
-    points: [
-      'Niat, keikhlasan, dan adab penuntut ilmu.',
-      "Adab terhadap Al-Qur'an, Sunnah, guru, dan sesama penuntut ilmu.",
-      'Prinsip memahami agama dengan pemahaman salafus shalih.',
-      'Cara menyikapi perbedaan, nasihat, dan konten agama di ruang digital.',
-    ],
+    icon: Compass,
+    index: '02',
+    title: 'Adab dan manhaj belajar',
+    lead: 'Menata cara menerima, memahami, dan menyampaikan ilmu.',
+    points: ['Niat dan keikhlasan', 'Adab terhadap dalil dan pengajar', 'Menyikapi perbedaan dan konten digital'],
   },
   {
-    title: 'Ibadah Harian dan Fiqh Dasar',
-    points: [
-      'Thaharah, wudhu, dan kebersihan ibadah.',
-      'Shalat, puasa, zakat, dan fiqh praktis harian.',
-      'Kesalahan umum dalam ibadah yang perlu diperbaiki bertahap.',
-      'Menghubungkan ilmu ibadah dengan khusyuk dan ketundukan.',
-    ],
+    icon: ShieldCheck,
+    index: '03',
+    title: 'Ibadah harian',
+    lead: 'Menguatkan ilmu yang dibutuhkan untuk amal sehari-hari.',
+    points: ['Thaharah dan wudhu', 'Shalat, puasa, serta fiqh dasar', 'Memperbaiki kesalahan secara bertahap'],
   },
   {
-    title: 'Akhlak dan Tazkiyatun Nafs',
-    points: [
-      'Akhlak Muslim dalam rumah, pekerjaan, pertemanan, dan masyarakat.',
-      'Penyakit hati, muhasabah, dan jalan memperbaiki diri.',
-      'Keteladanan Nabi, para sahabat, dan generasi salaf.',
-      'Membiasakan amal kecil yang lebih mudah dijaga.',
-    ],
+    icon: Sprout,
+    index: '04',
+    title: 'Akhlak dan tazkiyatun nafs',
+    lead: 'Membawa ilmu ke dalam sikap, hati, dan relasi.',
+    points: ['Akhlak di rumah dan pekerjaan', 'Muhasabah serta penyakit hati', 'Keteladanan Nabi dan generasi salaf'],
   },
   {
-    title: 'Islam dalam Kehidupan Nyata',
-    points: [
-      'Muamalah, keluarga, pekerjaan, dan interaksi sosial.',
-      'Membaca masalah hidup dengan kacamata iman dan ilmu.',
-      'Studi kasus ringan agar ilmu turun menjadi sikap dan keputusan.',
-    ],
+    icon: Route,
+    index: '05',
+    title: 'Islam dalam kehidupan nyata',
+    lead: 'Melihat keputusan sehari-hari dengan timbangan iman dan ilmu.',
+    points: ['Keluarga dan muamalah', 'Pekerjaan serta interaksi sosial', 'Studi kasus dan langkah perbaikan'],
   },
 ];
 
-const format = [
-  {
-    title: 'Ringkas',
-    body: 'Materi disusun pendek dan fokus agar mudah diikuti di sela aktivitas harian.',
-  },
-  {
-    title: 'Bertahap',
-    body: 'Peserta diarahkan dari pokok iman menuju ibadah, adab, akhlak, dan praktik keseharian.',
-  },
-  {
-    title: 'Reflektif',
-    body: 'Setiap materi dihubungkan dengan pertanyaan muhasabah dan langkah amal sederhana.',
-  },
-  {
-    title: 'Fleksibel',
-    body: 'Belajar dapat dilakukan dari rumah melalui media daring dan bahan pendukung yang mudah diakses.',
-  },
+const concerns = [
+  'Sudah lama menjadi Muslim, tetapi pemahaman agama terasa belum tersusun dari dasar.',
+  'Ingin mulai belajar, namun bingung menentukan materi dan urutan yang perlu didahulukan.',
+  'Rutinitas ibadah berjalan, tetapi hubungan antara ilmu, niat, dan amal belum terasa kuat.',
+  'Sulit memilah konten agama di ruang digital dan membutuhkan rujukan yang lebih terarah.',
 ];
 
-const approaches = [
-  'Bahasa sederhana untuk orang dewasa, tanpa meremehkan kedalaman ilmu.',
-  'Beban materi dijaga agar tidak menumpuk dan membuat peserta berhenti di tengah jalan.',
-  'Penjelasan diarahkan kepada pemahaman, pengamalan, dan ketenangan dalam beragama.',
-  "Rujukan dijaga agar selaras dengan Al-Qur'an, Sunnah, dan pemahaman salafus shalih.",
+const audience = [
+  'Muslim pemula dan mualaf yang ingin memahami fondasi paling penting.',
+  'Mahasiswa, pekerja, dan profesional dengan waktu belajar yang terbatas.',
+  'Orang tua yang ingin menguatkan dasar iman sebelum membimbing keluarga.',
+  'Muslim yang ingin menata kembali aqidah, ibadah, adab belajar, dan manhaj dari awal.',
 ];
 
-const assessments = [
-  'Pertanyaan reflektif setelah materi.',
-  'Muhasabah pribadi tanpa membuka aib yang tidak perlu.',
-  'Studi kasus kehidupan nyata.',
-  'Tantangan amal ringan yang bisa dijaga.',
+const principles = [
+  'Bahasa dibuat jernih untuk orang dewasa tanpa meremehkan kedalaman ilmu.',
+  'Beban belajar dijaga agar peserta dapat bertumbuh secara konsisten.',
+  'Refleksi tidak diarahkan untuk membuka aib yang tidak perlu.',
+  'Rujukan dijaga agar selaras dengan Al-Qur\'an, Sunnah, dan pemahaman salafus shalih.',
 ];
 
-const advancedPrograms = [
-  "Tahsin dan tilawah Al-Qur'an.",
-  'Bahasa Arab dasar.',
-  'Fiqh keluarga dan kehidupan harian.',
-  'Kajian tematik aqidah, adab, dan akhlak.',
-  'Parenting dan keluarga Islami.',
-  'Program pendalaman lain dalam ekosistem Ihsanul Adab.',
+const continuations = [
+  ['Tahsin dan tilawah', 'Menguatkan hubungan dengan Al-Qur\'an melalui bacaan yang lebih terjaga.'],
+  ['Bahasa Arab dasar', 'Membuka jalan untuk memahami istilah dan sumber pembelajaran secara lebih utuh.'],
+  ['Fiqh keluarga', 'Mendalami persoalan rumah, relasi, dan kehidupan harian dengan ilmu.'],
+  ['Kajian tematik', 'Melanjutkan pembelajaran aqidah, adab, akhlak, dan tema yang lebih khusus.'],
 ];
 
-const differences = [
-  'Fokus pada fondasi, bukan sekadar banyaknya materi.',
-  'Ramah pemula, tetapi tetap menjaga kehati-hatian ilmiah.',
-  'Menyentuh akal, hati, dan amal harian.',
-  'Tidak dibuat untuk mengejar ranking atau tekanan akademik.',
-  'Menjadi pintu masuk menuju pembelajaran Islam yang lebih tertata.',
-];
+const consultationUrl = 'https://berbagi.link/ypihsanuladab';
+const whatsappUrl = 'https://wa.me/6285179676003';
+const lmsUrl = 'https://hub.ihsanuladab.or.id/';
 ---
 
 <BaseLayout
-  title="Ushuluna - The Essentials of Islam"
-  description="Ushuluna adalah program pembelajaran Islam daring untuk memahami fondasi tauhid, aqidah, ibadah, adab, dan manhaj secara bertahap dan menenangkan."
+  title="Ushuluna - Fondasi Islam untuk Muslim Dewasa"
+  description="Ushuluna membantu Muslim dewasa mempelajari tauhid, aqidah, ibadah, adab, dan manhaj secara bertahap melalui materi yang ringkas dan terarah."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-ushuluna">
+    <a class="hm-ushuluna-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header ushuluna-site-header">
-    <div class="topbar ushuluna-topbar">
-      <span>Ushuluna - The Essentials of Islam</span>
-      <a href={consultationUrl}>Konsultasi belajar</a>
-    </div>
+    <header class="hm-ushuluna-header hm-masthead">
+      <nav class="hm-ushuluna-nav hm-ushuluna-nav-left" aria-label="Navigasi program">
+        <a href="#fondasi">Fondasi</a>
+        <a href="#materi">Materi</a>
+      </nav>
 
-    <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
-        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+      <a class="hm-ushuluna-brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="48" height="48" />
         <span>
-          <strong>Ihsanul Adab</strong>
-          <small>Ushuluna</small>
+          <strong>Ushuluna</strong>
+          <small>The Essentials of Islam</small>
         </span>
       </a>
 
-      <nav class="desktop-nav" aria-label="Navigasi Ushuluna">
-        <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-        <details class="nav-dropdown">
-          <summary>Program</summary>
-          <div class="nav-program-panel">
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
+      <div class="hm-ushuluna-header-actions">
+        <details class="hm-ushuluna-program-menu">
+          <summary>
+            Program
+            <ChevronDown size={16} strokeWidth={1.8} aria-hidden="true" />
+          </summary>
+          <div>
+            {programMenuItems.map(([label, href]) => <a href={href}>{label}</a>)}
           </div>
         </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-      </nav>
+        <a class="hm-ushuluna-header-link" href={lmsUrl}>
+          Akses LMS
+          <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+      </div>
+    </header>
 
-      <a class="nav-cta ushuluna-nav-cta" href={lmsUrl}>Akses LMS IA</a>
+    <main id="konten">
+      <section class="hm-ushuluna-hero" aria-labelledby="ushuluna-title">
+        <img
+          src="/images/ushuluna-kai-forward-seat-hero.png"
+          alt="Seorang ikhwan dewasa tampak dari belakang duduk searah dengan kursi kereta biru dan abu-abu sambil belajar melalui audio dan PDF"
+          width="1674"
+          height="936"
+          fetchpriority="high"
+        />
+        <div class="hm-ushuluna-hero-shade" aria-hidden="true"></div>
+        <div class="hm-ushuluna-hero-inner">
+          <p class="hm-ushuluna-kicker">Fondasi Islam untuk Muslim dewasa</p>
+          <h1 id="ushuluna-title">Ushuluna</h1>
+          <p class="hm-ushuluna-hero-statement">Belajar Islam dari dasar yang benar, di tengah hidup yang terus bergerak.</p>
+          <p class="hm-ushuluna-hero-lede">
+            Program daring untuk menata tauhid, aqidah, ibadah, adab, dan manhaj melalui alur belajar yang ringkas, bertahap, dan dapat diamalkan.
+          </p>
+          <div class="hm-ushuluna-actions">
+            <a class="hm-ushuluna-button hm-ushuluna-button-primary" href={consultationUrl}>
+              Mulai konsultasi
+              <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+            <a class="hm-ushuluna-button hm-ushuluna-button-quiet" href="#rute-belajar">
+              Lihat rute belajar
+              <ArrowDown size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+        <p class="hm-ushuluna-hero-caption">
+          <TrainFront size={17} strokeWidth={1.7} aria-hidden="true" />
+          Bandung - Jakarta | belajar di sela perjalanan
+        </p>
+      </section>
 
-      <details class="mobile-menu">
-        <summary aria-label="Buka menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-        <div class="mobile-panel">
-          <a href="/">Beranda</a>
-          <a href="/tentang-kami/">Tentang Kami</a>
-          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-          <div class="mobile-program-group">
-            <strong>Program</strong>
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
+      <section class="hm-ushuluna-route" id="rute-belajar" aria-labelledby="route-title">
+        <div class="hm-ushuluna-section hm-ushuluna-route-inner">
+          <div class="hm-ushuluna-route-heading hm-ushuluna-reveal">
+            <p class="hm-ushuluna-kicker">Rute belajar fleksibel</p>
+            <h2 id="route-title">Empat langkah agar materi tidak berhenti di layar.</h2>
+          </div>
+          <ol class="hm-ushuluna-route-map" aria-label="Alur belajar Ushuluna">
+            {studyRoute.map(({ icon: Icon, number, title, body }, index) => (
+              <li class="hm-ushuluna-reveal" style={'--route-order: ' + index}>
+                <div>
+                  <Icon size={24} strokeWidth={1.65} aria-hidden="true" />
+                  <span>{number}</span>
+                </div>
+                <h3>{title}</h3>
+                <p>{body}</p>
+                {index < studyRoute.length - 1 && <ArrowRight class="hm-ushuluna-route-arrow" size={22} strokeWidth={1.6} aria-hidden="true" />}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-intro hm-ushuluna-section" aria-labelledby="intro-title">
+        <div class="hm-ushuluna-reveal">
+          <p class="hm-ushuluna-kicker">Mengapa Ushuluna</p>
+          <h2 id="intro-title">Banyak materi belum tentu membuat arah belajar lebih jelas.</h2>
+        </div>
+        <div class="hm-ushuluna-intro-copy hm-ushuluna-reveal">
+          <p>
+            Ushuluna membantu peserta kembali kepada perkara yang paling mendasar. Materi tidak ditumpuk sekaligus, tetapi disusun agar hubungan antara keyakinan, ibadah, adab, dan kehidupan sehari-hari dapat terlihat.
+          </p>
+          <p>
+            Tujuannya bukan mengejar banyaknya catatan. Peserta diarahkan untuk memahami prinsip, memeriksa dirinya, lalu membawa satu perbaikan ke dalam amal yang nyata.
+          </p>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-concerns">
+        <div class="hm-ushuluna-section hm-ushuluna-concern-inner">
+          <div class="hm-ushuluna-reveal">
+            <p class="hm-ushuluna-kicker">Titik berangkat</p>
+            <h2>Ketika ingin belajar, tetapi belum tahu mana yang harus didahulukan.</h2>
+            <p>Ushuluna menolong peserta mengenali kebutuhan dasarnya sebelum bergerak ke pembahasan yang lebih jauh.</p>
+          </div>
+          <ol>
+            {concerns.map((item, index) => (
+              <li class="hm-ushuluna-reveal">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{item}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-foundations hm-ushuluna-section" id="fondasi" aria-labelledby="foundations-title">
+        <div class="hm-ushuluna-section-heading hm-ushuluna-reveal">
+          <p class="hm-ushuluna-kicker">Peta fondasi</p>
+          <h2 id="foundations-title">Empat penyangga untuk menata ilmu dan amal.</h2>
+          <p>Setiap bagian saling terhubung. Tauhid memberi arah, adab menjaga cara, ibadah menghidupkan amal, dan manhaj menjadi timbangan.</p>
+        </div>
+        <ol class="hm-ushuluna-foundation-map">
+          {foundations.map(({ icon: Icon, label, title, body }, index) => (
+            <li class="hm-ushuluna-reveal">
+              <div class="hm-ushuluna-foundation-marker">
+                <Icon size={26} strokeWidth={1.6} aria-hidden="true" />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <p>{label}</p>
+              <h3>{title}</h3>
+              <span>{body}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="hm-ushuluna-materials" id="materi" aria-labelledby="materials-title">
+        <div class="hm-ushuluna-section hm-ushuluna-material-inner">
+          <div class="hm-ushuluna-material-heading hm-ushuluna-reveal">
+            <p class="hm-ushuluna-kicker">Lima perhentian materi</p>
+            <h2 id="materials-title">Dari keyakinan menuju keputusan sehari-hari.</h2>
+            <p>Urutan materi membantu peserta melihat Islam sebagai jalan hidup yang utuh, bukan kumpulan tema yang terpisah.</p>
+          </div>
+          <div class="hm-ushuluna-material-list">
+            {learningStages.map(({ icon: Icon, index, title, lead, points }) => (
+              <article class="hm-ushuluna-reveal">
+                <div class="hm-ushuluna-material-index">
+                  <Icon size={25} strokeWidth={1.6} aria-hidden="true" />
+                  <span>{index}</span>
+                </div>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{lead}</p>
+                </div>
+                <ul>
+                  {points.map((point) => (
+                    <li>
+                      <CircleCheck size={17} strokeWidth={1.75} aria-hidden="true" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
-          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={consultationUrl}>Mulai Belajar</a>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-method hm-ushuluna-section" id="metode" aria-labelledby="method-title">
+        <div class="hm-ushuluna-method-lead hm-ushuluna-reveal">
+          <Headphones size={42} strokeWidth={1.4} aria-hidden="true" />
+          <p class="hm-ushuluna-kicker">Dirancang untuk ritme dewasa</p>
+          <h2 id="method-title">Ringkas untuk diikuti, cukup terarah untuk membangun kebiasaan.</h2>
+          <p>Belajar dapat ditempatkan di sela perjalanan, sebelum bekerja, atau setelah urusan rumah selesai tanpa kehilangan urutan.</p>
+          <a href={lmsUrl} class="hm-ushuluna-inline-link">
+            Buka LMS Ihsanul Adab
+            <ExternalLink size={17} strokeWidth={1.8} aria-hidden="true" />
+          </a>
+        </div>
+        <div class="hm-ushuluna-method-grid">
+          <article class="hm-ushuluna-reveal">
+            <AudioLines size={25} strokeWidth={1.6} aria-hidden="true" />
+            <h3>Materi audio</h3>
+            <p>Mendukung peserta yang perlu belajar sambil berpindah tempat atau menjalani rutinitas.</p>
+          </article>
+          <article class="hm-ushuluna-reveal">
+            <FileText size={25} strokeWidth={1.6} aria-hidden="true" />
+            <h3>PDF pendamping</h3>
+            <p>Memberi kerangka baca yang dapat ditandai dan dilihat kembali ketika peserta membutuhkan penguatan.</p>
+          </article>
+          <article class="hm-ushuluna-reveal">
+            <NotebookPen size={25} strokeWidth={1.6} aria-hidden="true" />
+            <h3>Refleksi terjaga</h3>
+            <p>Pertanyaan dan catatan diarahkan kepada muhasabah tanpa mendorong peserta membuka aib.</p>
+          </article>
+          <article class="hm-ushuluna-reveal">
+            <CircleCheck size={25} strokeWidth={1.6} aria-hidden="true" />
+            <h3>Langkah amal</h3>
+            <p>Setiap bagian ditutup dengan perbaikan ringan yang relevan dan dapat dilanjutkan.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-audience">
+        <div class="hm-ushuluna-section hm-ushuluna-audience-inner">
+          <div class="hm-ushuluna-reveal">
+            <p class="hm-ushuluna-kicker">Untuk siapa</p>
+            <h2>Untuk Muslim yang ingin kembali menata dasar tanpa merasa dihakimi.</h2>
+            <UserRoundCheck size={44} strokeWidth={1.4} aria-hidden="true" />
+          </div>
+          <ul>
+            {audience.map((item) => (
+              <li class="hm-ushuluna-reveal">
+                <CircleCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-principles hm-ushuluna-section" aria-labelledby="principles-title">
+        <div class="hm-ushuluna-reveal">
+          <p class="hm-ushuluna-kicker">Cara kami menjaga proses</p>
+          <h2 id="principles-title">Ramah bagi pemula, tetap berhati-hati dalam ilmu.</h2>
+        </div>
+        <ul>
+          {principles.map((item) => (
+            <li class="hm-ushuluna-reveal">
+              <ShieldCheck size={21} strokeWidth={1.7} aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="hm-ushuluna-continuation" aria-labelledby="continuation-title">
+        <div class="hm-ushuluna-section hm-ushuluna-continuation-inner">
+          <div class="hm-ushuluna-section-heading hm-ushuluna-reveal">
+            <p class="hm-ushuluna-kicker">Setelah fondasi</p>
+            <h2 id="continuation-title">Lanjutkan perjalanan sesuai kebutuhan ilmu.</h2>
+            <p>Ushuluna menjadi pintu masuk. Setelah dasarnya lebih tertata, peserta dapat melanjutkan ke pembelajaran yang lebih khusus.</p>
+          </div>
+          <div class="hm-ushuluna-continuation-list">
+            {continuations.map(([title, body], index) => (
+              <article class="hm-ushuluna-reveal">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+                <ArrowRight size={20} strokeWidth={1.6} aria-hidden="true" />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="hm-ushuluna-cta" id="kontak">
+        <div class="hm-ushuluna-section hm-ushuluna-cta-inner">
+          <Layers3 size={42} strokeWidth={1.4} aria-hidden="true" />
+          <p class="hm-ushuluna-kicker">Mulai dari yang paling mendasar</p>
+          <h2>Fondasi yang lurus membantu langkah tetap terarah, di mana pun perjalanan berlangsung.</h2>
+          <p>Ceritakan kebutuhan dan ritme belajar Anda. Admin akan membantu menjelaskan alur program dan langkah awal yang tersedia.</p>
+          <div class="hm-ushuluna-actions">
+            <a class="hm-ushuluna-button hm-ushuluna-button-primary" href={consultationUrl}>
+              Konsultasikan program
+              <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+            <a class="hm-ushuluna-button hm-ushuluna-button-outline" href={whatsappUrl}>
+              WhatsApp admin
+              <ExternalLink size={17} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="hm-ushuluna-footer">
+      <div class="hm-ushuluna-footer-main">
+        <div>
+          <p class="hm-ushuluna-kicker">Ushuluna</p>
+          <h2>Kembali ke dasar. Menata arah. Menjaga amal.</h2>
+        </div>
+        <Route size={42} strokeWidth={1.3} aria-hidden="true" />
+      </div>
+      <div class="hm-ushuluna-footer-meta">
+        <a class="hm-ushuluna-brand" href="/">
+          <img src="/images/logo-ihsanul-adab.png" alt="" width="42" height="42" />
+          <span>
+            <strong>Ihsanul Adab</strong>
+            <small>Mendidik dengan adab, menumbuhkan dengan ilmu.</small>
+          </span>
+        </a>
+        <nav aria-label="Navigasi footer">
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <a href="/#program">Program Lain</a>
+        </nav>
+        <p>&copy; 2026 Ihsanul Adab</p>
+      </div>
+    </footer>
+
+    <nav class="hm-mobile-bottom-nav hm-ushuluna-bottom-nav" aria-label="Navigasi bawah Ushuluna">
+      <a href="/">
+        <House size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Beranda</span>
+      </a>
+      <a href="#rute-belajar">
+        <Waypoints size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Alur</span>
+      </a>
+      <a href="#materi">
+        <BookOpenCheck size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Materi</span>
+      </a>
+      <a href={whatsappUrl}>
+        <MessageCircle size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Tanya</span>
+      </a>
+      <details>
+        <summary>
+          <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
+          <span>Menu</span>
+        </summary>
+        <div>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <a href="/#program">Semua Program</a>
+          <a href={lmsUrl}>Akses LMS</a>
         </div>
       </details>
-    </div>
-  </header>
-
-  <main id="konten">
-    <section class="ushuluna-hero" aria-labelledby="ushuluna-title">
-      <img
-        src="/images/ushuluna-foundations-hero.png"
-        alt="Still-life fondasi belajar Islam berisi mushaf tertutup, batu dasar, kompas, lampu, buku, dan pola geometri tanpa figur makhluk bernyawa"
-      />
-      <div class="ushuluna-hero-content">
-        <p class="eyebrow">Ushuluna - The Essentials of Islam</p>
-        <h1 id="ushuluna-title">Belajar Islam dari fondasi yang benar.</h1>
-        <p>
-          Program pembelajaran daring untuk memahami tauhid, aqidah, ibadah, adab,
-          dan manhaj secara bertahap, ringkas, dan menenangkan hati.
-        </p>
-        <blockquote>
-          Fondasi yang lurus membantu seorang Muslim lebih tenang dalam beribadah,
-          lebih jernih dalam bersikap, dan lebih kuat saat menghadapi kehidupan.
-        </blockquote>
-        <div class="hero-actions">
-          <a class="button primary" href={consultationUrl}>Mulai Belajar</a>
-          <a class="button secondary" href="#tentang-ushuluna">Pelajari Ushuluna</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="ushuluna-foundation" aria-label="Fondasi pembelajaran Ushuluna">
-      {foundationSignals.map(([title, body]) => (
-        <article>
-          <strong>{title}</strong>
-          <span>{body}</span>
-        </article>
-      ))}
-    </section>
-
-    <section class="section ushuluna-concern">
-      <div>
-        <p class="eyebrow">Kebutuhan yang sering dirasakan</p>
-        <h2>Banyak Muslim ingin kembali belajar, tetapi belum tahu harus memulai dari mana.</h2>
-      </div>
-      <div class="ushuluna-concern-list">
-        {concerns.map((item, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <p>{item}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="ushuluna-answer" id="tentang-ushuluna">
-      <div>
-        <p class="eyebrow">Tentang Ushuluna</p>
-        <h2>Pintu masuk untuk menata iman, ilmu, dan amal dari dasar.</h2>
-      </div>
-      <div>
-        <p>
-          Ushuluna dirancang untuk membantu peserta memahami pokok-pokok Islam dengan
-          bahasa yang jernih dan alur yang bertahap. Program ini tidak mengejar banyak
-          materi sekaligus, tetapi menguatkan hal paling mendasar agar ilmu lebih mudah
-          diamalkan.
-        </p>
-      </div>
-    </section>
-
-    <section class="section ushuluna-about">
-      <div>
-        <p class="eyebrow">Arah belajar</p>
-        <h2>Ilmu tidak berhenti sebagai pengetahuan, tetapi menggerakkan amal.</h2>
-      </div>
-      <div class="stack">
-        <p>
-          Materi disusun agar peserta mengenal dasar agama, memahami makna ibadah,
-          memperbaiki adab belajar, dan mulai menata kebiasaan kecil yang bisa dijaga.
-        </p>
-        <div class="ushuluna-goal-grid">
-          {goals.map((goal) => <span>{goal}</span>)}
-        </div>
-      </div>
-    </section>
-
-    <section class="section ushuluna-audience" id="untuk-siapa">
-      <div>
-        <p class="eyebrow">Untuk siapa program ini?</p>
-        <h2>Ramah pemula, jelas untuk orang dewasa, dan tetap menjaga rujukan ilmu.</h2>
-      </div>
-      <div class="stack">
-        <p>
-          Tidak perlu latar belakang pesantren atau keilmuan khusus. Ushuluna cocok
-          bagi peserta yang ingin belajar dengan tenang, bertahap, dan tidak merasa
-          dihakimi karena baru memulai.
-        </p>
-        <ul class="check-list">
-          {audiences.map((audience) => <li>{audience}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    <section class="section ushuluna-materials" id="materi">
-      <div class="section-heading">
-        <p class="eyebrow">Materi utama</p>
-        <h2>Ushuluna membimbing peserta melalui fondasi Islam yang paling dibutuhkan.</h2>
-      </div>
-      <div class="ushuluna-material-grid">
-        {learningStages.map((stage) => (
-          <article>
-            <h3>{stage.title}</h3>
-            <ul>
-              {stage.points.map((point) => <li>{point}</li>)}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section ushuluna-structure" id="metode">
-      <div>
-        <p class="eyebrow">Format belajar</p>
-        <h2>Ringan dijalani, tetapi tetap punya arah.</h2>
-      </div>
-      <div class="ushuluna-format-grid">
-        {format.map((item) => (
-          <article>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section ushuluna-method">
-      <article>
-        <p class="eyebrow">Pendekatan pembelajaran</p>
-        <h2>Materi dibuat agar ilmu lebih mudah menetap dan diamalkan.</h2>
-        <ul>
-          {approaches.map((item) => <li>{item}</li>)}
-        </ul>
-      </article>
-      <article>
-        <p class="eyebrow">Refleksi dan latihan amal</p>
-        <h2>Asesmen diarahkan kepada kesadaran, bukan tekanan.</h2>
-        <ul>
-          {assessments.map((item) => <li>{item}</li>)}
-        </ul>
-        <p>Tidak ada ranking. Tidak ada perlombaan popularitas. Yang dikejar adalah pemahaman yang benar dan amal yang lebih istiqamah.</p>
-      </article>
-    </section>
-
-    <section class="section ushuluna-advanced">
-      <div>
-        <p class="eyebrow">Setelah fondasi</p>
-        <h2>Ushuluna menjadi pintu masuk menuju pembelajaran yang lebih tertata.</h2>
-      </div>
-      <ul class="check-list">
-        {advancedPrograms.map((program) => <li>{program}</li>)}
-      </ul>
-    </section>
-
-    <section class="ushuluna-difference">
-      <div>
-        <p class="eyebrow">Mengapa Ushuluna berbeda?</p>
-        <h2>Fokus pada akar, bukan sekadar banyaknya materi.</h2>
-      </div>
-      <div class="ushuluna-difference-grid">
-        {differences.map((item) => <span>{item}</span>)}
-      </div>
-    </section>
-
-    <section class="section ushuluna-closing">
-      <article>
-        <p class="eyebrow">Ushuluna</p>
-        <h2>Sebuah perjalanan kembali ke dasar.</h2>
-        <p>
-          Untuk menata iman, menjernihkan hati, dan menguatkan langkah. Setiap materi
-          diarahkan agar peserta mengambil satu pemahaman dan satu amal yang bisa
-          dijaga dalam kehidupan nyata.
-        </p>
-      </article>
-      <article>
-        <h2>Belajar Islam bukan tentang menjadi paling pintar.</h2>
-        <p>
-          Ia adalah ikhtiar menjadi hamba yang lebih lurus niatnya, lebih tenang
-          hatinya, dan lebih benar jalannya. Ushuluna hadir untuk menemani langkah awal
-          itu dengan lembut dan terarah.
-        </p>
-        <a class="button primary" href={consultationUrl}>Mulai Belajar Ushuluna</a>
-      </article>
-    </section>
-
-    <section class="cta ushuluna-cta" id="kontak">
-      <div>
-        <p class="eyebrow">The Essentials of Islam</p>
-        <h2>Mulai dari fondasi yang bisa dipahami dan diamalkan.</h2>
-        <p>
-          Ceritakan kebutuhan belajar Anda kepada admin. Kami bantu arahkan langkah
-          awal yang paling sesuai untuk mulai belajar bersama Ushuluna.
-        </p>
-      </div>
-      <div class="cta-actions">
-        <a class="button primary" href={consultationUrl}>Mulai Belajar</a>
-        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
-      <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
-      </div>
-    </div>
-    <nav aria-label="Navigasi footer Ushuluna">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
     </nav>
-  </footer>
+  </div>
 
-  <a class="floating-help" href={consultationUrl}>Mulai Belajar</a>
+  <script>
+    const revealItems = document.querySelectorAll('.hm-ushuluna-reveal');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealItems.forEach((item) => item.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+  </script>
 </BaseLayout>

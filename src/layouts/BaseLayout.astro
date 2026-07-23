@@ -29,15 +29,22 @@ const {
   <body>
     <slot />
     <script>
+      const openMenuSelector = '.site-header details[open], .hm-masthead details[open], .hm-mobile-bottom-nav details[open]';
+      const menuAreaSelector = '.site-header, .hm-masthead, .hm-mobile-bottom-nav';
+
       const closeSiblingMenus = (activeDetails) => {
-        document.querySelectorAll('.site-header details[open]').forEach((details) => {
+        document.querySelectorAll(openMenuSelector).forEach((details) => {
           if (details !== activeDetails) details.removeAttribute('open');
         });
       };
 
       document.addEventListener('toggle', (event) => {
         const target = event.target;
-        if (target instanceof HTMLDetailsElement && target.open && target.closest('.site-header')) {
+        if (
+          target instanceof HTMLDetailsElement &&
+          target.open &&
+          target.closest(menuAreaSelector)
+        ) {
           closeSiblingMenus(target);
         }
       }, true);
@@ -46,16 +53,16 @@ const {
         const target = event.target;
         if (!(target instanceof Element)) return;
 
-        if (target.closest('.site-header a')) {
-          document.querySelectorAll('.site-header details[open]').forEach((details) => {
+        if (target.closest('.site-header a, .hm-masthead a, .hm-mobile-bottom-nav a')) {
+          document.querySelectorAll(openMenuSelector).forEach((details) => {
             details.removeAttribute('open');
           });
           return;
         }
 
-        if (target.closest('.site-header details')) return;
+        if (target.closest('.site-header details, .hm-masthead details, .hm-mobile-bottom-nav details')) return;
 
-        document.querySelectorAll('.site-header details[open]').forEach((details) => {
+        document.querySelectorAll(openMenuSelector).forEach((details) => {
           details.removeAttribute('open');
         });
       });
@@ -63,7 +70,7 @@ const {
       document.addEventListener('keydown', (event) => {
         if (event.key !== 'Escape') return;
 
-        document.querySelectorAll('.site-header details[open]').forEach((details) => {
+        document.querySelectorAll(openMenuSelector).forEach((details) => {
           details.removeAttribute('open');
         });
       });

@@ -1,136 +1,100 @@
 ---
+import {
+  ArrowRight,
+  BookOpenCheck,
+  ChevronDown,
+  CircleCheck,
+  Compass,
+  ExternalLink,
+  Footprints,
+  HeartHandshake,
+  House,
+  Landmark,
+  Menu,
+  MessageCircle,
+  Mountain,
+  ShieldCheck,
+  UserRound,
+  UsersRound,
+  Waypoints,
+} from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const navItems = [
-  ['Beranda', '/'],
-  ['Tentang Kami', '/tentang-kami/'],
-  ['Karir & Pengabdian', '/karir-pengabdian/'],
-  ['Tantangan', '#tantangan'],
-  ['Tujuan', '#tujuan'],
-  ['Visi Misi', '#visi-misi'],
-  ['Komunitas', '#komunitas'],
-  ['Kontak', '#kontak'],
-];
+import '../../styles/father-project-redesign.css';
 
 const programMenuItems = [
-  {
-    label: 'Semua Program',
-    href: '/#program',
-    note: 'Ikhtisar layanan',
-  },
-  {
-    label: 'Ihsanul Adab Parenting Academy',
-    href: '/iapa/',
-    note: 'Parenting Islami keluarga',
-  },
-  {
-    label: 'The Father Project',
-    href: '/program/the-father-project/',
-    note: 'Komunitas ayah Muslim',
-  },
-  {
-    label: 'The Fitrah Journey',
-    href: '/program/the-fitrah-journey/',
-    note: 'Fitrah muslimah dewasa',
-  },
-  {
-    label: 'Headmaster & Teacher Academy',
-    href: '/program/headmaster-teacher-academy/',
-    note: 'Pengembangan guru dan sekolah',
-  },
-  {
-    label: 'PKGQ PAUD & SD',
-    href: '/program/kaderisasi-guru-quran-paud-sd/',
-    note: 'Kaderisasi guru Al-Quran',
-  },
-  {
-    label: 'IAIEE',
-    href: '/program/iaiee/',
-    note: 'Konsultasi mutu pendidikan',
-  },
-  {
-    label: 'Ushuluna',
-    href: '/program/ushuluna/',
-    note: 'Fondasi Islam bertahap',
-  },
-  {
-    label: 'Ihsanul Adab Quran Academy',
-    href: '/#program',
-    note: 'Pembelajaran Al-Quran keluarga',
-  },
-  {
-    label: 'DeenUp',
-    href: '/program/deenup/',
-    note: 'Pembinaan remaja Muslim',
-  },
-  {
-    label: 'IAIS Home-Based Learning',
-    href: '/program/homebased-learning/',
-    note: 'Sekolah Islam dari rumah',
-  },
+  ['Semua Program', '/#program'],
+  ['Ihsanul Adab Parenting Academy', '/iapa/'],
+  ['The Fitrah Journey', '/program/the-fitrah-journey/'],
+  ['Headmaster & Teacher Academy', '/program/headmaster-teacher-academy/'],
+  ['Kaderisasi Guru Quran PAUD & SD', '/program/kaderisasi-guru-quran-paud-sd/'],
+  ['IAIEE', '/program/iaiee/'],
+  ['Ushuluna', '/program/ushuluna/'],
+  ['DeenUp', '/program/deenup/'],
+  ['IAIS Home-Based Learning', '/program/homebased-learning/'],
 ];
 
-const stats = [
-  ['122+', 'Peserta dari berbagai daerah'],
-  ['4', 'Peran utama: hamba, suami, ayah, pemimpin'],
+const roles = [
+  {
+    icon: Landmark,
+    label: 'Hamba',
+    title: 'Menata hubungan dengan Allah',
+    detail: 'Membangun kesadaran bahwa seluruh peran berawal dari penghambaan, ibadah, dan amanah.',
+  },
+  {
+    icon: HeartHandshake,
+    label: 'Suami',
+    title: 'Menguatkan kemitraan dalam rumah',
+    detail: 'Belajar hadir, mendengar, berkomunikasi, dan memikul tanggung jawab bersama dengan adab.',
+  },
+  {
+    icon: House,
+    label: 'Ayah',
+    title: 'Hadir dalam tumbuh kembang anak',
+    detail: 'Mengupayakan kedekatan, keteladanan, pendidikan, dan rasa aman yang dibutuhkan keluarga.',
+  },
+  {
+    icon: Compass,
+    label: 'Pemimpin',
+    title: 'Memberi arah dengan ilmu',
+    detail: 'Mengambil keputusan secara tenang, tegas, dan bertanggung jawab tanpa kehilangan kelembutan.',
+  },
 ];
 
 const challenges = [
-  'Merasa harus kuat, tetapi jarang punya ruang aman untuk jujur dan bertumbuh.',
-  'Ingin hadir untuk keluarga, namun sering habis energi oleh pekerjaan dan tekanan hidup.',
-  'Sulit berkomunikasi dengan istri dan anak tanpa marah, diam, atau menghindar.',
-  'Paham bahwa ayah adalah pemimpin, tetapi belum punya peta langkah yang realistis.',
-  'Membawa luka masa kecil atau pengalaman fatherless yang belum selesai.',
-  'Ingin lebih dekat kepada Allah, tetapi ritme hidup terasa berantakan.',
-];
-
-const goals = [
-  'Menumbuhkan kesadaran laki-laki Muslim tentang identitas, amanah, dan tanggung jawab dirinya menurut Islam.',
-  'Membentuk ayah yang bertakwa, beradab, berilmu, dan hadir secara ruhiyah, emosional, serta fisik dalam keluarga.',
-  'Melatih kepemimpinan rumah yang tegas, lembut, komunikatif, dan bisa diteladani.',
-  'Menyediakan pendidikan aplikatif dan komunitas suportif yang memperkuat ketahanan keluarga.',
-];
-
-const missions = [
-  'Menumbuhkan kesadaran ruhiyah dan peran laki-laki sebagai hamba Allah.',
-  'Membina para ayah agar mampu menjalankan empat peran utama hidupnya.',
-  'Menyediakan program pembelajaran daring yang aplikatif, reflektif, dan membumi.',
-  'Membangun komunitas dukungan yang saling menguatkan, menasihati, dan bertumbuh bersama.',
-  'Mendorong ayah menjadi teladan dalam ibadah, komunikasi, kepemimpinan, dan pengasuhan.',
-  'Menjadi gerakan sosial edukatif yang melawan fenomena fatherless dan krisis kepemimpinan keluarga.',
-  'Menumbuhkan ketahanan dan ketangguhan keluarga.',
-  'Membentuk jaringan ayah-ayah rabbani di seluruh Indonesia.',
+  'Tuntutan untuk selalu kuat membuat banyak laki-laki sulit menemukan ruang refleksi yang sehat.',
+  'Tekanan pekerjaan kerap menghabiskan energi yang seharusnya juga hadir untuk istri dan anak.',
+  'Komunikasi di rumah mudah berubah menjadi marah, diam, atau saling menghindar.',
+  'Amanah sebagai pemimpin dipahami, tetapi langkah perbaikannya belum tersusun realistis.',
+  'Luka pengasuhan masa lalu dapat terbawa ke cara berelasi dengan keluarga hari ini.',
+  'Niat mendekat kepada Allah sering berbenturan dengan ritme hidup yang belum tertata.',
 ];
 
 const approaches = [
-  ['Tauhid-sentris', 'Setiap peran dibangun atas dasar penghambaan kepada Allah, bukan sekadar tuntutan sosial.'],
-  ['Adab & akhlak', 'Tidak hanya materi, tetapi pembiasaan lisan, sikap, keteladanan, dan tanggung jawab.'],
-  ['Andragogik & reflektif', 'Disesuaikan dengan pola pikir, luka, beban, dan kebutuhan laki-laki dewasa.'],
-  ['Praktis & realistik', 'Fokus pada perubahan nyata di rumah: ibadah, komunikasi, emosi, dan kehadiran.'],
-  ['Komunitas & keberlanjutan', 'Bukan selesai saat modul habis. Komunitas tetap hidup sebagai ruang saling menguatkan.'],
-];
-
-const audiences = [
-  'Ayah usia 25-50 tahun yang ingin memperbaiki peran dan kehadiran di rumah.',
-  'Suami yang ingin memperbaiki relasi dan tanggung jawab rumah tangga.',
-  'Laki-laki yang merasa lelah, hilang arah, atau ingin lebih dekat dengan Allah dan keluarganya.',
-  'Ayah yang ingin menjadi pemimpin yang lebih bijak, sabar, dan mendidik.',
-  'Calon ayah dan laki-laki dewasa yang ingin menyiapkan diri sebelum memimpin keluarga.',
-  'Laki-laki yang tumbuh tanpa figur ayah kuat dan ingin memutus mata rantai fatherless.',
-];
-
-const communityPoints = [
-  'Saling menguatkan di saat jatuh.',
-  'Saling menasihati dengan ilmu dan kelembutan.',
-  'Saling mendengar tanpa menghakimi.',
-  'Saling bertumbuh dalam ruh tauhid, adab, dan cinta keluarga.',
+  ['01', 'Tauhid sebagai titik berangkat', 'Menempatkan penghambaan kepada Allah sebagai dasar sebelum membahas keterampilan relasi dan kepemimpinan.'],
+  ['02', 'Belajar secara reflektif', 'Materi membantu peserta membaca pengalaman, pola emosi, tanggung jawab, dan kebutuhan perubahan dirinya.'],
+  ['03', 'Latihan yang membumi', 'Pembelajaran diarahkan pada praktik di rumah: ibadah, komunikasi, kehadiran, dan pengambilan keputusan.'],
+  ['04', 'Bertumbuh bersama pengajar', 'Proses belajar dibersamai agar peserta tidak berhenti pada informasi, tetapi mendapat arah untuk menerapkannya.'],
+  ['05', 'Dikuatkan oleh komunitas', 'Teman seperjalanan membantu menjaga semangat, saling menasihati, dan melanjutkan ikhtiar setelah sesi selesai.'],
 ];
 
 const outcomes = [
-  'Laki-laki lebih sadar posisi dirinya sebagai hamba Allah sebelum menjadi pemimpin keluarga.',
-  'Ayah lebih hadir dalam ibadah, komunikasi, pendidikan, dan keputusan rumah.',
-  'Relasi suami-istri lebih mudah dibangun dengan tanggung jawab, bukan saling menyalahkan.',
-  'Keluarga memiliki figur ayah yang lebih tenang, tegas, dan bisa dipercaya.',
+  'Lebih sadar terhadap amanah diri sebelum menuntut perubahan dari keluarga.',
+  'Lebih hadir dalam ibadah, percakapan, pendidikan, dan keputusan rumah.',
+  'Lebih mampu merespons konflik dengan tenang, jelas, dan bertanggung jawab.',
+  'Memiliki arah pertumbuhan yang dapat dilanjutkan bersama komunitas.',
+];
+
+const audience = [
+  'Ayah yang ingin memperbaiki kehadiran dan kepemimpinannya di rumah.',
+  'Suami yang sedang menata kembali komunikasi serta tanggung jawab keluarga.',
+  'Calon ayah yang ingin menyiapkan diri sebelum memimpin rumah tangga.',
+  'Laki-laki dewasa yang ingin memutus pola fatherless dan membangun teladan baru.',
+];
+
+const communityValues = [
+  ['Didengar', 'Menyampaikan pengalaman dan pergumulan tanpa dipermalukan.'],
+  ['Diarahkan', 'Menerima nasihat yang berpijak pada ilmu, adab, dan kebutuhan nyata.'],
+  ['Dikuatkan', 'Berjalan bersama laki-laki lain yang juga sedang memperbaiki diri.'],
 ];
 
 const whatsappUrl = 'https://wa.me/6285179676003';
@@ -138,269 +102,307 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 ---
 
 <BaseLayout
-  title="The Father Project - Yayasan Pendidikan Ihsanul Adab"
-  description="The Father Project adalah ruang belajar dan komunitas laki-laki Muslim dewasa untuk bertumbuh sebagai hamba, suami, ayah, dan pemimpin keluarga."
+  title="The Father Project - Menata Peran Ayah Muslim"
+  description="Ruang belajar dan komunitas laki-laki Muslim dewasa untuk bertumbuh sebagai hamba, suami, ayah, dan pemimpin keluarga."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-father">
+    <a class="hm-father-skip" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header">
-    <div class="topbar">
-      <span>The Father Project - komunitas belajar laki-laki Muslim dewasa</span>
-      <a href={whatsappUrl}>Konsultasikan kepada kami</a>
-    </div>
-
-    <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
-        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
+    <header class="hm-father-masthead hm-masthead">
+      <a class="hm-father-brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+        <img src="/images/logo-ihsanul-adab.png" alt="" width="50" height="50" />
         <span>
           <strong>Ihsanul Adab</strong>
           <small>The Father Project</small>
         </span>
       </a>
 
-      <nav class="desktop-nav" aria-label="Navigasi The Father Project">
-        <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-        <details class="nav-dropdown">
-          <summary>Program</summary>
-          <div class="nav-program-panel">
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
-          </div>
-        </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
+      <nav class="hm-father-nav" aria-label="Navigasi utama">
+        <a href="#peran">Empat Peran</a>
+        <a href="#perjalanan">Perjalanan Belajar</a>
+        <a href="#komunitas">Komunitas</a>
       </nav>
 
-      <a class="nav-cta" href="https://hub.ihsanuladab.or.id/">Akses LMS IA</a>
+      <div class="hm-father-header-actions">
+        <details class="hm-father-program-menu">
+          <summary>
+            Program
+            <ChevronDown size={16} strokeWidth={1.8} aria-hidden="true" />
+          </summary>
+          <div>
+            {programMenuItems.map(([label, href]) => <a href={href}>{label}</a>)}
+          </div>
+        </details>
+        <a class="hm-father-text-link" href={consultUrl}>
+          Konsultasi
+          <ArrowRight size={17} strokeWidth={1.8} aria-hidden="true" />
+        </a>
+      </div>
+    </header>
 
-      <details class="mobile-menu">
-        <summary aria-label="Buka menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-        <div class="mobile-panel">
-          <a href="/">Beranda</a>
-          <a href="/tentang-kami/">Tentang Kami</a>
-          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-          <div class="mobile-program-group">
-            <strong>Program</strong>
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
+    <main id="konten">
+      <section class="hm-father-hero" aria-labelledby="father-title">
+        <img
+          src="/images/father-project-sukawana-hero.png"
+          alt="Seorang lelaki Muslim dewasa tampak dari belakang berjalan di jalur perkebunan teh Sukawana, Bandung Barat"
+          width="1536"
+          height="1024"
+          fetchpriority="high"
+        />
+        <div class="hm-father-hero-shade" aria-hidden="true"></div>
+        <div class="hm-father-hero-inner">
+          <p class="hm-father-kicker">Ruang tumbuh laki-laki Muslim dewasa</p>
+          <h1 id="father-title">The Father Project</h1>
+          <p class="hm-father-hero-statement">
+            Menjadi hamba, suami, ayah, dan pemimpin keluarga yang lebih utuh.
+          </p>
+          <p class="hm-father-hero-lede">
+            Perjalanan belajar untuk menata iman, adab, emosi, komunikasi, dan tanggung jawab agar ayah lebih hadir bagi keluarganya.
+          </p>
+          <div class="hm-father-actions">
+            <a class="hm-father-button hm-father-button-primary" href={consultUrl}>
+              Mulai konsultasi
+              <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+            <a class="hm-father-button hm-father-button-quiet" href="#peran">
+              Lihat perjalanan
+              <Footprints size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+        <p class="hm-father-hero-caption">
+          <Mountain size={16} strokeWidth={1.7} aria-hidden="true" />
+          Sukawana, Bandung Barat
+        </p>
+      </section>
+
+      <section class="hm-father-metrics" aria-label="Ringkasan program">
+        <div>
+          <strong>122+</strong>
+          <span>peserta dari berbagai daerah</span>
+        </div>
+        <div>
+          <strong>4</strong>
+          <span>peran utama yang ditata bertahap</span>
+        </div>
+        <p>
+          Tidak ada ayah yang selesai dalam satu langkah. Perubahan dimulai dari keberanian membaca diri, belajar, lalu menghadirkan ikhtiar yang konsisten di rumah.
+        </p>
+      </section>
+
+      <section class="hm-father-intro hm-father-section hm-father-reveal">
+        <div>
+          <p class="hm-father-kicker">Mengapa program ini hadir</p>
+          <h2>Ayah tidak cukup hanya ada. Keluarga membutuhkan kehadirannya.</h2>
+        </div>
+        <div class="hm-father-prose">
+          <p>
+            The Father Project adalah program pembinaan daring bagi laki-laki Muslim yang ingin memahami dan menjalankan perannya secara lebih sadar.
+          </p>
+          <p>
+            Pembelajaran tidak berhenti pada teori pengasuhan. Peserta diajak menata diri sebagai hamba, memperbaiki relasi sebagai suami, hadir sebagai ayah, dan memberi arah sebagai pemimpin keluarga.
+          </p>
+        </div>
+      </section>
+
+      <section class="hm-father-roles hm-father-section" id="peran" aria-labelledby="roles-title">
+        <div class="hm-father-section-heading hm-father-reveal">
+          <p class="hm-father-kicker">Peta pertumbuhan</p>
+          <h2 id="roles-title">Empat peran, satu perjalanan yang saling menguatkan.</h2>
+          <p>Alurnya bukan tingkatan yang terpisah. Setiap peran memengaruhi cara seorang laki-laki hadir pada peran berikutnya.</p>
+        </div>
+
+        <ol class="hm-father-role-flow" aria-label="Alur empat peran The Father Project">
+          {roles.map(({ icon: Icon, label, title, detail }, index) => (
+            <li style={'--role-index: ' + index}>
+              <div class="hm-father-role-marker">
+                <Icon size={24} strokeWidth={1.7} aria-hidden="true" />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <p>{label}</p>
+              <h3>{title}</h3>
+              <span>{detail}</span>
+              {index < roles.length - 1 && <ArrowRight class="hm-father-role-arrow" size={22} strokeWidth={1.6} aria-hidden="true" />}
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="hm-father-challenges" id="tantangan">
+        <div class="hm-father-section hm-father-challenge-inner">
+          <div class="hm-father-reveal">
+            <p class="hm-father-kicker">Realitas yang dihadapi</p>
+            <h2>Banyak laki-laki ingin berubah, tetapi terlalu lama berjalan sendiri.</h2>
+            <p>Tantangan berikut bukan alasan untuk menyerah. Ia adalah titik awal untuk mengenali apa yang perlu dibenahi.</p>
+          </div>
+          <ol class="hm-father-challenge-list">
+            {challenges.map((challenge, index) => (
+              <li class="hm-father-reveal">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{challenge}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="hm-father-journey hm-father-section" id="perjalanan" aria-labelledby="journey-title">
+        <div class="hm-father-section-heading hm-father-reveal">
+          <p class="hm-father-kicker">Cara belajar</p>
+          <h2 id="journey-title">Dari memahami diri menuju kebiasaan baru di rumah.</h2>
+          <p>Setiap tahap menjaga pembelajaran tetap berakar pada tauhid, relevan bagi laki-laki dewasa, dan dapat dipraktikkan.</p>
+        </div>
+
+        <div class="hm-father-journey-list">
+          {approaches.map(([number, title, detail]) => (
+            <article class="hm-father-reveal">
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{detail}</p>
+              <CircleCheck size={22} strokeWidth={1.6} aria-hidden="true" />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="hm-father-growth hm-father-section">
+        <div class="hm-father-growth-heading hm-father-reveal">
+          <p class="hm-father-kicker">Perubahan yang diikhtiarkan</p>
+          <h2>Ilmu diterjemahkan menjadi sikap yang dapat dirasakan keluarga.</h2>
+          <BookOpenCheck size={42} strokeWidth={1.4} aria-hidden="true" />
+        </div>
+        <ul>
+          {outcomes.map((outcome) => (
+            <li class="hm-father-reveal">
+              <ShieldCheck size={22} strokeWidth={1.7} aria-hidden="true" />
+              <span>{outcome}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="hm-father-community" id="komunitas">
+        <div class="hm-father-section hm-father-community-inner">
+          <div class="hm-father-community-copy hm-father-reveal">
+            <p class="hm-father-kicker">Teman seperjalanan</p>
+            <h2>Komunitas menjaga proses tidak berhenti setelah kelas.</h2>
+            <p>
+              Peserta bertemu dalam ruang yang mendorong kejujuran, tanggung jawab, dan saling menasihati. Bukan untuk menghakimi, melainkan membantu setiap ayah kembali menata langkah.
+            </p>
+            <a class="hm-father-inline-link" href={whatsappUrl}>
+              Tanya tentang komunitas
+              <MessageCircle size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+          <div class="hm-father-community-values">
+            {communityValues.map(([title, detail], index) => (
+              <article class="hm-father-reveal">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{detail}</p>
+                </div>
+              </article>
             ))}
           </div>
-          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={consultUrl}>Konsultasikan kepada kami</a>
+        </div>
+      </section>
+
+      <section class="hm-father-audience hm-father-section">
+        <div class="hm-father-section-heading hm-father-reveal">
+          <p class="hm-father-kicker">Untuk siapa</p>
+          <h2>Untuk laki-laki yang siap bertanggung jawab atas pertumbuhannya.</h2>
+        </div>
+        <ul>
+          {audience.map((item) => (
+            <li class="hm-father-reveal">
+              <UserRound size={22} strokeWidth={1.6} aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="hm-father-mentor hm-father-section">
+        <div class="hm-father-mentor-label">
+          <UsersRound size={28} strokeWidth={1.6} aria-hidden="true" />
+          <p class="hm-father-kicker">Pembina dan pengajar</p>
+        </div>
+        <div>
+          <h2>Ustadz Abu Ibrahim Heykal Sya'ban, M.Ag</h2>
+          <p>Membersamai proses belajar, refleksi, dan penguatan peran laki-laki Muslim dalam keluarga.</p>
+        </div>
+      </section>
+
+      <section class="hm-father-cta" id="kontak">
+        <div class="hm-father-section">
+          <p class="hm-father-kicker">Mulai dari satu langkah</p>
+          <h2>Keluarga tidak membutuhkan ayah yang sempurna. Mereka membutuhkan ayah yang mau terus belajar dan hadir.</h2>
+          <div class="hm-father-actions">
+            <a class="hm-father-button hm-father-button-primary" href={consultUrl}>
+              Konsultasikan program
+              <ArrowRight size={18} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+            <a class="hm-father-button hm-father-button-outline" href={whatsappUrl}>
+              WhatsApp admin
+              <ExternalLink size={17} strokeWidth={1.8} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="hm-father-footer">
+      <div class="hm-father-footer-close">
+        <p>Untuk rumah yang lebih tenang, ayah yang lebih hadir.</p>
+        <Mountain size={34} strokeWidth={1.3} aria-hidden="true" />
+      </div>
+      <div class="hm-father-footer-meta">
+        <a class="hm-father-brand" href="/">
+          <img src="/images/logo-ihsanul-adab.png" alt="" width="42" height="42" />
+          <span>
+            <strong>Yayasan Pendidikan Ihsanul Adab</strong>
+            <small>Mendidik dengan adab, menumbuhkan dengan ilmu.</small>
+          </span>
+        </a>
+        <nav aria-label="Navigasi footer">
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <a href="/#program">Program Lain</a>
+        </nav>
+        <p>© 2026 Ihsanul Adab</p>
+      </div>
+    </footer>
+
+    <nav class="hm-mobile-bottom-nav hm-father-bottom-nav" aria-label="Navigasi bawah">
+      <a href="/">
+        <House size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Beranda</span>
+      </a>
+      <a href="#peran">
+        <Waypoints size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Peran</span>
+      </a>
+      <a href="#perjalanan">
+        <Footprints size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Alur</span>
+      </a>
+      <a href="#komunitas">
+        <UsersRound size={20} strokeWidth={1.8} aria-hidden="true" />
+        <span>Komunitas</span>
+      </a>
+      <details>
+        <summary>
+          <Menu size={20} strokeWidth={1.8} aria-hidden="true" />
+          <span>Menu</span>
+        </summary>
+        <div>
+          <a href="/tentang-kami/">Tentang Kami</a>
+          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
+          <a href="/#program">Semua Program</a>
+          <a href={consultUrl}>Konsultasi</a>
         </div>
       </details>
-    </div>
-  </header>
-
-  <main id="konten">
-    <section class="father-hero" aria-labelledby="father-title">
-      <img src="/images/father-project-community-hero.png" alt="Meja kajian dewasa dengan buku, catatan, sajadah, kopi, kompas, dan kursi kosong tanpa figur makhluk bernyawa" />
-      <div class="father-hero-content">
-        <p class="eyebrow">Komunitas lelaki dewasa untuk tumbuh dan memimpin</p>
-        <h1 id="father-title">Menjadi hamba, suami, ayah, dan pemimpin keluarga yang lebih utuh.</h1>
-        <p>
-          The Father Project menemani laki-laki Muslim menata iman, adab, emosi,
-          komunikasi, dan tanggung jawab agar lebih hadir bagi keluarga.
-        </p>
-        <blockquote>
-          Setiap kalian adalah pemimpin, dan setiap pemimpin akan dimintai pertanggungjawaban atas yang ia pimpin.
-          <span>(HR. Bukhari & Muslim)</span>
-        </blockquote>
-        <div class="hero-actions">
-          <a class="button primary" href="#flyer-program">Flyer Program</a>
-          <a class="button secondary" href={consultUrl}>Konsultasikan kepada kami</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section father-intro">
-      <div>
-        <p class="eyebrow">Mari berjalan dan berjuang bersama</p>
-        <h2>Ruang belajar, ruang refleksi, dan ruang bertumbuh bagi laki-laki Muslim dewasa.</h2>
-      </div>
-      <div class="stack">
-        <p>
-          The Father Project adalah program pembinaan dan pembelajaran daring yang dirancang
-          khusus untuk laki-laki Muslim agar mampu memahami dan menjalankan perannya secara
-          utuh: sebagai hamba Allah, anak, suami, ayah, dan bagian dari masyarakat.
-        </p>
-        <p>
-          Di tengah fenomena fatherless dan krisis kepemimpinan keluarga, program ini lahir
-          untuk menawarkan solusi yang membumi, bertahap, dan menyentuh hati.
-        </p>
-        <p>
-          Program ini menawarkan perjalanan perubahan diri: kembali menjadi laki-laki yang
-          berfungsi utuh, menghadirkan cinta, ilmu, dan keteladanan di tengah rumah tangga.
-        </p>
-      </div>
-    </section>
-
-    <section class="father-challenge" id="tantangan">
-      <div>
-        <p class="eyebrow">Tantangan laki-laki hari ini</p>
-        <h2>Banyak ayah ingin berubah, tetapi terlalu lama berjalan sendiri.</h2>
-      </div>
-      <div class="father-challenge-grid">
-        {challenges.map((challenge) => <span>{challenge}</span>)}
-      </div>
-    </section>
-
-    <section class="father-stats" aria-label="Ringkasan The Father Project">
-      {stats.map(([value, label]) => (
-        <article>
-          <strong>{value}</strong>
-          <span>{label}</span>
-        </article>
-      ))}
-    </section>
-
-    <section class="section father-goals" id="tujuan">
-      <div class="section-heading">
-        <p class="eyebrow">Tujuan Program</p>
-        <h2>Menumbuhkan laki-laki yang hadir, bertanggung jawab, dan mampu memimpin keluarga dengan ilmu.</h2>
-      </div>
-      <div class="father-goal-grid">
-        {goals.map((goal, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <p>{goal}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section father-vision" id="visi-misi">
-      <div class="vision-panel">
-        <p class="eyebrow">Visi Program</p>
-        <h2>Membentuk generasi ayah Muslim yang bertakwa, hadir secara utuh, dan mampu menjadi qowwam yang menumbuhkan keluarganya dalam cinta, ilmu, dan ibadah.</h2>
-      </div>
-      <div class="father-mission-panel">
-        <p class="eyebrow">Misi The Father Project</p>
-        <ol>
-          {missions.map((mission) => <li>{mission}</li>)}
-        </ol>
-      </div>
-    </section>
-
-    <section class="section father-method">
-      <div class="section-heading compact">
-        <p class="eyebrow">Pendekatan Pendidikan</p>
-        <h2>Dibangun untuk laki-laki dewasa: reflektif, aplikatif, dan tetap hidup dalam komunitas.</h2>
-      </div>
-      <div class="father-method-grid">
-        {approaches.map(([title, detail]) => (
-          <article>
-            <h3>{title}</h3>
-            <p>{detail}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section father-audience">
-      <div>
-        <p class="eyebrow">Profil Peserta yang Dituju</p>
-        <h2>Untuk laki-laki yang ingin kembali kepada perannya dengan lebih sadar.</h2>
-      </div>
-      <ul class="check-list">
-        {audiences.map((audience) => <li>{audience}</li>)}
-      </ul>
-    </section>
-
-    <section class="section father-outcomes">
-      <div class="section-heading compact">
-        <p class="eyebrow">Perubahan yang diikhtiarkan</p>
-        <h2>Bukan sekadar tahu peran ayah, tetapi mulai menjalankannya dengan adab dan tanggung jawab.</h2>
-      </div>
-      <div class="father-outcome-grid">
-        {outcomes.map((outcome, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <p>{outcome}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section father-community" id="komunitas">
-      <div>
-        <p class="eyebrow">The Father Project hadir untuk kita</p>
-        <h2>Komunitas belajar adalah jantung dari program.</h2>
-        <p>
-          Di dalam The Father Project, perubahan diri tidak cukup dengan ilmu saja. Ia
-          membutuhkan lingkungan, suasana, dan teman seperjalanan.
-        </p>
-      </div>
-      <div>
-        <p>
-          Setiap peserta tidak hanya belajar melalui materi, tetapi juga menjadi bagian dari
-          komunitas ayah: ruang aman dan hangat untuk para laki-laki Muslim.
-        </p>
-        <div class="father-community-list">
-          {communityPoints.map((point) => <span>{point}</span>)}
-        </div>
-        <p>
-          Komunitas ini bukan grup formal berisi aturan. Ini adalah lingkaran laki-laki yang
-          ingin kembali menjadi hamba dan pemimpin rumah tangga dengan arah yang benar.
-        </p>
-      </div>
-    </section>
-
-    <section class="section father-flyer" id="flyer-program">
-      <article>
-        <p class="eyebrow">Flyer Program</p>
-        <h2>The Father Project</h2>
-        <p>Menemani perjalanan laki-laki Muslim menjadi hamba, suami, ayah, dan pemimpin keluarga yang lebih baik.</p>
-        <div>
-          <span>Daring</span>
-          <span>Reflektif</span>
-          <span>Komunitas</span>
-        </div>
-      </article>
-      <article>
-        <p class="eyebrow">Pembina & Pengajar</p>
-        <h2>Ustadz Abu Ibrahim Heykal Sya'ban, M.Ag</h2>
-        <p>Pembina dan pengajar yang membersamai proses belajar, refleksi, dan penguatan peran ayah Muslim.</p>
-      </article>
-    </section>
-
-    <section class="cta father-cta" id="kontak">
-      <div>
-        <p class="eyebrow">Konsultasikan kepada kami</p>
-        <h2>Siap berjalan dan berjuang bersama The Father Project?</h2>
-        <p>Ambil langkah awal untuk bertumbuh sebagai hamba, suami, ayah, dan pemimpin keluarga yang lebih baik.</p>
-      </div>
-      <div class="cta-actions">
-        <a class="button primary" href={consultUrl}>Konsultasikan kepada kami</a>
-        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
-      <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
-      </div>
-    </div>
-    <nav aria-label="Navigasi footer The Father Project">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
     </nav>
-  </footer>
-
-  <a class="floating-help" href={consultUrl}>Konsultasi</a>
+  </div>
 </BaseLayout>
