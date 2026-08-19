@@ -28,12 +28,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 118px;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   background: var(--cream);
   color: var(--ink);
+  overflow-x: clip;
 }
 
 a {

@@ -1,5 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  ArrowDown,
+  ArrowRight,
+  BookOpenCheck,
+  ChartNoAxesCombined,
+  Check,
+  CircleCheck,
+  ClipboardCheck,
+  Compass,
+  House,
+  Layers3,
+  Menu,
+  MessageCircle,
+  SearchCheck,
+  ShieldCheck,
+  Waypoints,
+} from '@lucide/astro';
+import '../../styles/iaiee-redesign.css';
 
 const consultationUrl = 'https://berbagi.link/ypihsanuladab';
 const whatsappUrl = 'https://wa.me/6285179676003';
@@ -70,9 +88,9 @@ const programMenuItems = [
 ];
 
 const qualitySignals = [
-  ['Diagnosa', 'membaca kondisi lembaga dengan data dan konteks'],
-  ['Roadmap', 'menentukan prioritas perbaikan yang realistis'],
-  ['Implementasi', 'mendampingi tim sampai sistem mulai berjalan'],
+  { icon: SearchCheck, title: 'Diagnosa', body: 'membaca kondisi lembaga dengan data dan konteks' },
+  { icon: Waypoints, title: 'Roadmap', body: 'menentukan prioritas perbaikan yang realistis' },
+  { icon: ClipboardCheck, title: 'Implementasi', body: 'mendampingi tim sampai sistem mulai berjalan' },
 ];
 
 const concerns = [
@@ -209,277 +227,244 @@ const faqs = [
   title="IAIEE - Ihsanul Adab Institute for Educational Excellence"
   description="IAIEE mendampingi lembaga pendidikan Islam membangun sistem mutu yang terpercaya, terukur, dan berkelanjutan berlandaskan tauhid dan adab."
 >
-  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <div class="hm-iaiee">
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
-  <header class="site-header iaiee-site-header">
-    <div class="topbar iaiee-topbar">
-      <span>Ihsanul Adab Institute for Educational Excellence</span>
-      <a href={consultationUrl}>Konsultasi mutu lembaga</a>
-    </div>
+    <header class="hm-iaiee-header">
+      <div class="hm-iaiee-notice">
+        <span>IAIEE · Pendampingan mutu pendidikan Islam</span>
+        <a href={consultationUrl}>Jadwalkan penjajakan <ArrowRight size={15} aria-hidden="true" /></a>
+      </div>
+      <div class="hm-iaiee-nav-wrap">
+        <a class="hm-iaiee-brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
+          <img src="/images/logo-ihsanul-adab.png" alt="" width="46" height="46" />
+          <span><strong>IAIEE</strong><small>Ihsanul Adab Institute</small></span>
+        </a>
 
-    <div class="nav-shell">
-      <a class="brand" href="/" aria-label="Yayasan Pendidikan Ihsanul Adab">
-        <img src="/images/logo-ihsanul-adab.png" alt="" width="58" height="58" />
-        <span>
-          <strong>Ihsanul Adab</strong>
-          <small>IAIEE</small>
-        </span>
-      </a>
+        <nav class="hm-iaiee-desktop-nav" aria-label="Navigasi IAIEE">
+          <a href="#tentang-iaiee">Tentang</a>
+          <a href="#diagnosa">Diagnosa</a>
+          <a href="#layanan">Layanan</a>
+          <a href="#alur">Alur kerja</a>
+          <details class="hm-iaiee-program-menu">
+            <summary>Program lain <ArrowDown size={14} strokeWidth={2} aria-hidden="true" /></summary>
+            <div>
+              <span>Ekosistem belajar Ihsanul Adab</span>
+              {programMenuItems.map((item) => (
+                <a href={item.href}><strong>{item.label}</strong><small>{item.note}</small></a>
+              ))}
+            </div>
+          </details>
+        </nav>
 
-      <nav class="desktop-nav" aria-label="Navigasi IAIEE">
-        <a href="/">Beranda</a>
-        <a href="/tentang-kami/">Tentang Kami</a>
-        <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-        <details class="nav-dropdown">
-          <summary>Program</summary>
-          <div class="nav-program-panel">
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
+        <div class="hm-iaiee-nav-actions">
+          <a class="hm-iaiee-lms" href={lmsUrl}>Akses LMS</a>
+          <a class="hm-iaiee-nav-cta" href={consultationUrl}>Konsultasi <ArrowRight size={16} aria-hidden="true" /></a>
+        </div>
+
+        <details class="hm-iaiee-mobile-menu">
+          <summary aria-label="Buka navigasi IAIEE"><Menu size={22} aria-hidden="true" /></summary>
+          <div>
+            <a href="#tentang-iaiee">Tentang IAIEE</a>
+            <a href="#diagnosa">Diagnosa mutu</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#alur">Alur kerja</a>
+            <a href="#faq">FAQ</a>
+            <a href={lmsUrl}>Akses LMS IA</a>
+            <a class="hm-iaiee-mobile-cta" href={consultationUrl}>Konsultasi mutu</a>
           </div>
         </details>
-        {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-      </nav>
+      </div>
+    </header>
 
-      <a class="nav-cta iaiee-nav-cta" href={lmsUrl}>Akses LMS IA</a>
-
-      <details class="mobile-menu">
-        <summary aria-label="Buka menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-        <div class="mobile-panel">
-          <a href="/">Beranda</a>
-          <a href="/tentang-kami/">Tentang Kami</a>
-          <a href="/karir-pengabdian/">Karir & Pengabdian</a>
-          <div class="mobile-program-group">
-            <strong>Program</strong>
-            {programMenuItems.map((item) => (
-              <a href={item.href}>
-                <span>{item.label}</span>
-                <small>{item.note}</small>
-              </a>
-            ))}
+    <main id="konten">
+      <section class="hm-iaiee-hero" aria-labelledby="iaiee-title">
+        <div class="hm-iaiee-hero-copy">
+          <p class="hm-iaiee-kicker">Sistem mutu yang dapat dijalankan</p>
+          <h1 id="iaiee-title">Mutu lembaga, dari arah sampai kebiasaan kerja.</h1>
+          <p>
+            IAIEE mendampingi lembaga pendidikan Islam menata kurikulum, pembelajaran,
+            SDM, tata kelola, akreditasi, dan budaya mutu dengan arah tauhid serta adab.
+          </p>
+          <div class="hm-iaiee-hero-actions">
+            <a class="hm-iaiee-button hm-iaiee-button--primary" href={consultationUrl}>Konsultasi mutu <ArrowRight size={18} aria-hidden="true" /></a>
+            <a class="hm-iaiee-button hm-iaiee-button--quiet" href="#diagnosa">Mulai dari diagnosa</a>
           </div>
-          {navItems.slice(3).map(([label, href]) => <a href={href}>{label}</a>)}
-          <a class="button primary" href={consultationUrl}>Konsultasi Mutu</a>
+          <span class="hm-iaiee-hero-note"><CircleCheck size={17} aria-hidden="true" /> Online, onsite, atau hybrid sesuai kesiapan lembaga.</span>
         </div>
-      </details>
-    </div>
-  </header>
+        <figure class="hm-iaiee-hero-visual">
+          <img
+            src="/images/iaiee-quality-assurance-hero.png"
+            alt="Meja kerja mutu pendidikan berisi folder, dokumen audit, tablet grafik abstrak, kompas, dan mushaf tertutup tanpa figur makhluk bernyawa"
+            width="1280"
+            height="853"
+          />
+          <figcaption><span>IAIEE</span><strong>Quality assurance for Islamic education</strong></figcaption>
+        </figure>
+      </section>
 
-  <main id="konten">
-    <section class="iaiee-hero" aria-labelledby="iaiee-title">
-      <img
-        src="/images/iaiee-quality-assurance-hero.png"
-        alt="Meja kerja mutu pendidikan berisi folder, dokumen audit, tablet grafik abstrak, kompas, dan mushaf tertutup tanpa figur makhluk bernyawa"
-      />
-      <div class="iaiee-hero-content">
-        <p class="eyebrow">IAIEE</p>
-        <h1 id="iaiee-title">Mutu lembaga yang terpercaya, terukur, dan tetap beradab.</h1>
-        <p>
-          IAIEE mendampingi lembaga pendidikan Islam menata kurikulum, pembelajaran,
-          SDM, tata kelola, akreditasi, dan budaya mutu tanpa kehilangan arah tauhid
-          dan adab.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href={consultationUrl}>Konsultasi Mutu</a>
-          <a class="button secondary" href="#diagnosa">Mulai dari Diagnosa</a>
+      <section class="hm-iaiee-signals" aria-label="Ringkasan pendekatan IAIEE">
+        {qualitySignals.map(({ icon: Icon, title, body }) => (
+          <article>
+            <Icon size={23} strokeWidth={1.7} aria-hidden="true" />
+            <div><strong>{title}</strong><span>{body}</span></div>
+          </article>
+        ))}
+      </section>
+
+      <section class="hm-iaiee-intro" id="tentang-iaiee">
+        <div class="hm-iaiee-intro-heading">
+          <p class="hm-iaiee-kicker">Peran IAIEE</p>
+          <h2>Perubahan yang baik perlu dibaca sebelum dipercepat.</h2>
         </div>
-        <small>Online, onsite, atau hybrid sesuai kebutuhan dan kesiapan lembaga.</small>
-      </div>
-    </section>
+        <div class="hm-iaiee-intro-detail">
+          <div>
+          <p>
+            Banyak lembaga memiliki niat yang baik, guru yang berjuang, dan visi Islam yang kuat.
+            Tantangannya sering ada pada sistem: standar belum jelas, dokumen belum hidup, supervisi
+            belum teratur, dan evaluasi belum menjadi kebiasaan.
+          </p>
+          <p>
+            IAIEE bekerja dari kondisi yang nyata, menyusun prioritas, lalu mendampingi implementasi
+            agar perbaikan tidak berhenti sebagai materi pelatihan.
+          </p>
+          </div>
+          <aside><ShieldCheck size={28} strokeWidth={1.55} aria-hidden="true" /><p>Manajemen mutu adalah alat untuk menjaga amanah pendidikan secara lebih tertib.</p></aside>
+        </div>
+      </section>
 
-    <section class="iaiee-principles" aria-label="Ringkasan pendekatan IAIEE">
-      {qualitySignals.map(([title, body]) => (
-        <article>
-          <strong>{title}</strong>
-          <span>{body}</span>
-        </article>
-      ))}
-    </section>
+      <section class="hm-iaiee-diagnosis" id="diagnosa" aria-labelledby="diagnosis-title">
+        <div class="hm-iaiee-section-heading">
+          <p class="hm-iaiee-kicker">Titik mula</p>
+          <h2 id="diagnosis-title">Kapan lembaga membutuhkan pembacaan mutu yang lebih jernih?</h2>
+        </div>
+        <ol>
+          {concerns.map((concern, index) => (
+            <li><span>{String(index + 1).padStart(2, '0')}</span><p>{concern}</p></li>
+          ))}
+        </ol>
+      </section>
 
-    <section class="section iaiee-intro" id="tentang-iaiee">
-      <div>
-        <p class="eyebrow">Mitra mutu pendidikan Islam</p>
-        <h2>IAIEE membantu lembaga naik mutu tanpa bergerak serampangan.</h2>
-      </div>
-      <div class="stack">
-        <p>
-          Banyak lembaga memiliki niat yang baik, guru yang berjuang, dan visi Islam
-          yang kuat. Tantangannya sering muncul pada sistem: standar belum jelas,
-          dokumen belum hidup, supervisi belum teratur, dan evaluasi belum menjadi
-          kebiasaan.
-        </p>
-        <p>
-          Karena itu IAIEE bekerja dari diagnosa menuju roadmap, lalu mendampingi
-          implementasi agar perubahan tidak berhenti sebagai materi pelatihan.
-        </p>
-      </div>
-    </section>
+      <section class="hm-iaiee-map" id="alur" aria-labelledby="map-title">
+        <div class="hm-iaiee-map-heading">
+          <p class="hm-iaiee-kicker">Peta pendampingan</p>
+          <h2 id="map-title">Satu peta kerja, lima keputusan yang saling terhubung.</h2>
+          <p>Setiap tahap menghasilkan dasar yang dibutuhkan tahap berikutnya, sehingga tim tidak perlu menebak langkah selanjutnya.</p>
+        </div>
+        <ol class="hm-iaiee-map-nodes">
+          {process.map((item, index) => {
+            const icons = [MessageCircle, SearchCheck, Waypoints, Layers3, ChartNoAxesCombined];
+            const Icon = icons[index];
+            return (
+              <li data-iaiee-reveal>
+                <span class="hm-iaiee-map-index">{String(index + 1).padStart(2, '0')}</span>
+                <span class="hm-iaiee-map-icon"><Icon size={23} strokeWidth={1.65} aria-hidden="true" /></span>
+                <div><h3>{item.title}</h3><p>{item.body}</p></div>
+              </li>
+            );
+          })}
+        </ol>
+        <div class="hm-iaiee-map-legend"><Compass size={19} strokeWidth={1.7} aria-hidden="true" /><span>Setiap langkah dilandasi tauhid, adab, data yang cukup, dan kapasitas riil lembaga.</span></div>
+      </section>
 
-    <section class="section iaiee-diagnosis" id="diagnosa">
-      <div class="section-heading compact">
-        <p class="eyebrow">Kapan lembaga membutuhkan IAIEE?</p>
-        <h2>Ketika mutu perlu dibaca dengan jernih sebelum dibenahi.</h2>
-      </div>
-      <div class="iaiee-concern-grid">
-        {concerns.map((concern, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <p>{concern}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+      <section class="hm-iaiee-principles" aria-labelledby="principles-title">
+        <div class="hm-iaiee-section-heading">
+          <p class="hm-iaiee-kicker">Prinsip pendampingan</p>
+          <h2 id="principles-title">Kepercayaan dibangun lewat arah yang benar dan proses yang rapi.</h2>
+        </div>
+        <div>
+          {principles.map((principle, index) => (
+            <article><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{principle.title}</h3><p>{principle.body}</p></div></article>
+          ))}
+        </div>
+      </section>
 
-    <section class="section iaiee-assurance">
-      <div class="section-heading">
-        <p class="eyebrow">Prinsip pendampingan</p>
-        <h2>Kepercayaan dibangun dari arah yang benar dan proses yang rapi.</h2>
-      </div>
-      <div class="iaiee-assurance-grid">
-        {principles.map((principle) => (
-          <article>
-            <h3>{principle.title}</h3>
-            <p>{principle.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+      <section class="hm-iaiee-services" id="layanan" aria-labelledby="services-title">
+        <div class="hm-iaiee-section-heading">
+          <p class="hm-iaiee-kicker">Layanan IAIEE</p>
+          <h2 id="services-title">Pilih kebutuhan utama, atau mulai dari diagnosa untuk menentukan prioritas.</h2>
+        </div>
+        <div class="hm-iaiee-service-sheet">
+          {services.map((service, index) => (
+            <article>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{service.title}</h3>
+              <p>{service.body}</p>
+              <a href={consultationUrl} aria-label={`Konsultasikan ${service.title}`}>Diskusikan <ArrowRight size={16} aria-hidden="true" /></a>
+            </article>
+          ))}
+        </div>
+      </section>
 
-    <section class="iaiee-quality-band">
-      <div>
-        <p class="eyebrow">Batasan yang dijaga</p>
-        <h2>Profesional, tetapi tidak kehilangan ruh pendidikan Islam.</h2>
-      </div>
-      <div>
-        <p>Manajemen mutu dipakai sebagai alat bantu untuk menunaikan amanah pendidikan dengan lebih tertib.</p>
-        <p>Setiap rekomendasi tetap diarahkan agar selaras dengan tauhid, adab, dan kebutuhan lembaga.</p>
-        <p>Dokumentasi, digitalisasi, dan akreditasi tidak dijadikan tujuan akhir, tetapi sarana untuk menjaga amanah.</p>
-      </div>
-    </section>
+      <section class="hm-iaiee-packages" aria-labelledby="packages-title">
+        <div class="hm-iaiee-section-heading">
+          <p class="hm-iaiee-kicker">Ruang pendampingan</p>
+          <h2 id="packages-title">Mulai dari tingkat dukungan yang realistis bagi lembaga.</h2>
+        </div>
+        <div>
+          {packages.map((item, index) => (
+            <article class:list={{ 'is-featured': index === 1 }}>
+              <span class="hm-iaiee-package-number">0{index + 1}</span>
+              <h3>{item.name}</h3>
+              <p>{item.fit}</p>
+              <ul>{item.outputs.map((output) => <li><Check size={16} strokeWidth={2.2} aria-hidden="true" />{output}</li>)}</ul>
+              <a href={consultationUrl}>Konsultasikan <ArrowRight size={17} aria-hidden="true" /></a>
+            </article>
+          ))}
+        </div>
+      </section>
 
-    <section class="section iaiee-services" id="layanan">
-      <div class="section-heading">
-        <p class="eyebrow">Layanan IAIEE</p>
-        <h2>Pilih layanan sesuai kebutuhan, atau mulai dari diagnosa untuk menentukan prioritas.</h2>
-      </div>
-      <div class="iaiee-service-grid">
-        {services.map((service) => (
-          <article>
-            <h3>{service.title}</h3>
-            <p>{service.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+      <section class="hm-iaiee-outcomes" aria-labelledby="outcomes-title">
+        <div><p class="hm-iaiee-kicker">Yang dibawa pulang tim</p><h2 id="outcomes-title">Output yang bisa dipakai, bukan sekadar bahan presentasi.</h2></div>
+        <ul>{outputs.map((output) => <li><BookOpenCheck size={21} strokeWidth={1.65} aria-hidden="true" /><span>{output}</span></li>)}</ul>
+      </section>
 
-    <section class="section iaiee-packages">
-      <div class="section-heading">
-        <p class="eyebrow">Paket pendampingan</p>
-        <h2>Mulai dari yang paling realistis untuk kondisi lembaga saat ini.</h2>
-      </div>
-      <div class="iaiee-package-grid">
-        {packages.map((item) => (
-          <article>
-            <h3>{item.name}</h3>
-            <p>{item.fit}</p>
-            <strong>Output utama:</strong>
-            <ul>
-              {item.outputs.map((output) => <li>{output}</li>)}
-            </ul>
-            <a class="button primary" href={consultationUrl}>Konsultasikan Paket</a>
-          </article>
-        ))}
-      </div>
-    </section>
+      <section class="hm-iaiee-impact" aria-labelledby="impact-title">
+        <div class="hm-iaiee-impact-copy"><p class="hm-iaiee-kicker">Dampak yang dikejar</p><h2 id="impact-title">Mutu terlihat dalam sistem, lalu terasa dalam budaya.</h2><p>Perbaikan yang baik membantu pimpinan mengambil keputusan, guru bekerja dengan kejelasan, dan lembaga menjaga amanah secara konsisten.</p></div>
+        <div>{impacts.map((impact, index) => <p><span>{String(index + 1).padStart(2, '0')}</span>{impact}</p>)}</div>
+      </section>
 
-    <section class="section iaiee-process" id="alur">
-      <div>
-        <p class="eyebrow">Alur kerja</p>
-        <h2>Dari konsultasi awal sampai evaluasi dampak.</h2>
-      </div>
-      <div class="iaiee-process-list">
-        {process.map((item, index) => (
-          <article>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
+      <section class="hm-iaiee-faq" id="faq" aria-labelledby="faq-title">
+        <div class="hm-iaiee-section-heading"><p class="hm-iaiee-kicker">FAQ</p><h2 id="faq-title">Pertanyaan sebelum memulai pendampingan.</h2></div>
+        <div>{faqs.map(([question, answer]) => <details><summary>{question}<ArrowDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>
+      </section>
 
-    <section class="section iaiee-output">
-      <div class="section-heading">
-        <p class="eyebrow">Output nyata</p>
-        <h2>Hasil pendampingan dibuat agar langsung bisa dipakai oleh tim.</h2>
-      </div>
-      <ul class="check-list iaiee-output-list">
-        {outputs.map((output) => <li>{output}</li>)}
-      </ul>
-    </section>
+      <section class="hm-iaiee-cta" id="kontak" aria-labelledby="cta-title">
+        <div><p class="hm-iaiee-kicker">Mulai dengan konteks lembaga Anda</p><h2 id="cta-title">Mari tentukan langkah pertama yang paling masuk akal.</h2><p>Ceritakan kondisi lembaga Anda. IAIEE membantu memetakan kebutuhan, prioritas, dan bentuk pendampingan yang sesuai.</p></div>
+        <div><a class="hm-iaiee-button hm-iaiee-button--light" href={consultationUrl}>Konsultasi mutu <ArrowRight size={18} aria-hidden="true" /></a><a class="hm-iaiee-link-light" href={whatsappUrl}>WhatsApp admin</a></div>
+      </section>
+    </main>
 
-    <section class="iaiee-impact">
-      <div>
-        <p class="eyebrow">Dampak yang dikejar</p>
-        <h2>Mutu terlihat dalam sistem, terasa dalam budaya.</h2>
-      </div>
-      <div class="iaiee-impact-grid">
-        {impacts.map((impact) => <span>{impact}</span>)}
-      </div>
-    </section>
+    <footer class="hm-iaiee-footer">
+      <div><a class="hm-iaiee-brand" href="/"><img src="/images/logo-ihsanul-adab.png" alt="" width="46" height="46" /><span><strong>IAIEE</strong><small>Yayasan Pendidikan Ihsanul Adab</small></span></a><p>Menguatkan mutu pendidikan Islam melalui arah yang jernih, proses yang tertib, dan pendampingan yang dapat dijalankan.</p></div>
+      <nav aria-label="Navigasi footer IAIEE"><a href="#tentang-iaiee">Tentang</a><a href="#layanan">Layanan</a><a href="#alur">Alur kerja</a><a href="#faq">FAQ</a><a href={consultationUrl}>Konsultasi</a></nav>
+      <small>© 2026 Yayasan Pendidikan Ihsanul Adab</small>
+    </footer>
 
-    <section class="section iaiee-faq" id="faq">
-      <div class="section-heading">
-        <p class="eyebrow">FAQ</p>
-        <h2>Pertanyaan yang sering ditanyakan.</h2>
-      </div>
-      <div class="iaiee-faq-list">
-        {faqs.map(([question, answer]) => (
-          <details>
-            <summary>{question}</summary>
-            <p>{answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-
-    <section class="cta iaiee-cta" id="kontak">
-      <div>
-        <p class="eyebrow">Siap menata mutu lembaga?</p>
-        <h2>Mulai dari konsultasi awal dan diagnosa kebutuhan.</h2>
-        <p>
-          Ceritakan kondisi lembaga Anda. Kami bantu menentukan langkah awal yang
-          paling realistis, terukur, dan tetap menjaga arah tauhid serta adab.
-        </p>
-      </div>
-      <div class="cta-actions">
-        <a class="button primary" href={consultationUrl}>Konsultasi Mutu</a>
-        <a class="button secondary" href={whatsappUrl}>WhatsApp Admin</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-brand">
-      <img src="/images/logo-ihsanul-adab.png" alt="" width="44" height="44" />
-      <div>
-        <p>Yayasan Pendidikan Ihsanul Adab</p>
-        <span>Mendidik dengan adab. Menumbuhkan dengan ilmu. Mengokohkan dengan amal.</span>
-      </div>
-    </div>
-    <nav aria-label="Navigasi footer IAIEE">
-      {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+    <nav class="hm-iaiee-bottom-nav" aria-label="Navigasi bawah IAIEE">
+      <a href="/"><House size={19} strokeWidth={1.8} aria-hidden="true" /><span>Beranda</span></a>
+      <a href="#diagnosa"><SearchCheck size={19} strokeWidth={1.8} aria-hidden="true" /><span>Diagnosa</span></a>
+      <a href="#layanan"><Layers3 size={19} strokeWidth={1.8} aria-hidden="true" /><span>Layanan</span></a>
+      <a href="#alur"><Waypoints size={19} strokeWidth={1.8} aria-hidden="true" /><span>Alur</span></a>
+      <a href={consultationUrl}><MessageCircle size={19} strokeWidth={1.8} aria-hidden="true" /><span>Hubungi</span></a>
     </nav>
-  </footer>
+  </div>
 
-  <a class="floating-help" href={consultationUrl}>Konsultasi</a>
+  <script>
+    const mapNodes = document.querySelectorAll('[data-iaiee-reveal]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reducedMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.2 });
+      mapNodes.forEach((node) => observer.observe(node));
+    } else {
+      mapNodes.forEach((node) => node.classList.add('is-visible'));
+    }
+  </script>
 </BaseLayout>
