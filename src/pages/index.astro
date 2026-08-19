@@ -245,6 +245,11 @@ const principles = [
 
     <main id="konten">
       <section class="hm-hero" aria-labelledby="hero-title">
+        <div class="hm-hero__media" aria-hidden="true">
+          <video data-hero-video autoplay muted loop playsinline preload="metadata" poster="/images/home-hero-garden-learning.png">
+            <source src="/videos/home-hero-workspace.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="hm-hero__copy">
           <p class="hm-hero__lead">Tauhid · Adab · Ilmu · Amal</p>
           <h1 id="hero-title">Pendidikan Islam untuk setiap peran.</h1>
@@ -263,16 +268,6 @@ const principles = [
             </a>
           </div>
         </div>
-        <figure class="hm-hero__figure">
-          <img
-            src="/images/home-hero-garden-learning.png"
-            alt="Meja belajar dengan kitab tertutup, kartu peta belajar, kompas, lentera, dan pola geometri Islami tanpa figur makhluk bernyawa"
-            width="1536"
-            height="1024"
-            fetchpriority="high"
-          />
-          <figcaption>Belajar dari fondasi, tumbuh dalam adab, dan bergerak menuju amal.</figcaption>
-        </figure>
       </section>
 
       <section class="hm-role-section" id="jalur" aria-labelledby="role-title">
@@ -448,6 +443,13 @@ const principles = [
   <script>
     const learningMaps = document.querySelectorAll('[data-flow-reveal]');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const heroVideos = document.querySelectorAll('[data-hero-video]');
+
+    if (reduceMotion) {
+      heroVideos.forEach((video) => {
+        if (video instanceof HTMLVideoElement) video.pause();
+      });
+    }
 
     if (!reduceMotion && 'IntersectionObserver' in window) {
       learningMaps.forEach((map) => map.classList.add('is-pending'));

@@ -1,4 +1,4 @@
-/* Hallmark · genre: editorial · macrostructure: Narrative Workflow · theme: Garden · enrichment: generated still + CSS learning map · nav: N6 · footer: Ft5
+/* Hallmark · genre: editorial · macrostructure: Narrative Workflow · theme: Garden · enrichment: transparent video hero + CSS learning map · nav: N6 · footer: Ft5
  * audience: Muslim families, educators, institutions · use: choose a learning path · tone: soft
  * contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57)
  */
@@ -367,27 +367,87 @@ body {
 }
 
 .hm-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(34rem, 72vh, 46rem);
   display: grid;
-  gap: var(--space-md);
-  padding-block: var(--space-md) var(--space-lg);
+  align-items: end;
+  overflow: clip;
+  padding-block: var(--space-2xl);
+  color: var(--color-paper);
+  background: var(--color-ink);
+  box-shadow: 0 0 0 100vmax var(--color-ink);
+  clip-path: inset(0 -100vmax);
+}
+
+.hm-hero::before,
+.hm-hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+}
+
+.hm-hero::before {
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-hero-scrim-strong) 0%,
+      var(--color-hero-scrim-mid) 48%,
+      var(--color-hero-scrim-soft) 100%
+    );
+}
+
+.hm-hero::after {
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-hero-light-wash) 0%,
+      var(--color-hero-clear) 34%,
+      var(--color-hero-bottom) 100%
+    );
+}
+
+.hm-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: clip;
+  background: var(--color-ink);
+}
+
+.hm-hero__media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  opacity: 0.72;
+  filter: saturate(0.72) contrast(1.02);
 }
 
 .hm-hero__copy {
+  width: min(38rem, 100%);
   display: grid;
   align-content: center;
   gap: var(--space-md);
+  padding-block: var(--space-md);
 }
 
 .hm-hero__lead {
-  color: var(--color-accent-strong);
+  width: fit-content;
+  padding: var(--space-3xs) var(--space-2xs);
+  color: var(--color-accent);
   font-family: var(--font-outlier);
   font-size: var(--text-xs);
   font-weight: 500;
+  background: var(--color-hero-label);
+  border-inline-start: var(--rule-strong) solid var(--color-accent);
 }
 
 .hm-hero__copy > p:not(.hm-hero__lead) {
   max-width: 58ch;
-  color: var(--color-ink-2);
+  color: var(--color-paper-3);
   font-size: var(--text-md);
 }
 
@@ -428,43 +488,20 @@ body {
   color: var(--color-paper);
 }
 
+.hm-hero .hm-button--primary {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
 .hm-button--quiet {
   background: transparent;
 }
 
-.hm-hero__figure {
-  min-width: 0;
-  display: grid;
-  align-content: start;
-  gap: var(--space-xs);
-}
-
-.hm-hero__figure img {
-  width: 100%;
-  height: 6rem;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: var(--radius-card);
-  animation: hm-hero-reveal var(--dur-long) var(--ease-out) both;
-}
-
-@keyframes hm-hero-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(var(--space-sm));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hm-hero__figure figcaption {
-  display: none;
-  max-width: 52ch;
-  color: var(--color-muted);
-  font-size: var(--text-xs);
+.hm-hero .hm-button--quiet {
+  background: var(--color-hero-glass);
+  color: var(--color-paper);
+  border-color: var(--color-hero-glass-border);
+  backdrop-filter: blur(10px);
 }
 
 .hm-role-section,
@@ -1026,6 +1063,16 @@ body {
     background: var(--color-paper-2);
   }
 
+  .hm-hero .hm-button--primary:hover {
+    background: var(--color-paper-2);
+    color: var(--color-ink);
+  }
+
+  .hm-hero .hm-button--quiet:hover {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
   .hm-role-link:hover {
     color: var(--color-accent-strong);
     transform: translateX(var(--space-2xs));
@@ -1171,23 +1218,10 @@ body {
   }
 
   .hm-hero {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    align-items: start;
-    gap: var(--space-2xl);
-    padding-block: var(--space-xl) var(--space-2xl);
-  }
-
-  .hm-hero__figure {
-    transform: none;
-  }
-
-  .hm-hero__figure img {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
-  .hm-hero__figure figcaption {
-    display: block;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: end;
+    gap: 0;
+    padding-block: var(--space-3xl);
   }
 
   .hm-role-section,
@@ -1270,7 +1304,7 @@ body {
 
 @media (min-width: 90rem) {
   .hm-hero {
-    gap: var(--space-3xl);
+    min-height: clamp(38rem, 74vh, 52rem);
   }
 }
 
@@ -1293,14 +1327,13 @@ body {
 
   .hm-button:hover,
   .hm-role-link:hover,
-  .hm-hero__figure,
   .hm-flow-node > a:hover,
   .hm-program-card > a:hover img {
     transform: none;
   }
 
-  .hm-hero__figure img {
-    animation: none;
+  .hm-hero__media video {
+    opacity: 0.48;
   }
 
   .hm-learning-map__figure.is-pending .hm-flow-start,
