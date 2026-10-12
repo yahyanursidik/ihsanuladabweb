@@ -1,0 +1,31 @@
+---
+import { BookOpenCheck, CalendarDays, ChevronRight, House, UsersRound } from '@lucide/astro';
+import { getProgram, type ProgramId } from '../data/programs';
+import '../styles/program-experience.css';
+interface Props { id: ProgramId; }
+const program = getProgram(Astro.props.id);
+const facts = [
+  { icon: UsersRound, label: 'Untuk siapa', value: program.audience },
+  { icon: CalendarDays, label: program.id === 'iaiee' ? 'Bentuk layanan' : 'Bentuk belajar', value: program.format },
+  { icon: BookOpenCheck, label: 'Fokus utama', value: program.focus },
+];
+---
+<section class="program-overview program-experience" data-program-theme={program.id} aria-label={`Ringkasan ${program.name}`}>
+  <div class="program-inner">
+    <nav class="program-breadcrumb" aria-label="Jejak halaman">
+      <a href="/"><House size={15} aria-hidden="true" /><span>Beranda</span></a>
+      <ChevronRight size={14} aria-hidden="true" />
+      <a href="/#program">Program</a>
+      <ChevronRight size={14} aria-hidden="true" />
+      <span aria-current="page">{program.name}</span>
+    </nav>
+    <dl class="program-facts">
+      {facts.map(({ icon: Icon, label, value }) => <div><dt><Icon size={20} aria-hidden="true" />{label}</dt><dd>{value}</dd></div>)}
+    </dl>
+    <nav class="program-section-links" aria-label={`Jelajahi ${program.name}`}>
+      {program.sections.map(([label, href]) => <a href={href}>{label}</a>)}
+      <a href="#persiapan">Persiapan</a>
+      <a href="#faq-program">Tanya jawab</a>
+    </nav>
+  </div>
+</section>

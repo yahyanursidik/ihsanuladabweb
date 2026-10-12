@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProgramFinder from '../components/ProgramFinder.astro';
+import { House, Menu, Route, GraduationCap, LogIn, MessageCircle } from '@lucide/astro';
 import '../styles/home-redesign.css';
 
 const consultationUrl = 'https://berbagi.link/ypihsanuladab';
@@ -43,89 +45,16 @@ const audiencePaths = [
     href: '/program/deenup/',
   },
   {
+    role: 'Muslimah',
+    need: 'Menata iman, memahami diri, dan menguatkan peran sesuai fase kehidupan.',
+    program: 'The Fitrah Journey',
+    href: '/program/the-fitrah-journey/',
+  },
+  {
     role: 'Guru dan lembaga',
     need: 'Menguatkan pendidik, kurikulum, tata kelola, dan budaya adab.',
     program: 'HTA dan IAIEE',
     href: '/program/headmaster-teacher-academy/',
-  },
-];
-
-const featuredPrograms = [
-  {
-    name: 'Ihsanul Adab Parenting Academy',
-    audience: 'Orang tua dan keluarga Muslim',
-    summary: 'Belajar memahami anak, menata respons, dan membangun pengasuhan Islami yang bertahap.',
-    image: '/images/iapa-parenting-home-hero.png',
-    href: '/iapa/',
-    className: 'hm-program-card--wide',
-  },
-  {
-    name: 'IAIS Home-Based Learning',
-    audience: 'Anak dan keluarga',
-    summary: 'Sekolah Islam berbasis keluarga dengan target yang jelas dan ritme belajar yang fleksibel.',
-    image: '/images/iais-home-learning-hero.png',
-    href: '/program/homebased-learning/',
-    className: 'hm-program-card--tall',
-  },
-  {
-    name: 'The Fitrah Journey',
-    audience: 'Muslimah dewasa',
-    summary: 'Ruang belajar untuk menata iman, peran, dan pertumbuhan diri sesuai fitrah.',
-    image: '/images/fitrah-journey-muslimah-hero.png',
-    href: '/program/the-fitrah-journey/',
-  },
-  {
-    name: 'PKGQ PAUD & SD',
-    audience: 'Calon guru Al-Qur\'an',
-    summary: 'Kaderisasi pendidik anak usia dini dan sekolah dasar yang berilmu dan beradab.',
-    image: '/images/pkgq-teacher-training-hero.png',
-    href: '/program/kaderisasi-guru-quran-paud-sd/',
-  },
-  {
-    name: 'IAIEE',
-    audience: 'Lembaga pendidikan Islam',
-    summary: 'Pendampingan mutu SDM, kurikulum, sistem, dan tata kelola lembaga.',
-    image: '/images/iaiee-quality-assurance-hero.png',
-    href: '/program/iaiee/',
-    className: 'hm-program-card--wide',
-  },
-];
-
-const programCollections = [
-  {
-    title: 'Keluarga',
-    description: 'Pengasuhan, peran ayah, dan pertumbuhan muslimah.',
-    links: [
-      ['IAPA', '/iapa/'],
-      ['The Father Project', '/program/the-father-project/'],
-      ['The Fitrah Journey', '/program/the-fitrah-journey/'],
-    ],
-  },
-  {
-    title: 'Anak dan Al-Qur\'an',
-    description: 'Belajar dari rumah dan menyiapkan guru Al-Qur\'an.',
-    links: [
-      ['IAIS Home-Based Learning', '/program/homebased-learning/'],
-      ['PKGQ PAUD & SD', '/program/kaderisasi-guru-quran-paud-sd/'],
-      ['Tanya Quran Academy', consultationUrl],
-    ],
-  },
-  {
-    title: 'Remaja dan fondasi',
-    description: 'Identitas Muslim dan dasar agama yang dipelajari bertahap.',
-    links: [
-      ['DeenUp', '/program/deenup/'],
-      ['Ushuluna', '/program/ushuluna/'],
-      ['Tanya Fitrah Camp', consultationUrl],
-    ],
-  },
-  {
-    title: 'Pendidik dan lembaga',
-    description: 'Penguatan guru, pemimpin sekolah, dan mutu lembaga.',
-    links: [
-      ['Headmaster & Teacher Academy', '/program/headmaster-teacher-academy/'],
-      ['IAIEE', '/program/iaiee/'],
-    ],
   },
 ];
 
@@ -200,15 +129,18 @@ const principles = [
       </div>
 
       <div class="hm-masthead__brand-row">
-        <a class="hm-brand hm-brand--lockup" href="/" aria-label="Beranda Yayasan Pendidikan Ihsanul Adab">
+        <a class="hm-brand hm-site-brand" href="/" aria-label="Beranda Yayasan Pendidikan Ihsanul Adab">
           <img
-            src="/images/logo-yayasan-pendidikan-ihsanul-adab.png"
-            alt="Logo Yayasan Pendidikan Ihsanul Adab"
-            width="500"
-            height="500"
+            src="/images/logo-ihsanul-adab.png"
+            alt=""
+            width="512"
+            height="512"
           />
+          <span><small>Yayasan Pendidikan</small><strong>Ihsanul Adab</strong></span>
         </a>
       </div>
+
+      <a class="hm-mobile-contact" href={consultationUrl} aria-label="Konsultasi program" title="Konsultasi program"><MessageCircle size={21} aria-hidden="true" /></a>
 
       <div class="hm-nav-row">
         <nav class="hm-desktop-nav" aria-label="Navigasi utama">
@@ -326,47 +258,13 @@ const principles = [
       <section class="hm-featured" id="program" aria-labelledby="featured-title">
         <header class="hm-section-intro hm-section-intro--wide">
           <div>
-            <h2 id="featured-title">Program yang paling sering menjadi pintu masuk.</h2>
+            <h2 id="featured-title">Temukan program sesuai kebutuhan Anda.</h2>
             <p>Setiap program memiliki tujuan, peserta, dan ritme belajar yang berbeda.</p>
           </div>
           <a class="hm-text-link" href={consultationUrl}>Belum yakin? Tanya tim kami</a>
         </header>
 
-        <div class="hm-program-mosaic">
-          {featuredPrograms.map((program) => (
-            <article class:list={['hm-program-card', program.className]}>
-              <a href={program.href} aria-label={`Lihat ${program.name}`}>
-                <img
-                  src={program.image}
-                  alt=""
-                  width="1536"
-                  height="1024"
-                  loading="lazy"
-                />
-                <div>
-                  <small>{program.audience}</small>
-                  <h3>{program.name}</h3>
-                  <p>{program.summary}</p>
-                  <span>Lihat program <span aria-hidden="true">↗</span></span>
-                </div>
-              </a>
-            </article>
-          ))}
-        </div>
-
-        <div class="hm-program-index" aria-label="Seluruh kelompok program">
-          {programCollections.map((collection) => (
-            <section>
-              <h3>{collection.title}</h3>
-              <p>{collection.description}</p>
-              <ul>
-                {collection.links.map(([label, href]) => (
-                  <li><a class="hm-program-link" href={href}>{label}<span aria-hidden="true">→</span></a></li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+        <ProgramFinder />
       </section>
 
       <section class="hm-workflow" id="cara-belajar" aria-labelledby="workflow-title">
@@ -426,12 +324,12 @@ const principles = [
     </footer>
 
     <nav class="hm-mobile-bottom-nav" aria-label="Navigasi bawah seluler">
-      <a class="hm-bottom-nav__link" href="/" aria-current="page">Beranda</a>
-      <a class="hm-bottom-nav__link" href="#jalur">Jalur</a>
-      <a class="hm-bottom-nav__link" href="#program">Program</a>
-      <a class="hm-bottom-nav__link" href={lmsUrl}>LMS</a>
+      <a class="hm-bottom-nav__link" href="/" aria-current="page"><House size={20} aria-hidden="true" /><span>Beranda</span></a>
+      <a class="hm-bottom-nav__link" href="#jalur"><Route size={20} aria-hidden="true" /><span>Jalur</span></a>
+      <a class="hm-bottom-nav__link" href="#program"><GraduationCap size={20} aria-hidden="true" /><span>Program</span></a>
+      <a class="hm-bottom-nav__link" href={lmsUrl}><LogIn size={20} aria-hidden="true" /><span>LMS</span></a>
       <details class="hm-bottom-nav__more">
-        <summary>Menu</summary>
+        <summary><Menu size={20} aria-hidden="true" /><span>Menu</span></summary>
         <div>
           <a href="/tentang-kami/">Tentang kami</a>
           <a href="#cara-belajar">Cara belajar</a>

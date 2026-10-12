@@ -1,0 +1,44 @@
+/* Hallmark | design-system: design.md | shared navigation and accessibility */
+@import '../../tokens.css';
+
+html { scroll-padding-top: 7.5rem; }
+body :is(a, button, summary, input, select):focus-visible {
+  outline: var(--rule-strong) solid var(--color-brand-green);
+  outline-offset: var(--space-3xs);
+}
+body :is(nav, header, footer) :is(a, summary) { min-width: 0; }
+body :is(h1, h2, h3) { letter-spacing: 0; }
+body :is(.site-header, .hm-masthead, .hm-iaiee-header, nav[aria-label*='bawah']) details:not([open]) > :not(summary) { display: none; }
+body :is(.site-header, .hm-masthead, .hm-iaiee-header) details[open] > :is(div, nav) {
+  max-height: min(70dvh, 36rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+body nav[aria-label*='bawah'] details[open] > div {
+  max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+body :is(.hm-mobile-bottom-nav, .hm-iaiee-bottom-nav) {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+body :is(.hm-mobile-bottom-nav, .hm-iaiee-bottom-nav) a.is-section-current {
+  background: var(--color-ui-soft);
+  box-shadow: inset 0 var(--rule-strong) currentColor;
+}
+body .program-section-links a.is-section-current { text-decoration: underline; text-underline-offset: var(--space-3xs); }
+body :is(.hm-mobile-bottom-nav, .hm-iaiee-bottom-nav) details:not([open]) > summary { min-height: 3.5rem; }
+@media (max-width: 48rem) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  body :is(.hm-iaiee, .hm-deenup) { padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
+  html { scroll-padding-top: 5.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body *, body *::before, body *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

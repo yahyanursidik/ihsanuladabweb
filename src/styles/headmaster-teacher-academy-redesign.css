@@ -1778,6 +1778,8 @@ body {
   color: var(--hta-ink);
 }
 
+.hm-hta .hta-difference .eyebrow { color: var(--hta-ink); }
+
 .hm-hta footer h2,
 .hm-hta footer p,
 .hm-hta footer a {

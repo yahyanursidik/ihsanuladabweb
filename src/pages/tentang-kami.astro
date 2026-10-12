@@ -167,7 +167,7 @@ const footerLinks = [
       <section class="hm-about-hero" aria-labelledby="about-title">
         <div class="hm-about-hero-copy" data-reveal>
           <p class="hm-eyebrow">Tentang Yayasan Pendidikan Ihsanul Adab</p>
-          <h1 id="about-title">Menjaga arah pendidikan, dari rumah hingga lembaga.</h1>
+          <h1 id="about-title">Yayasan Pendidikan Ihsanul Adab</h1>
           <p class="hm-about-lead">
             Kami membantu keluarga, pendidik, dan lembaga menyusun langkah belajar yang berporos
             pada tauhid, tumbuh bersama adab, dipandu ilmu, dan diarahkan menuju amal.
@@ -179,11 +179,6 @@ const footerLinks = [
             </a>
             <a class="hm-text-link" href="#tim">Kenali tim kami</a>
           </div>
-          <dl class="hm-about-facts" aria-label="Ringkasan yayasan">
-            <div><dt>Status</dt><dd>Yayasan terdaftar</dd></div>
-            <div><dt>Jangkauan</dt><dd>Keluarga hingga lembaga</dd></div>
-            <div><dt>Arah</dt><dd>Tauhid, adab, ilmu, amal</dd></div>
-          </dl>
         </div>
 
         <figure class="hm-about-hero-visual" data-reveal>
@@ -192,12 +187,21 @@ const footerLinks = [
             alt="Meja belajar dengan buku tertutup, kompas, lentera, tanaman, dan kartu alur kosong tanpa figur makhluk bernyawa"
             width="1536"
             height="1024"
+            fetchpriority="high"
           />
           <figcaption>
             <Compass size={17} aria-hidden="true" />
             Arah yang jelas membantu setiap ikhtiar belajar tetap terjaga.
           </figcaption>
         </figure>
+      </section>
+
+      <section class="hm-about-summary" aria-label="Ringkasan yayasan">
+        <dl class="hm-about-facts">
+          <div><dt>Status</dt><dd>Yayasan terdaftar</dd></div>
+          <div><dt>Jangkauan</dt><dd>Keluarga hingga lembaga</dd></div>
+          <div><dt>Arah</dt><dd>Tauhid, adab, ilmu, amal</dd></div>
+        </dl>
       </section>
 
       <section class="hm-about-intro" id="siapa-kami" aria-labelledby="intro-title">

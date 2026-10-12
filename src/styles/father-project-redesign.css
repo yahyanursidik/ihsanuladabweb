@@ -877,6 +877,7 @@
 }
 
 .hm-father-footer-close p {
+  color: var(--color-paper);
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   line-height: 1.05;
@@ -904,6 +905,7 @@
 }
 
 .hm-father-footer-meta nav a {
+  color: var(--color-paper);
   font-size: var(--text-sm);
   text-decoration: none;
 }
@@ -914,6 +916,11 @@
   font-size: var(--text-xs);
   margin: 0;
 }
+
+.hm-father .hm-father-button-primary { color: var(--color-accent-ink); }
+.hm-father .hm-father-cta .hm-father-button-primary { color: var(--color-paper); }
+.hm-father .hm-father-cta .hm-father-button-primary:hover { color: var(--color-ink); }
+.hm-father-footer .hm-father-brand :is(strong, small) { color: var(--color-paper); }
 
 .hm-father-bottom-nav {
   display: none;

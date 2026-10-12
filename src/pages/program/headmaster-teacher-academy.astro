@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import {
   ArrowDown,
   ArrowRight,
@@ -195,12 +197,6 @@ const webinarTopics = [
   'Kurikulum, asesmen, budaya sekolah, dan mutu layanan pendidikan.',
 ];
 
-const heroMetrics = [
-  { icon: UsersRound, label: 'Komunitas', value: 'kepala sekolah dan guru' },
-  { icon: BriefcaseBusiness, label: 'Aplikatif', value: 'berbasis problem lapangan' },
-  { icon: Route, label: 'Bertahap', value: 'dari webinar ke pendampingan' },
-];
-
 const learningFlow = [
   {
     icon: Compass,
@@ -325,7 +321,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
       <div class="hta-hero-shade" aria-hidden="true"></div>
       <div class="hta-hero-content">
         <p class="eyebrow">Headmaster & Teacher Academy</p>
-        <h1 id="hta-title">Menata kepemimpinan. Menguatkan guru. Menumbuhkan mutu.</h1>
+        <h1 id="hta-title">Headmaster &amp; Teacher Academy</h1>
         <p>
           HTA membantu kepala sekolah dan guru Muslim membaca persoalan lembaga,
           memperbaiki praktik kelas, serta membangun budaya kerja yang beradab
@@ -349,20 +345,11 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
       </div>
     </section>
 
-    <section class="hta-hero-metrics" aria-label="Ringkasan Headmaster & Teacher Academy">
-      {heroMetrics.map(({ icon: Icon, label, value }) => (
-        <div>
-          <Icon size={22} strokeWidth={1.6} aria-hidden="true" />
-          <strong>{label}</strong>
-          <span>{value}</span>
-        </div>
-      ))}
-    </section>
-
+    <ProgramOverview id="hta" />
     <section class="section hta-welcome" id="tentang-hta">
       <div>
         <p class="eyebrow">Titik berangkat</p>
-        <h2>Di balik sekolah Islam yang kuat, selalu ada guru yang beradab dan kepala sekolah yang memimpin dengan hikmah.</h2>
+        <h2>Guru yang beradab. Pemimpin yang memberi arah.</h2>
       </div>
       <div class="stack">
         <p>
@@ -389,7 +376,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
     <section class="section hta-about">
       <div>
         <p class="eyebrow">Apa itu HTA?</p>
-        <h2>Program pengembangan guru, kepala sekolah, dan lembaga pendidikan Islam.</h2>
+        <h2>Pengembangan pendidik dan pimpinan sekolah Islam.</h2>
       </div>
       <div class="stack">
         <p>
@@ -412,7 +399,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
     <section class="section hta-goals">
       <div class="section-heading">
         <p class="eyebrow">Tujuan Headmaster & Teacher Academy</p>
-        <h2>HTA bertujuan membangun mutu pendidikan Islam secara bertahap dan berkelanjutan.</h2>
+        <h2>Mutu yang tumbuh bersama tim.</h2>
       </div>
       <div class="hta-goal-grid">
         {goals.map((goal, index) => (
@@ -450,7 +437,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
     <section class="section hta-programs" id="program-hta">
       <div class="section-heading">
         <p class="eyebrow">Program Utama HTA</p>
-        <h2>Ruang belajar praktis untuk pendidik, kepala sekolah, pengelola, dan calon pemimpin pendidikan.</h2>
+        <h2>Pilih ruang belajar sesuai peran Anda.</h2>
       </div>
       <div class="hta-program-grid">
         {mainPrograms.map(({ icon: Icon, ...program }, index) => (
@@ -475,7 +462,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
     <section class="hta-difference" id="keunggulan">
       <div>
         <p class="eyebrow">Prinsip yang dijaga</p>
-        <h2>Praktis untuk lapangan, tetap berhati-hati dalam arah pendidikan.</h2>
+        <h2>Praktis dalam metode. Terjaga dalam prinsip.</h2>
       </div>
       <div class="hta-difference-grid">
         {differences.map((item) => (
@@ -490,7 +477,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
     <section class="section hta-audience" id="untuk-siapa">
       <div>
         <p class="eyebrow">Peserta HTA</p>
-        <h2>Untuk mereka yang memikul amanah pendidikan dan ingin terus bertumbuh.</h2>
+        <h2>Untuk pendidik yang ingin terus belajar.</h2>
       </div>
       <ul class="check-list">
         {audiences.map((audience) => (
@@ -533,6 +520,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
       </article>
     </section>
 
+    <ProgramGuide id="hta" />
     <section class="cta hta-cta" id="kontak">
       <div>
         <p class="eyebrow">Pendidikan adalah amal panjang</p>

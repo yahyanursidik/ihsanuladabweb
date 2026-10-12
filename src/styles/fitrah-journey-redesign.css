@@ -362,6 +362,8 @@ body {
   color: var(--fitrah-plum-deep);
 }
 
+.hm-fitrah .hm-fitrah-button-primary { color: var(--fitrah-plum-deep); }
+
 .hm-fitrah-button-primary:hover {
   background: var(--fitrah-blush);
 }

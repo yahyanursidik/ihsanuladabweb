@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import {
   ArrowDown,
   ArrowRight,
@@ -219,7 +221,7 @@ const faqs = [
   ['Apakah harus mulai dari paket besar?', 'Tidak. Lembaga bisa mulai dari konsultasi atau diagnosa awal untuk mengetahui prioritas yang paling mendesak.'],
   ['Bisa dilakukan online?', 'Bisa. Pendampingan dapat dilakukan online, onsite, atau hybrid, tergantung jenis layanan dan kesiapan lembaga.'],
   ['Apakah pendekatannya sesuai manhaj salaf?', "IAIEE menjaga tauhid, adab, dan prinsip Al-Qur'an serta Sunnah dengan pemahaman salafus shalih sebagai arah utama. Pembahasan manajemen dan mutu diposisikan sebagai alat bantu, bukan pengganti bimbingan agama."],
-  ['Berapa lama pendampingan berjalan?', 'Durasi menyesuaikan kebutuhan. Banyak lembaga mulai dari roadmap 90 hari, lalu melanjutkan ke pendampingan 6-12 bulan bila diperlukan.'],
+  ['Berapa lama pendampingan berjalan?', 'Durasi ditentukan setelah penjajakan dan penetapan lingkup layanan. Prioritas, tahapan, waktu evaluasi, dan bentuk pendampingan disepakati sesuai kebutuhan serta kapasitas lembaga.'],
 ];
 ---
 
@@ -281,7 +283,8 @@ const faqs = [
       <section class="hm-iaiee-hero" aria-labelledby="iaiee-title">
         <div class="hm-iaiee-hero-copy">
           <p class="hm-iaiee-kicker">Sistem mutu yang dapat dijalankan</p>
-          <h1 id="iaiee-title">Mutu lembaga, dari arah sampai kebiasaan kerja.</h1>
+          <h1 id="iaiee-title">IAIEE</h1>
+          <p class="hm-iaiee-hero-statement">Mutu pendidikan, dari arah sampai kebiasaan kerja.</p>
           <p>
             IAIEE mendampingi lembaga pendidikan Islam menata kurikulum, pembelajaran,
             SDM, tata kelola, akreditasi, dan budaya mutu dengan arah tauhid serta adab.
@@ -303,6 +306,7 @@ const faqs = [
         </figure>
       </section>
 
+      <ProgramOverview id="iaiee" />
       <section class="hm-iaiee-signals" aria-label="Ringkasan pendekatan IAIEE">
         {qualitySignals.map(({ icon: Icon, title, body }) => (
           <article>
@@ -429,6 +433,7 @@ const faqs = [
         <div>{faqs.map(([question, answer]) => <details><summary>{question}<ArrowDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>
       </section>
 
+      <ProgramGuide id="iaiee" />
       <section class="hm-iaiee-cta" id="kontak" aria-labelledby="cta-title">
         <div><p class="hm-iaiee-kicker">Mulai dengan konteks lembaga Anda</p><h2 id="cta-title">Mari tentukan langkah pertama yang paling masuk akal.</h2><p>Ceritakan kondisi lembaga Anda. IAIEE membantu memetakan kebutuhan, prioritas, dan bentuk pendampingan yang sesuai.</p></div>
         <div><a class="hm-iaiee-button hm-iaiee-button--light" href={consultationUrl}>Konsultasi mutu <ArrowRight size={18} aria-hidden="true" /></a><a class="hm-iaiee-link-light" href={whatsappUrl}>WhatsApp admin</a></div>

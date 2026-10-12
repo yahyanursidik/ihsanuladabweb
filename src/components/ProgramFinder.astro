@@ -1,0 +1,52 @@
+---
+import { ArrowRight, Search } from '@lucide/astro';
+import { programs } from '../data/programs';
+import '../styles/program-finder.css';
+---
+<div class="program-finder" data-program-finder>
+  <form class="program-finder-controls" role="search" aria-label="Cari program">
+    <label class="program-search"><span>Cari program</span><div><Search size={20} aria-hidden="true" /><input type="search" name="search" placeholder="Nama atau kebutuhan belajar" autocomplete="off" /></div></label>
+    <label><span>Kebutuhan belajar</span><select name="audience"><option value="all">Semua kebutuhan</option><option value="keluarga">Orang tua dan keluarga</option><option value="anak">Anak dan remaja</option><option value="dewasa">Muslim dewasa</option><option value="pendidik">Pendidik dan lembaga</option></select></label>
+  </form>
+  <p class="program-finder-count" role="status" aria-live="polite" aria-atomic="true" data-program-count>{programs.length} program</p>
+  <div class="program-finder-results">
+    {programs.map((program) => <article data-program-result data-group={program.group} data-search={`${program.name} ${program.audience} ${program.focus} ${program.summary}`.toLocaleLowerCase('id')}>
+      <a href={program.href}>
+        <img src={program.image} alt="" width="240" height="180" loading="lazy" />
+        <div><small>{program.audience}</small><h3>{program.name}</h3><p>{program.summary}</p><span>Lihat program<ArrowRight size={17} aria-hidden="true" /></span></div>
+      </a>
+    </article>)}
+  </div>
+  <div class="program-finder-empty" data-program-empty hidden><h3>Program belum ditemukan.</h3><p>Coba kata lain atau tampilkan semua kebutuhan.</p><button type="button" data-program-reset>Tampilkan semua</button></div>
+</div>
+<script>
+  const finder = document.querySelector<HTMLElement>('[data-program-finder]');
+  if (finder) {
+    const form = finder.querySelector('form')!;
+    const search = finder.querySelector<HTMLInputElement>('input')!;
+    const audience = finder.querySelector<HTMLSelectElement>('select')!;
+    const results = [...finder.querySelectorAll<HTMLElement>('[data-program-result]')];
+    const update = () => {
+      const query = search.value.trim().toLocaleLowerCase('id');
+      const words = query.split(/\s+/).filter(Boolean);
+      let count = 0;
+      results.forEach((result) => {
+        const visible = (audience.value === 'all' || result.dataset.group === audience.value)
+          && words.every((word) => result.dataset.search!.includes(word));
+        result.hidden = !visible;
+        if (visible) count++;
+      });
+      finder.querySelector('[data-program-count]')!.textContent = `${count} program${query ? ` untuk "${search.value.trim()}"` : ''}`;
+      finder.querySelector<HTMLElement>('[data-program-empty]')!.hidden = count > 0;
+    };
+    form.addEventListener('submit', (event) => event.preventDefault());
+    search.addEventListener('input', update);
+    audience.addEventListener('change', update);
+    finder.querySelector('[data-program-reset]')!.addEventListener('click', () => {
+      search.value = '';
+      audience.value = 'all';
+      update();
+      search.focus();
+    });
+  }
+</script>

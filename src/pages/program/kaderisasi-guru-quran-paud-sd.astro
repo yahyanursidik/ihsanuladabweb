@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import {
   ArrowDown,
   ArrowRight,
@@ -91,12 +93,6 @@ const programMenuItems = [
     href: '/program/homebased-learning/',
     note: 'Sekolah Islam dari rumah',
   },
-];
-
-const stats = [
-  { icon: CalendarRange, value: '2 Tahun', label: 'program pembinaan bertahap' },
-  { icon: Sprout, value: 'PAUD & SD', label: 'fokus pada karakter usia anak' },
-  { icon: Video, value: 'Daring', label: 'talaqqi dan pembinaan dari tempat masing-masing' },
 ];
 
 const needs = [
@@ -278,7 +274,7 @@ const teachers = [
       <div class="pkgq-hero-shade" aria-hidden="true"></div>
       <div class="pkgq-hero-content">
         <p class="eyebrow">Program kaderisasi dua tahun</p>
-        <h1 id="pkgq-title">Benahi bacaan. Pahami anak. Siapkan amanah mengajar.</h1>
+        <h1 id="pkgq-title">Kaderisasi Guru Al-Qur'an PAUD &amp; SD</h1>
         <p>
           PKGQ membina calon guru Al-Qur'an PAUD dan SD melalui talaqqi, penguatan
           diniyah, pedagogi anak, praktik mengajar, dan supervisi agar proses belajar
@@ -302,16 +298,7 @@ const teachers = [
       </div>
     </section>
 
-    <section class="pkgq-stats" aria-label="Ringkasan PKGQ">
-      {stats.map(({ icon: Icon, value, label }) => (
-        <article>
-          <Icon size={23} strokeWidth={1.6} aria-hidden="true" />
-          <strong>{value}</strong>
-          <span>{label}</span>
-        </article>
-      ))}
-    </section>
-
+    <ProgramOverview id="pkgq" />
     <section class="section pkgq-intro" id="tentang-pkgq">
       <div>
         <p class="eyebrow">Tentang PKGQ</p>
@@ -338,7 +325,7 @@ const teachers = [
     <section class="section pkgq-needs" aria-labelledby="pkgq-needs-title">
       <div class="section-heading compact">
         <p class="eyebrow">Kebutuhan yang dijawab</p>
-        <h2 id="pkgq-needs-title">Program ini lahir dari kebutuhan guru Al-Qur'an yang lebih siap menghadapi anak.</h2>
+        <h2 id="pkgq-needs-title">Bacaan yang terjaga. Metode yang memahami anak.</h2>
       </div>
       <div class="pkgq-need-grid">
         {needs.map((need, index) => (
@@ -356,7 +343,7 @@ const teachers = [
     <section class="section pkgq-audience">
       <div>
         <p class="eyebrow">Untuk siapa?</p>
-        <h2>Cocok untuk pembelajar yang ingin masuk ke dunia pengajaran Al-Qur'an anak dengan lebih terarah.</h2>
+        <h2>Untuk calon guru Al-Qur'an anak.</h2>
       </div>
       <ul class="check-list">
         {audiences.map((audience) => (
@@ -390,7 +377,7 @@ const teachers = [
     <section class="section pkgq-structure" id="alur">
       <div>
         <p class="eyebrow">Alur pembinaan</p>
-        <h2>Lima tahap untuk bergerak dari kesiapan pribadi menuju amanah kelas.</h2>
+        <h2>Lima tahap menuju kesiapan mengajar.</h2>
       </div>
       <ol class="pkgq-path-list" aria-label="Alur kaderisasi guru Al-Qur'an">
         {learningPath.map(({ icon: Icon, ...item }, index) => (
@@ -412,7 +399,7 @@ const teachers = [
     <section class="section pkgq-outcomes">
       <div class="section-heading compact">
         <p class="eyebrow">Kompetensi yang diikhtiarkan</p>
-        <h2>Lulusan diarahkan menjadi guru yang menjaga bacaan, adab, metode, dan amanah mengajar.</h2>
+        <h2>Bekal untuk menunaikan amanah mengajar.</h2>
       </div>
       <div class="pkgq-outcome-grid">
         {outcomes.map((outcome) => (
@@ -427,7 +414,7 @@ const teachers = [
     <section class="section pkgq-teachers" id="tim-pengajar">
       <div class="section-heading">
         <p class="eyebrow">Tim Pengajar</p>
-        <h2>Dibersamai pengajar yang menguatkan bacaan, ilmu, pedagogi, dan praktik keguruan.</h2>
+        <h2>Pengajar yang membersamai proses Anda.</h2>
       </div>
       <div class="team-grid">
         {teachers.map(([name, role]) => (
@@ -442,6 +429,7 @@ const teachers = [
       </div>
     </section>
 
+    <ProgramGuide id="pkgq" />
     <section class="cta pkgq-cta" id="kontak">
       <div>
         <p class="eyebrow">Ingin menyiapkan diri menjadi guru Al-Qur'an anak?</p>
