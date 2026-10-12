@@ -25,6 +25,8 @@ import {
   Waypoints,
 } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import '../../styles/ushuluna-redesign.css';
 
 const programMenuItems = [
@@ -236,6 +238,7 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
         </p>
       </section>
 
+      <ProgramOverview id="ushuluna" />
       <section class="hm-ushuluna-route" id="rute-belajar" aria-labelledby="route-title">
         <div class="hm-ushuluna-section hm-ushuluna-route-inner">
           <div class="hm-ushuluna-route-heading hm-ushuluna-reveal">
@@ -434,11 +437,12 @@ const lmsUrl = 'https://hub.ihsanuladab.or.id/';
         </div>
       </section>
 
+      <ProgramGuide id="ushuluna" />
       <section class="hm-ushuluna-cta" id="kontak">
         <div class="hm-ushuluna-section hm-ushuluna-cta-inner">
           <Layers3 size={42} strokeWidth={1.4} aria-hidden="true" />
           <p class="hm-ushuluna-kicker">Mulai dari yang paling mendasar</p>
-          <h2>Fondasi yang lurus membantu langkah tetap terarah, di mana pun perjalanan berlangsung.</h2>
+          <h2>Mulai dari dasar. Lanjutkan dengan arah.</h2>
           <p>Ceritakan kebutuhan dan ritme belajar Anda. Admin akan membantu menjelaskan alur program dan langkah awal yang tersedia.</p>
           <div class="hm-ushuluna-actions">
             <a class="hm-ushuluna-button hm-ushuluna-button-primary" href={consultationUrl}>

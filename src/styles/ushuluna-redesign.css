@@ -366,6 +366,8 @@ body {
   color: var(--ush-ink);
 }
 
+.hm-ushuluna .hm-ushuluna-button-primary { color: var(--ush-ink); }
+
 .hm-ushuluna-button-primary:hover {
   background: var(--ush-paper-3);
 }
@@ -849,9 +851,14 @@ body {
 }
 
 .hm-ushuluna-footer {
+  color: var(--ush-ink);
   background: var(--ush-paper);
   padding: var(--space-xl) var(--page-gutter) 6rem;
 }
+
+.hm-ushuluna-footer :is(h2, strong, a) { color: var(--ush-ink); }
+.hm-ushuluna-footer .hm-ushuluna-kicker { color: var(--ush-forest); }
+.hm-ushuluna-audience .hm-ushuluna-kicker { color: var(--ush-forest); }
 
 .hm-ushuluna-footer-main {
   align-items: end;

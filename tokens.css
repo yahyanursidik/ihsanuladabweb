@@ -1,4 +1,20 @@
 :root {
+  --layout-page-max: 80rem;
+  --layout-section-space: 4rem;
+  --layout-section-heading: 2.25rem;
+  --layout-item-heading: 1.25rem;
+  --layout-hero-heading: 3.75rem;
+  --color-ui-white: oklch(99.5% 0.002 160);
+  --color-ui-soft: oklch(96% 0.008 160);
+  --color-ui-ink: oklch(24% 0.025 160);
+  --color-ui-muted: oklch(43% 0.018 160);
+  --color-ui-rule: oklch(83% 0.015 160);
+  --color-brand-green: oklch(39% 0.082 166);
+  --color-program-berry: oklch(43% 0.12 350);
+  --color-program-blush: oklch(97% 0.018 350);
+  --color-program-olive: oklch(40% 0.065 130);
+  --color-program-cyan: oklch(40% 0.075 215);
+  --color-program-cyan-soft: oklch(96% 0.018 205);
   --color-paper: oklch(97% 0.012 120);
   --color-paper-2: oklch(93% 0.022 125);
   --color-paper-3: oklch(87% 0.032 125);
@@ -33,6 +49,8 @@
   --color-iaiee-quiet: oklch(96% 0.011 250);
   --color-iaiee-on-dark: oklch(97% 0.008 250);
   --color-iaiee-on-dark-muted: oklch(84% 0.023 245);
+  --color-iaiee-hero-shade: oklch(17% 0.05 252 / 0.94);
+  --color-iaiee-hero-shade-soft: oklch(17% 0.05 252 / 0.4);
   --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", serif;
   --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
   --font-outlier: "IBM Plex Mono", "Cascadia Mono", monospace;

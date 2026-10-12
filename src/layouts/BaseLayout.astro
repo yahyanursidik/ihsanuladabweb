@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '../styles/site-experience.css';
+import '../styles/layout-refinement.css';
 
 interface Props {
   title?: string;
@@ -26,15 +28,21 @@ const {
     <link rel="icon" type="image/png" href="/images/logo-ihsanul-adab.png" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="site-page">
     <slot />
     <script>
-      const openMenuSelector = '.site-header details[open], .hm-masthead details[open], .hm-mobile-bottom-nav details[open]';
-      const menuAreaSelector = '.site-header, .hm-masthead, .hm-mobile-bottom-nav';
+      const menuAreaSelector = '.site-header, .hm-masthead, .hm-iaiee-header, nav[aria-label*="bawah"]';
+      const menus = [...document.querySelectorAll<HTMLDetailsElement>(`${menuAreaSelector.split(', ').map((area) => `${area} details`).join(', ')}`)];
+      const closeMenu = (menu: HTMLDetailsElement, restoreFocus = false) => {
+        menu.open = false;
+        menu.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) menu.querySelector('summary')?.focus();
+      };
+      menus.forEach((menu) => menu.querySelector('summary')?.setAttribute('aria-expanded', String(menu.open)));
 
-      const closeSiblingMenus = (activeDetails) => {
-        document.querySelectorAll(openMenuSelector).forEach((details) => {
-          if (details !== activeDetails) details.removeAttribute('open');
+      const closeSiblingMenus = (activeDetails: HTMLDetailsElement) => {
+        menus.forEach((details) => {
+          if (details !== activeDetails) closeMenu(details);
         });
       };
 
@@ -42,38 +50,59 @@ const {
         const target = event.target;
         if (
           target instanceof HTMLDetailsElement &&
-          target.open &&
           target.closest(menuAreaSelector)
         ) {
-          closeSiblingMenus(target);
+          target.querySelector('summary')?.setAttribute('aria-expanded', String(target.open));
+          if (target.open) closeSiblingMenus(target);
         }
       }, true);
 
       document.addEventListener('click', (event) => {
         const target = event.target;
         if (!(target instanceof Element)) return;
+        const disclosure = target.closest('summary')?.parentElement;
+        if (disclosure instanceof HTMLDetailsElement && menus.includes(disclosure) && !disclosure.open) {
+          closeSiblingMenus(disclosure);
+        }
 
-        if (target.closest('.site-header a, .hm-masthead a, .hm-mobile-bottom-nav a')) {
-          document.querySelectorAll(openMenuSelector).forEach((details) => {
-            details.removeAttribute('open');
-          });
+        if (target.closest('a')?.closest(menuAreaSelector)) {
+          menus.forEach((details) => closeMenu(details));
           return;
         }
 
-        if (target.closest('.site-header details, .hm-masthead details, .hm-mobile-bottom-nav details')) return;
+        if (target.closest('details')?.closest(menuAreaSelector)) return;
 
-        document.querySelectorAll(openMenuSelector).forEach((details) => {
-          details.removeAttribute('open');
-        });
+        menus.forEach((details) => closeMenu(details));
       });
 
       document.addEventListener('keydown', (event) => {
         if (event.key !== 'Escape') return;
 
-        document.querySelectorAll(openMenuSelector).forEach((details) => {
-          details.removeAttribute('open');
-        });
+        menus.filter((details) => details.open).forEach((details) => closeMenu(details, true));
       });
+
+      const sectionLinks = [...document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')]
+        .filter((link) => !link.closest('details') && document.getElementById(link.hash.slice(1)));
+      const targets = [...new Set(sectionLinks.map((link) => document.getElementById(link.hash.slice(1))!))];
+      let pending = false;
+      const updateLocation = () => {
+        pending = false;
+        const active = targets.filter((section) => section.getBoundingClientRect().top <= window.innerHeight * 0.4)
+          .sort((a, b) => b.getBoundingClientRect().top - a.getBoundingClientRect().top)[0];
+        sectionLinks.forEach((link) => {
+          const current = link.hash.slice(1) === active?.id;
+          link.classList.toggle('is-section-current', current);
+          if (current) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      };
+      document.addEventListener('scroll', () => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(updateLocation);
+      }, { passive: true });
+      window.addEventListener('resize', updateLocation);
+      updateLocation();
     </script>
   </body>
 </html>

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import {
   ArrowDown,
   ArrowRight,
@@ -197,22 +199,22 @@ const activePrograms = [
 const curriculumTracks = [
   {
     icon: Compass,
-    title: 'Islamic Essential Knowledge',
+    title: "Ilmu Islam dan Al-Qur'an",
     items: ['Aqidah dan tauhid', 'Adab dan akhlak', 'Ibadah harian', 'Sirah Nabawiyah', "Tahsin dan tahfidz Al-Qur'an"],
   },
   {
     icon: NotebookTabs,
-    title: 'Core Academics',
+    title: 'Akademik inti',
     items: ['Bahasa Indonesia', 'Bahasa Inggris dasar', 'Matematika dan numerasi', 'Sains dan alam sekitar', 'Literasi membaca'],
   },
   {
     icon: Palette,
-    title: 'Life Skills & Projects',
+    title: 'Kecakapan hidup dan proyek',
     items: ['Kemandirian rumah', 'Kreativitas dan karya', 'Kebiasaan sehat', 'Komunikasi dan tanggung jawab', 'Proyek keluarga sederhana'],
   },
   {
     icon: UsersRound,
-    title: 'Parent Guidance',
+    title: 'Pendampingan orang tua',
     items: ['Panduan mingguan', 'Ruang konsultasi', 'Laporan perkembangan', 'Forum orang tua', 'Penguatan ritme belajar rumah'],
   },
 ];
@@ -346,7 +348,7 @@ const guardrails = [
       <div class="iais-hero-shade" aria-hidden="true"></div>
       <div class="iais-hero-content">
         <p class="eyebrow">Sekolah Islam berbasis keluarga</p>
-        <h1 id="iais-title">Belajar dekat dengan rumah. Bertumbuh dekat dengan orang tua.</h1>
+        <h1 id="iais-title">IAIS Home-Based Learning</h1>
         <p>
           IAIS Home-Based Learning membantu keluarga Muslim menata kurikulum, adab,
           aktivitas bermain, dan rutinitas belajar agar pendidikan anak berjalan
@@ -389,10 +391,11 @@ const guardrails = [
       </ol>
     </section>
 
+    <ProgramOverview id="hbl" />
     <section class="section iais-intro" id="tentang-hbl">
       <div>
         <p class="eyebrow">Tentang Program</p>
-        <h2>Rumah bukan sekadar lokasi belajar. Rumah adalah lingkungan pendidikan pertama.</h2>
+        <h2>Rumah sebagai lingkungan pendidikan pertama.</h2>
       </div>
       <div class="stack">
         <p>
@@ -431,7 +434,7 @@ const guardrails = [
     <section class="section iais-audience" id="untuk-siapa">
       <div>
         <p class="eyebrow">Untuk siapa?</p>
-        <h2>Untuk keluarga yang ingin mendidik dari rumah tanpa berjalan sendirian.</h2>
+        <h2>Untuk keluarga yang memilih belajar dari rumah.</h2>
       </div>
       <ul class="check-list">
         {audiences.map((audience) => (
@@ -446,7 +449,7 @@ const guardrails = [
     <section class="section iais-pillars">
       <div class="section-heading">
         <p class="eyebrow">Pilar pembelajaran</p>
-        <h2>Belajar dari rumah tetap membutuhkan arah, ritme, dan ukuran perkembangan.</h2>
+        <h2>Empat pijakan belajar dari rumah.</h2>
       </div>
       <div class="iais-pillar-grid">
         {pillars.map(({ icon: Icon, title, body }) => (
@@ -462,7 +465,7 @@ const guardrails = [
     <section class="section iais-programs" id="program-aktif">
       <div class="section-heading">
         <p class="eyebrow">Program aktif</p>
-        <h2>Dua jenjang awal untuk membangun fondasi belajar anak dari rumah.</h2>
+        <h2>Pilihan jenjang sesuai usia anak.</h2>
       </div>
       <div class="iais-program-grid">
         {activePrograms.map(({ icon: Icon, ...program }) => (
@@ -493,7 +496,7 @@ const guardrails = [
     <section class="iais-solution">
       <div>
         <p class="eyebrow">Indonesia dan diaspora</p>
-        <h2>Pendidikan anak tetap bisa terarah meski keluarga membutuhkan fleksibilitas.</h2>
+        <h2>Belajar terarah, di mana pun keluarga berada.</h2>
       </div>
       <div>
         <p>
@@ -507,20 +510,16 @@ const guardrails = [
     <section class="section iais-structure" id="struktur">
       <div class="section-heading">
         <p class="eyebrow">Struktur kurikulum</p>
-        <h2>Ilmu Islam, akademik inti, life skills, dan pendampingan orang tua berjalan bersama.</h2>
+        <h2>Kurikulum yang menyeimbangkan ilmu dan kecakapan.</h2>
       </div>
       <div class="iais-curriculum-grid">
-        {curriculumTracks.map(({ icon: Icon, ...track }, index) => (
-          <article>
-            <div class="iais-curriculum-icon">
-              <Icon size={27} strokeWidth={1.55} aria-hidden="true" />
-              <span>{String(index + 1).padStart(2, '0')}</span>
-            </div>
-            <h3>{track.title}</h3>
+        {curriculumTracks.map(({ icon: Icon, ...track }) => (
+          <details>
+            <summary><Icon size={23} strokeWidth={1.6} aria-hidden="true" /><strong>{track.title}</strong><ArrowDown size={18} aria-hidden="true" /></summary>
             <ul>
               {track.items.map((item) => <li>{item}</li>)}
             </ul>
-          </article>
+          </details>
         ))}
       </div>
     </section>
@@ -583,7 +582,7 @@ const guardrails = [
     <section class="section iais-flow">
       <div class="section-heading compact">
         <p class="eyebrow">Alur bergabung</p>
-        <h2>Mulai dari membaca kebutuhan keluarga, lalu menyusun ritme belajar yang mungkin dijalani.</h2>
+        <h2>Mulai dari kesiapan anak dan keluarga.</h2>
       </div>
       <div class="iais-flow-grid">
         {flow.map(({ icon: Icon, ...item }, index) => (
@@ -614,6 +613,7 @@ const guardrails = [
       </div>
     </section>
 
+    <ProgramGuide id="hbl" />
     <section class="cta iais-cta" id="kontak">
       <div>
         <p class="eyebrow">Home-Based Learning</p>

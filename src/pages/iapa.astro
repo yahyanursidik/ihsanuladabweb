@@ -22,6 +22,8 @@ import {
   Waypoints,
 } from '@lucide/astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProgramOverview from '../components/ProgramOverview.astro';
+import ProgramGuide from '../components/ProgramGuide.astro';
 import '../styles/iapa-redesign.css';
 
 const whatsappUrl = 'https://wa.me/6285179676003';
@@ -233,6 +235,7 @@ const iapaOutcomes = [
         ))}
       </section>
 
+      <ProgramOverview id="iapa" />
       <section class="hm-iapa-question hm-iapa-section hm-iapa-reveal" id="tentang-iapa">
         <div class="hm-iapa-question-title">
           <h2>Mengapa mengasuh sering terasa lebih berat dari yang dibayangkan?</h2>
@@ -366,10 +369,11 @@ const iapaOutcomes = [
         </div>
       </section>
 
+      <ProgramGuide id="iapa" />
       <section class="hm-iapa-cta" id="kontak">
         <div class="hm-iapa-section">
           <ShieldCheck size={34} strokeWidth={1.5} aria-hidden="true" />
-          <h2>Haruskah orang tua menunggu sampai keadaan rumah membaik untuk mulai belajar?</h2>
+          <h2>Mulai belajar dari keadaan keluarga hari ini.</h2>
           <p>
             Tidak. Proses belajar justru dapat dimulai dari persoalan yang sedang dihadapi hari ini. Ceritakan kebutuhan keluarga Anda kepada admin IAPA.
           </p>

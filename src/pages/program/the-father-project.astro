@@ -19,6 +19,8 @@ import {
   Waypoints,
 } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import '../../styles/father-project-redesign.css';
 
 const programMenuItems = [
@@ -176,6 +178,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         </p>
       </section>
 
+      <ProgramOverview id="father" />
       <section class="hm-father-metrics" aria-label="Ringkasan program">
         <div>
           <strong>122+</strong>
@@ -334,10 +337,11 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
         </div>
       </section>
 
+      <ProgramGuide id="father" />
       <section class="hm-father-cta" id="kontak">
         <div class="hm-father-section">
           <p class="hm-father-kicker">Mulai dari satu langkah</p>
-          <h2>Keluarga tidak membutuhkan ayah yang sempurna. Mereka membutuhkan ayah yang mau terus belajar dan hadir.</h2>
+          <h2>Terus belajar. Lebih hadir untuk keluarga.</h2>
           <div class="hm-father-actions">
             <a class="hm-father-button hm-father-button-primary" href={consultUrl}>
               Konsultasikan program

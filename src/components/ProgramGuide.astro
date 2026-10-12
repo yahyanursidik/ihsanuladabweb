@@ -1,0 +1,40 @@
+---
+import { ArrowRight, ChevronDown, ClipboardCheck, MessageCircle } from '@lucide/astro';
+import { getProgram, programContactUrl, type ProgramId } from '../data/programs';
+import '../styles/program-experience.css';
+interface Props { id: ProgramId; }
+const program = getProgram(Astro.props.id);
+const contactUrl = programContactUrl(program.id);
+const questions = [...program.questions, {
+  question: 'Bagaimana mengetahui jadwal, biaya, dan ketersediaan?',
+  answer: `Hubungi admin dengan menyebut ${program.name} dan kebutuhan Anda. Mintalah informasi kelas atau layanan yang tersedia, jadwal, biaya, persyaratan, serta ketentuan pendaftaran sebelum menentukan pilihan.`,
+}];
+---
+<div class="program-experience program-guide" data-program-theme={program.id}>
+  <section id="persiapan" class="program-preparation program-inner" aria-labelledby="preparation-title">
+    <div>
+      <ClipboardCheck size={28} aria-hidden="true" />
+      <h2 id="preparation-title">Siapkan langkah pertama Anda.</h2>
+      <p>Mulai dari kebutuhan yang nyata. Tiga hal ini membantu percakapan dengan admin menjadi lebih terarah.</p>
+      <a class="program-contact" href={contactUrl}><MessageCircle size={19} aria-hidden="true" />Tanya admin<ArrowRight size={17} aria-hidden="true" /></a>
+    </div>
+    <ol>
+      {program.preparation.map((item, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></li>)}
+    </ol>
+  </section>
+  <section class="program-faq program-inner" id="faq-program" aria-labelledby="program-faq-title">
+    <div><h2 id="program-faq-title">{program.id === 'iaiee' ? 'Sebelum memulai pendampingan.' : 'Sebelum Anda bergabung.'}</h2><p>Jawaban untuk membantu Anda memilih dengan lebih tenang.</p></div>
+    <div>
+      {questions.map(({ question, answer }) => <details><summary><span>{question}</span><ChevronDown size={20} aria-hidden="true" /></summary><p>{answer}</p></details>)}
+    </div>
+  </section>
+  <section class="program-related program-inner" id="program-terkait" aria-labelledby="related-title">
+    <h2 id="related-title">Jalur yang melengkapi kebutuhan Anda.</h2>
+    <div>
+      {program.related.map((id) => {
+        const related = getProgram(id);
+        return <a href={related.href}><span><strong>{related.name}</strong><small>{related.summary}</small></span><ArrowRight size={20} aria-hidden="true" /></a>;
+      })}
+    </div>
+  </section>
+</div>

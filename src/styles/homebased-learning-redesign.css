@@ -440,6 +440,7 @@ body {
 }
 
 .hm-hbl .iais-signals {
+  display: block;
   background: var(--hbl-paper-blue);
   border-bottom: var(--rule-hair) solid var(--hbl-rule);
   padding: var(--space-2xl) var(--page-gutter);
@@ -448,7 +449,7 @@ body {
 .hm-hbl .iais-signal-heading {
   display: grid;
   gap: var(--space-lg);
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(0, 1fr);
   margin: 0 auto var(--space-xl);
   max-width: var(--page-max);
 }
@@ -532,12 +533,14 @@ body {
 .hm-hbl .section-heading {
   display: grid;
   gap: var(--space-xl);
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  grid-template-columns: minmax(0, 1fr);
+  max-width: none;
   margin-bottom: var(--space-xl);
 }
 
 .hm-hbl .section-heading.compact {
-  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+  grid-template-columns: minmax(0, 1fr);
+  max-width: none;
 }
 
 .hm-hbl .section-heading > .eyebrow {
@@ -637,6 +640,7 @@ body {
 
 .hm-hbl .check-list {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
   list-style: none;
   margin: 0;
@@ -645,12 +649,20 @@ body {
 
 .hm-hbl .check-list li {
   align-items: flex-start;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
   border-bottom: var(--rule-hair) solid color-mix(in oklch, currentColor 24%, transparent);
   display: flex;
   gap: var(--space-xs);
   line-height: 1.55;
   padding: var(--space-sm) 0;
+  min-height: 0;
+  font-weight: 500;
 }
+
+.hm-hbl .check-list li::before { content: none; }
 
 .hm-hbl .check-list li:first-child {
   border-top: var(--rule-hair) solid color-mix(in oklch, currentColor 24%, transparent);
@@ -1022,6 +1034,7 @@ body {
 }
 
 .hm-hbl footer {
+  display: block;
   background: var(--hbl-ink);
   color: var(--hbl-white);
   padding: var(--space-2xl) var(--page-gutter);
@@ -1056,7 +1069,7 @@ body {
   align-items: start;
   display: grid;
   gap: var(--space-xl);
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(16rem, 1fr) minmax(0, 1.6fr) auto;
   margin: 0 auto;
   max-width: var(--page-max);
   padding-top: var(--space-lg);
@@ -1071,6 +1084,7 @@ body {
 }
 
 .hm-hbl .footer-brand img {
+  flex: none;
   background: var(--hbl-white);
   border-radius: var(--radius-round);
   height: 2.75rem;
@@ -1094,7 +1108,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .hm-hbl .footer-meta nav a,
@@ -1125,6 +1139,17 @@ body {
 }
 
 @media (max-width: 74rem) {
+  .hm-hbl .iais-signals > ol,
+  .hm-hbl .iais-pillar-grid,
+  .hm-hbl .iais-flow-grid,
+  .hm-hbl .iais-day-rhythm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hm-hbl .iais-signal-arrow { display: none; }
+
+  .hm-hbl .footer-meta { grid-template-columns: minmax(0, 1fr) auto; }
+  .hm-hbl .footer-meta nav { grid-column: 1 / -1; grid-row: 2; }
   .hm-hbl .nav-shell {
     grid-template-columns: auto minmax(0, 1fr) auto;
   }
@@ -1526,3 +1551,14 @@ body {
     transform: none;
   }
 }
+
+.hm-hbl .iais-audience h2 { color: var(--hbl-white); }
+.hm-hbl .iais-signals li span { color: var(--hbl-forest); }
+.hm-hbl .iais-program-grid .iais-program-label span { color: var(--hbl-forest); }
+.hm-hbl .iais-program-grid li span { color: var(--hbl-ink-2); }
+.hm-hbl footer :is(h2, p, a, span) { color: var(--hbl-white); }
+.hm-hbl .iais-solution :is(h2, p),
+.hm-hbl .iais-cta :is(h2, p) { color: var(--hbl-ink); }
+.hm-hbl .iais-flow-grid article > div > span { color: var(--hbl-forest); }
+.hm-hbl .iais-solution .eyebrow { color: var(--hbl-ink); }
+.hm-hbl .iais-cta .button.secondary { color: var(--hbl-forest); border-color: var(--hbl-forest); }

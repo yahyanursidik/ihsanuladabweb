@@ -22,6 +22,8 @@ import {
   Waypoints,
 } from '@lucide/astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
 import '../../styles/fitrah-journey-redesign.css';
 
 const programMenuItems = [
@@ -213,6 +215,7 @@ const whatsappUrl = 'https://wa.me/6285179676003';
         </p>
       </section>
 
+      <ProgramOverview id="fitrah" />
       <section class="hm-fitrah-opening hm-fitrah-section" aria-labelledby="opening-title">
         <div class="hm-fitrah-reveal">
           <p class="hm-fitrah-kicker">Mengapa ruang ini hadir</p>
@@ -357,10 +360,11 @@ const whatsappUrl = 'https://wa.me/6285179676003';
         </div>
       </section>
 
+      <ProgramGuide id="fitrah" />
       <section class="hm-fitrah-cta" id="kontak">
         <div class="hm-fitrah-section hm-fitrah-cta-inner">
           <p class="hm-fitrah-kicker">Mulai dari satu langkah yang jujur</p>
-          <h2>Anda tidak harus memahami seluruh perjalanan hari ini. Mulailah dengan menemukan ruang belajar yang tepat.</h2>
+          <h2>Temukan ruang belajar untuk fase hidup Anda.</h2>
           <p>Ceritakan fase dan kebutuhan belajar Anda agar admin dapat mengarahkan ke format program yang sesuai.</p>
           <div class="hm-fitrah-actions">
             <a class="hm-fitrah-button hm-fitrah-button-primary" href={consultationUrl}>

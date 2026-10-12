@@ -135,6 +135,7 @@ body {
 }
 
 .hm-masthead__utility a {
+  flex: none;
   color: var(--color-accent-strong);
   font-weight: 700;
   white-space: nowrap;
@@ -318,6 +319,8 @@ body {
 
 .hm-bottom-nav__link,
 .hm-bottom-nav__more > summary {
+  flex-direction: column;
+  gap: var(--space-3xs);
   min-width: 0;
   min-height: 3.5rem;
   display: flex;
@@ -979,6 +982,15 @@ body {
 .hm-home summary:focus-visible {
   outline: var(--rule-strong) solid var(--color-focus);
   outline-offset: var(--space-3xs);
+}
+
+.hm-home .hm-skip { background: var(--color-accent); color: var(--color-accent-ink); }
+@media (max-width: 48rem) {
+  .hm-masthead__utility { display: none; }
+  .hm-masthead__brand-row { min-height: 7rem; }
+  .hm-brand--lockup img { width: 6rem; height: 6rem; }
+  .hm-hero { min-height: 32rem; padding-block: var(--space-xl); }
+  .hm-hero__copy > p:not(.hm-hero__lead) { font-size: var(--text-base); line-height: 1.65; }
 }
 
 .hm-button:active,

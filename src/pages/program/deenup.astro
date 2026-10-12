@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramGuide from '../../components/ProgramGuide.astro';
+import { House, BookOpenCheck, Layers3, Menu, MessageCircle, Compass, Smartphone, HeartHandshake } from '@lucide/astro';
+import '../../styles/deenup-redesign.css';
 
 const navItems = [
   ['Beranda', '/'],
@@ -142,24 +146,21 @@ const summit = [
   'Latihan leadership, tanggung jawab, dan kerja tim secara lebih nyata.',
 ];
 
-const testimonials = [
+const practices = [
   {
-    name: 'Farhan',
-    age: '17 tahun',
-    rating: '4 / 5',
-    quote: 'Materinya relate, tapi tetap jelas batasannya. Jadi lebih kebayang mulai berubah dari mana.',
+    icon: Compass,
+    title: 'Belajar lebih terarah',
+    body: 'Pilih satu target belajar mingguan, catat hambatannya, lalu evaluasi usaha tanpa membandingkan diri dengan teman.',
   },
   {
-    name: 'Aisyah',
-    age: '16 tahun',
-    rating: '5 / 5',
-    quote: 'Saya merasa ditemani, bukan dihakimi. Pelan-pelan jadi lebih semangat jaga shalat dan adab di rumah.',
+    icon: HeartHandshake,
+    title: 'Berkomunikasi dengan adab',
+    body: 'Latih mendengar sampai selesai, menyampaikan kebutuhan dengan tenang, dan memilih waktu yang tepat untuk berbicara dengan orang tua.',
   },
   {
-    name: 'Rafi',
-    age: '15 tahun',
-    rating: '4 / 5',
-    quote: 'Bagian digital balance paling kena. Saya jadi lebih sadar kapan HP membantu dan kapan merusak fokus.',
+    icon: Smartphone,
+    title: 'Menjaga kebiasaan digital',
+    body: 'Sepakati waktu penggunaan gawai bersama orang tua, kurangi konten yang melalaikan, dan sisihkan waktu tanpa layar untuk ibadah serta belajar.',
   },
 ];
 
@@ -184,6 +185,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
   title="DeenUp - Upgrade Iman, Adab, dan Diri"
   description="DeenUp adalah program pembinaan remaja Muslim berbasis tauhid, adab, dan solusi masalah hidup yang dekat dengan anak SMP dan SMA."
 >
+  <div class="hm-deenup">
   <a class="skip-link" href="#konten">Lewati ke konten utama</a>
 
   <header class="site-header">
@@ -249,18 +251,18 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
   <main id="konten">
     <section class="deenup-hero" aria-labelledby="deenup-title">
-      <img src="/images/deenup-teen-study-hero.png" alt="Meja belajar remaja dengan buku, catatan, ponsel tertutup, dan perangkat belajar yang rapi" />
+      <img src="/images/deenup-teen-study-hero.png" alt="Meja belajar remaja dengan buku, catatan, ponsel tertutup, dan perangkat belajar yang rapi" width="1536" height="1024" fetchpriority="high" />
       <div class="deenup-hero-content">
         <p class="eyebrow">DeenUp untuk SMP & SMA</p>
-        <h1 id="deenup-title">Upgrade iman, adab, dan arah hidup.</h1>
+        <h1 id="deenup-title">DeenUp</h1>
         <p>
           Komunitas pembinaan remaja Muslim usia 13-18 tahun yang ingin bertumbuh
           lebih tenang: kenal Allah, kenal diri, jaga adab, dan punya pegangan
           menghadapi sekolah, rumah, pertemanan, teknologi, dan masa depan.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href={consultUrl}>Gabung DeenUp</a>
-          <a class="button secondary" href="#tentang-deenup">Cari Tahu Dulu</a>
+          <a class="button primary" href="#persiapan">Mulai bergabung</a>
+          <a class="button secondary" href="#materi">Lihat materi</a>
         </div>
         <div class="deenup-hero-stats" aria-label="Ringkasan program DeenUp">
           {heroStats.map(([label, value]) => (
@@ -273,15 +275,16 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
       </div>
     </section>
 
+    <ProgramOverview id="deenup" />
     <section class="section deenup-about" id="tentang-deenup">
       <div>
         <p class="eyebrow">Apa itu DeenUp?</p>
-        <h2>Bukan sekadar kelas agama, tapi ruang bertumbuh yang ngerti realita remaja.</h2>
+        <h2>Bekal iman dan adab untuk keseharian remaja.</h2>
       </div>
       <div class="stack">
         <p>
           DeenUp adalah program pembinaan remaja Muslim berbasis tauhid, adab, dan
-          solusi masalah hidup yang sering banget dialami anak SMP dan SMA.
+          pembahasan tantangan yang dekat dengan keseharian pelajar SMP dan SMA.
         </p>
         <p>
           Di sini, Islam dipelajari sebagai pegangan untuk menghadapi hidup: keluarga,
@@ -294,7 +297,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     <section class="deenup-struggle">
       <div>
         <p class="eyebrow">Kenapa kamu butuh DeenUp?</p>
-        <h2>Karena jujur aja, remaja hari ini lagi diuji banget.</h2>
+        <h2>Sekolah, pertemanan, dan dunia digital bisa terasa berat.</h2>
       </div>
       <div class="deenup-struggle-grid">
         {struggles.map((item) => <span>{item}</span>)}
@@ -304,7 +307,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     <section class="section deenup-materials" id="materi">
       <div class="section-heading">
         <p class="eyebrow">Apa aja yang dipelajari?</p>
-        <h2>Materi dikemas asyik, padat, dan relate dengan generasi muda.</h2>
+        <h2>Ilmu yang membantu memahami diri dan menjaga pilihan.</h2>
       </div>
       <div class="deenup-topic-grid">
         {topics.map((topic) => <article>{topic}</article>)}
@@ -314,7 +317,7 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     <section class="section deenup-format">
       <div>
         <p class="eyebrow">Cara belajarnya</p>
-        <h2>Ringan diikuti, tetap punya arah, dan nggak bikin sendirian.</h2>
+        <h2>Materi ringkas, latihan nyata, dan diskusi terbimbing.</h2>
       </div>
       <div class="deenup-format-list">
         {formats.map((item, index) => (
@@ -328,18 +331,19 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
 
     <section class="section deenup-levels" id="level">
       <div class="section-heading">
-        <p class="eyebrow">Modular System</p>
-        <h2>Belajar step by step, dari kenal diri sampai siap mengarahkan masa depan.</h2>
+        <p class="eyebrow">Tahap pembelajaran</p>
+        <h2>Dari memahami diri menuju arah masa depan.</h2>
       </div>
-      <div class="deenup-level-grid">
-        {levels.map((level) => (
-          <article>
+      <ol class="deenup-level-grid">
+        {levels.map((level, index) => (
+          <li>
+            <span class="deenup-step">{String(index + 1).padStart(2, '0')}</span>
             <h3>{level.title}</h3>
             <p>{level.body}</p>
-          </article>
+          </li>
         ))}
-      </div>
-      <p class="deenup-note">Setiap level berjalan 4-6 bulan. Peserta bisa bergabung dari level berapa pun.</p>
+      </ol>
+      <p class="deenup-note">Tanyakan durasi, jadwal, dan titik masuk yang sesuai dengan kesiapan Anda kepada admin.</p>
     </section>
 
     <section class="section deenup-system">
@@ -390,52 +394,33 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     <section class="deenup-summit" id="summit">
       <div>
         <p class="eyebrow">Daurah & Youth Summit</p>
-        <h2>Setahun sekali, ada event spesial buat tumbuh bareng.</h2>
+        <h2>Belajar bekerja sama dan memberi manfaat secara langsung.</h2>
       </div>
       <div class="deenup-summit-grid">
         {summit.map((item) => <span>{item}</span>)}
       </div>
     </section>
 
-    <section class="section deenup-testimonials">
+    <section class="section deenup-practices">
       <div class="section-heading">
-        <p class="eyebrow">Apa kata mereka?</p>
-        <h2>Belajar Islam bisa tetap serius tanpa kehilangan rasa dekat dan relate.</h2>
+        <h2>Langkah kecil yang bisa mulai kamu latih.</h2>
       </div>
-      <div class="deenup-testimonial-grid">
-        {testimonials.map((item) => (
+      <div class="deenup-practice-grid">
+        {practices.map(({ icon: Icon, title, body }) => (
           <article>
-            <div>
-              <strong>{item.name}</strong>
-              <span>{item.age}</span>
-            </div>
-            <small>{item.rating}</small>
-            <p>"{item.quote}"</p>
+            <Icon size={26} aria-hidden="true" />
+            <h3>{title}</h3>
+            <p>{body}</p>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section deenup-closing">
-      <article>
-        <p class="eyebrow">Tenang, kamu nggak sendirian</p>
-        <h2>Jangan cuma bertahan di masa remaja. Tumbuhlah.</h2>
-        <p>Biar kamu bukan cuma ada, tapi berarti.</p>
-      </article>
-      <article>
-        <h2>DeenUp hadir buat nemenin proses itu.</h2>
-        <p>
-          Bukan untuk menghakimi, tapi untuk membantu kamu punya arah, lingkungan yang
-          lebih sehat, dan pegangan iman yang lebih kuat.
-        </p>
-        <a class="button primary" href={consultUrl}>Gabung DeenUp</a>
-      </article>
-    </section>
-
+    <ProgramGuide id="deenup" />
     <section class="cta deenup-cta" id="kontak">
       <div>
         <p class="eyebrow">Upgrade iman, adab, dan diri</p>
-        <h2>Siap jadi remaja keren yang tetap taat?</h2>
+        <h2>Mulai menata arah, satu langkah setiap hari.</h2>
         <p>
           Mulai perjalanan DeenUp dan temukan komunitas belajar yang positif, beriman,
           dan ngerti realita remaja hari ini.
@@ -461,5 +446,14 @@ const consultUrl = 'https://berbagi.link/ypihsanuladab';
     </nav>
   </footer>
 
-  <a class="floating-help" href={consultUrl}>Gabung DeenUp</a>
+  <nav class="hm-mobile-bottom-nav deenup-bottom-nav" aria-label="Navigasi bawah DeenUp">
+    <a href="/"><House size={20} aria-hidden="true" /><span>Beranda</span></a>
+    <a href="#materi"><BookOpenCheck size={20} aria-hidden="true" /><span>Materi</span></a>
+    <a href="#level"><Layers3 size={20} aria-hidden="true" /><span>Tahap</span></a>
+    <a href="#persiapan"><MessageCircle size={20} aria-hidden="true" /><span>Mulai</span></a>
+    <details><summary><Menu size={20} aria-hidden="true" /><span>Menu</span></summary><div>
+      <a href="#faq-program">Tanya jawab</a><a href="/#program">Semua program</a><a href="/tentang-kami/">Tentang kami</a><a href="https://hub.ihsanuladab.or.id/">Akses LMS</a><a href={whatsappUrl}>WhatsApp admin</a>
+    </div></details>
+  </nav>
+  </div>
 </BaseLayout>
